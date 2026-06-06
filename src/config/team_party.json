@@ -1,0 +1,251 @@
+[
+  {
+    "slot": 1,
+    "name": "Milotic",
+    "types": [
+      "Water"
+    ],
+    "moves": [
+      {
+        "name": "Surf",
+        "type": "water",
+        "power": 90,
+        "accuracy": 100,
+        "pp_current": 0,
+        "pp_max": 15
+      },
+      {
+        "name": "Ice Beam",
+        "type": "ice",
+        "power": 90,
+        "accuracy": 100,
+        "pp_current": 0,
+        "pp_max": 16
+      },
+      {
+        "name": "Toxic",
+        "type": "poison",
+        "power": 0,
+        "accuracy": 90,
+        "pp_current": 10,
+        "pp_max": 10
+      },
+      {
+        "name": "Recover",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      }
+    ]
+  },
+  {
+    "slot": 2,
+    "name": "Gardevoir",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "moves": [
+      {
+        "name": "Calm Mind",
+        "type": "psychic",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      },
+      {
+        "name": "Moonblast",
+        "type": "fairy",
+        "power": 95,
+        "accuracy": 100,
+        "pp_current": 14,
+        "pp_max": 15
+      },
+      {
+        "name": "Magical Leaf",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      },
+      {
+        "name": "Psychic",
+        "type": "psychic",
+        "power": 90,
+        "accuracy": 100,
+        "pp_current": 10,
+        "pp_max": 10
+      }
+    ]
+  },
+  {
+    "slot": 3,
+    "name": "Kangaskhan",
+    "types": [
+      "normal"
+    ],
+    "moves": [
+      {
+        "name": "Fake Out",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": 10,
+        "pp_max": 10
+      },
+      {
+        "name": "Sucker Punch",
+        "type": "dark",
+        "power": 70,
+        "accuracy": 100,
+        "pp_current": 5,
+        "pp_max": 5
+      },
+      {
+        "name": "Outrage",
+        "type": "dragon",
+        "power": 120,
+        "accuracy": 100,
+        "pp_current": 10,
+        "pp_max": 10
+      },
+      {
+        "name": "Return",
+        "type": "normal",
+        "power": 102,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      }
+    ]
+  },
+  {
+    "slot": 4,
+    "name": "Lopunny",
+    "types": [
+      "normal"
+    ],
+    "moves": [
+      {
+        "name": "Fake Out",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      },
+      {
+        "name": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      },
+      {
+        "name": "Return",
+        "type": "normal",
+        "power": 102,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      },
+      {
+        "name": "Ice Punch",
+        "type": "ice",
+        "power": 75,
+        "accuracy": 100,
+        "pp_current": 15,
+        "pp_max": 15
+      }
+    ]
+  },
+  {
+    "slot": 5,
+    "name": "Malamar",
+    "types": [
+      "dark",
+      "psychic"
+    ],
+    "moves": [
+      {
+        "name": "Fake Out",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      },
+      {
+        "name": "Drain Punch",
+        "type": "fighting",
+        "power": 75,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      },
+      {
+        "name": "Return",
+        "type": "normal",
+        "power": 102,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      },
+      {
+        "name": "Ice Punch",
+        "type": "ice",
+        "power": 75,
+        "accuracy": 100,
+        "pp_current": 15,
+        "pp_max": 15
+      }
+    ]
+  },
+  {
+    "slot": 6,
+    "name": "Annihilape",
+    "types": [
+      "fighting",
+      "ghost"
+    ],
+    "moves": [
+      {
+        "name": "Close Combat",
+        "type": "fighting",
+        "power": 120,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      },
+      {
+        "name": "Outrage",
+        "type": "dragon",
+        "power": 120,
+        "accuracy": 100,
+        "pp_current": 10,
+        "pp_max": 10
+      },
+      {
+        "name": "Shadow Punch",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": 20,
+        "pp_max": 20
+      },
+      {
+        "name": "stomping Tantrum",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": null,
+        "pp_max": null
+      }
+    ]
+  }
+]

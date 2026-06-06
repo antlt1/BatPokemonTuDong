@@ -122,11 +122,17 @@ Tool Python se co menu chay trong CMD:
 - Phim dung khan cap: bam `Q` de stop tool khi dang chay.
 - So sanh Pokemon/ability: khong phan biet hoa/thuong; mien cung ten la match.
 
-## File code ban dau
+## File code hien tai
 
-- `run_pokemon_tool.py`: script chay menu CMD va mode 1.
-- `src/config/tool_config.json`: config window title, timing, ROI crop, threshold template, debug, audio.
-- `src/config/target_pokemon.json`: danh sach Pokemon/ability can tim.
+- `run_pokemon_tool.py`: script chay menu CMD, mode 1, 3, 4.
+- `src/config/tool_config.json`: config window title, timing, ROI crop, threshold template, debug, audio, farm.
+- `src/config/target_pokemon.json`: danh sach Pokemon/ability can tim (menu 1).
+- `src/config/team_party.json`: team 6 Pokemon voi moves JSON (menu 3 va 4).
+- `src/data/type_chart.json`: bang type chart tinh 18 type (khong goi PokeAPI).
+- `src/farm/farm_battle.py`: module auto farm tien (menu 3).
+- `src/team_builder/team_builder_ui.py`: UI tkinter doc team (menu 4).
+- `src/runtime/battle_state.json`: cache trang thai battle runtime (slot hien tai, slot het PP).
+- `src/runtime/feedback_log.txt`: log loi/feedback khi chay menu 3.
 - `requirements.txt`: Python packages can cai.
 
 Tinh trang code:
@@ -134,6 +140,8 @@ Tinh trang code:
 - Menu `0`: xoa anh debug trong `src/debug/screenshots`.
 - Menu `1`: focus cua so `PROClient`, scan battle, di chuyen `A/D`, OCR Pokemon/ability, click `Run`, dung khi tim thay muc tieu.
 - Menu `2`: placeholder, chua code tu bat.
+- Menu `3`: auto farm tien - click Fight, OCR 4 move, tinh diem move (type_eff x STAB x power x accuracy), click move tot nhat, theo doi PP, swap Pokemon khi het PP tan cong, feedback log.
+- Menu `4`: UI tkinter - load anh team tong/fight, OCR ten Pokemon va 4 move, cho sua thu cong, save team_party.json.
 - Click `Run`: dung template `rightBarButtomRun.png` bang OpenCV template matching.
 - Screenshot: dung `mss`.
 - Focus/click/phim: dung Win32 API qua `ctypes`, khong can `pyautogui`.
@@ -161,9 +169,92 @@ Tinh trang code:
   - Tang `ability_wait_seconds` tu `2.0` len `3.5`.
   - Them retry doc ability `ability_retry_count = 2`, moi lan cach `ability_retry_seconds = 1.5`.
   - Neu lan dau ability la `unknown`, tool se doi them truoc khi quyet dinh Run.
+- Code Menu 3 + 4 ngay 2026-06-06:
+  - Menu 3: src/farm/farm_battle.py, type chart tinh, scoring move, OCR PP tu move panel, swap Pokemon theo slot.
+  - Menu 4: src/team_builder/team_builder_ui.py, UI tkinter 2 panel, load anh fight OCR 4 move tu luoi 2x2, KNOWN_MOVES table ~200 moves.
+  - ROI move_slots, move_pp_slots, pokemon_swap_slots them vao tool_config.json.
+  - LUU Y: ROI move_slots/pp_slots trong config la uoc luong dua tren 1920x1080, can calibrate lai bang anh debug thuc te neu OCR sai.
+  - LUU Y: enemy_types chua lay duoc (khong goi PokeAPI), farm_battle tinh eff voi empty list (=1.0), nen hieu qua la power*stab, se cap nhat sau neu can.
 
 Luu y cai dat:
 
 - Python package hien tai da co `cv2`, `mss`, `PIL`, `pytesseract`, `keyboard`.
 - `tesseract.exe` chua duoc tim thay trong PATH o lan kiem tra dau tien.
 - Neu OCR khong chay, can cai Tesseract Windows va them PATH, hoac dien duong dan vao `src/config/tool_config.json` -> `ocr.tesseract_cmd`.
+
+## Y tuong giai doan 2 / menu 3
+
+Muc tieu menu `3`: auto danh quai/cay tien dua tren enemy Pokemon, type, skill 1-4, PP con lai, va logic swap Pokemon khi het chieu danh.
+
+Huong de xuat:
+
+- Menu `2`: giu lai cho tinh nang bat Pokemon sau nay.
+- Menu `3`: auto battle/farm money.
+- Dung PokeAPI chu yeu de lay type cua doi thu va bang khac he/type effectiveness.
+- Khong dung PokeAPI de quyet dinh team cua minh dang co move nao; phan nay se doc tu anh/cap cua nguoi dung roi ghi JSON.
+- Khong nen goi API moi lan gap Pokemon; nen cache ve local JSON, vi du `src/data/pokeapi_cache/*.json`.
+- Can co JSON rieng cho team 6 Pokemon cua minh, tao tu UI/capture/calibration.
+- OCR/crop UI battle de doc:
+  - Enemy Pokemon name tu header.
+  - Move slot 1-4: ten move va PP dang con, vi game hien thi kieu `0/13`.
+  - Neu move PP = 0 thi khong chon move do.
+  - Neu tat ca move tan cong PP = 0 thi swap Pokemon.
+- Logic chon move co the cham diem:
+  - type effectiveness voi enemy type.
+  - STAB neu move type trung type Pokemon cua minh.
+  - power/accuracy neu co data move.
+  - bo qua status move trong mode farm tien, tru khi sau nay can logic rieng.
+- Y tuong "box cap hinh dan vo chuyen JSON":
+  - Lam UI/command rieng de paste/cap anh tung Pokemon trong team.
+  - Moi Pokemon can doc/ghi: slot 1-6, ten Pokemon, type/he, 4 ten move.
+  - Chi uu tien move tan cong; bo qua move heal/recover/status neu khong co damage.
+  - Sau khi doc xong ghi vao JSON de menu `3` dung.
+  - Nen co command/menu rieng, vi du `4`: doc/cap team 6 Pokemon vao JSON.
+- Menu `3` se doc JSON team da tao de auto danh.
+
+Thong tin anh mau moi:
+
+- Header battle co dang `Antlt1 VS. Wild Persian`; doc enemy name tu sau chu `Wild`.
+- Khi bam `Fight`, panel ben phai hien 4 move:
+  - Move 1: `Surf`, type `WATER`, PP `14/15`
+  - Move 2: `Ice Beam`, type `ICE`, PP `4/16`
+  - Move 3: `Toxic`, type `POISON`, PP `10/10`
+  - Move 4: `Recover`, type `NORMAL`, PP `8/8`
+- Menu `3` can doc truc tiep move name/type/PP tu panel Fight neu co the, vi type move hien san trong UI.
+- Move nhu `Recover` la heal/status, nen bo qua trong farm money. `Toxic` co the xem la status/khong damage, tam thoi bo qua neu PokeAPI move data bao power null.
+- Flow menu `3` van can A/D di qua lai de kiem Pokemon khi khong trong battle.
+- Da chot them:
+  - Khi vao battle phai click nut `Fight` de hien panel 4 move.
+  - Bo qua cac move hieu ung/status/heal, vi farm tien chi can move gay damage.
+  - Uu tien chon move theo PWR/power, khong uu tien PP tru khi cac move bang diem/power.
+  - Khi Pokemon hien tai het PP cua cac move danh, swap theo thu tu slot `1 -> 2 -> 3 -> 4 -> 5 -> 6`.
+  - Can runtime JSON/cache de nho trong battle Pokemon nao/slot nao het PP va da swap.
+  - Menu doc team nen co UI de nguoi dung dan anh:
+    - Anh 1: team co 6 con de doc ten/slot.
+    - Anh 2-7: tung Pokemon, doc 4 move cua tung con.
+  - UI doc team se dung `tkinter` de tranh cai them thu vien.
+  - Sau khi OCR anh, UI can co o text cho sua thu cong ten Pokemon/move truoc khi save.
+  - Move power/type co the lay tu PokeAPI move endpoint, vi du move `Ice Beam` -> slug `ice-beam`.
+  - Runtime cache dat o `src/runtime/battle_state.json`.
+  - Neu menu `3` thieu `src/config/team_party.json`, tool bao nguoi dung chay menu `4` truoc.
+  - Can tao folder/data JSON cho bang khac he Pokemon de tinh move nao danh x2/x1/x0.5/x0 vao enemy.
+  - Type chart/cache:
+    - Agent tu quyet cach toi uu nhanh, khong ton search moi tran.
+    - Nen co `src/data/type_chart/type_chart.json`.
+    - Nen co `src/data/pokeapi_cache/pokemon/`, `src/data/pokeapi_cache/moves/`, `src/data/pokeapi_cache/types/`.
+    - Them menu/cache update de tai/cap nhat Pokemon, move, type chart can dung cho battle.
+  - Scoring move da chot:
+    - Co tinh STAB: move cung he Pokemon minh thi nhan x1.5.
+    - Uu tien khac he/type effectiveness truoc.
+    - Uu tien PWR/power cao.
+    - Co tinh accuracy neu co data.
+    - Neu diem bang nhau: PWR cao hon -> PP hien tai nhieu hon -> slot nho hon.
+    - Neu cache/API loi hoac thieu enemy type/move data, fallback chon move damage co PWR cao nhat con PP.
+    - Cho phep dung move `0.5x` neu het lua chon tot hon; khong nen dung move `0x` tru khi bat buoc/khong co cach.
+    - Move accuracy thap van duoc dung neu score sau khi tinh accuracy van cao.
+  - Swap:
+    - Khi swap vi het PP, tranh swap vao Pokemon/slot da cache la het PP truoc do.
+    - Neu khong con slot hop le, bao loi cho nguoi dung.
+  - Debug/feedback:
+    - Them file `.txt` feedback log de nguoi dung check loi, vi du `src/runtime/feedback_log.txt`.
+    - Khi loi team JSON/OCR/cache, nen co UI doc file JSON len cho nguoi dung sua va bam Save.

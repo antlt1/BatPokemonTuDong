@@ -186,13 +186,17 @@ def ocr_text_variants(image, config, psm=6):
     ]
     results = []
     for variant in variants:
-        text = pytesseract.image_to_string(
-            Image.fromarray(variant),
-            lang=config["ocr"].get("language", "eng"),
-            config=f"--psm {psm}",
-        ).strip()
-        if text:
-            results.append(text)
+        try:
+            text = pytesseract.image_to_string(
+                Image.fromarray(variant),
+                lang=config["ocr"].get("language", "eng"),
+                config=f"--psm {psm}",
+            ).strip()
+            if text:
+                results.append(text)
+        except Exception:
+            # Bỏ qua lỗi lock file tạm thời của Tesseract trên Windows
+            continue
     if not results:
         return ""
     return max(results, key=len)
@@ -244,9 +248,17 @@ def get_known_pokemon_names():
                     names.add(normalize_text(str(n)))
     except Exception:
         pass
-    # add some common names fallback
-    if not names:
-        names.update(["rattata", "pidgey", "zubat"])  # minimal fallback
+
+    # Thêm danh sách Pokemon mẫu từ team_builder_ui để hỗ trợ fuzzy match toàn diện
+    try:
+        from src.team_builder.team_builder_ui import POKEMON_NAMES
+        for n in POKEMON_NAMES:
+            names.add(normalize_text(n))
+    except ImportError:
+        # add some common names fallback nếu không import được
+        if not names:
+            names.update(["rattata", "pidgey", "zubat", "spheal", "pikachu"])
+
     return sorted(names)
 
 
@@ -255,8 +267,11 @@ def fuzzy_fix_name(name: str, known_names=None):
         return ""
     if known_names is None:
         known_names = get_known_pokemon_names()
-    name = normalize_text(name)
-    matches = difflib.get_close_matches(name, known_names, n=1, cutoff=0.6)
+    
+    # Làm sạch triệt để: chỉ giữ chữ cái và khoảng trắng, bỏ dấu phẩy/chấm/ký tự lạ
+    clean_name = re.sub(r"[^a-z\s]", "", normalize_text(name)).strip()
+    
+    matches = difflib.get_close_matches(clean_name, known_names, n=1, cutoff=0.45)
     return matches[0] if matches else name
 
 
@@ -268,15 +283,18 @@ def is_battle(image, config):
     norm = normalize_text(text)
     # Chuẩn hóa chỉ giữ chữ thường và khoảng trắng
     letters_spaces = re.sub(r"[^a-z\s]", " ", norm)
-    # Tìm các dạng: 'vs', 'v s', 'vs.' bằng regex mềm
-    if re.search(r"\bv\s*s\b", letters_spaces) or "vs" in letters_spaces.replace(" ", ""):
+    # Tìm 'vs' hoặc 'wild' để xác định đang trong trận
+    if (re.search(r"\bv\s*s\b", letters_spaces) or 
+        "vs" in letters_spaces.replace(" ", "") or 
+        "wild" in letters_spaces):
         return True
     # Nếu header không rõ, thử OCR vùng tên đối thủ trực tiếp
     try:
         enemy_roi = crop_roi(image, config["roi"]["enemy_name"])
         enemy_text = ocr_text_variants(enemy_roi, config, psm=7)
-        print("[DEBUG] OCR_ENEMY_ROI_RAW:", repr(enemy_text))
-        if re.search(r"[a-z]{3,}", normalize_text(enemy_text)):
+        enemy_norm = normalize_text(enemy_text)
+        # Chỉ chấp nhận là battle nếu có chữ cái (tên) VÀ dấu hiệu Level (lv, số, hoặc dấu chấm của Lv.)
+        if re.search(r"[a-z]{3,}", enemy_norm) and re.search(r"lv|\d+|\.", enemy_norm):
             return True
     except Exception:
         pass
@@ -307,8 +325,8 @@ def read_enemy_name(image, config):
         save_debug(config, log_image, "debug_log_no_name")
         save_debug(config, roi_image, "debug_enemy_name_empty")
         # print("[DEBUG] OCR_HEADER_RAW:", repr(header_text))
-        print("[DEBUG] OCR_LOG_RAW:", repr(log_text))
-        print("[DEBUG] OCR_ROI_RAW:", repr(text))
+        # print("[DEBUG] OCR_LOG_RAW:", repr(log_text))
+        # print("[DEBUG] OCR_ROI_RAW:", repr(text))
     # Try fuzzy fix against known names
     return fuzzy_fix_name(cleaned)
 
@@ -374,6 +392,15 @@ def locate_template(image, template_path, threshold, roi=None):
     template = cv2.imread(str(template_path), cv2.IMREAD_COLOR)
     if template is None:
         raise FileNotFoundError(template_path)
+    # Guard: if template larger than search area, scale template down to fit
+    th, tw = template.shape[:2]
+    sh, sw = search_image.shape[:2]
+    if th > sh or tw > sw:
+        scale = min(sh / th, sw / tw)
+        if scale <= 0:
+            return None, 0.0
+        template = cv2.resize(template, (max(1, int(tw * scale)), max(1, int(th * scale))), interpolation=cv2.INTER_AREA)
+
     result = cv2.matchTemplate(search_image, template, cv2.TM_CCOEFF_NORMED)
     _, max_val, _, max_loc = cv2.minMaxLoc(result)
     if max_val < threshold:
@@ -582,8 +609,17 @@ def print_menu():
     print("1. Tim Pokemon, gap dung thi dung de tu bat")
     print("2. Tu bat Pokemon (chua code)")
     print("3. Auto Farm tien (danh quai tu dong)")
-    print("4. Doc Team 6 Pokemon (mo UI nhap team)")
+    print("4. Tools (Calibrate ROI + Team Builder)")
     print("Q. Thoat")
+
+
+def run_tabbed_tools():
+    """Run tabbed UI with Calibrate ROI + Team Builder."""
+    try:
+        from src.tools.ui_main import main as run_ui
+        run_ui()
+    except Exception as e:
+        print(f"Error launching tools UI: {e}")
 
 
 def _make_win_api_module(config):
@@ -624,15 +660,6 @@ def run_farm_mode_wrapper(config):
     )
 
 
-def run_team_builder_wrapper():
-    """Wrapper để mở Team Builder UI."""
-    try:
-        from src.team_builder.team_builder_ui import run_team_builder
-        run_team_builder()
-    except ImportError as exc:
-        print(f"Loi import team_builder_ui: {exc}")
-        print("Kiem tra thu muc src/team_builder/team_builder_ui.py co ton tai khong.")
-
 
 def main():
     config = load_json(CONFIG_PATH)
@@ -651,7 +678,7 @@ def main():
         elif choice == "3":
             run_farm_mode_wrapper(config)
         elif choice == "4":
-            run_team_builder_wrapper()
+            run_tabbed_tools()
         elif choice == "q":
             print("Thoat.")
             return

@@ -258,6 +258,8 @@ def ocr_move_slots(image_bgr, config) -> list:
     Dùng ROI move_slots từ config.
     Trả về list 4 dict {name, type, power, accuracy, pp_current, pp_max}.
     """
+    # Import fuzzy fix để sửa tên move nếu OCR sai nhẹ
+    from run_pokemon_tool import fuzzy_fix_name
     roi_list = config.get("roi", {}).get("move_slots", [])
     pp_roi_list = config.get("roi", {}).get("move_pp_slots", [])
     moves = []
@@ -296,22 +298,20 @@ def ocr_move_slots(image_bgr, config) -> list:
     return moves
 
 
-def update_move_pp_from_ocr(team_moves: list, ocr_moves: list) -> list:
+def update_move_pp_from_ocr(moves_list: list, ocr_moves: list) -> list:
     """
     Merge PP từ OCR vào move data từ team_party.json.
-    Ưu tiên giữ tên/type/power từ team JSON, chỉ cập nhật PP.
+    Cập nhật trực tiếp vào moves_list (in-place) để persist dữ liệu.
     """
-    result = []
-    for i in range(min(len(team_moves), 4)):
-        m = dict(team_moves[i])
+    for i in range(min(len(moves_list), 4)):
         if i < len(ocr_moves):
             ocr = ocr_moves[i]
+            # Chỉ cập nhật nếu OCR đọc được con số thực tế, tránh reset về None
             if ocr.get("pp_current") is not None:
-                m["pp_current"] = ocr["pp_current"]
+                moves_list[i]["pp_current"] = ocr["pp_current"]
             if ocr.get("pp_max") is not None:
-                m["pp_max"] = ocr["pp_max"]
-        result.append(m)
-    return result
+                moves_list[i]["pp_max"] = ocr["pp_max"]
+    return moves_list
 
 
 def wait_for_move_panel(screenshot_fn, config, save_debug_fn, timeout=2.0, interval=0.25):
@@ -345,7 +345,7 @@ def debug_move_slots(image_bgr, config, save_debug_fn):
         raw = ocr_crop(cell, config, psm=7)
         move_names.append((i + 1, raw.strip()))
         save_debug_fn(config, cell, f"move_slot_{i+1}")
-    print("[DEBUG] MOVE_SLOT_OCR:", move_names)
+    # print("[DEBUG] MOVE_SLOT_OCR:", move_names)
 
 
 # ==================== Click Helpers ====================
@@ -367,6 +367,18 @@ def _click_template(image, template_path, threshold, roi, offset, config,
         x, y, w, h = roi
         search = image[y:y+h, x:x+w]
         ox, oy = x, y
+
+    # Ensure template is not larger than search; if it is, scale template down to fit
+    th, tw = template.shape[:2]
+    sh, sw = search.shape[:2]
+    if th > sh or tw > sw:
+        scale = min(sh / th, sw / tw)
+        if scale <= 0:
+            feedback_log(f"Template {template_path} too large for search area; skipping")
+            return False
+        new_w = max(1, int(tw * scale))
+        new_h = max(1, int(th * scale))
+        template = cv2.resize(template, (new_w, new_h), interpolation=cv2.INTER_AREA)
 
     result = cv2.matchTemplate(search, template, cv2.TM_CCOEFF_NORMED)
     _, max_val, _, max_loc = cv2.minMaxLoc(result)
@@ -476,6 +488,9 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             feedback_log("Dừng tool bằng Q.")
             return
 
+        # Delay nhỏ để tránh spam OCR gây lỗi WinError 32
+        time.sleep(0.3)
+
         # Focus window
         hwnd = find_window_fn(config["window_title"])
         if hwnd:
@@ -500,6 +515,9 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 depleted_slots = set()
                 in_battle = False
                 current_moves = []
+                # Lưu lại team vào file khi kết thúc battle để đồng bộ PP
+                from src.team_builder.team_builder_ui import save_team
+                save_team(team)
                 time.sleep(config["timing"].get("after_run_wait_seconds", 4.0))
                 continue
 
@@ -514,6 +532,12 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
         if not in_battle:
             # Vừa vào battle mới
             in_battle = True
+            # Đợi animation vào trận (header xuất hiện xong mới đến lượt nút Fight hiện ra)
+            wait_time = config["timing"].get("battle_start_wait_seconds", 3.5)
+            feedback_log(f"Mới vào trận, đợi {wait_time}s animation...")
+            time.sleep(wait_time)
+
+            image = screenshot_fn()
             enemy_name = read_enemy_name_fn(image, config)
             battle_state["enemy_name"] = enemy_name
             save_battle_state(battle_state)
@@ -565,10 +589,10 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             move_mouse_away_fn(config)
             image = screenshot_fn()
             pokemon_threshold = config["template_matching"].get("pokemon_button_threshold", 0.55)
-            pokemon_offset = config.get("click_offsets", {}).get("pokemon_button", [0, 0])
+            pokemon_offset = config.get("click_offsets", {}).get("pokemon_button", [0, 0]) # This offset is applied after finding the center of the template
             clicked = _click_template(
                 image, POKEMON_TEMPLATE, pokemon_threshold,
-                config["roi"].get("right_action_bar"),
+                config["roi"].get("pokemon_button_roi"), # Use specific ROI for Pokemon button
                 pokemon_offset, config, win_api_module
             )
             if not clicked:
@@ -593,18 +617,37 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
 
         # Click nút Fight
         move_mouse_away_fn(config)
-        image = screenshot_fn()
         fight_threshold = config["template_matching"].get("fight_button_threshold", 0.55)
         fight_offset = config.get("click_offsets", {}).get("fight_button", [0, 0])
-        clicked_fight = _click_template(
-            image, FIGHT_TEMPLATE, fight_threshold,
-            config["roi"].get("right_action_bar"),
-            fight_offset, config, win_api_module
-        )
+
+        clicked_fight = False
+        # Retry 3 lần tìm nút Fight vì animation game có thể làm nút hiện ra chậm
+        for attempt in range(3):
+            image = screenshot_fn()
+            clicked_fight = _click_template(
+                image, FIGHT_TEMPLATE, fight_threshold,
+                config["roi"].get("right_action_bar"),
+                fight_offset, config, win_api_module
+            )
+            if clicked_fight:
+                break
+
+            # Kiểm tra nhanh: Nếu không thấy nút Fight, liệu có phải đã thoát Battle không?
+            if not is_battle_fn(image, config):
+                break # Thoát vòng lặp retry ngay lập tức
+
+            feedback_log(f"Thử tìm nút Fight lần {attempt+1} (vẫn trong trận, chờ hiện)...")
+            time.sleep(1.5)
 
         if not clicked_fight:
-            feedback_log("Không tìm thấy nút Fight. Có thể chưa đến lượt hoặc đang animation.")
-            time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
+            # Nếu thực sự vẫn còn trong trận mà không thấy nút mới báo lỗi ROI
+            if is_battle_fn(screenshot_fn(), config):
+                feedback_log("Không tìm thấy nút Fight sau 3 lần thử. Hãy kiểm tra lại ROI trong Menu 4.")
+                save_debug_fn(config, image, "fight_not_found_farm")
+                time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
+            else:
+                feedback_log("Nút Fight biến mất do trận đấu đã kết thúc.")
+                in_battle = False
             continue
 
         time.sleep(config["timing"].get("after_fight_click_seconds", 0.6))
@@ -617,7 +660,7 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
         image = screenshot_fn()
         debug_move_slots(image, config, save_debug_fn)
         ocr_moves = ocr_move_slots(image, config)
-        feedback_log(f"OCR move slots: {[m['name'] for m in ocr_moves]}")
+        feedback_log(f"OCR Check PP: {[(m['name'], m.get('pp_current')) for m in ocr_moves]}")
         current_moves = update_move_pp_from_ocr(current_moves, ocr_moves)
 
         # Chọn move tốt nhất
@@ -640,11 +683,26 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
         # Click move slot
         image = screenshot_fn()
         click_move_slot(best_idx, config, win_api_module, image)
+        
+        from src.team_builder.team_builder_ui import save_team
 
         # Giảm PP
         if current_moves[best_idx].get("pp_current") is not None:
+            old_pp = current_moves[best_idx]["pp_current"]
             current_moves[best_idx]["pp_current"] -= 1
+            feedback_log(f"Đã trừ PP '{current_moves[best_idx]['name']}': {old_pp} -> {current_moves[best_idx]['pp_current']}")
+            # Lưu lại file JSON ngay lập tức để người dùng kiểm tra
+            save_team(team)
 
         # Đợi animation battle
         time.sleep(config["timing"].get("after_move_click_seconds", 1.0))
+        # Delay thêm theo yêu cầu để check quái chết hay chưa
+        feedback_log("Đang đợi animation chiêu thức...")
         time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
+
+        # Kiểm tra nhanh xem còn trong battle không trước khi lặp lại tìm nút Fight
+        image_after = screenshot_fn()
+        if not is_battle_fn(image_after, config):
+            feedback_log("Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).")
+            in_battle = False
+            continue
