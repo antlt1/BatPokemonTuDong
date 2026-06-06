@@ -219,12 +219,12 @@ def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict)
     for i, move in enumerate(moves):
         pp_current = move.get("pp_current")
         power = move.get("power", 0) or 0
-        if power <= 0:
-            continue
-        if pp_current is None:
-            continue
-        if pp_current is not None and pp_current <= 0:
+
+        if pp_current is None or pp_current <= 0:
             continue  # Hết PP
+
+        # Bỏ qua power check vì moves từ JSON chưa có OCR
+        # Chỉ yêu cầu pp_current > 0
 
         s = score_move(move, my_types, enemy_types, config)
         pp_cur = move.get("pp_current") or 0
@@ -242,11 +242,10 @@ def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict)
 
 
 def all_attack_moves_depleted(moves: list) -> bool:
-    """Kiểm tra tất cả move tấn công đã hết PP chưa."""
+    """Kiểm tra tất cả move đã hết PP chưa. Bỏ qua power check vì JSON chưa có OCR."""
     for move in moves:
-        power = move.get("power", 0) or 0
         pp_current = move.get("pp_current")
-        if power > 0 and pp_current is not None and pp_current > 0:
+        if pp_current is not None and pp_current > 0:
             return False
     return True
 
@@ -676,14 +675,12 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 candidate = get_pokemon_by_slot(team, slot)
                 if not candidate or not candidate.get("moves"):
                     continue
-                # Kiểm tra xem candidate có ít nhất 1 move tấn công còn PP hay không
+                # Kiểm tra xem candidate có ít nhất 1 move còn PP hay không
                 cand_moves = list(candidate.get("moves", []))
-                # Nếu pp_current là None nhưng pp_max có giá trị -> coi là còn PP
                 has_attack_pp = False
                 for mv in cand_moves:
-                    power = mv.get("power", 0) or 0
                     pp_current = mv.get("pp_current")
-                    if power > 0 and pp_current is not None and pp_current > 0:
+                    if pp_current is not None and pp_current > 0:
                         has_attack_pp = True
                         break
                 if has_attack_pp:

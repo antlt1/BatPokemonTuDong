@@ -995,5 +995,185 @@ def create_team_builder_widget(master, config):
     return TeamBuilderApp(master, config)
 
 
+class CalibrateMoveROIApp(tk.Frame):
+    """Tab để calibrate 4 move slot ROI bằng drag & drop"""
+    def __init__(self, master, config):
+        super().__init__(master, bg="#1e1e2e")
+        self.config_data = config
+        self.image_cv = None
+        self.image_tk = None
+        self.roi_list = list(config.get("roi", {}).get("move_slots", [
+            [1252, 308, 237, 58],
+            [1252, 386, 243, 55],
+            [1254, 452, 242, 61],
+            [1257, 522, 243, 65]
+        ]))
+        self.dragging_slot = None
+        self.drag_start = None
+
+        self._build_ui()
+
+    def _build_ui(self):
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(1, weight=1)
+
+        # Top: Instructions
+        top_frame = tk.Frame(self, bg="#1e1e2e")
+        top_frame.grid(row=0, column=0, columnspan=2, sticky="ew", padx=8, pady=8)
+
+        tk.Label(top_frame, text="📋 Calibrate Move Slots ROI",
+                bg="#1e1e2e", fg="#cdd6f4", font=("Segoe UI", 12, "bold")).pack(side="left")
+
+        tk.Button(top_frame, text="📸 Load Screenshot", command=self._load_screenshot,
+                 bg="#89dceb", fg="#1e1e2e", font=("Segoe UI", 9, "bold"),
+                 relief="flat", cursor="hand2", padx=8).pack(side="left", padx=(20, 0))
+
+        tk.Button(top_frame, text="💾 Save ROI", command=self._save_roi,
+                 bg="#a6e3a1", fg="#1e1e2e", font=("Segoe UI", 9, "bold"),
+                 relief="flat", cursor="hand2", padx=8).pack(side="left", padx=6)
+
+        # Main: Canvas + ROI info
+        main_frame = tk.Frame(self, bg="#1e1e2e")
+        main_frame.grid(row=1, column=0, columnspan=2, sticky="nsew", padx=8, pady=8)
+        main_frame.columnconfigure(0, weight=1)
+        main_frame.rowconfigure(0, weight=1)
+
+        # Canvas for image
+        self.canvas = tk.Canvas(main_frame, bg="#313244", highlightthickness=0)
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        self.canvas.bind("<Button-1>", self._on_canvas_click)
+        self.canvas.bind("<B1-Motion>", self._on_canvas_drag)
+        self.canvas.bind("<ButtonRelease-1>", self._on_canvas_release)
+
+        # Right: ROI info
+        info_frame = tk.Frame(main_frame, bg="#181825", width=200)
+        info_frame.grid(row=0, column=1, sticky="nsew", padx=(8, 0))
+        info_frame.grid_propagate(False)
+
+        tk.Label(info_frame, text="Move Slots ROI", bg="#181825", fg="#cdd6f4",
+                font=("Segoe UI", 11, "bold")).pack(pady=(10, 4))
+
+        self.roi_text = tk.Text(info_frame, bg="#313244", fg="#cdd6f4",
+                               font=("Consolas", 9), height=10, width=22,
+                               relief="flat", highlightthickness=0)
+        self.roi_text.pack(fill="both", expand=True, padx=6, pady=4)
+
+        self.status_var = tk.StringVar(value="Load ảnh screenshot để bắt đầu.")
+        tk.Label(info_frame, textvariable=self.status_var, bg="#181825", fg="#6c7086",
+                font=("Segoe UI", 8), wraplength=180, justify="left").pack(padx=6, pady=4)
+
+    def _load_screenshot(self):
+        path = filedialog.askopenfilename(
+            title="Chọn ảnh battle fight panel",
+            filetypes=[("Image files", "*.png *.jpg *.jpeg *.bmp"), ("All", "*.*")]
+        )
+        if not path:
+            return
+        self.image_cv = load_image_cv2(path)
+        if self.image_cv is None:
+            messagebox.showerror("Lỗi", "Không load được ảnh!")
+            return
+        self._display_image()
+        self.status_var.set("Nhấn + kéo để adjust ROI từng move slot")
+
+    def _display_image(self):
+        """Hiển thị ảnh + các hình chữ nhật ROI lên canvas"""
+        if self.image_cv is None:
+            return
+
+        h, w = self.image_cv.shape[:2]
+        # Scale để fit canvas
+        canvas_w = self.canvas.winfo_width()
+        canvas_h = self.canvas.winfo_height()
+        if canvas_w <= 1 or canvas_h <= 1:
+            canvas_w, canvas_h = 800, 600
+
+        scale = min(canvas_w / w, canvas_h / h, 1.0)
+        new_w = int(w * scale)
+        new_h = int(h * scale)
+
+        img_small = cv2.resize(self.image_cv, (new_w, new_h))
+        img_bgr = img_small.copy()
+
+        # Vẽ ROI rectangles
+        for i, roi in enumerate(self.roi_list):
+            x, y, roi_w, roi_h = roi
+            x, y = int(x * scale), int(y * scale)
+            roi_w, roi_h = int(roi_w * scale), int(roi_h * scale)
+            color = (0, 255, 0) if i != self.dragging_slot else (0, 0, 255)
+            cv2.rectangle(img_bgr, (x, y), (x + roi_w, y + roi_h), color, 2)
+            cv2.putText(img_bgr, f"M{i+1}", (x+5, y+20), cv2.FONT_HERSHEY_SIMPLEX,
+                       0.6, (0, 255, 0), 1)
+
+        # Convert to PhotoImage
+        img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+        from PIL import Image as PILImage, ImageTk as PILImageTk
+        pil_img = PILImage.fromarray(img_rgb)
+        self.image_tk = PILImageTk.PhotoImage(pil_img)
+        self.scale_factor = scale
+
+        self.canvas.delete("all")
+        self.canvas.create_image(0, 0, image=self.image_tk, anchor="nw")
+        self.canvas.config(scrollregion=self.canvas.bbox("all"))
+
+        self._update_roi_text()
+
+    def _on_canvas_click(self, event):
+        """Detect click trên ROI nào"""
+        if self.image_cv is None:
+            return
+        x, y = event.x, event.y
+        for i, roi in enumerate(self.roi_list):
+            rx, ry, rw, rh = roi
+            rx, ry = int(rx * self.scale_factor), int(ry * self.scale_factor)
+            rw, rh = int(rw * self.scale_factor), int(rh * self.scale_factor)
+            if rx <= x <= rx + rw and ry <= y <= ry + rh:
+                self.dragging_slot = i
+                self.drag_start = (x, y)
+                break
+
+    def _on_canvas_drag(self, event):
+        """Drag ROI"""
+        if self.dragging_slot is None or self.drag_start is None:
+            return
+        dx = event.x - self.drag_start[0]
+        dy = event.y - self.drag_start[1]
+
+        # Update ROI position
+        roi = self.roi_list[self.dragging_slot]
+        roi[0] = int(roi[0] + dx / self.scale_factor)
+        roi[1] = int(roi[1] + dy / self.scale_factor)
+
+        self.drag_start = (event.x, event.y)
+        self._display_image()
+
+    def _on_canvas_release(self, event):
+        """Stop dragging"""
+        self.dragging_slot = None
+        self.drag_start = None
+
+    def _update_roi_text(self):
+        """Update text widget với ROI data"""
+        self.roi_text.delete("1.0", "end")
+        for i, roi in enumerate(self.roi_list):
+            self.roi_text.insert("end", f"Move {i+1}: {roi}\n")
+
+    def _save_roi(self):
+        """Lưu ROI vào tool_config.json"""
+        with CONFIG_PATH.open("r", encoding="utf-8") as f:
+            config = json.load(f)
+        config.setdefault("roi", {})["move_slots"] = self.roi_list
+        with CONFIG_PATH.open("w", encoding="utf-8") as f:
+            json.dump(config, f, indent=2, ensure_ascii=False)
+        messagebox.showinfo("✓ Lưu thành công", f"ROI đã lưu vào:\n{CONFIG_PATH}")
+        self.status_var.set("✓ Đã lưu ROI!")
+
+
+def create_team_builder_widget(master, config):
+    """Tạo Team Builder widget để embed vào tab"""
+    init_tesseract(config)
+    return TeamBuilderApp(master, config)
+
+
 if __name__ == "__main__":
     run_team_builder()

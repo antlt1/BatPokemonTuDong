@@ -1,251 +1,175 @@
 [
   {
     "slot": 1,
-    "name": "Milotic",
-    "types": [
-      "water"
-    ],
-    "moves": [
-      {
-        "name": "Surf",
-        "type": "water",
-        "power": 90,
-        "accuracy": 100,
-        "pp_current": 0,
-        "pp_max": 15
-      },
-      {
-        "name": "Ice Beam",
-        "type": "ice",
-        "power": 90,
-        "accuracy": 100,
-        "pp_current": 0,
-        "pp_max": 16
-      },
-      {
-        "name": "Toxic",
-        "type": "poison",
-        "power": 0,
-        "accuracy": 90,
-        "pp_current": 10,
-        "pp_max": 10
-      },
-      {
-        "name": "Recover",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
-      }
-    ]
-  },
-  {
-    "slot": 2,
     "name": "Gardevoir",
-    "types": [
-      "psychic",
-      "fairy"
-    ],
+    "party_roi": null,
     "moves": [
       {
         "name": "Calm Mind",
-        "type": "psychic",
-        "power": 0,
-        "accuracy": 100,
         "pp_current": 20,
         "pp_max": 20
       },
       {
         "name": "Moonblast",
-        "type": "fairy",
-        "power": 95,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 15,
         "pp_max": 15
       },
       {
         "name": "Magical Leaf",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
         "pp_current": 20,
         "pp_max": 20
       },
       {
         "name": "Psychic",
-        "type": "psychic",
-        "power": 90,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 10,
         "pp_max": 10
       }
+    ],
+    "moves_roi": [
+      18,
+      17,
+      261,
+      82
     ]
+  },
+  {
+    "slot": 2,
+    "name": "Milotic",
+    "party_roi": null,
+    "moves": [
+      {
+        "name": "Surf",
+        "pp_current": 15,
+        "pp_max": 15
+      },
+      {
+        "name": "Ice Beam",
+        "pp_current": 15,
+        "pp_max": 15
+      },
+      {
+        "name": "Toxic",
+        "pp_current": 10,
+        "pp_max": 10
+      },
+      {
+        "name": "Recover",
+        "pp_current": 8,
+        "pp_max": 8
+      }
+    ],
+    "moves_roi": null
   },
   {
     "slot": 3,
     "name": "Kangaskhan",
-    "types": [
-      "normal"
-    ],
+    "party_roi": null,
     "moves": [
       {
         "name": "Fake Out",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
         "pp_current": 10,
         "pp_max": 10
       },
       {
         "name": "Sucker Punch",
-        "type": "dark",
-        "power": 70,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 5,
         "pp_max": 5
       },
       {
         "name": "Outrage",
-        "type": "dragon",
-        "power": 120,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 10,
         "pp_max": 10
       },
       {
         "name": "Return",
-        "type": "normal",
-        "power": 102,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 20,
         "pp_max": 20
       }
-    ]
+    ],
+    "moves_roi": null
   },
   {
     "slot": 4,
     "name": "Lopunny",
-    "types": [
-      "normal"
-    ],
+    "party_roi": null,
     "moves": [
       {
         "name": "Fake Out",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
+        "pp_current": 16,
+        "pp_max": 16
       },
       {
         "name": "Drain Punch",
-        "type": "fighting",
-        "power": 75,
-        "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
+        "pp_current": 14,
+        "pp_max": 14
       },
       {
         "name": "Return",
-        "type": "normal",
-        "power": 102,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 20,
         "pp_max": 20
       },
       {
         "name": "Ice Punch",
-        "type": "ice",
-        "power": 75,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 15,
         "pp_max": 15
       }
-    ]
+    ],
+    "moves_roi": null
   },
   {
     "slot": 5,
     "name": "Malamar",
-    "types": [
-      "dark",
-      "psychic"
-    ],
+    "party_roi": null,
     "moves": [
       {
         "name": "Superpower",
-        "type": "fighting",
-        "power": 120,
-        "accuracy": 100,
-        "pp_current": 0,
+        "pp_current": 8,
         "pp_max": 8
       },
       {
         "name": "Psycho Cut",
-        "type": "psychic",
-        "power": 70,
-        "accuracy": 100,
-        "pp_current": 18,
+        "pp_current": 20,
         "pp_max": 20
       },
       {
         "name": "Rest",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
-        "pp_current": 0,
-        "pp_max": 0
+        "pp_current": 8,
+        "pp_max": 8
       },
       {
         "name": "Sleep Talk",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
         "pp_current": 16,
         "pp_max": 16
       }
-    ]
+    ],
+    "moves_roi": null
   },
   {
     "slot": 6,
     "name": "Annihilape",
-    "types": [
-      "fighting",
-      "ghost"
-    ],
+    "party_roi": null,
     "moves": [
       {
         "name": "Close Combat",
-        "type": "fighting",
-        "power": 120,
-        "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
+        "pp_current": 5,
+        "pp_max": 5
       },
       {
         "name": "Outrage",
-        "type": "dragon",
-        "power": 120,
-        "accuracy": 100,
         "pp_current": 10,
         "pp_max": 10
       },
       {
         "name": "Shadow Punch",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
         "pp_current": 20,
         "pp_max": 20
       },
       {
-        "name": "stomping Tantrum",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
-        "pp_current": 0,
-        "pp_max": 0
+        "name": "Stomping Tantrum",
+        "pp_current": 10,
+        "pp_max": 10
       }
-    ]
+    ],
+    "moves_roi": null
   }
 ]

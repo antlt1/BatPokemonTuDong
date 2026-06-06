@@ -1,5 +1,5 @@
 """
-Tabbed UI - Gộp Calibrate ROI + Team Builder
+Tabbed UI - Gộp Calibrate ROI + Team Builder + Party Scanner
 """
 
 import json
@@ -10,6 +10,7 @@ import mss
 import cv2
 import numpy as np
 from PIL import Image, ImageTk, ImageDraw
+from src.team_builder.party_scanner_tab import PartyScannnerTab
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 CONFIG_PATH = ROOT / "src" / "config" / "tool_config.json"
@@ -34,6 +35,11 @@ class TabbedToolUI:
         self.tab_team = tk.Frame(self.notebook)
         self.notebook.add(self.tab_team, text="Team Builder")
         self._setup_team_tab()
+
+        # Tab 3: Party Scanner (new)
+        self.tab_party_scanner = tk.Frame(self.notebook)
+        self.notebook.add(self.tab_party_scanner, text="  📸 Party Scanner  ")
+        self._setup_party_scanner_tab()
     
     def _setup_calibrate_tab(self):
         """Setup tab Calibrate ROI."""
@@ -126,16 +132,32 @@ class TabbedToolUI:
         """Setup tab Team Builder."""
         try:
             from src.team_builder.team_builder_ui import create_team_builder_widget
-            
+
             # Load config
             with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
                 config = json.load(f)
-            
+
             # Create widget and embed
             app = create_team_builder_widget(self.tab_team, config)
             app.pack(fill=tk.BOTH, expand=True, padx=8, pady=8) # Use app.pack instead of self.app.pack
         except Exception as e:
-            label = tk.Label(self.tab_team, text=f"Error loading Team Builder: {e}", 
+            label = tk.Label(self.tab_team, text=f"Error loading Team Builder: {e}",
+                            font=("Arial", 11), fg="red", justify=tk.CENTER)
+            label.pack(pady=20)
+
+    def _setup_party_scanner_tab(self):
+        """Setup tab Party Scanner."""
+        try:
+            # Load config
+            with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+                config = json.load(f)
+
+            # Create widget and embed
+            scanner = PartyScannnerTab(self.tab_party_scanner, config)
+            scanner.frame.pack(fill=tk.BOTH, expand=True)
+            scanner.load_existing()
+        except Exception as e:
+            label = tk.Label(self.tab_party_scanner, text=f"Error loading Party Scanner: {e}",
                             font=("Arial", 11), fg="red", justify=tk.CENTER)
             label.pack(pady=20)
     
