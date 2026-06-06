@@ -1,0 +1,543 @@
+import ctypes
+import json
+import random
+import re
+import shutil
+import subprocess
+import sys
+import time
+import winsound
+from ctypes import wintypes
+from datetime import datetime
+from pathlib import Path
+
+import cv2
+import keyboard
+import mss
+import numpy as np
+import pytesseract
+from PIL import Image
+
+
+ROOT = Path(__file__).resolve().parent
+CONFIG_PATH = ROOT / "src" / "config" / "tool_config.json"
+TARGETS_PATH = ROOT / "src" / "config" / "target_pokemon.json"
+TEMPLATE_DIR = ROOT / "src" / "template" / "cap_gamedefault"
+RUN_TEMPLATE_PATH = TEMPLATE_DIR / "rightBarButtomRun.png"
+
+VK_A = 0x41
+VK_D = 0x44
+KEYEVENTF_KEYUP = 0x0002
+MOUSEEVENTF_LEFTDOWN = 0x0002
+MOUSEEVENTF_LEFTUP = 0x0004
+
+user32 = ctypes.windll.user32
+
+
+class MOUSEINPUT(ctypes.Structure):
+    _fields_ = [
+        ("dx", wintypes.LONG),
+        ("dy", wintypes.LONG),
+        ("mouseData", wintypes.DWORD),
+        ("dwFlags", wintypes.DWORD),
+        ("time", wintypes.DWORD),
+        ("dwExtraInfo", ctypes.POINTER(wintypes.ULONG)),
+    ]
+
+
+class INPUT_UNION(ctypes.Union):
+    _fields_ = [("mi", MOUSEINPUT)]
+
+
+class INPUT(ctypes.Structure):
+    _fields_ = [
+        ("type", wintypes.DWORD),
+        ("union", INPUT_UNION),
+    ]
+
+
+def load_json(path):
+    with path.open("r", encoding="utf-8") as file:
+        return json.load(file)
+
+
+def normalize_text(value):
+    return re.sub(r"\s+", " ", value.strip().lower())
+
+
+def ensure_runtime(config):
+    missing = []
+    for module_name in ("cv2", "mss", "PIL", "pytesseract", "keyboard"):
+        try:
+            __import__(module_name)
+        except ImportError:
+            missing.append(module_name)
+
+    tesseract_cmd = config["ocr"].get("tesseract_cmd", "").strip()
+    if tesseract_cmd:
+        pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
+
+    try:
+        pytesseract.get_tesseract_version()
+    except Exception:
+        missing.append("tesseract.exe")
+
+    if missing:
+        print("Thieu dependency:", ", ".join(sorted(set(missing))))
+        print("Cai Python package: pip install -r requirements.txt")
+        print("Neu thieu tesseract.exe, cai Tesseract Windows va them vao PATH")
+        print("hoac dien duong dan vao src/config/tool_config.json -> ocr.tesseract_cmd")
+        return False
+
+    return True
+
+
+def find_window(title_part):
+    handles = []
+
+    @ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    def enum_proc(hwnd, _):
+        if not user32.IsWindowVisible(hwnd):
+            return True
+        length = user32.GetWindowTextLengthW(hwnd)
+        if length == 0:
+            return True
+        buffer = ctypes.create_unicode_buffer(length + 1)
+        user32.GetWindowTextW(hwnd, buffer, length + 1)
+        if title_part.lower() in buffer.value.lower():
+            handles.append(hwnd)
+        return True
+
+    user32.EnumWindows(enum_proc, 0)
+    return handles[0] if handles else None
+
+
+def focus_window(hwnd):
+    user32.ShowWindow(hwnd, 9)
+    user32.SetForegroundWindow(hwnd)
+    time.sleep(0.2)
+
+
+def screenshot_bgr():
+    with mss.MSS() as sct:
+        monitor = sct.monitors[1]
+        shot = np.array(sct.grab(monitor))
+    return cv2.cvtColor(shot, cv2.COLOR_BGRA2BGR)
+
+
+def crop_roi(image, roi):
+    x, y, w, h = roi
+    return image[y : y + h, x : x + w]
+
+
+def save_debug(config, image, label):
+    if not config["debug"].get("save_failed_ocr", True):
+        return
+    debug_dir = ROOT / config["debug"]["directory"]
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    path = debug_dir / f"{stamp}_{label}.png"
+    cv2.imwrite(str(path), image)
+
+
+def clear_debug(config):
+    debug_dir = ROOT / config["debug"]["directory"]
+    if not debug_dir.exists():
+        print("Chua co thu muc debug de xoa.")
+        return
+    removed = 0
+    for path in debug_dir.glob("*.png"):
+        path.unlink()
+        removed += 1
+    print(f"Da xoa {removed} anh debug.")
+
+
+def preprocess_for_ocr(image):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    scaled = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    return cv2.threshold(scaled, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+
+def ocr_text(image, config, psm=6):
+    processed = preprocess_for_ocr(image)
+    pil_image = Image.fromarray(processed)
+    options = f"--psm {psm}"
+    return pytesseract.image_to_string(
+        pil_image,
+        lang=config["ocr"].get("language", "eng"),
+        config=options,
+    ).strip()
+
+
+def ocr_text_variants(image, config, psm=6):
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    big = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
+    variants = [
+        big,
+        cv2.threshold(big, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
+        cv2.threshold(big, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1],
+    ]
+    results = []
+    for variant in variants:
+        text = pytesseract.image_to_string(
+            Image.fromarray(variant),
+            lang=config["ocr"].get("language", "eng"),
+            config=f"--psm {psm}",
+        ).strip()
+        if text:
+            results.append(text)
+    if not results:
+        return ""
+    return max(results, key=len)
+
+
+def extract_enemy_name(text):
+    normalized = normalize_text(text)
+    patterns = [
+        r"vs\.?\s+wild\s+([a-z0-9 '\-]+)",
+        r"a\s+wild\s+([a-z0-9 '\-]+?)\s+attacks",
+        r"sends\s+out\s+([a-z0-9 '\-]+)",
+        r"opposing\s+([a-z0-9 '\-]+?)\s+attacks",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, normalized)
+        if match:
+            name = match.group(1)
+            name = re.split(r"\s{2,}| lvl? | lv | attacks| ability|!|\n", name)[0]
+            return normalize_text(name)
+    return ""
+
+
+def is_battle(image, config):
+    header = crop_roi(image, config["roi"]["battle_header"])
+    text = ocr_text_variants(header, config, psm=6)
+    if "vs" in normalize_text(text).replace(".", ""):
+        return True
+    save_debug(config, header, "no_vs_header")
+    return False
+
+
+def read_enemy_name(image, config):
+    header = crop_roi(image, config["roi"]["battle_header"])
+    header_text = ocr_text_variants(header, config, psm=6)
+    header_name = extract_enemy_name(header_text)
+    if header_name:
+        return header_name
+
+    log_image = crop_roi(image, config["roi"]["battle_log"])
+    log_text = ocr_text_variants(log_image, config, psm=6)
+    log_name = extract_enemy_name(log_text)
+    if log_name:
+        return log_name
+
+    roi_image = crop_roi(image, config["roi"]["enemy_name"])
+    text = ocr_text_variants(roi_image, config, psm=7)
+    cleaned = re.sub(r"[^A-Za-z0-9 '\\-]", " ", text)
+    cleaned = normalize_text(cleaned)
+    if not cleaned:
+        save_debug(config, roi_image, "empty_enemy_name")
+    return cleaned
+
+
+def read_ability(image, config):
+    roi_image = crop_roi(image, config["roi"]["battle_log"])
+    text = ocr_text(roi_image, config, psm=6)
+    normalized = normalize_text(text)
+    match = re.search(r"ability\s+is\s+now\s+([a-z0-9 '\\-]+)", normalized)
+    if not match:
+        save_debug(config, roi_image, "missing_ability_log")
+        return "", text
+    ability = match.group(1).split("!")[0].strip()
+    ability = re.sub(r"\s+", " ", ability)
+    return ability, text
+
+
+def read_ability_with_retry(config):
+    retry_count = config["timing"].get("ability_retry_count", 2)
+    retry_seconds = config["timing"].get("ability_retry_seconds", 1.5)
+    last_ability = ""
+    last_log = ""
+    for attempt in range(retry_count + 1):
+        image = screenshot_bgr()
+        ability, raw_log = read_ability(image, config)
+        last_ability = ability
+        last_log = raw_log
+        if ability:
+            return ability, raw_log
+        if attempt < retry_count:
+            print(f"Chua doc duoc ability, doi them {retry_seconds:.1f}s...")
+            time.sleep(retry_seconds)
+    return last_ability, last_log
+
+
+def build_targets(targets):
+    result = {}
+    for item in targets:
+        name = normalize_text(item.get("pokemonname", ""))
+        ability = normalize_text(item.get("ability", "none"))
+        if name:
+            result[name] = ability
+    return result
+
+
+def match_target(enemy_name, targets):
+    if not enemy_name:
+        return None, None
+    for target_name, ability in targets.items():
+        if enemy_name == target_name or target_name in enemy_name or enemy_name in target_name:
+            return target_name, ability
+    return None, None
+
+
+def locate_template(image, template_path, threshold, roi=None):
+    search_image = image
+    offset_x = 0
+    offset_y = 0
+    if roi:
+        offset_x, offset_y, w, h = roi
+        search_image = crop_roi(image, roi)
+
+    template = cv2.imread(str(template_path), cv2.IMREAD_COLOR)
+    if template is None:
+        raise FileNotFoundError(template_path)
+    result = cv2.matchTemplate(search_image, template, cv2.TM_CCOEFF_NORMED)
+    _, max_val, _, max_loc = cv2.minMaxLoc(result)
+    if max_val < threshold:
+        return None, max_val
+    h, w = template.shape[:2]
+    return (offset_x + max_loc[0] + w // 2, offset_y + max_loc[1] + h // 2), max_val
+
+
+def send_mouse_input(flags):
+    extra = wintypes.ULONG(0)
+    mouse_input = MOUSEINPUT(0, 0, 0, flags, 0, ctypes.pointer(extra))
+    input_data = INPUT(0, INPUT_UNION(mi=mouse_input))
+    return user32.SendInput(1, ctypes.byref(input_data), ctypes.sizeof(input_data))
+
+
+def click_at(x, y, config):
+    user32.SetCursorPos(int(x), int(y))
+    time.sleep(0.05)
+    winsound.MessageBeep(winsound.MB_OK)
+    send_mouse_input(MOUSEEVENTF_LEFTDOWN)
+    time.sleep(config.get("mouse", {}).get("mouse_down_seconds", 0.12))
+    send_mouse_input(MOUSEEVENTF_LEFTUP)
+
+
+def move_mouse_away(config):
+    point = config.get("mouse", {}).get("away_point", [100, 100])
+    user32.SetCursorPos(int(point[0]), int(point[1]))
+    time.sleep(0.12)
+
+
+def click_run(config):
+    hwnd = find_window(config["window_title"])
+    if hwnd:
+        focus_window(hwnd)
+    move_mouse_away(config)
+    image = screenshot_bgr()
+    threshold = config["template_matching"]["run_button_threshold"]
+    point, score = locate_template(
+        image,
+        RUN_TEMPLATE_PATH,
+        threshold,
+        roi=config["roi"].get("right_action_bar"),
+    )
+    if point is None:
+        save_debug(config, image, f"run_not_found_{score:.2f}")
+        print(f"Khong tim thay nut Run. Score cao nhat: {score:.2f}")
+        return False
+    offset = config.get("click_offsets", {}).get("run_button", [0, 0])
+    point = (point[0] + offset[0], point[1] + offset[1])
+    repeat = config.get("mouse", {}).get("click_repeat", 2)
+    gap = config.get("mouse", {}).get("click_gap_seconds", 0.25)
+    for index in range(repeat):
+        click_at(*point, config=config)
+        if index < repeat - 1:
+            time.sleep(gap)
+    move_mouse_away(config)
+    print(f"Da click Run tai {point}, score {score:.2f}, repeat {repeat}")
+    return True
+
+
+def wait_until_battle_exits(config):
+    deadline = time.time() + config["timing"].get("run_exit_timeout_seconds", 8.0)
+    while time.time() < deadline:
+        time.sleep(0.5)
+        image = screenshot_bgr()
+        try:
+            if not is_battle(image, config):
+                return True
+        except Exception:
+            return True
+    return False
+
+
+def key_down(vk):
+    user32.keybd_event(vk, 0, 0, 0)
+
+
+def key_up(vk):
+    user32.keybd_event(vk, 0, KEYEVENTF_KEYUP, 0)
+
+
+def release_move_keys():
+    key_up(VK_A)
+    key_up(VK_D)
+
+
+def move_until_next_scan(config):
+    end_at = time.time() + config["timing"]["scan_interval_seconds"]
+    keys = [VK_A, VK_D]
+    index = 0
+    try:
+        while time.time() < end_at:
+            if keyboard.is_pressed("q"):
+                return False
+            vk = keys[index % 2]
+            other = keys[(index + 1) % 2]
+            key_up(other)
+            key_down(vk)
+            hold = random.uniform(
+                config["timing"]["move_hold_min_seconds"],
+                config["timing"]["move_hold_max_seconds"],
+            )
+            time.sleep(min(hold, max(0, end_at - time.time())))
+            index += 1
+    finally:
+        release_move_keys()
+    return True
+
+
+def play_found_sound(config):
+    sound_path = ROOT / config["audio"]["found_sound"]
+    if sound_path.exists():
+        try:
+            command = (
+                "$p=New-Object -ComObject WMPlayer.OCX; "
+                f"$p.URL='{str(sound_path)}'; "
+                "$p.controls.play(); Start-Sleep -Milliseconds 1200"
+            )
+            subprocess.Popen(
+                ["powershell", "-NoProfile", "-WindowStyle", "Hidden", "-Command", command],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            return
+        except Exception:
+            pass
+    winsound.MessageBeep(winsound.MB_ICONASTERISK)
+
+
+def stop_found(config, pokemon, ability):
+    print("")
+    print("FOUND:", pokemon, "-", ability if ability != "none" else "any ability")
+    print("Tool da dung. Ban tu bat Pokemon trong game.")
+    play_found_sound(config)
+
+
+def run_manual_mode(config, targets):
+    hwnd = find_window(config["window_title"])
+    if not hwnd:
+        print(f"Khong tim thay cua so game: {config['window_title']}")
+        return
+
+    focus_window(hwnd)
+    target_map = build_targets(targets)
+    print("Dang chay mode 1. Bam Q de dung.")
+
+    while True:
+        if keyboard.is_pressed("q"):
+            release_move_keys()
+            print("Da dung tool bang phim Q.")
+            return
+
+        image = screenshot_bgr()
+        try:
+            battle = is_battle(image, config)
+        except Exception as exc:
+            save_debug(config, image, "battle_check_error")
+            print("Loi OCR header:", exc)
+            return
+
+        if not battle:
+            print("Chua vao battle, dang di chuyen A/D...")
+            if not move_until_next_scan(config):
+                print("Da dung tool bang phim Q.")
+                return
+            continue
+
+        print("Da vao battle. Doi log ability neu can...")
+        time.sleep(config["timing"]["ability_wait_seconds"])
+        image = screenshot_bgr()
+        enemy_name = read_enemy_name(image, config)
+        target_name, wanted_ability = match_target(enemy_name, target_map)
+        print(f"Pokemon doc duoc: '{enemy_name or 'unknown'}'")
+
+        if not target_name:
+            print("Khong nam trong JSON, Run.")
+            if click_run(config):
+                if not wait_until_battle_exits(config):
+                    print("Da click Run nhung van thay battle. Tam dung de tranh click sai.")
+                    return
+                time.sleep(config["timing"]["after_run_wait_seconds"])
+            continue
+
+        if wanted_ability == "none":
+            stop_found(config, target_name, wanted_ability)
+            return
+
+        actual_ability, raw_log = read_ability_with_retry(config)
+        print(f"Ability can: '{wanted_ability}', log doc duoc: '{actual_ability or 'unknown'}'")
+        if actual_ability and normalize_text(actual_ability) == wanted_ability:
+            stop_found(config, target_name, actual_ability)
+            return
+
+        print("Ability khong dung hoac chua doc duoc, Run.")
+        if click_run(config):
+            if not wait_until_battle_exits(config):
+                print("Da click Run nhung van thay battle. Tam dung de tranh click sai.")
+                return
+            time.sleep(config["timing"]["after_run_wait_seconds"])
+
+
+def print_menu():
+    print("")
+    print("PokemonPRO Tool")
+    print("0. Clear debug screenshots")
+    print("1. Tim Pokemon, gap dung thi dung de tu bat")
+    print("2. Tu bat Pokemon (chua code)")
+    print("Q. Thoat")
+
+
+def main():
+    config = load_json(CONFIG_PATH)
+    targets = load_json(TARGETS_PATH)
+
+    while True:
+        print_menu()
+        choice = input("Chon: ").strip().lower()
+        if choice == "0":
+            clear_debug(config)
+        elif choice == "1":
+            if ensure_runtime(config):
+                run_manual_mode(config, targets)
+        elif choice == "2":
+            print("Mode 2 se code sau.")
+        elif choice == "q":
+            print("Thoat.")
+            return
+        else:
+            print("Lua chon khong hop le.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        release_move_keys()
+        print("\nDa dung bang Ctrl+C.")
+    except Exception as exc:
+        release_move_keys()
+        print(f"\nLoi: {exc}")
+        sys.exit(1)

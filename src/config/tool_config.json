@@ -1,0 +1,46 @@
+{
+  "window_title": "PROClient",
+  "screen_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "timing": {
+    "scan_interval_seconds": 3.0,
+    "ability_wait_seconds": 3.5,
+    "ability_retry_seconds": 1.5,
+    "ability_retry_count": 2,
+    "after_run_wait_seconds": 4.0,
+    "run_exit_timeout_seconds": 8.0,
+    "move_hold_min_seconds": 0.18,
+    "move_hold_max_seconds": 0.42
+  },
+  "template_matching": {
+    "run_button_threshold": 0.58
+  },
+  "mouse": {
+    "away_point": [100, 100],
+    "click_repeat": 2,
+    "click_gap_seconds": 0.25,
+    "mouse_down_seconds": 0.12
+  },
+  "roi": {
+    "battle_header": [400, 240, 1150, 90],
+    "enemy_name": [520, 305, 360, 85],
+    "battle_log": [190, 745, 460, 225],
+    "right_action_bar": [1230, 630, 330, 230]
+  },
+  "click_offsets": {
+    "run_button": [0, 25]
+  },
+  "ocr": {
+    "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
+    "language": "eng"
+  },
+  "debug": {
+    "save_failed_ocr": true,
+    "directory": "src/debug/screenshots"
+  },
+  "audio": {
+    "found_sound": "src/template/audio/quick-ting.mp3"
+  }
+}
