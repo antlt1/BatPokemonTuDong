@@ -12,10 +12,16 @@
     "after_run_wait_seconds": 4.0,
     "run_exit_timeout_seconds": 8.0,
     "move_hold_min_seconds": 0.18,
-    "move_hold_max_seconds": 0.42
+    "move_hold_max_seconds": 0.42,
+    "after_fight_click_seconds": 0.6,
+    "after_move_click_seconds": 1.0,
+    "battle_anim_wait_seconds": 3.0,
+    "swap_menu_wait_seconds": 0.8
   },
   "template_matching": {
-    "run_button_threshold": 0.58
+    "run_button_threshold": 0.58,
+    "fight_button_threshold": 0.55,
+    "pokemon_button_threshold": 0.55
   },
   "mouse": {
     "away_point": [100, 100],
@@ -27,10 +33,39 @@
     "battle_header": [400, 240, 1150, 90],
     "enemy_name": [520, 305, 360, 85],
     "battle_log": [190, 745, 460, 225],
-    "right_action_bar": [1230, 630, 330, 230]
+    "right_action_bar": [1230, 630, 330, 230],
+    "move_panel": [1230, 630, 330, 230],
+    "move_slots": [
+      [1233, 638, 155, 48],
+      [1233, 695, 155, 48],
+      [1233, 752, 155, 48],
+      [1233, 809, 155, 48]
+    ],
+    "move_pp_slots": [
+      [1405, 686, 155, 20],
+      [1405, 743, 155, 20],
+      [1405, 800, 155, 20],
+      [1405, 857, 155, 20]
+    ],
+    "move_type_slots": [
+      [1233, 660, 80, 22],
+      [1233, 717, 80, 22],
+      [1233, 774, 80, 22],
+      [1233, 831, 80, 22]
+    ],
+    "pokemon_swap_slots": [
+      [1233, 638, 310, 48],
+      [1233, 690, 310, 48],
+      [1233, 742, 310, 48],
+      [1233, 794, 310, 48],
+      [1233, 846, 310, 48],
+      [1233, 898, 310, 48]
+    ]
   },
   "click_offsets": {
-    "run_button": [0, 25]
+    "run_button": [0, 25],
+    "fight_button": [0, 0],
+    "pokemon_button": [0, 0]
   },
   "ocr": {
     "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
@@ -42,5 +77,11 @@
   },
   "audio": {
     "found_sound": "src/template/audio/quick-ting.mp3"
+  },
+  "farm": {
+    "stab_multiplier": 1.5,
+    "use_zero_effectiveness": false,
+    "feedback_log": "src/runtime/feedback_log.txt",
+    "battle_state_cache": "src/runtime/battle_state.json"
   }
 }

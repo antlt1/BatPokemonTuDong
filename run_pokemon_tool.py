@@ -17,11 +17,18 @@ import mss
 import numpy as np
 import pytesseract
 from PIL import Image
+import copy
+import difflib
 
-
+# Thêm src vào sys.path để import nội bộ
 ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+
 CONFIG_PATH = ROOT / "src" / "config" / "tool_config.json"
 TARGETS_PATH = ROOT / "src" / "config" / "target_pokemon.json"
+TEAM_PATH = ROOT / "src" / "config" / "team_party.json"
 TEMPLATE_DIR = ROOT / "src" / "template" / "cap_gamedefault"
 RUN_TEMPLATE_PATH = TEMPLATE_DIR / "rightBarButtomRun.png"
 
@@ -205,14 +212,74 @@ def extract_enemy_name(text):
             name = match.group(1)
             name = re.split(r"\s{2,}| lvl? | lv | attacks| ability|!|\n", name)[0]
             return normalize_text(name)
+    # Nếu không match các pattern trên, thử match dạng 'Name Lv. 16' với OCR lỗi phổ biến
+    lv_patterns = [r"([a-z'\- ]{3,}?)\s*(?:lv|l v|l\.v|lv\.|slv|sllv|lv)\s*\d+",
+                   r"([a-z'\- ]{3,}?)\s*\u00b7?\s*Lv\.?\s*\d+"]
+    for p in lv_patterns:
+        m = re.search(p, normalized)
+        if m:
+            name = m.group(1)
+            name = re.split(r"\s{2,}| ability|!|\n", name)[0]
+            return normalize_text(name)
     return ""
+
+
+def get_known_pokemon_names():
+    names = set()
+    try:
+        if TEAM_PATH.exists():
+            t = json.loads(TEAM_PATH.read_text(encoding='utf-8'))
+            for p in t:
+                n = p.get('name')
+                if n:
+                    names.add(normalize_text(str(n)))
+    except Exception:
+        pass
+    try:
+        if TARGETS_PATH.exists():
+            tt = json.loads(TARGETS_PATH.read_text(encoding='utf-8'))
+            for item in tt:
+                n = item.get('pokemonname')
+                if n:
+                    names.add(normalize_text(str(n)))
+    except Exception:
+        pass
+    # add some common names fallback
+    if not names:
+        names.update(["rattata", "pidgey", "zubat"])  # minimal fallback
+    return sorted(names)
+
+
+def fuzzy_fix_name(name: str, known_names=None):
+    if not name:
+        return ""
+    if known_names is None:
+        known_names = get_known_pokemon_names()
+    name = normalize_text(name)
+    matches = difflib.get_close_matches(name, known_names, n=1, cutoff=0.6)
+    return matches[0] if matches else name
 
 
 def is_battle(image, config):
     header = crop_roi(image, config["roi"]["battle_header"])
     text = ocr_text_variants(header, config, psm=6)
-    if "vs" in normalize_text(text).replace(".", ""):
+    # In raw OCR header để debug
+    # print("[DEBUG] OCR_HEADER_RAW:", repr(text))
+    norm = normalize_text(text)
+    # Chuẩn hóa chỉ giữ chữ thường và khoảng trắng
+    letters_spaces = re.sub(r"[^a-z\s]", " ", norm)
+    # Tìm các dạng: 'vs', 'v s', 'vs.' bằng regex mềm
+    if re.search(r"\bv\s*s\b", letters_spaces) or "vs" in letters_spaces.replace(" ", ""):
         return True
+    # Nếu header không rõ, thử OCR vùng tên đối thủ trực tiếp
+    try:
+        enemy_roi = crop_roi(image, config["roi"]["enemy_name"])
+        enemy_text = ocr_text_variants(enemy_roi, config, psm=7)
+        print("[DEBUG] OCR_ENEMY_ROI_RAW:", repr(enemy_text))
+        if re.search(r"[a-z]{3,}", normalize_text(enemy_text)):
+            return True
+    except Exception:
+        pass
     save_debug(config, header, "no_vs_header")
     return False
 
@@ -222,21 +289,28 @@ def read_enemy_name(image, config):
     header_text = ocr_text_variants(header, config, psm=6)
     header_name = extract_enemy_name(header_text)
     if header_name:
-        return header_name
+        return fuzzy_fix_name(header_name)
 
     log_image = crop_roi(image, config["roi"]["battle_log"])
     log_text = ocr_text_variants(log_image, config, psm=6)
     log_name = extract_enemy_name(log_text)
     if log_name:
-        return log_name
+        return fuzzy_fix_name(log_name)
 
     roi_image = crop_roi(image, config["roi"]["enemy_name"])
     text = ocr_text_variants(roi_image, config, psm=7)
     cleaned = re.sub(r"[^A-Za-z0-9 '\\-]", " ", text)
     cleaned = normalize_text(cleaned)
     if not cleaned:
-        save_debug(config, roi_image, "empty_enemy_name")
-    return cleaned
+        # Lưu ảnh debug cho cả header, log và roi tên để phân tích
+        save_debug(config, header, "debug_header_no_name")
+        save_debug(config, log_image, "debug_log_no_name")
+        save_debug(config, roi_image, "debug_enemy_name_empty")
+        # print("[DEBUG] OCR_HEADER_RAW:", repr(header_text))
+        print("[DEBUG] OCR_LOG_RAW:", repr(log_text))
+        print("[DEBUG] OCR_ROI_RAW:", repr(text))
+    # Try fuzzy fix against known names
+    return fuzzy_fix_name(cleaned)
 
 # đọc ability từ log battle, trả về ability đã chuẩn hóa nếu tìm thấy, hoặc chuỗi rỗng nếu không tìm thấy. Cũng trả về raw log để debug nếu cần
 def read_ability(image, config):
@@ -507,7 +581,57 @@ def print_menu():
     print("0. Clear debug screenshots")
     print("1. Tim Pokemon, gap dung thi dung de tu bat")
     print("2. Tu bat Pokemon (chua code)")
+    print("3. Auto Farm tien (danh quai tu dong)")
+    print("4. Doc Team 6 Pokemon (mo UI nhap team)")
     print("Q. Thoat")
+
+
+def _make_win_api_module(config):
+    """Tạo dict các hàm Win32 API để truyền cho farm_battle module."""
+    def _set_cursor(x, y):
+        user32.SetCursorPos(int(x), int(y))
+
+    def _click(x, y, cfg):
+        click_at(x, y, config=cfg)
+
+    return {
+        "set_cursor": _set_cursor,
+        "click": _click,
+    }
+
+
+def run_farm_mode_wrapper(config):
+    """Wrapper để chạy farm mode từ menu chính."""
+    if not ensure_runtime(config):
+        return
+
+    from src.farm.farm_battle import run_farm_mode
+    # Use original config for detection (same logic as menu 1).
+    win_api = _make_win_api_module(config)
+
+    run_farm_mode(
+        config=config,
+        win_api_module=win_api,
+        screenshot_fn=screenshot_bgr,
+        is_battle_fn=is_battle,
+        read_enemy_name_fn=read_enemy_name,
+        move_until_next_scan_fn=move_until_next_scan,
+        wait_until_battle_exits_fn=wait_until_battle_exits,
+        focus_window_fn=focus_window,
+        find_window_fn=find_window,
+        move_mouse_away_fn=move_mouse_away,
+        save_debug_fn=save_debug,
+    )
+
+
+def run_team_builder_wrapper():
+    """Wrapper để mở Team Builder UI."""
+    try:
+        from src.team_builder.team_builder_ui import run_team_builder
+        run_team_builder()
+    except ImportError as exc:
+        print(f"Loi import team_builder_ui: {exc}")
+        print("Kiem tra thu muc src/team_builder/team_builder_ui.py co ton tai khong.")
 
 
 def main():
@@ -524,6 +648,10 @@ def main():
                 run_manual_mode(config, targets)
         elif choice == "2":
             print("Mode 2 se code sau.")
+        elif choice == "3":
+            run_farm_mode_wrapper(config)
+        elif choice == "4":
+            run_team_builder_wrapper()
         elif choice == "q":
             print("Thoat.")
             return
