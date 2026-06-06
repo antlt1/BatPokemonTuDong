@@ -16,6 +16,7 @@
     "after_fight_click_seconds": 0.6,
     "after_move_click_seconds": 1.0,
     "battle_anim_wait_seconds": 5.5,
+    "after_swap_wait_seconds": 2.0,
     "swap_menu_wait_seconds": 0.8
   },
   "template_matching": {
@@ -168,7 +169,7 @@
       ],
       [
         1258,
-        488,
+        496,
         107,
         85
       ],
@@ -180,10 +181,16 @@
       ]
     ],
     "pokemon_button_roi": [
-      1377,
-      638,
-      141,
-      100
+      1387,
+      640,
+      131,
+      97
+    ],
+    "pokemon_name_in_battle": [
+      1022,
+      634,
+      79,
+      32
     ]
   },
   "click_offsets": {

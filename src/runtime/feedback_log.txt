@@ -368,3 +368,1347 @@
 [23:40:27] Đang đợi animation chiêu thức...
 [23:40:35] Không tìm thấy template rightBarButtomFight.png (score=0.36)
 [23:40:38] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:45:40] === Bắt đầu Mode 3: Auto Farm ===
+[23:45:46] Mới vào trận, đợi 3.5s animation...
+[23:45:50] Vào battle với: machamp
+[23:45:50] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[23:45:51] Click rightBarButtomPokemon.png tại (1448,688) score=0.98
+[23:45:52] Click Pokemon swap slot 2 tại (1437,344)
+[23:45:52] Đã swap sang slot 2.
+[23:45:59] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:46:00] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:46:01] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:46:02] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[23:46:04] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:46:07] Move panel chưa sẵn sàng sau khi click Fight.
+[23:46:09] OCR Check PP: [('Move1', None), ('eo es sane', None), ('ie 20 20', None), ('Move4', None)]
+[23:46:09] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=14/15)
+[23:46:09] Click move slot 2 tại (1373,413)
+[23:46:09] Đã trừ PP 'Moonblast': 14 -> 13
+[23:46:10] Đang đợi animation chiêu thức...
+[23:46:18] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:46:19] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:46:20] Không tìm thấy template rightBarButtomFight.png (score=0.34)
+[23:46:22] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:46:28] Mới vào trận, đợi 3.5s animation...
+[23:46:32] Vào battle với: machamp
+[23:46:33] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:46:36] OCR Check PP: [('ait', None), ('25 a 16 16', None), ('eo em 10 10', None), ('on', None)]
+[23:46:36] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=13/15)
+[23:46:36] Click move slot 2 tại (1373,413)
+[23:46:36] Đã trừ PP 'Moonblast': 13 -> 12
+[23:46:37] Đang đợi animation chiêu thức...
+[23:46:45] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:46:47] OCR Check PP: [('ait', None), ('2 mo 15 1', None), ('eo em 10 10', None), ('on', None)]
+[23:46:47] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=12/15)
+[23:46:47] Click move slot 2 tại (1373,413)
+[23:46:47] Đã trừ PP 'Moonblast': 12 -> 11
+[23:46:48] Đang đợi animation chiêu thức...
+[23:46:56] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:46:57] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:46:58] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:47:01] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:47:11] Mới vào trận, đợi 3.5s animation...
+[23:47:15] Vào battle với: machamp
+[23:47:16] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:47:18] OCR Check PP: [('ait', None), ('2 mo 14 1', None), ('eo em 10 10', None), ('on', None)]
+[23:47:18] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=11/15)
+[23:47:19] Click move slot 2 tại (1373,413)
+[23:47:19] Đã trừ PP 'Moonblast': 11 -> 10
+[23:47:20] Đang đợi animation chiêu thức...
+[23:47:27] Click rightBarButtomFight.png tại (1330,685) score=0.62
+[23:47:30] OCR Check PP: [('ait', None), ('2 mo 13 16', None), ('eo em 10 10', None), ('on', None)]
+[23:47:30] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=10/15)
+[23:47:30] Click move slot 2 tại (1373,413)
+[23:47:30] Đã trừ PP 'Moonblast': 10 -> 9
+[23:47:31] Đang đợi animation chiêu thức...
+[23:47:39] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:47:41] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:47:47] Mới vào trận, đợi 3.5s animation...
+[23:47:51] Vào battle với: wobbuffet
+[23:47:51] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:47:54] OCR Check PP: [('ait', None), ('75 12 1', None), ('eo em 10 10', None), ('on', None)]
+[23:47:54] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=9/15)
+[23:47:54] Click move slot 2 tại (1373,413)
+[23:47:54] Đã trừ PP 'Moonblast': 9 -> 8
+[23:47:55] Đang đợi animation chiêu thức...
+[23:48:03] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:48:06] OCR Check PP: [('ait', None), ('75 41 1', None), ('eo em 10 10', None), ('on', None)]
+[23:48:06] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=8/15)
+[23:48:06] Click move slot 2 tại (1373,413)
+[23:48:06] Đã trừ PP 'Moonblast': 8 -> 7
+[23:48:07] Đang đợi animation chiêu thức...
+[23:48:14] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:48:15] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:48:16] Không tìm thấy template rightBarButtomFight.png (score=0.31)
+[23:48:19] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:48:34] Mới vào trận, đợi 3.5s animation...
+[23:48:38] Vào battle với: parasect
+[23:48:39] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:48:41] OCR Check PP: [('ait', None), ('25 a 10 1', None), ('eo em 10 10', None), ('on', None)]
+[23:48:41] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=7/15)
+[23:48:42] Click move slot 2 tại (1373,413)
+[23:48:42] Đã trừ PP 'Moonblast': 7 -> 6
+[23:48:43] Đang đợi animation chiêu thức...
+[23:48:50] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:48:51] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:48:52] Không tìm thấy template rightBarButtomFight.png (score=0.34)
+[23:48:55] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:49:06] Mới vào trận, đợi 3.5s animation...
+[23:49:10] Vào battle với: arbok
+[23:49:10] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:49:10] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:49:12] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:49:15] OCR Check PP: [('ait', None), ('75 g 1', None), ('eo em 10 10', None), ('on', None)]
+[23:49:15] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=6/15)
+[23:49:15] Click move slot 2 tại (1373,413)
+[23:49:15] Đã trừ PP 'Moonblast': 6 -> 5
+[23:49:16] Đang đợi animation chiêu thức...
+[23:49:24] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:49:24] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:49:26] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:49:28] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:49:44] Mới vào trận, đợi 3.5s animation...
+[23:49:48] Vào battle với: arbok
+[23:49:48] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:49:51] OCR Check PP: [('ait', None), ('75 gste', None), ('eo em 10 10', None), ('on', None)]
+[23:49:51] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=5/15)
+[23:49:51] Click move slot 2 tại (1373,413)
+[23:49:51] Đã trừ PP 'Moonblast': 5 -> 4
+[23:49:52] Đang đợi animation chiêu thức...
+[23:50:00] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:50:02] OCR Check PP: [('ait', None), ('Move2', None), ('eo em 10 10', None), ('on', None)]
+[23:50:02] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=4/15)
+[23:50:03] Click move slot 2 tại (1373,413)
+[23:50:03] Đã trừ PP 'Moonblast': 4 -> 3
+[23:50:04] Đang đợi animation chiêu thức...
+[23:50:11] Không tìm thấy template rightBarButtomFight.png (score=0.34)
+[23:50:14] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:50:20] Mới vào trận, đợi 3.5s animation...
+[23:50:24] Vào battle với: machamp
+[23:50:25] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:50:27] OCR Check PP: [('ait', None), ('2 mo bite', None), ('eo em 10 10', None), ('on', None)]
+[23:50:27] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=3/15)
+[23:50:27] Click move slot 2 tại (1373,413)
+[23:50:27] Đã trừ PP 'Moonblast': 3 -> 2
+[23:50:28] Đang đợi animation chiêu thức...
+[23:50:36] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:50:39] OCR Check PP: [('ait', None), ('2 mo bite', None), ('eo em 10 10', None), ('on', None)]
+[23:50:39] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=2/15)
+[23:50:39] Click move slot 2 tại (1373,413)
+[23:50:39] Đã trừ PP 'Moonblast': 2 -> 1
+[23:50:40] Đang đợi animation chiêu thức...
+[23:50:48] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:50:50] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:51:01] Mới vào trận, đợi 3.5s animation...
+[23:51:05] Vào battle với: magneton
+[23:51:06] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:51:08] OCR Check PP: [('ait', None), ('2 mo ase', None), ('eo em 10 10', None), ('on', None)]
+[23:51:08] Chọn Move 2: 'Moonblast' (type=fairy, pwr=95, pp=1/15)
+[23:51:09] Click move slot 2 tại (1373,413)
+[23:51:09] Đã trừ PP 'Moonblast': 1 -> 0
+[23:51:10] Đang đợi animation chiêu thức...
+[23:51:17] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:51:20] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('on', None)]
+[23:51:20] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=10/10)
+[23:51:20] Click move slot 4 tại (1378,554)
+[23:51:20] Đã trừ PP 'Psychic': 10 -> 9
+[23:51:21] Đang đợi animation chiêu thức...
+[23:51:29] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:51:31] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 738', None)]
+[23:51:31] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=9/10)
+[23:51:32] Click move slot 4 tại (1378,554)
+[23:51:32] Đã trừ PP 'Psychic': 9 -> 8
+[23:51:33] Đang đợi animation chiêu thức...
+[23:51:40] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:51:41] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:51:43] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:51:45] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 6 8', None)]
+[23:51:45] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=8/10)
+[23:51:45] Click move slot 4 tại (1378,554)
+[23:51:45] Đã trừ PP 'Psychic': 8 -> 7
+[23:51:46] Đang đợi animation chiêu thức...
+[23:51:54] Click rightBarButtomFight.png tại (1330,685) score=0.59
+[23:51:57] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 5 8', None)]
+[23:51:57] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=7/10)
+[23:51:57] Click move slot 4 tại (1378,554)
+[23:51:57] Đã trừ PP 'Psychic': 7 -> 6
+[23:51:58] Đang đợi animation chiêu thức...
+[23:52:06] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:52:08] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 5 8', None)]
+[23:52:08] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=6/10)
+[23:52:09] Click move slot 4 tại (1378,554)
+[23:52:09] Đã trừ PP 'Psychic': 6 -> 5
+[23:52:10] Đang đợi animation chiêu thức...
+[23:52:17] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:52:20] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 4 8', None)]
+[23:52:20] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=5/10)
+[23:52:20] Click move slot 4 tại (1378,554)
+[23:52:20] Đã trừ PP 'Psychic': 5 -> 4
+[23:52:21] Đang đợi animation chiêu thức...
+[23:52:29] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:52:32] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 3 8', None)]
+[23:52:32] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=4/10)
+[23:52:32] Click move slot 4 tại (1378,554)
+[23:52:32] Đã trừ PP 'Psychic': 4 -> 3
+[23:52:33] Đang đợi animation chiêu thức...
+[23:52:41] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:52:43] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 2 8', None)]
+[23:52:43] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=3/10)
+[23:52:43] Click move slot 4 tại (1378,554)
+[23:52:43] Đã trừ PP 'Psychic': 3 -> 2
+[23:52:44] Đang đợi animation chiêu thức...
+[23:52:52] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:52:55] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('om 2 8', None)]
+[23:52:55] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=2/10)
+[23:52:55] Click move slot 4 tại (1378,554)
+[23:52:55] Đã trừ PP 'Psychic': 2 -> 1
+[23:52:56] Đang đợi animation chiêu thức...
+[23:53:04] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:53:06] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('alia 1 8', None)]
+[23:53:06] Chọn Move 4: 'Psychic' (type=psychic, pwr=90, pp=1/10)
+[23:53:07] Click move slot 4 tại (1378,554)
+[23:53:07] Đã trừ PP 'Psychic': 1 -> 0
+[23:53:08] Đang đợi animation chiêu thức...
+[23:53:15] Slot 2 hết PP tấn công. Thử swap Pokemon.
+[23:53:15] Click rightBarButtomPokemon.png tại (1448,688) score=0.98
+[23:53:16] Click Pokemon swap slot 3 tại (1317,442)
+[23:53:17] Đã swap sang slot 3.
+[23:53:24] Không tìm thấy template rightBarButtomFight.png (score=0.40)
+[23:53:25] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:53:27] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:53:29] Move panel chưa sẵn sàng sau khi click Fight.
+[23:53:32] OCR Check PP: [('Move1', None), ('bao st', None), ('4 mom 10 10', None), ('a 20120', None)]
+[23:53:32] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=20/20)
+[23:53:32] Click move slot 4 tại (1378,554)
+[23:53:32] Đã trừ PP 'Return': 20 -> 19
+[23:53:33] Đang đợi animation chiêu thức...
+[23:53:41] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:53:44] Move panel chưa sẵn sàng sau khi click Fight.
+[23:53:46] OCR Check PP: [('Move1', None), ('bao st', None), ('4 mom 10 10', None), ('sia oa 19 20', None)]
+[23:53:46] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=19/20)
+[23:53:46] Click move slot 4 tại (1378,554)
+[23:53:46] Đã trừ PP 'Return': 19 -> 18
+[23:53:47] Đang đợi animation chiêu thức...
+[23:53:55] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:53:55] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:53:57] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:53:59] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:54:10] Mới vào trận, đợi 3.5s animation...
+[23:54:14] Vào battle với: arbok
+[23:54:15] Click rightBarButtomFight.png tại (1330,685) score=0.70
+[23:54:17] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('08', None)]
+[23:54:17] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=18/20)
+[23:54:18] Click move slot 4 tại (1378,554)
+[23:54:18] Đã trừ PP 'Return': 18 -> 17
+[23:54:19] Đang đợi animation chiêu thức...
+[23:54:26] Click rightBarButtomFight.png tại (1330,685) score=0.64
+[23:54:29] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('08', None)]
+[23:54:29] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=17/20)
+[23:54:29] Click move slot 4 tại (1378,554)
+[23:54:29] Đã trừ PP 'Return': 17 -> 16
+[23:54:30] Đang đợi animation chiêu thức...
+[23:54:38] Click rightBarButtomFight.png tại (1330,685) score=0.64
+[23:54:41] OCR Check PP: [('ait', None), ('2 mo aie', None), ('eo em 10 10', None), ('08', None)]
+[23:54:41] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=16/20)
+[23:54:41] Click move slot 4 tại (1378,554)
+[23:54:41] Đã trừ PP 'Return': 16 -> 15
+[23:54:42] Đang đợi animation chiêu thức...
+[23:54:50] Click rightBarButtomFight.png tại (1330,685) score=0.64
+[23:54:53] Move panel chưa sẵn sàng sau khi click Fight.
+[23:54:55] OCR Check PP: [('Move1', None), ('Move2', None), ('7', None), ('-', None)]
+[23:54:55] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=15/20)
+[23:54:55] Click move slot 4 tại (1378,554)
+[23:54:55] Đã trừ PP 'Return': 15 -> 14
+[23:54:56] Đang đợi animation chiêu thức...
+[23:55:03] Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).
+[23:55:18] Mới vào trận, đợi 3.5s animation...
+[23:55:23] Vào battle với: unknown
+[23:55:24] Click rightBarButtomFight.png tại (1335,745) score=0.63
+[23:55:27] OCR Check PP: [('vitra ball', None), ('r fast ball', None), ('r friend ball', None), ('Move4', None)]
+[23:55:27] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=14/20)
+[23:55:27] Click move slot 4 tại (1378,554)
+[23:55:27] Đã trừ PP 'Return': 14 -> 13
+[23:55:28] Đang đợi animation chiêu thức...
+[23:55:36] Không tìm thấy template rightBarButtomFight.png (score=0.28)
+[23:55:36] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:55:38] Không tìm thấy template rightBarButtomFight.png (score=0.28)
+[23:55:38] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[23:55:40] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[23:55:43] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:55:58] Mới vào trận, đợi 3.5s animation...
+[23:56:02] Vào battle với: machamp
+[23:56:03] Click rightBarButtomFight.png tại (1309,760) score=0.63
+[23:56:06] OCR Check PP: [('ball', None), ('a fast ball', None), ('a reno ball', None), ('a ball', None)]
+[23:56:06] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=13/20)
+[23:56:06] Click move slot 4 tại (1378,554)
+[23:56:06] Đã trừ PP 'Return': 13 -> 12
+[23:56:07] Đang đợi animation chiêu thức...
+[23:56:14] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:56:15] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:56:17] Click rightBarButtomFight.png tại (1309,760) score=0.64
+[23:56:20] Move panel chưa sẵn sàng sau khi click Fight.
+[23:56:22] OCR Check PP: [('Move1', None), ('Move2', None), ('vil', None), ('ly', None)]
+[23:56:22] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=12/20)
+[23:56:23] Click move slot 4 tại (1378,554)
+[23:56:23] Đã trừ PP 'Return': 12 -> 11
+[23:56:24] Đang đợi animation chiêu thức...
+[23:58:00] === Bắt đầu Mode 3: Auto Farm ===
+[23:58:01] Mới vào trận, đợi 3.5s animation...
+[23:58:05] Vào battle với: machamp
+[23:58:05] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[23:58:06] Click rightBarButtomPokemon.png tại (1434,688) score=0.98
+[23:58:07] Click Pokemon swap slot 2 tại (1437,344)
+[23:58:08] Đã swap sang slot 2.
+[23:58:14] Slot 2 hết PP tấn công. Thử swap Pokemon.
+[23:58:15] Click rightBarButtomPokemon.png tại (1434,688) score=0.59
+[23:58:16] Click Pokemon swap slot 3 tại (1317,442)
+[23:58:17] Đã swap sang slot 3.
+[23:58:24] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[23:58:27] Move panel chưa sẵn sàng sau khi click Fight.
+[23:58:29] OCR Check PP: [('Move1', None), ('i a 13 15', None), ('te 20 20', None), ('Move4', None)]
+[23:58:29] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=11/20)
+[23:58:29] Click move slot 4 tại (1378,554)
+[23:58:29] Đã trừ PP 'Return': 11 -> 10
+[23:58:30] Đang đợi animation chiêu thức...
+[23:58:38] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:58:39] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[23:58:40] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[23:58:41] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[23:58:42] Không tìm thấy template rightBarButtomFight.png (score=0.31)
+[23:58:45] Nút Fight biến mất do trận đấu đã kết thúc.
+[23:58:51] Mới vào trận, đợi 3.5s animation...
+[23:58:55] Vào battle với: kangaskhan
+[23:58:55] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[23:58:58] Move panel chưa sẵn sàng sau khi click Fight.
+[23:59:00] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[23:59:00] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=10/20)
+[23:59:01] Click move slot 4 tại (1378,554)
+[23:59:01] Đã trừ PP 'Return': 10 -> 9
+[23:59:02] Đang đợi animation chiêu thức...
+[23:59:10] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[23:59:13] Move panel chưa sẵn sàng sau khi click Fight.
+[23:59:15] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[23:59:15] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=9/20)
+[23:59:15] Click move slot 4 tại (1378,554)
+[23:59:15] Đã trừ PP 'Return': 9 -> 8
+[23:59:16] Đang đợi animation chiêu thức...
+[23:59:24] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[23:59:27] Move panel chưa sẵn sàng sau khi click Fight.
+[23:59:29] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[23:59:29] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=8/20)
+[23:59:30] Click move slot 4 tại (1378,554)
+[23:59:30] Đã trừ PP 'Return': 8 -> 7
+[23:59:31] Đang đợi animation chiêu thức...
+[23:59:38] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[23:59:41] Move panel chưa sẵn sàng sau khi click Fight.
+[23:59:44] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[23:59:44] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=7/20)
+[23:59:44] Click move slot 4 tại (1378,554)
+[23:59:44] Đã trừ PP 'Return': 7 -> 6
+[23:59:45] Đang đợi animation chiêu thức...
+[23:59:53] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[23:59:56] Move panel chưa sẵn sàng sau khi click Fight.
+[23:59:58] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[23:59:58] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=6/20)
+[23:59:58] Click move slot 4 tại (1378,554)
+[23:59:58] Đã trừ PP 'Return': 6 -> 5
+[23:59:59] Đang đợi animation chiêu thức...
+[00:00:07] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:00:10] Move panel chưa sẵn sàng sau khi click Fight.
+[00:00:13] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:00:13] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=5/20)
+[00:00:13] Click move slot 4 tại (1378,554)
+[00:00:13] Đã trừ PP 'Return': 5 -> 4
+[00:00:14] Đang đợi animation chiêu thức...
+[00:00:22] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:00:25] Move panel chưa sẵn sàng sau khi click Fight.
+[00:00:27] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:00:27] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=4/20)
+[00:00:27] Click move slot 4 tại (1378,554)
+[00:00:27] Đã trừ PP 'Return': 4 -> 3
+[00:00:28] Đang đợi animation chiêu thức...
+[00:00:36] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:00:39] Move panel chưa sẵn sàng sau khi click Fight.
+[00:00:41] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:00:41] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=3/20)
+[00:00:42] Click move slot 4 tại (1378,554)
+[00:00:42] Đã trừ PP 'Return': 3 -> 2
+[00:00:43] Đang đợi animation chiêu thức...
+[00:00:51] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:00:54] Move panel chưa sẵn sàng sau khi click Fight.
+[00:00:56] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:00:56] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=2/20)
+[00:00:56] Click move slot 4 tại (1378,554)
+[00:00:56] Đã trừ PP 'Return': 2 -> 1
+[00:00:57] Đang đợi animation chiêu thức...
+[00:01:05] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:01:08] Move panel chưa sẵn sàng sau khi click Fight.
+[00:01:10] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:01:10] Chọn Move 4: 'Return' (type=normal, pwr=102, pp=1/20)
+[00:01:11] Click move slot 4 tại (1378,554)
+[00:01:11] Đã trừ PP 'Return': 1 -> 0
+[00:01:12] Đang đợi animation chiêu thức...
+[00:01:20] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:01:22] Move panel chưa sẵn sàng sau khi click Fight.
+[00:01:25] OCR Check PP: [('i 45', None), ('Move2', None), ('os ee sono', None), ('os oo an', None)]
+[00:01:25] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=10/10)
+[00:01:25] Click move slot 3 tại (1375,482)
+[00:01:25] Đã trừ PP 'Outrage': 10 -> 9
+[00:01:26] Đang đợi animation chiêu thức...
+[00:01:34] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:01:37] Move panel chưa sẵn sàng sau khi click Fight.
+[00:01:39] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ono', None), ('os oo an', None)]
+[00:01:39] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=9/10)
+[00:01:39] Click move slot 3 tại (1375,482)
+[00:01:39] Đã trừ PP 'Outrage': 9 -> 8
+[00:01:40] Đang đợi animation chiêu thức...
+[00:01:48] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:01:51] Move panel chưa sẵn sàng sau khi click Fight.
+[00:01:53] OCR Check PP: [('i 45', None), ('Move2', None), ('ao eam ano', None), ('os oo an', None)]
+[00:01:53] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=8/10)
+[00:01:54] Click move slot 3 tại (1375,482)
+[00:01:54] Đã trừ PP 'Outrage': 8 -> 7
+[00:01:55] Đang đợi animation chiêu thức...
+[00:02:02] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:02:05] Move panel chưa sẵn sàng sau khi click Fight.
+[00:02:08] OCR Check PP: [('i 45', None), ('Move2', None), ('ao eam ano', None), ('os oo an', None)]
+[00:02:08] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=7/10)
+[00:02:08] Click move slot 3 tại (1375,482)
+[00:02:08] Đã trừ PP 'Outrage': 7 -> 6
+[00:02:09] Đang đợi animation chiêu thức...
+[00:02:17] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:02:20] Move panel chưa sẵn sàng sau khi click Fight.
+[00:02:22] OCR Check PP: [('i 45', None), ('Move2', None), ('eam no', None), ('os oo an', None)]
+[00:02:22] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=6/10)
+[00:02:22] Click move slot 3 tại (1375,482)
+[00:02:22] Đã trừ PP 'Outrage': 6 -> 5
+[00:02:23] Đang đợi animation chiêu thức...
+[00:02:31] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:02:34] Move panel chưa sẵn sàng sau khi click Fight.
+[00:02:36] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:02:36] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=5/10)
+[00:02:37] Click move slot 3 tại (1375,482)
+[00:02:37] Đã trừ PP 'Outrage': 5 -> 4
+[00:02:38] Đang đợi animation chiêu thức...
+[00:02:45] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:02:46] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:02:47] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:02:48] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:02:49] Không tìm thấy template rightBarButtomFight.png (score=0.31)
+[00:02:52] Nút Fight biến mất do trận đấu đã kết thúc.
+[00:02:58] Mới vào trận, đợi 3.5s animation...
+[00:03:02] Vào battle với: parasect
+[00:03:02] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:03:05] Move panel chưa sẵn sàng sau khi click Fight.
+[00:03:07] OCR Check PP: [('i 45', None), ('Move2', None), ('eam so', None), ('os oo an', None)]
+[00:03:07] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=4/10)
+[00:03:08] Click move slot 3 tại (1375,482)
+[00:03:08] Đã trừ PP 'Outrage': 4 -> 3
+[00:03:09] Đang đợi animation chiêu thức...
+[00:03:16] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:03:19] Move panel chưa sẵn sàng sau khi click Fight.
+[00:03:22] OCR Check PP: [('i 45', None), ('Move2', None), ('eam so', None), ('os oo an', None)]
+[00:03:22] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=3/10)
+[00:03:22] Click move slot 3 tại (1375,482)
+[00:03:22] Đã trừ PP 'Outrage': 3 -> 2
+[00:03:23] Đang đợi animation chiêu thức...
+[00:03:31] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:03:31] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:03:33] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:03:33] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:03:35] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:03:38] Move panel chưa sẵn sàng sau khi click Fight.
+[00:03:40] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:03:40] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=2/10)
+[00:03:41] Click move slot 3 tại (1375,482)
+[00:03:41] Đã trừ PP 'Outrage': 2 -> 1
+[00:03:42] Đang đợi animation chiêu thức...
+[00:03:49] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:03:50] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:03:51] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:03:52] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:03:54] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:03:57] Move panel chưa sẵn sàng sau khi click Fight.
+[00:03:59] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:03:59] Chọn Move 3: 'Outrage' (type=dragon, pwr=120, pp=1/10)
+[00:03:59] Click move slot 3 tại (1375,482)
+[00:03:59] Đã trừ PP 'Outrage': 1 -> 0
+[00:04:00] Đang đợi animation chiêu thức...
+[00:04:08] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:08] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:04:10] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:10] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:04:12] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:04:15] Move panel chưa sẵn sàng sau khi click Fight.
+[00:04:18] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:04:18] Chọn Move 2: 'Sucker Punch' (type=dark, pwr=70, pp=5/5)
+[00:04:18] Click move slot 2 tại (1373,413)
+[00:04:18] Đã trừ PP 'Sucker Punch': 5 -> 4
+[00:04:19] Đang đợi animation chiêu thức...
+[00:04:26] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:27] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:04:28] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:29] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:04:31] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:04:34] Move panel chưa sẵn sàng sau khi click Fight.
+[00:04:36] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:04:36] Chọn Move 2: 'Sucker Punch' (type=dark, pwr=70, pp=4/5)
+[00:04:36] Click move slot 2 tại (1373,413)
+[00:04:36] Đã trừ PP 'Sucker Punch': 4 -> 3
+[00:04:37] Đang đợi animation chiêu thức...
+[00:04:45] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:45] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:04:47] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:04:48] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:04:49] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:04:52] Move panel chưa sẵn sàng sau khi click Fight.
+[00:04:55] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:04:55] Chọn Move 2: 'Sucker Punch' (type=dark, pwr=70, pp=3/5)
+[00:04:55] Click move slot 2 tại (1373,413)
+[00:04:55] Đã trừ PP 'Sucker Punch': 3 -> 2
+[00:04:56] Đang đợi animation chiêu thức...
+[00:05:03] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:05:04] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:05:06] Không tìm thấy template rightBarButtomFight.png (score=0.35)
+[00:05:08] Nút Fight biến mất do trận đấu đã kết thúc.
+[00:05:19] Mới vào trận, đợi 3.5s animation...
+[00:05:23] Vào battle với: nidoqueen
+[00:05:23] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:05:26] Move panel chưa sẵn sàng sau khi click Fight.
+[00:05:28] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:05:28] Chọn Move 2: 'Sucker Punch' (type=dark, pwr=70, pp=2/5)
+[00:05:29] Click move slot 2 tại (1373,413)
+[00:05:29] Đã trừ PP 'Sucker Punch': 2 -> 1
+[00:05:30] Đang đợi animation chiêu thức...
+[00:05:37] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:05:38] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:05:39] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:05:40] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:05:41] Không tìm thấy template rightBarButtomFight.png (score=0.35)
+[00:05:44] Nút Fight biến mất do trận đấu đã kết thúc.
+[00:05:59] Mới vào trận, đợi 3.5s animation...
+[00:06:03] Vào battle với: rhyhorn
+[00:06:04] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:06:07] Move panel chưa sẵn sàng sau khi click Fight.
+[00:06:09] OCR Check PP: [('i 45', None), ('Move2', None), ('eam ano', None), ('os oo an', None)]
+[00:06:09] Chọn Move 2: 'Sucker Punch' (type=dark, pwr=70, pp=1/5)
+[00:06:09] Click move slot 2 tại (1373,413)
+[00:06:09] Đã trừ PP 'Sucker Punch': 1 -> 0
+[00:06:10] Đang đợi animation chiêu thức...
+[00:06:18] Slot 3 hết PP tấn công. Thử swap Pokemon.
+[00:06:18] Click rightBarButtomPokemon.png tại (1434,688) score=0.59
+[00:06:19] Click Pokemon swap slot 4 tại (1440,437)
+[00:06:20] Đã swap sang slot 4.
+[00:06:27] Battle kết thúc. Reset state.
+[00:06:42] Mới vào trận, đợi 3.5s animation...
+[00:06:46] Vào battle với: parasect
+[00:06:46] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[00:06:46] Click rightBarButtomPokemon.png tại (1434,688) score=0.98
+[00:06:48] Click Pokemon swap slot 2 tại (1437,344)
+[00:06:48] Đã swap sang slot 2.
+[00:06:55] Slot 2 hết PP tấn công. Thử swap Pokemon.
+[00:06:55] Click rightBarButtomPokemon.png tại (1434,688) score=0.59
+[00:06:56] Click Pokemon swap slot 3 tại (1317,442)
+[00:06:57] Đã swap sang slot 3.
+[00:07:04] Slot 3 hết PP tấn công. Thử swap Pokemon.
+[00:07:04] Click rightBarButtomPokemon.png tại (1434,688) score=0.98
+[00:07:05] Click Pokemon swap slot 4 tại (1440,437)
+[00:07:06] Đã swap sang slot 4.
+[00:07:13] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:07:14] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:07:16] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:07:18] OCR Check PP: [('tea oun 16 16', None), ('a nom 14 14', None), ('4 om 20 20', None), ('pail 15 15', None)]
+[00:07:18] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=20/20)
+[00:07:19] Click move slot 3 tại (1375,482)
+[00:07:19] Đã trừ PP 'Return': 20 -> 19
+[00:07:20] Đang đợi animation chiêu thức...
+[00:07:27] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[00:07:30] Nút Fight biến mất do trận đấu đã kết thúc.
+[00:07:36] Mới vào trận, đợi 3.5s animation...
+[00:07:40] Vào battle với: machamp
+[00:07:40] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:07:43] Move panel chưa sẵn sàng sau khi click Fight.
+[00:07:46] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('eam ano', None), ('os oo an', None)]
+[00:07:46] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=19/20)
+[00:07:46] Click move slot 3 tại (1375,482)
+[00:07:46] Đã trừ PP 'Return': 19 -> 18
+[00:07:47] Đang đợi animation chiêu thức...
+[00:07:55] Không tìm thấy template rightBarButtomFight.png (score=0.32)
+[00:07:55] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:07:57] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:08:00] Move panel chưa sẵn sàng sau khi click Fight.
+[00:08:02] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('eam ino', None), ('os oo an', None)]
+[00:08:02] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=18/20)
+[00:08:03] Click move slot 3 tại (1375,482)
+[00:08:03] Đã trừ PP 'Return': 18 -> 17
+[00:08:04] Đang đợi animation chiêu thức...
+[00:08:11] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:08:14] Move panel chưa sẵn sàng sau khi click Fight.
+[00:08:17] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('eam ino', None), ('os oo an', None)]
+[00:08:17] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=17/20)
+[00:08:17] Click move slot 3 tại (1375,482)
+[00:08:17] Đã trừ PP 'Return': 17 -> 16
+[00:08:18] Đang đợi animation chiêu thức...
+[00:08:25] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:08:26] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:08:28] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:08:31] Move panel chưa sẵn sàng sau khi click Fight.
+[00:08:33] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('eam ino', None), ('os oo an', None)]
+[00:08:33] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=16/20)
+[00:08:34] Click move slot 3 tại (1375,482)
+[00:08:34] Đã trừ PP 'Return': 16 -> 15
+[00:08:35] Đang đợi animation chiêu thức...
+[00:08:42] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:08:45] Move panel chưa sẵn sàng sau khi click Fight.
+[00:08:48] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:08:48] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=15/20)
+[00:08:48] Click move slot 3 tại (1375,482)
+[00:08:48] Đã trừ PP 'Return': 15 -> 14
+[00:08:49] Đang đợi animation chiêu thức...
+[00:08:57] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:09:00] Move panel chưa sẵn sàng sau khi click Fight.
+[00:09:02] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:09:02] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=14/20)
+[00:09:02] Click move slot 3 tại (1375,482)
+[00:09:02] Đã trừ PP 'Return': 14 -> 13
+[00:09:03] Đang đợi animation chiêu thức...
+[00:09:11] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:09:14] Move panel chưa sẵn sàng sau khi click Fight.
+[00:09:17] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:09:17] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=13/20)
+[00:09:17] Click move slot 3 tại (1375,482)
+[00:09:17] Đã trừ PP 'Return': 13 -> 12
+[00:09:18] Đang đợi animation chiêu thức...
+[00:09:26] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:09:29] Move panel chưa sẵn sàng sau khi click Fight.
+[00:09:31] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:09:31] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=12/20)
+[00:09:31] Click move slot 3 tại (1375,482)
+[00:09:31] Đã trừ PP 'Return': 12 -> 11
+[00:09:32] Đang đợi animation chiêu thức...
+[00:09:40] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:09:43] Move panel chưa sẵn sàng sau khi click Fight.
+[00:09:46] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:09:46] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=11/20)
+[00:09:46] Click move slot 3 tại (1375,482)
+[00:09:46] Đã trừ PP 'Return': 11 -> 10
+[00:09:47] Đang đợi animation chiêu thức...
+[00:09:55] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:09:58] Move panel chưa sẵn sàng sau khi click Fight.
+[00:10:00] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:10:00] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=10/20)
+[00:10:00] Click move slot 3 tại (1375,482)
+[00:10:00] Đã trừ PP 'Return': 10 -> 9
+[00:10:01] Đang đợi animation chiêu thức...
+[00:10:09] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:10:12] Move panel chưa sẵn sàng sau khi click Fight.
+[00:10:14] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:10:14] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=9/20)
+[00:10:15] Click move slot 3 tại (1375,482)
+[00:10:15] Đã trừ PP 'Return': 9 -> 8
+[00:10:16] Đang đợi animation chiêu thức...
+[00:10:23] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:10:26] Move panel chưa sẵn sàng sau khi click Fight.
+[00:10:29] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:10:29] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=8/20)
+[00:10:29] Click move slot 3 tại (1375,482)
+[00:10:29] Đã trừ PP 'Return': 8 -> 7
+[00:10:30] Đang đợi animation chiêu thức...
+[00:10:38] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:10:41] Move panel chưa sẵn sàng sau khi click Fight.
+[00:10:43] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:10:43] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=7/20)
+[00:10:43] Click move slot 3 tại (1375,482)
+[00:10:43] Đã trừ PP 'Return': 7 -> 6
+[00:10:44] Đang đợi animation chiêu thức...
+[00:10:52] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:10:55] Move panel chưa sẵn sàng sau khi click Fight.
+[00:10:58] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:10:58] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=6/20)
+[00:10:58] Click move slot 3 tại (1375,482)
+[00:10:58] Đã trừ PP 'Return': 6 -> 5
+[00:10:59] Đang đợi animation chiêu thức...
+[00:11:07] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:11:10] Move panel chưa sẵn sàng sau khi click Fight.
+[00:11:12] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:11:12] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=5/20)
+[00:11:12] Click move slot 3 tại (1375,482)
+[00:11:12] Đã trừ PP 'Return': 5 -> 4
+[00:11:13] Đang đợi animation chiêu thức...
+[00:11:21] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:11:24] Move panel chưa sẵn sàng sau khi click Fight.
+[00:11:26] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:11:26] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=4/20)
+[00:11:27] Click move slot 3 tại (1375,482)
+[00:11:27] Đã trừ PP 'Return': 4 -> 3
+[00:11:28] Đang đợi animation chiêu thức...
+[00:11:36] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:11:39] Move panel chưa sẵn sàng sau khi click Fight.
+[00:11:41] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:11:41] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=3/20)
+[00:11:41] Click move slot 3 tại (1375,482)
+[00:11:41] Đã trừ PP 'Return': 3 -> 2
+[00:11:42] Đang đợi animation chiêu thức...
+[00:11:50] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:11:53] Move panel chưa sẵn sàng sau khi click Fight.
+[00:11:55] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:11:55] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=2/20)
+[00:11:56] Click move slot 3 tại (1375,482)
+[00:11:56] Đã trừ PP 'Return': 2 -> 1
+[00:11:57] Đang đợi animation chiêu thức...
+[00:12:04] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:12:07] Move panel chưa sẵn sàng sau khi click Fight.
+[00:12:10] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:12:10] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=1/20)
+[00:12:10] Click move slot 3 tại (1375,482)
+[00:12:10] Đã trừ PP 'Return': 1 -> 0
+[00:12:11] Đang đợi animation chiêu thức...
+[00:12:19] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:12:22] Move panel chưa sẵn sàng sau khi click Fight.
+[00:12:24] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:12:24] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=15/15)
+[00:12:24] Click move slot 4 tại (1378,554)
+[00:12:24] Đã trừ PP 'Ice Punch': 15 -> 14
+[00:12:25] Đang đợi animation chiêu thức...
+[00:12:33] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:12:36] Move panel chưa sẵn sàng sau khi click Fight.
+[00:12:39] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:12:39] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=14/15)
+[00:12:39] Click move slot 4 tại (1378,554)
+[00:12:39] Đã trừ PP 'Ice Punch': 14 -> 13
+[00:12:40] Đang đợi animation chiêu thức...
+[00:12:48] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:12:51] Move panel chưa sẵn sàng sau khi click Fight.
+[00:12:53] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:12:53] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=13/15)
+[00:12:53] Click move slot 4 tại (1378,554)
+[00:12:53] Đã trừ PP 'Ice Punch': 13 -> 12
+[00:12:54] Đang đợi animation chiêu thức...
+[00:13:02] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:13:05] Move panel chưa sẵn sàng sau khi click Fight.
+[00:13:07] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:13:07] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=12/15)
+[00:13:08] Click move slot 4 tại (1378,554)
+[00:13:08] Đã trừ PP 'Ice Punch': 12 -> 11
+[00:13:09] Đang đợi animation chiêu thức...
+[00:13:17] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:13:20] Move panel chưa sẵn sàng sau khi click Fight.
+[00:13:22] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:13:22] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=11/15)
+[00:13:22] Click move slot 4 tại (1378,554)
+[00:13:22] Đã trừ PP 'Ice Punch': 11 -> 10
+[00:13:23] Đang đợi animation chiêu thức...
+[00:13:31] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:13:34] Move panel chưa sẵn sàng sau khi click Fight.
+[00:13:36] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:13:36] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=10/15)
+[00:13:37] Click move slot 4 tại (1378,554)
+[00:13:37] Đã trừ PP 'Ice Punch': 10 -> 9
+[00:13:38] Đang đợi animation chiêu thức...
+[00:13:46] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:13:48] Move panel chưa sẵn sàng sau khi click Fight.
+[00:13:51] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:13:51] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=9/15)
+[00:13:51] Click move slot 4 tại (1378,554)
+[00:13:51] Đã trừ PP 'Ice Punch': 9 -> 8
+[00:13:52] Đang đợi animation chiêu thức...
+[00:14:00] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:14:03] Move panel chưa sẵn sàng sau khi click Fight.
+[00:14:05] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:14:05] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=8/15)
+[00:14:05] Click move slot 4 tại (1378,554)
+[00:14:05] Đã trừ PP 'Ice Punch': 8 -> 7
+[00:14:06] Đang đợi animation chiêu thức...
+[00:14:14] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:14:17] Move panel chưa sẵn sàng sau khi click Fight.
+[00:14:20] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:14:20] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=7/15)
+[00:14:20] Click move slot 4 tại (1378,554)
+[00:14:20] Đã trừ PP 'Ice Punch': 7 -> 6
+[00:14:21] Đang đợi animation chiêu thức...
+[00:14:29] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:14:32] Move panel chưa sẵn sàng sau khi click Fight.
+[00:14:34] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:14:34] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=6/15)
+[00:14:34] Click move slot 4 tại (1378,554)
+[00:14:34] Đã trừ PP 'Ice Punch': 6 -> 5
+[00:14:35] Đang đợi animation chiêu thức...
+[00:14:43] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:14:46] Move panel chưa sẵn sàng sau khi click Fight.
+[00:14:48] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:14:48] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=5/15)
+[00:14:49] Click move slot 4 tại (1378,554)
+[00:14:49] Đã trừ PP 'Ice Punch': 5 -> 4
+[00:14:50] Đang đợi animation chiêu thức...
+[00:14:58] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:15:00] Move panel chưa sẵn sàng sau khi click Fight.
+[00:15:03] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:15:03] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=4/15)
+[00:15:03] Click move slot 4 tại (1378,554)
+[00:15:03] Đã trừ PP 'Ice Punch': 4 -> 3
+[00:15:04] Đang đợi animation chiêu thức...
+[00:15:12] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:15:15] Move panel chưa sẵn sàng sau khi click Fight.
+[00:15:17] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:15:17] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=3/15)
+[00:15:17] Click move slot 4 tại (1378,554)
+[00:15:17] Đã trừ PP 'Ice Punch': 3 -> 2
+[00:15:18] Đang đợi animation chiêu thức...
+[00:15:26] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:15:29] Move panel chưa sẵn sàng sau khi click Fight.
+[00:15:32] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:15:32] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=2/15)
+[00:15:32] Click move slot 4 tại (1378,554)
+[00:15:32] Đã trừ PP 'Ice Punch': 2 -> 1
+[00:15:33] Đang đợi animation chiêu thức...
+[00:15:41] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:15:44] Move panel chưa sẵn sàng sau khi click Fight.
+[00:15:46] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:15:46] Chọn Move 4: 'Ice Punch' (type=ice, pwr=75, pp=1/15)
+[00:15:46] Click move slot 4 tại (1378,554)
+[00:15:46] Đã trừ PP 'Ice Punch': 1 -> 0
+[00:15:47] Đang đợi animation chiêu thức...
+[00:15:55] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:15:58] Move panel chưa sẵn sàng sau khi click Fight.
+[00:16:00] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:16:00] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:16:01] Click move slot 2 tại (1373,413)
+[00:16:02] Đang đợi animation chiêu thức...
+[00:16:10] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:16:12] Move panel chưa sẵn sàng sau khi click Fight.
+[00:16:15] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:16:15] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:16:15] Click move slot 2 tại (1373,413)
+[00:16:16] Đang đợi animation chiêu thức...
+[00:16:24] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:16:27] Move panel chưa sẵn sàng sau khi click Fight.
+[00:16:29] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:16:29] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:16:29] Click move slot 2 tại (1373,413)
+[00:16:30] Đang đợi animation chiêu thức...
+[00:16:38] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:16:41] Move panel chưa sẵn sàng sau khi click Fight.
+[00:16:44] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:16:44] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:16:44] Click move slot 2 tại (1373,413)
+[00:16:45] Đang đợi animation chiêu thức...
+[00:16:53] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:16:56] Move panel chưa sẵn sàng sau khi click Fight.
+[00:16:58] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:16:58] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:16:58] Click move slot 2 tại (1373,413)
+[00:16:59] Đang đợi animation chiêu thức...
+[00:17:07] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:17:10] Move panel chưa sẵn sàng sau khi click Fight.
+[00:17:12] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:17:12] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:17:13] Click move slot 2 tại (1373,413)
+[00:17:14] Đang đợi animation chiêu thức...
+[00:17:21] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:17:24] Move panel chưa sẵn sàng sau khi click Fight.
+[00:17:27] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:17:27] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:17:27] Click move slot 2 tại (1373,413)
+[00:17:28] Đang đợi animation chiêu thức...
+[00:17:36] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:17:39] Move panel chưa sẵn sàng sau khi click Fight.
+[00:17:41] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:17:41] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:17:41] Click move slot 2 tại (1373,413)
+[00:17:42] Đang đợi animation chiêu thức...
+[00:17:50] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:17:53] Move panel chưa sẵn sàng sau khi click Fight.
+[00:17:55] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:17:55] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:17:56] Click move slot 2 tại (1373,413)
+[00:17:57] Đang đợi animation chiêu thức...
+[00:18:05] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:18:08] Move panel chưa sẵn sàng sau khi click Fight.
+[00:18:10] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:18:10] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:18:10] Click move slot 2 tại (1373,413)
+[00:18:11] Đang đợi animation chiêu thức...
+[00:18:19] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:18:22] Move panel chưa sẵn sàng sau khi click Fight.
+[00:18:25] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:18:25] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:18:25] Click move slot 2 tại (1373,413)
+[00:18:26] Đang đợi animation chiêu thức...
+[00:18:34] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:18:37] Move panel chưa sẵn sàng sau khi click Fight.
+[00:18:39] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:18:39] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:18:40] Click move slot 2 tại (1373,413)
+[00:18:41] Đang đợi animation chiêu thức...
+[00:18:48] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:18:51] Move panel chưa sẵn sàng sau khi click Fight.
+[00:18:54] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:18:54] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:18:54] Click move slot 2 tại (1373,413)
+[00:18:55] Đang đợi animation chiêu thức...
+[00:19:03] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:19:06] Move panel chưa sẵn sàng sau khi click Fight.
+[00:19:08] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:19:08] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:19:08] Click move slot 2 tại (1373,413)
+[00:19:09] Đang đợi animation chiêu thức...
+[00:19:17] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:19:20] Move panel chưa sẵn sàng sau khi click Fight.
+[00:19:22] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:19:22] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:19:23] Click move slot 2 tại (1373,413)
+[00:19:24] Đang đợi animation chiêu thức...
+[00:19:32] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:19:34] Move panel chưa sẵn sàng sau khi click Fight.
+[00:19:37] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:19:37] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:19:37] Click move slot 2 tại (1373,413)
+[00:19:38] Đang đợi animation chiêu thức...
+[00:19:46] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:19:49] Move panel chưa sẵn sàng sau khi click Fight.
+[00:19:51] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:19:51] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:19:51] Click move slot 2 tại (1373,413)
+[00:19:52] Đang đợi animation chiêu thức...
+[00:20:00] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:20:03] Move panel chưa sẵn sàng sau khi click Fight.
+[00:20:05] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:20:06] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:20:06] Click move slot 2 tại (1373,413)
+[00:20:07] Đang đợi animation chiêu thức...
+[00:20:15] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:20:18] Move panel chưa sẵn sàng sau khi click Fight.
+[00:20:20] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:20:20] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:20:20] Click move slot 2 tại (1373,413)
+[00:20:21] Đang đợi animation chiêu thức...
+[00:20:29] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:20:32] Move panel chưa sẵn sàng sau khi click Fight.
+[00:20:34] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:20:34] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:20:35] Click move slot 2 tại (1373,413)
+[00:20:36] Đang đợi animation chiêu thức...
+[00:20:43] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:20:46] Move panel chưa sẵn sàng sau khi click Fight.
+[00:20:49] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:20:49] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:20:49] Click move slot 2 tại (1373,413)
+[00:20:50] Đang đợi animation chiêu thức...
+[00:20:58] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:21:01] Move panel chưa sẵn sàng sau khi click Fight.
+[00:21:03] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:21:03] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:21:03] Click move slot 2 tại (1373,413)
+[00:21:04] Đang đợi animation chiêu thức...
+[00:21:12] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:21:15] Move panel chưa sẵn sàng sau khi click Fight.
+[00:21:17] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:21:17] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:21:18] Click move slot 2 tại (1373,413)
+[00:21:19] Đang đợi animation chiêu thức...
+[00:21:26] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:21:29] Move panel chưa sẵn sàng sau khi click Fight.
+[00:21:32] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:21:32] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:21:32] Click move slot 2 tại (1373,413)
+[00:21:33] Đang đợi animation chiêu thức...
+[00:21:41] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:21:44] Move panel chưa sẵn sàng sau khi click Fight.
+[00:21:46] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:21:46] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:21:46] Click move slot 2 tại (1373,413)
+[00:21:47] Đang đợi animation chiêu thức...
+[00:21:55] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:21:58] Move panel chưa sẵn sàng sau khi click Fight.
+[00:22:01] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:22:01] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:22:01] Click move slot 2 tại (1373,413)
+[00:22:02] Đang đợi animation chiêu thức...
+[00:22:10] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:22:13] Move panel chưa sẵn sàng sau khi click Fight.
+[00:22:15] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:22:15] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:22:15] Click move slot 2 tại (1373,413)
+[00:22:16] Đang đợi animation chiêu thức...
+[00:22:24] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:22:27] Move panel chưa sẵn sàng sau khi click Fight.
+[00:22:29] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:22:29] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:22:30] Click move slot 2 tại (1373,413)
+[00:22:31] Đang đợi animation chiêu thức...
+[00:22:38] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:22:41] Move panel chưa sẵn sàng sau khi click Fight.
+[00:22:44] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:22:44] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:22:44] Click move slot 2 tại (1373,413)
+[00:22:45] Đang đợi animation chiêu thức...
+[00:22:53] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:22:56] Move panel chưa sẵn sàng sau khi click Fight.
+[00:22:58] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:22:58] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:22:59] Click move slot 2 tại (1373,413)
+[00:23:00] Đang đợi animation chiêu thức...
+[00:23:07] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:23:10] Move panel chưa sẵn sàng sau khi click Fight.
+[00:23:13] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:23:13] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:23:13] Click move slot 2 tại (1373,413)
+[00:23:14] Đang đợi animation chiêu thức...
+[00:23:22] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:23:25] Move panel chưa sẵn sàng sau khi click Fight.
+[00:23:27] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:23:27] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:23:27] Click move slot 2 tại (1373,413)
+[00:23:28] Đang đợi animation chiêu thức...
+[00:23:36] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:23:39] Move panel chưa sẵn sàng sau khi click Fight.
+[00:23:42] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:23:42] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:23:42] Click move slot 2 tại (1373,413)
+[00:23:43] Đang đợi animation chiêu thức...
+[00:23:51] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:23:54] Move panel chưa sẵn sàng sau khi click Fight.
+[00:23:56] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:23:56] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:23:56] Click move slot 2 tại (1373,413)
+[00:23:57] Đang đợi animation chiêu thức...
+[00:24:05] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:24:08] Move panel chưa sẵn sàng sau khi click Fight.
+[00:24:10] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:24:10] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:24:11] Click move slot 2 tại (1373,413)
+[00:24:12] Đang đợi animation chiêu thức...
+[00:24:20] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:24:22] Move panel chưa sẵn sàng sau khi click Fight.
+[00:24:25] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:24:25] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:24:25] Click move slot 2 tại (1373,413)
+[00:24:26] Đang đợi animation chiêu thức...
+[00:24:34] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:24:37] Move panel chưa sẵn sàng sau khi click Fight.
+[00:24:39] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:24:39] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:24:40] Click move slot 2 tại (1373,413)
+[00:24:41] Đang đợi animation chiêu thức...
+[00:24:48] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:24:51] Move panel chưa sẵn sàng sau khi click Fight.
+[00:24:54] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:24:54] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:24:54] Click move slot 2 tại (1373,413)
+[00:24:55] Đang đợi animation chiêu thức...
+[00:25:03] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:25:06] Move panel chưa sẵn sàng sau khi click Fight.
+[00:25:08] OCR Check PP: [('i 45', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[00:25:08] Chọn Move 2: 'Drain Punch' (type=fighting, pwr=75, pp=None/None)
+[00:25:08] Click move slot 2 tại (1373,413)
+[00:25:09] Đang đợi animation chiêu thức...
+[00:32:04] === Bắt đầu Mode 3: Auto Farm ===
+[00:32:10] Mới vào trận, đợi 3.5s animation...
+[00:32:14] Vào battle với: magneton
+[00:32:14] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[00:32:15] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[00:32:16] Click Pokemon swap slot 5 tại (1311,538)
+[00:32:17] Đã swap sang slot 5.
+[00:32:24] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:32:27] OCR Check PP: [('sao ws', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:32:27] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=20/20)
+[00:32:27] Click move slot 3 tại (1375,482)
+[00:32:27] Đã trừ PP 'Return': 20 -> 19
+[00:32:28] Đang đợi animation chiêu thức...
+[00:36:51] === Bắt đầu Mode 3: Auto Farm ===
+[00:36:52] Mới vào trận, đợi 3.5s animation...
+[00:36:56] Vào battle với: magneton
+[00:36:56] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[00:36:57] Click rightBarButtomPokemon.png tại (1440,688) score=0.67
+[00:36:58] Click Pokemon swap slot 5 tại (1311,538)
+[00:36:59] Đã swap sang slot 5.
+[00:37:06] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:37:08] OCR Check PP: [('sao ws', None), ('acm 862020', None), ('a ra', None), ('Move4', None)]
+[00:37:08] Chọn Move 1: 'sao ws' (type=normal, pwr=0, pp=None/None)
+[00:37:09] Click move slot 1 tại (1370,337)
+[00:37:10] Đang đợi animation chiêu thức...
+[00:37:17] Slot 5 hết PP tấn công. Thử swap Pokemon.
+[00:37:17] Không tìm thấy template rightBarButtomPokemon.png (score=0.38)
+[00:37:17] Không click được nút Pokemon!
+[00:37:19] Slot 5 hết PP tấn công. Thử swap Pokemon.
+[00:37:20] Không tìm thấy template rightBarButtomPokemon.png (score=0.38)
+[00:37:20] Không click được nút Pokemon!
+[00:37:22] Slot 5 hết PP tấn công. Thử swap Pokemon.
+[00:37:22] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[00:37:23] Click Pokemon swap slot 6 tại (1436,537)
+[00:37:24] Đã swap sang slot 6.
+[00:37:31] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:37:31] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:37:33] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:37:34] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:37:35] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:37:38] Move panel chưa sẵn sàng sau khi click Fight.
+[00:37:41] OCR Check PP: [('Move1', None), ('sa os 10 10', None), ('aon', None), ('10 10', None)]
+[00:37:41] Chọn Move 1: 'move1' (type=normal, pwr=0, pp=None/None)
+[00:37:41] Click move slot 1 tại (1370,337)
+[00:37:42] Đang đợi animation chiêu thức...
+[00:37:49] Slot 6 hết PP tấn công. Thử swap Pokemon.
+[00:37:49] Không còn slot Pokemon hợp lệ! Dừng farm.
+[00:48:20] === Bắt đầu Mode 3: Auto Farm ===
+[00:48:31] Mới vào trận, đợi 3.5s animation...
+[00:48:35] Vào battle với: arbok
+[00:48:35] Check JSON slot 1: [('Surf', 0, 90), ('Ice Beam', 0, 90), ('Toxic', 10, 0), ('Recover', None, 0)]
+[00:48:35] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[00:48:35] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[00:48:37] Click Pokemon swap slot 5 tại (1311,538)
+[00:48:37] Đã swap sang slot 5.
+[00:48:41] Check JSON slot 5: [('Fake Out', None, 0), ('Drain Punch', None, 75), ('Return', 19, 102), ('Ice Punch', 15, 75)]
+[00:48:41] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:48:41] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[00:48:43] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[00:48:44] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[00:48:45] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:48:48] Move panel chưa sẵn sàng sau khi click Fight.
+[00:48:51] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a ra', None), ('Move4', None)]
+[00:48:51] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:48:51] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=19/20)
+[00:48:51] Click move slot 3 tại (1375,482)
+[00:48:51] Đã trừ PP 'Return': 19 -> 18
+[00:48:52] Đang đợi animation chiêu thức...
+[00:49:00] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:49:03] Move panel chưa sẵn sàng sau khi click Fight.
+[00:49:05] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a ra', None), ('Move4', None)]
+[00:49:05] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:49:05] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=18/20)
+[00:49:06] Click move slot 3 tại (1375,482)
+[00:49:06] Đã trừ PP 'Return': 18 -> 17
+[00:49:07] Đang đợi animation chiêu thức...
+[00:49:14] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:49:17] Move panel chưa sẵn sàng sau khi click Fight.
+[00:49:20] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a ra', None), ('Move4', None)]
+[00:49:20] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:49:20] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=17/20)
+[00:49:20] Click move slot 3 tại (1375,482)
+[00:49:20] Đã trừ PP 'Return': 17 -> 16
+[00:49:21] Đang đợi animation chiêu thức...
+[00:49:29] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:49:32] Move panel chưa sẵn sàng sau khi click Fight.
+[00:49:34] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:49:34] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:49:34] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=16/20)
+[00:49:34] Click move slot 3 tại (1375,482)
+[00:49:34] Đã trừ PP 'Return': 16 -> 15
+[00:49:35] Đang đợi animation chiêu thức...
+[00:49:43] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:49:46] Move panel chưa sẵn sàng sau khi click Fight.
+[00:49:49] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:49:49] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:49:49] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=15/20)
+[00:49:49] Click move slot 3 tại (1375,482)
+[00:49:49] Đã trừ PP 'Return': 15 -> 14
+[00:49:50] Đang đợi animation chiêu thức...
+[00:49:58] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:50:00] Move panel chưa sẵn sàng sau khi click Fight.
+[00:50:03] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:50:03] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:50:03] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=14/20)
+[00:50:03] Click move slot 3 tại (1375,482)
+[00:50:03] Đã trừ PP 'Return': 14 -> 13
+[00:50:04] Đang đợi animation chiêu thức...
+[00:50:12] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:50:15] Move panel chưa sẵn sàng sau khi click Fight.
+[00:50:17] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:50:17] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:50:17] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=13/20)
+[00:50:18] Click move slot 3 tại (1375,482)
+[00:50:18] Đã trừ PP 'Return': 13 -> 12
+[00:50:19] Đang đợi animation chiêu thức...
+[00:50:26] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:50:29] Move panel chưa sẵn sàng sau khi click Fight.
+[00:50:32] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a an', None), ('Move4', None)]
+[00:50:32] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:50:32] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=12/20)
+[00:50:32] Click move slot 3 tại (1375,482)
+[00:50:32] Đã trừ PP 'Return': 12 -> 11
+[00:50:33] Đang đợi animation chiêu thức...
+[00:50:41] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:50:43] Move panel chưa sẵn sàng sau khi click Fight.
+[00:50:46] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a aa', None), ('Move4', None)]
+[00:50:46] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:50:46] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=11/20)
+[00:50:46] Click move slot 3 tại (1375,482)
+[00:50:46] Đã trừ PP 'Return': 11 -> 10
+[00:50:47] Đang đợi animation chiêu thức...
+[00:50:55] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:50:58] Move panel chưa sẵn sàng sau khi click Fight.
+[00:51:00] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a oa', None), ('Move4', None)]
+[00:51:00] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:51:00] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=10/20)
+[00:51:01] Click move slot 3 tại (1375,482)
+[00:51:01] Đã trừ PP 'Return': 10 -> 9
+[00:51:02] Đang đợi animation chiêu thức...
+[00:51:09] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:51:12] Move panel chưa sẵn sàng sau khi click Fight.
+[00:51:15] OCR Check PP: [('Move1', None), ('acm 862020', None), ('a ia', None), ('Move4', None)]
+[00:51:15] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:51:15] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=9/20)
+[00:51:15] Click move slot 3 tại (1375,482)
+[00:51:15] Đã trừ PP 'Return': 9 -> 8
+[00:51:16] Đang đợi animation chiêu thức...
+[00:51:24] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[00:51:27] Move panel chưa sẵn sàng sau khi click Fight.
+[00:51:29] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[00:51:29] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:51:29] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=8/20)
+[00:51:29] Click move slot 3 tại (1375,482)
+[00:51:29] Đã trừ PP 'Return': 8 -> 7
+[00:51:30] Đang đợi animation chiêu thức...
+[00:51:38] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[00:51:41] Move panel chưa sẵn sàng sau khi click Fight.
+[00:51:43] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[00:51:43] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[00:51:43] Chọn Move 3: 'Return' (type=normal, pwr=102, pp=7/20)
+[00:51:44] Click move slot 3 tại (1375,482)
+[00:51:44] Đã trừ PP 'Return': 7 -> 6
+[00:51:45] Đang đợi animation chiêu thức...
+[00:51:53] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[01:09:21] === Bắt đầu Mode 3: Auto Farm ===
+[01:09:37] Mới vào trận, đợi 3.5s animation...
+[01:09:42] Vào battle với: golbat
+[01:09:42] Check JSON slot 1: [('Surf', 0, 90), ('Ice Beam', 0, 90), ('Toxic', 10, 0), ('Recover', None, 0)]
+[01:09:42] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[01:09:42] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[01:09:43] Click Pokemon swap slot 5 tại (1311,538)
+[01:09:44] Đã swap sang slot 5.
+[01:09:47] Check JSON slot 5: [('Superpower', 5, 120), ('Psycho Cut', 20, 70), ('Rest', None, 0), ('Sleep Talk', 16, 0)]
+[01:09:47] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:09:48] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:09:49] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:09:50] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[01:09:52] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:09:55] OCR Check PP: [('sao 4', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:09:55] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:09:55] Chọn Move 1: 'Superpower' (type=fighting, pwr=120, pp=5/8)
+[01:09:55] Click move slot 1 tại (1370,337)
+[01:09:55] Đã trừ PP 'Superpower': 5 -> 4
+[01:09:56] Đang đợi animation chiêu thức...
+[01:10:04] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:10:06] Move panel chưa sẵn sàng sau khi click Fight.
+[01:10:09] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:10:09] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:10:09] Chọn Move 1: 'Superpower' (type=fighting, pwr=120, pp=4/8)
+[01:10:09] Click move slot 1 tại (1370,337)
+[01:10:09] Đã trừ PP 'Superpower': 4 -> 3
+[01:10:10] Đang đợi animation chiêu thức...
+[01:10:18] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:10:21] Move panel chưa sẵn sàng sau khi click Fight.
+[01:10:23] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:10:23] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:10:23] Chọn Move 1: 'Superpower' (type=fighting, pwr=120, pp=3/8)
+[01:10:23] Click move slot 1 tại (1370,337)
+[01:10:23] Đã trừ PP 'Superpower': 3 -> 2
+[01:10:24] Đang đợi animation chiêu thức...
+[01:10:32] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:10:33] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:10:34] Không tìm thấy template rightBarButtomFight.png (score=0.36)
+[01:10:36] Nút Fight biến mất do trận đấu đã kết thúc.
+[01:10:47] Mới vào trận, đợi 3.5s animation...
+[01:10:51] Vào battle với: magneton
+[01:10:52] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:10:54] Move panel chưa sẵn sàng sau khi click Fight.
+[01:10:57] OCR Check PP: [('i 3 15', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[01:10:57] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:10:57] Chọn Move 1: 'Superpower' (type=fighting, pwr=120, pp=2/8)
+[01:10:57] Click move slot 1 tại (1370,337)
+[01:10:57] Đã trừ PP 'Superpower': 2 -> 1
+[01:10:58] Đang đợi animation chiêu thức...
+[01:11:06] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:11:09] Move panel chưa sẵn sàng sau khi click Fight.
+[01:11:11] OCR Check PP: [('i 3 15', None), ('r a 0 16', None), ('a0', None), ('os oo an', None)]
+[01:11:11] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:11:11] Chọn Move 1: 'Superpower' (type=fighting, pwr=120, pp=1/8)
+[01:11:11] Click move slot 1 tại (1370,337)
+[01:11:11] Đã trừ PP 'Superpower': 1 -> 0
+[01:11:12] Đang đợi animation chiêu thức...
+[01:22:23] === Bắt đầu Mode 3: Auto Farm ===
+[01:22:24] Mới vào trận, đợi 3.5s animation...
+[01:22:28] Vào battle với: magneton
+[01:22:28] Check JSON slot 1: [('Surf', 0, 90), ('Ice Beam', 0, 90), ('Toxic', 10, 0), ('Recover', None, 0)]
+[01:22:28] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[01:22:29] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[01:22:30] Click Pokemon swap slot 5 tại (1311,538)
+[01:22:31] Đã swap sang slot 5.
+[01:22:34] Check JSON slot 5: [('Superpower', 0, 120), ('Psycho Cut', 20, 70), ('Rest', None, 0), ('Sleep Talk', 16, 0)]
+[01:22:34] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:22:35] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:22:36] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:22:37] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[01:22:39] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:22:42] Move panel chưa sẵn sàng sau khi click Fight.
+[01:22:44] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:22:44] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:22:44] ⚠ Move slot 2 mismatch! OCR: 'acm 862020' không tồn tại trong JSON moves. Skip move selection.
+[01:22:44] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[01:22:52] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[01:22:54] Move panel chưa sẵn sàng sau khi click Fight.
+[01:22:57] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:22:57] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:22:57] ⚠ Move slot 2 mismatch! OCR: 'acm 862020' không tồn tại trong JSON moves. Skip move selection.
+[01:22:57] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[01:23:04] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[01:23:07] Move panel chưa sẵn sàng sau khi click Fight.
+[01:23:53] === Bắt đầu Mode 3: Auto Farm ===
+[01:24:04] Mới vào trận, đợi 3.5s animation...
+[01:24:08] Vào battle với: nidoqueen
+[01:24:08] Check JSON slot 1: [('Surf', 0, 90), ('Ice Beam', 0, 90), ('Toxic', 10, 0), ('Recover', None, 0)]
+[01:24:08] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[01:24:08] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[01:24:09] Click Pokemon swap slot 5 tại (1311,538)
+[01:24:10] Đã swap sang slot 5.
+[01:24:13] Check JSON slot 5: [('Superpower', 0, 120), ('Psycho Cut', 20, 70), ('Rest', 0, 0), ('Sleep Talk', 16, 0)]
+[01:24:13] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:24:14] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:24:16] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:24:16] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[01:24:18] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:24:21] Move panel chưa sẵn sàng sau khi click Fight.
+[01:24:23] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:24:23] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:24:24] ⚠ Move slot 2 mismatch! OCR: 'acm 862020' không tồn tại trong JSON moves. Skip move selection.
+[01:24:24] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[01:24:31] Click rightBarButtomFight.png tại (1316,685) score=0.64
+[01:24:34] Move panel chưa sẵn sàng sau khi click Fight.
+[01:24:36] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:24:36] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:24:37] ⚠ Move slot 2 mismatch! OCR: 'acm 862020' không tồn tại trong JSON moves. Skip move selection.
+[01:24:37] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[01:25:33] === Bắt đầu Mode 3: Auto Farm ===
+[01:25:39] Mới vào trận, đợi 3.5s animation...
+[01:25:43] Vào battle với: rhyhorn
+[01:25:43] Check JSON slot 1: [('Surf', 0, 90), ('Ice Beam', 0, 90), ('Toxic', 10, 0), ('Recover', None, 0)]
+[01:25:43] Slot 1 hết PP tấn công. Thử swap Pokemon.
+[01:25:43] Click rightBarButtomPokemon.png tại (1440,688) score=0.72
+[01:25:45] Click Pokemon swap slot 5 tại (1311,538)
+[01:25:45] Đã swap sang slot 5.
+[01:25:49] Check JSON slot 5: [('Superpower', 0, 120), ('Psycho Cut', 20, 70), ('Rest', 0, 0), ('Sleep Talk', 16, 0)]
+[01:25:49] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:25:49] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:25:51] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:25:51] Thử tìm nút Fight lần 2 (vẫn trong trận, chờ hiện)...
+[01:25:53] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:25:56] Move panel chưa sẵn sàng sau khi click Fight.
+[01:25:58] OCR Check PP: [('Move1', None), ('acm 862020', None), ('ion ome an', None), ('Move4', None)]
+[01:25:58] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:25:59] Chọn Move 2: 'Psycho Cut' (type=psychic, pwr=70, pp=20/20)
+[01:25:59] Click move slot 2 tại (1373,413)
+[01:25:59] Đã trừ PP 'Psycho Cut': 20 -> 19
+[01:26:00] Đang đợi animation chiêu thức...
+[01:26:07] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:26:08] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:26:10] Click rightBarButtomFight.png tại (1316,685) score=0.70
+[01:26:13] Move panel chưa sẵn sàng sau khi click Fight.
+[01:26:15] OCR Check PP: [('Move1', None), ('acm 100', None), ('ion ome an', None), ('Move4', None)]
+[01:26:15] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[01:26:15] Chọn Move 2: 'Psycho Cut' (type=psychic, pwr=70, pp=19/20)
+[01:26:16] Click move slot 2 tại (1373,413)
+[01:26:16] Đã trừ PP 'Psycho Cut': 19 -> 18
+[01:26:17] Đang đợi animation chiêu thức...
+[01:26:24] Không tìm thấy template rightBarButtomFight.png (score=0.29)
+[01:26:25] Thử tìm nút Fight lần 1 (vẫn trong trận, chờ hiện)...
+[01:26:26] Không tìm thấy template rightBarButtomFight.png (score=0.35)

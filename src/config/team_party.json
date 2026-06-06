@@ -3,7 +3,7 @@
     "slot": 1,
     "name": "Milotic",
     "types": [
-      "Water"
+      "water"
     ],
     "moves": [
       {
@@ -61,7 +61,7 @@
         "type": "fairy",
         "power": 95,
         "accuracy": 100,
-        "pp_current": 14,
+        "pp_current": 0,
         "pp_max": 15
       },
       {
@@ -77,7 +77,7 @@
         "type": "psychic",
         "power": 90,
         "accuracy": 100,
-        "pp_current": 10,
+        "pp_current": 0,
         "pp_max": 10
       }
     ]
@@ -102,7 +102,7 @@
         "type": "dark",
         "power": 70,
         "accuracy": 100,
-        "pp_current": 5,
+        "pp_current": 0,
         "pp_max": 5
       },
       {
@@ -110,7 +110,7 @@
         "type": "dragon",
         "power": 120,
         "accuracy": 100,
-        "pp_current": 10,
+        "pp_current": 0,
         "pp_max": 10
       },
       {
@@ -118,7 +118,7 @@
         "type": "normal",
         "power": 102,
         "accuracy": 100,
-        "pp_current": 20,
+        "pp_current": 0,
         "pp_max": 20
       }
     ]
@@ -151,7 +151,7 @@
         "type": "normal",
         "power": 102,
         "accuracy": 100,
-        "pp_current": 20,
+        "pp_current": 0,
         "pp_max": 20
       },
       {
@@ -159,7 +159,7 @@
         "type": "ice",
         "power": 75,
         "accuracy": 100,
-        "pp_current": 15,
+        "pp_current": 0,
         "pp_max": 15
       }
     ]
@@ -173,36 +173,36 @@
     ],
     "moves": [
       {
-        "name": "Fake Out",
-        "type": "normal",
-        "power": 0,
-        "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
-      },
-      {
-        "name": "Drain Punch",
+        "name": "Superpower",
         "type": "fighting",
-        "power": 75,
+        "power": 120,
         "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
+        "pp_current": 0,
+        "pp_max": 8
       },
       {
-        "name": "Return",
-        "type": "normal",
-        "power": 102,
+        "name": "Psycho Cut",
+        "type": "psychic",
+        "power": 70,
         "accuracy": 100,
-        "pp_current": 20,
+        "pp_current": 18,
         "pp_max": 20
       },
       {
-        "name": "Ice Punch",
-        "type": "ice",
-        "power": 75,
+        "name": "Rest",
+        "type": "normal",
+        "power": 0,
         "accuracy": 100,
-        "pp_current": 15,
-        "pp_max": 15
+        "pp_current": 0,
+        "pp_max": 0
+      },
+      {
+        "name": "Sleep Talk",
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100,
+        "pp_current": 16,
+        "pp_max": 16
       }
     ]
   },
@@ -243,8 +243,8 @@
         "type": "normal",
         "power": 0,
         "accuracy": 100,
-        "pp_current": null,
-        "pp_max": null
+        "pp_current": 0,
+        "pp_max": 0
       }
     ]
   }

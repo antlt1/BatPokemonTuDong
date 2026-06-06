@@ -68,6 +68,42 @@ def feedback_log(message: str):
         f.write(line)
 
 
+def open_team_json_editor(reason: str):
+    try:
+        import tkinter as tk
+        from tkinter import messagebox, scrolledtext
+    except Exception as exc:
+        feedback_log(f"Khong mo duoc UI sua JSON: {exc}")
+        return
+
+    TEAM_PATH.parent.mkdir(parents=True, exist_ok=True)
+    if not TEAM_PATH.exists():
+        TEAM_PATH.write_text("[]", encoding="utf-8")
+
+    root = tk.Tk()
+    root.title("Sua team_party.json")
+    root.geometry("900x700")
+
+    tk.Label(root, text=reason, anchor="w", justify="left").pack(fill="x", padx=8, pady=6)
+    text = scrolledtext.ScrolledText(root, wrap="none", font=("Consolas", 10))
+    text.pack(fill="both", expand=True, padx=8, pady=6)
+    text.insert("1.0", TEAM_PATH.read_text(encoding="utf-8"))
+
+    def save():
+        raw = text.get("1.0", "end").strip()
+        try:
+            parsed = json.loads(raw)
+        except Exception as exc:
+            messagebox.showerror("JSON loi", str(exc))
+            return
+        save_json(TEAM_PATH, parsed)
+        messagebox.showinfo("Saved", f"Da luu {TEAM_PATH}")
+        root.destroy()
+
+    tk.Button(root, text="Save team_party.json", command=save).pack(pady=8)
+    root.mainloop()
+
+
 # ==================== Battle State ====================
 
 def load_battle_state() -> dict:
@@ -182,11 +218,15 @@ def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict)
 
     for i, move in enumerate(moves):
         pp_current = move.get("pp_current")
+        power = move.get("power", 0) or 0
+        if power <= 0:
+            continue
+        if pp_current is None:
+            continue
         if pp_current is not None and pp_current <= 0:
             continue  # Hết PP
 
         s = score_move(move, my_types, enemy_types, config)
-        power = move.get("power", 0) or 0
         pp_cur = move.get("pp_current") or 0
 
         if s > best_score or (
@@ -206,7 +246,7 @@ def all_attack_moves_depleted(moves: list) -> bool:
     for move in moves:
         power = move.get("power", 0) or 0
         pp_current = move.get("pp_current")
-        if power > 0 and (pp_current is None or pp_current > 0):
+        if power > 0 and pp_current is not None and pp_current > 0:
             return False
     return True
 
@@ -314,6 +354,27 @@ def update_move_pp_from_ocr(moves_list: list, ocr_moves: list) -> list:
     return moves_list
 
 
+def merge_pp_from_ocr_by_slot(team_moves: list, ocr_moves: list) -> tuple:
+    """
+    Keep JSON move name/type/power as the source of truth.
+    OCR is only trusted for PP, and only when it reads a valid number.
+    Returns (merged_moves, valid_pp_reads).
+    """
+    merged = []
+    valid_pp_reads = 0
+    for i, team_move in enumerate(team_moves[:4]):
+        move = dict(team_move)
+        if i < len(ocr_moves):
+            ocr = ocr_moves[i]
+            if ocr.get("pp_current") is not None:
+                move["pp_current"] = ocr["pp_current"]
+                valid_pp_reads += 1
+            if ocr.get("pp_max") is not None:
+                move["pp_max"] = ocr["pp_max"]
+        merged.append(move)
+    return merged, valid_pp_reads
+
+
 def wait_for_move_panel(screenshot_fn, config, save_debug_fn, timeout=2.0, interval=0.25):
     deadline = time.time() + timeout
     while time.time() < deadline:
@@ -346,6 +407,38 @@ def debug_move_slots(image_bgr, config, save_debug_fn):
         move_names.append((i + 1, raw.strip()))
         save_debug_fn(config, cell, f"move_slot_{i+1}")
     # print("[DEBUG] MOVE_SLOT_OCR:", move_names)
+
+
+def ocr_pokemon_name_in_battle(image_bgr, config) -> str:
+    """OCR tên Pokemon từ vị trí góc dưới trái (bên cạnh HP bar)."""
+    roi = config.get("roi", {}).get("pokemon_name_in_battle")
+    if not roi:
+        return ""
+    x, y, w, h = roi
+    cell = image_bgr[y:y+h, x:x+w]
+    raw = ocr_crop(cell, config, psm=7)
+    return parse_move_name_ocr(raw).lower().strip()
+
+
+def verify_pokemon_name(image_bgr, config, current_pokemon) -> bool:
+    """
+    Verify pokemon hiện tại match với tên OCR từ battle.
+    Trả về True nếu tên match, False nếu mismatch (có thể đã swap pokemon).
+    """
+    ocr_pokemon_name = ocr_pokemon_name_in_battle(image_bgr, config)
+    if not ocr_pokemon_name:
+        # Nếu OCR không đọc được, cho qua (không fail)
+        return True
+
+    json_pokemon_name = normalize(current_pokemon.get("name", ""))
+    if json_pokemon_name != ocr_pokemon_name:
+        feedback_log(
+            f"⚠ Pokemon mismatch! JSON: '{json_pokemon_name}' vs OCR: '{ocr_pokemon_name}'. "
+            f"Có thể đã swap Pokemon, skip lượt này."
+        )
+        return False
+
+    return True
 
 
 # ==================== Click Helpers ====================
@@ -561,9 +654,10 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 print("Chưa có moves. Dừng.")
                 return
             # Reset PP theo team (hoặc pp_max nếu có)
-            for m in current_moves:
-                if m.get("pp_current") is None and m.get("pp_max") is not None:
-                    m["pp_current"] = m["pp_max"]
+            feedback_log(
+                f"Check JSON slot {current_slot}: "
+                f"{[(m.get('name'), m.get('pp_current'), m.get('power', 0)) for m in current_moves]}"
+            )
 
         # Kiểm tra xem tất cả move tấn công có còn PP không
         if all_attack_moves_depleted(current_moves):
@@ -571,14 +665,30 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             depleted_slots.add(current_slot)
             battle_state["depleted_slots"] = list(depleted_slots)
 
-            # Tìm slot tiếp theo
+            # Tìm slot tiếp theo: chỉ chọn slot khác current, chưa bị đánh dấu depleted,
+            # và có ít nhất 1 move tấn công còn PP (>0). Nếu không có thì trả None.
             new_slot = None
             for slot in range(1, 7):
-                if slot not in depleted_slots:
-                    candidate = get_pokemon_by_slot(team, slot)
-                    if candidate and candidate.get("moves"):
-                        new_slot = slot
+                if slot == current_slot:
+                    continue
+                if slot in depleted_slots:
+                    continue
+                candidate = get_pokemon_by_slot(team, slot)
+                if not candidate or not candidate.get("moves"):
+                    continue
+                # Kiểm tra xem candidate có ít nhất 1 move tấn công còn PP hay không
+                cand_moves = list(candidate.get("moves", []))
+                # Nếu pp_current là None nhưng pp_max có giá trị -> coi là còn PP
+                has_attack_pp = False
+                for mv in cand_moves:
+                    power = mv.get("power", 0) or 0
+                    pp_current = mv.get("pp_current")
+                    if power > 0 and pp_current is not None and pp_current > 0:
+                        has_attack_pp = True
                         break
+                if has_attack_pp:
+                    new_slot = slot
+                    break
 
             if new_slot is None:
                 feedback_log("Không còn slot Pokemon hợp lệ! Dừng farm.")
@@ -612,7 +722,7 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             save_battle_state(battle_state)
             current_moves = []  # Load lại moves của Pokemon mới
             feedback_log(f"Đã swap sang slot {current_slot}.")
-            time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
+            time.sleep(config["timing"].get("after_swap_wait_seconds", 2.0))
             continue
 
         # Click nút Fight
@@ -661,7 +771,54 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
         debug_move_slots(image, config, save_debug_fn)
         ocr_moves = ocr_move_slots(image, config)
         feedback_log(f"OCR Check PP: {[(m['name'], m.get('pp_current')) for m in ocr_moves]}")
-        current_moves = update_move_pp_from_ocr(current_moves, ocr_moves)
+
+        # Đồng bộ moves hiện tại với kết quả OCR: ưu tiên dùng tên/PP từ OCR
+        def merge_moves_from_ocr(team_moves, ocr_moves):
+            merged = []
+            for i in range(4):
+                ocr = ocr_moves[i] if i < len(ocr_moves) else {}
+                ocr_name = ocr.get("name") or ""
+                norm_ocr_name = normalize(ocr_name)
+
+                # Thử khớp chính xác với move trong team (theo tên chuẩn hóa)
+                matched = None
+                for tm in team_moves:
+                    if normalize(tm.get("name", "")) == norm_ocr_name and tm.get("power", 0) is not None:
+                        matched = dict(tm)
+                        break
+
+                if matched is None:
+                    # Nếu không khớp, đoán dữ liệu move theo tên OCR
+                    guess = _guess_move_data_from_name(norm_ocr_name)
+                    matched = {
+                        "name": norm_ocr_name or f"Move{i+1}",
+                        "type": guess.get("type", "normal"),
+                        "power": guess.get("power", 0),
+                        "accuracy": guess.get("accuracy", 100),
+                        "pp_current": ocr.get("pp_current"),
+                        "pp_max": ocr.get("pp_max"),
+                    }
+                else:
+                    # Cập nhật PP từ OCR nếu có
+                    if ocr.get("pp_current") is not None:
+                        matched["pp_current"] = ocr.get("pp_current")
+                    if ocr.get("pp_max") is not None:
+                        matched["pp_max"] = ocr.get("pp_max")
+
+                merged.append(matched)
+            return merged
+
+        current_moves, valid_pp_reads = merge_pp_from_ocr_by_slot(current_moves, ocr_moves)
+        pokemon["moves"] = current_moves
+        if valid_pp_reads == 0:
+            feedback_log("OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.")
+
+        # === Verify Pokemon name match ===
+        image_for_verify = screenshot_fn()
+        if not verify_pokemon_name(image_for_verify, config, pokemon):
+            feedback_log("Verify Pokemon thất bại. Skip lượt này để tránh click sai move.")
+            time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
+            continue
 
         # Chọn move tốt nhất
         best_idx = pick_best_move(current_moves, my_types, enemy_types, config)
