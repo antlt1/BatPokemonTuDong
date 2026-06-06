@@ -33,7 +33,7 @@ MOUSEEVENTF_LEFTUP = 0x0004
 
 user32 = ctypes.windll.user32
 
-
+# Cấu trúc INPUT và MOUSEINPUT để gửi sự kiện chuột qua SendInput
 class MOUSEINPUT(ctypes.Structure):
     _fields_ = [
         ("dx", wintypes.LONG),
@@ -44,11 +44,11 @@ class MOUSEINPUT(ctypes.Structure):
         ("dwExtraInfo", ctypes.POINTER(wintypes.ULONG)),
     ]
 
-
+# INPUT_UNION để hỗ trợ nhiều loại input khác nhau, ở đây chỉ dùng MOUSEINPUT
 class INPUT_UNION(ctypes.Union):
     _fields_ = [("mi", MOUSEINPUT)]
 
-
+# INPUT để gửi đến SendInput, có thể mở rộng để hỗ trợ bàn phím nếu cần
 class INPUT(ctypes.Structure):
     _fields_ = [
         ("type", wintypes.DWORD),
@@ -83,15 +83,15 @@ def ensure_runtime(config):
         missing.append("tesseract.exe")
 
     if missing:
-        print("Thieu dependency:", ", ".join(sorted(set(missing))))
-        print("Cai Python package: pip install -r requirements.txt")
-        print("Neu thieu tesseract.exe, cai Tesseract Windows va them vao PATH")
-        print("hoac dien duong dan vao src/config/tool_config.json -> ocr.tesseract_cmd")
+        print("Thiếu dependency:", ", ".join(sorted(set(missing))))
+        print("Cài Python package: pip install -r requirements.txt")
+        print("Thiếu tesseract.exe, cài Tesseract Windows và thêm vào PATH")
+        print("hoặc điền đường dẫn vào src/config/tool_config.json -> ocr.tesseract_cmd")
         return False
 
     return True
 
-
+# tìm cửa sổ game dựa trên một phần của tiêu đề, trả về handle cửa sổ nếu tìm thấy, hoặc None nếu không tìm thấy
 def find_window(title_part):
     handles = []
 
@@ -238,7 +238,7 @@ def read_enemy_name(image, config):
         save_debug(config, roi_image, "empty_enemy_name")
     return cleaned
 
-
+# đọc ability từ log battle, trả về ability đã chuẩn hóa nếu tìm thấy, hoặc chuỗi rỗng nếu không tìm thấy. Cũng trả về raw log để debug nếu cần
 def read_ability(image, config):
     roi_image = crop_roi(image, config["roi"]["battle_log"])
     text = ocr_text(roi_image, config, psm=6)
@@ -251,7 +251,7 @@ def read_ability(image, config):
     ability = re.sub(r"\s+", " ", ability)
     return ability, text
 
-
+# đọc ability với retry nếu không đọc được ở lần đầu, trả về ability đã chuẩn hóa và raw log. Nếu sau retry vẫn không đọc được, trả về kết quả cuối cùng (có thể là rỗng) để debug
 def read_ability_with_retry(config):
     retry_count = config["timing"].get("ability_retry_count", 2)
     retry_seconds = config["timing"].get("ability_retry_seconds", 1.5)
@@ -288,7 +288,7 @@ def match_target(enemy_name, targets):
             return target_name, ability
     return None, None
 
-
+# tìm template trên ảnh, trả về tọa độ trung tâm của template nếu tìm thấy với score cao hơn threshold, hoặc None nếu không tìm thấy
 def locate_template(image, template_path, threshold, roi=None):
     search_image = image
     offset_x = 0
@@ -408,7 +408,7 @@ def move_until_next_scan(config):
         release_move_keys()
     return True
 
-
+# phát âm thanh khi tìm thấy Pokemon, nếu có file âm thanh được cấu hình và tồn tại thì phát file đó, nếu không thì phát beep mặc định
 def play_found_sound(config):
     sound_path = ROOT / config["audio"]["found_sound"]
     if sound_path.exists():
@@ -430,10 +430,10 @@ def play_found_sound(config):
 
 
 def stop_found(config, pokemon, ability):
+    play_found_sound(config)
     print("")
     print("FOUND:", pokemon, "-", ability if ability != "none" else "any ability")
     print("Tool da dung. Ban tu bat Pokemon trong game.")
-    play_found_sound(config)
 
 
 def run_manual_mode(config, targets):
