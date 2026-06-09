@@ -268,11 +268,23 @@ def fuzzy_fix_name(name: str, known_names=None):
     if known_names is None:
         known_names = get_known_pokemon_names()
     
-    # Làm sạch triệt để: chỉ giữ chữ cái và khoảng trắng, bỏ dấu phẩy/chấm/ký tự lạ
+    # Làm sạch triệt để: chỉ giữ chữ cái và khoảng trắng
     clean_name = re.sub(r"[^a-z\s]", "", normalize_text(name)).strip()
     
     matches = difflib.get_close_matches(clean_name, known_names, n=1, cutoff=0.45)
-    return matches[0] if matches else name
+    if matches:
+        return matches[0]
+        
+    # Nếu không khớp, thử tách từ ra để khớp (tránh lỗi dính chữ "annie le 4 calm mind")
+    words = clean_name.split()
+    for w in words:
+        if len(w) >= 3:
+            m = difflib.get_close_matches(w, known_names, n=1, cutoff=0.7)
+            if m:
+                return m[0]
+                
+    # Fallback: trả về từ đầu tiên nếu quá dài
+    return words[0][:15] if words else name
 
 
 def is_battle(image, config):

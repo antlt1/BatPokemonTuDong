@@ -15,7 +15,7 @@
     "move_hold_max_seconds": 0.42,
     "after_fight_click_seconds": 0.6,
     "after_move_click_seconds": 1.0,
-    "battle_anim_wait_seconds": 5.5,
+    "battle_anim_wait_seconds": 7.5,
     "after_swap_wait_seconds": 2.0,
     "swap_menu_wait_seconds": 0.8
   },
@@ -35,16 +35,16 @@
   },
   "roi": {
     "battle_header": [
-      400,
+      605,
       240,
-      1150,
-      90
+      686,
+      65
     ],
     "enemy_name": [
       520,
       305,
-      360,
-      85
+      291,
+      119
     ],
     "battle_log": [
       190,
@@ -53,10 +53,10 @@
       225
     ],
     "right_action_bar": [
-      1230,
-      630,
-      330,
-      230
+      1261,
+      257,
+      299,
+      603
     ],
     "move_panel": [
       1230,
@@ -66,26 +66,26 @@
     ],
     "move_slots": [
       [
-        1252,
+        1275,
         308,
-        237,
-        58
+        244,
+        62
       ],
       [
-        1252,
-        386,
+        1275,
+        388,
         243,
         55
       ],
       [
-        1254,
-        452,
+        1274,
+        455,
         242,
         61
       ],
       [
-        1257,
-        522,
+        1274,
+        528,
         243,
         65
       ]
@@ -181,16 +181,34 @@
       ]
     ],
     "pokemon_button_roi": [
-      1387,
-      640,
-      131,
-      97
+      1406,
+      651,
+      92,
+      86
     ],
     "pokemon_name_in_battle": [
       1022,
       634,
-      79,
-      32
+      142,
+      46
+    ],
+    "fight_button_roi": [
+      1285,
+      658,
+      104,
+      77
+    ],
+    "items_button_roi": [
+      1295,
+      744,
+      84,
+      78
+    ],
+    "run_button_roi": [
+      1406,
+      755,
+      121,
+      70
     ]
   },
   "click_offsets": {

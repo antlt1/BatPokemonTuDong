@@ -47,21 +47,29 @@ class TabbedToolUI:
         with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
             self.config = json.load(f)
 
-        # Initialize ROIs and thresholds
-        self.calibrating_roi_type = tk.StringVar(value="move_slots") # Default to move slots
-        self.selected_slot_idx = 0 # Index within the current ROI list
+        # Initialize ROIs
+        self.calibrating_roi_type = tk.StringVar(value="move_slots")
+        self.selected_slot_idx = 0
+
+        # Danh sách các ROI đơn lẻ (các nút bấm và vùng đọc text)
+        self.template_button_types = ["pokemon_button_roi", "fight_button_roi", "items_button_roi", "run_button_roi"]
+        self.single_roi_types = self.template_button_types + [
+            "battle_header", "enemy_name", "pokemon_name_in_battle", 
+            "right_action_bar", "battle_log"
+        ]
+        
         self.rois = {
-            "move_slots": self.config.get("roi", {}).get("move_slots", [
-            [900, 638, 130, 48], # Default values for move slots
-            [900, 695, 130, 48],
-            [900, 752, 130, 48],
-            [900, 809, 130, 48],
-            ]),
+            "move_slots": self.config.get("roi", {}).get("move_slots", [[900, 638, 130, 48]] * 4),
+            "pokemon_swap_slots": self.config.get("roi", {}).get("pokemon_swap_slots", [[1233, 638, 310, 48]] * 6),
             "pokemon_button_roi": [self.config.get("roi", {}).get("pokemon_button_roi", [1300, 700, 150, 50])],
-            "pokemon_swap_slots": self.config.get("roi", {}).get("pokemon_swap_slots", [
-                [1233, 638, 310, 48], [1233, 690, 310, 48], [1233, 742, 310, 48],
-                [1233, 794, 310, 48], [1233, 846, 310, 48], [1233, 898, 310, 48]
-            ])
+            "fight_button_roi": [self.config.get("roi", {}).get("fight_button_roi", [1300, 600, 150, 50])],
+            "items_button_roi": [self.config.get("roi", {}).get("items_button_roi", [1450, 600, 150, 50])],
+            "run_button_roi": [self.config.get("roi", {}).get("run_button_roi", [1450, 700, 150, 50])],
+            "battle_header": [self.config.get("roi", {}).get("battle_header", [400, 240, 1150, 90])],
+            "enemy_name": [self.config.get("roi", {}).get("enemy_name", [520, 305, 360, 85])],
+            "pokemon_name_in_battle": [self.config.get("roi", {}).get("pokemon_name_in_battle", [1022, 634, 79, 32])],
+            "right_action_bar": [self.config.get("roi", {}).get("right_action_bar", [1230, 630, 330, 230])],
+            "battle_log": [self.config.get("roi", {}).get("battle_log", [190, 745, 460, 225])]
         }
         
         # Take screenshot
@@ -78,56 +86,79 @@ class TabbedToolUI:
         control_frame = tk.Frame(self.tab_calibrate, bg="gray20", height=120)
         control_frame.pack(fill=tk.X, side=tk.BOTTOM)
         
-        # Slot selector
+        # Control frame - Thêm các RadioButton cho 4 nút
         selector_frame = tk.Frame(control_frame, bg="gray20")
         selector_frame.pack(pady=10)
         
-        tk.Label(selector_frame, text="Calibrate:", bg="gray20", fg="white").pack(side=tk.LEFT, padx=5)
+        # Các nút chọn loại ROI
+        row1_frame = tk.Frame(selector_frame, bg="gray20")
+        row1_frame.pack(pady=2)
         
-        tk.Radiobutton(selector_frame, text="Move Slots", variable=self.calibrating_roi_type,
-                       value="move_slots", bg="gray30", fg="white", activebackground="blue",
-                       command=self._on_calibration_type_change).pack(side=tk.LEFT, padx=10)
-        tk.Radiobutton(selector_frame, text="Pokemon Button", variable=self.calibrating_roi_type,
-                       value="pokemon_button_roi", bg="gray30", fg="white", activebackground="blue",
-                       command=self._on_calibration_type_change).pack(side=tk.LEFT, padx=10)
-        tk.Radiobutton(selector_frame, text="Pokemon Swap Slots", variable=self.calibrating_roi_type,
-                       value="pokemon_swap_slots", bg="gray30", fg="white", activebackground="blue",
-                       command=self._on_calibration_type_change).pack(side=tk.LEFT, padx=10)
+        row2_frame = tk.Frame(selector_frame, bg="gray20")
+        row2_frame.pack(pady=2)
 
-        # Threshold for Pokemon Button
-        self.pokemon_button_threshold_var = tk.DoubleVar(value=self.config.get("template_matching", {}).get("pokemon_button_threshold", 0.50)) # Default threshold
+        modes_row1 = [
+            ("Moves", "move_slots"),
+            ("Swap Slots", "pokemon_swap_slots"),
+            ("Fight Btn", "fight_button_roi"),
+            ("Items Btn", "items_button_roi"),
+            ("Pokemon Btn", "pokemon_button_roi"),
+            ("Run Btn", "run_button_roi")
+        ]
+
+        modes_row2 = [
+            ("Battle Header", "battle_header"),
+            ("Enemy Name", "enemy_name"),
+            ("My PKM Name", "pokemon_name_in_battle"),
+            ("Action Bar", "right_action_bar"),
+            ("Battle Log", "battle_log")
+        ]
+
+        for text, mode in modes_row1:
+            tk.Radiobutton(row1_frame, text=text, variable=self.calibrating_roi_type,
+                           value=mode, bg="gray30", fg="white", selectcolor="#3d59a1",
+                           indicatoron=0, width=12,
+                           command=self._on_calibration_type_change).pack(side=tk.LEFT, padx=2)
+                           
+        for text, mode in modes_row2:
+            tk.Radiobutton(row2_frame, text=text, variable=self.calibrating_roi_type,
+                           value=mode, bg="gray30", fg="white", selectcolor="#3d59a1",
+                           indicatoron=0, width=15,
+                           command=self._on_calibration_type_change).pack(side=tk.LEFT, padx=2)
+
+        # Threshold entry (Dùng chung cho các nút đơn)
+        self.threshold_var = tk.DoubleVar(value=0.55)
         self.threshold_frame = tk.Frame(selector_frame, bg="gray20")
         tk.Label(self.threshold_frame, text="Threshold:", bg="gray20", fg="white").pack(side=tk.LEFT, padx=5)
-        tk.Entry(self.threshold_frame, textvariable=self.pokemon_button_threshold_var, width=5,
-                 bg="#313244", fg="#cdd6f4", insertbackground="#cdd6f4", font=("Segoe UI", 10), relief="flat").pack(side=tk.LEFT)
-        
+        tk.Entry(self.threshold_frame, textvariable=self.threshold_var, width=5).pack(side=tk.LEFT)
+
         # Info label
         self.info_label = tk.Label(control_frame, text="", bg="gray20", fg="white", font=("Arial", 10), anchor="w")
         self.info_label.pack(fill=tk.X, padx=10, pady=5)
-        
+
         # Buttons
         button_frame = tk.Frame(control_frame, bg="gray20")
         button_frame.pack(pady=10)
-        
-        tk.Button(button_frame, text="Save", command=self._save_calibrate, 
+
+        tk.Button(button_frame, text="Save", command=self._save_calibrate,
                  bg="green", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=10)
-        tk.Button(button_frame, text="Reset", command=self._reset_slots, 
+        tk.Button(button_frame, text="Reset", command=self._reset_slots,
                  bg="orange", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
-        
+
         # Mouse tracking
         self.canvas.bind("<Motion>", self._on_motion)
         self.canvas.bind("<Button-1>", self._on_click)
         self.canvas.bind("<B1-Motion>", self._on_drag)
         self.canvas.bind("<ButtonRelease-1>", self._on_release) # Corrected from _on_release
         self.canvas.bind("<MouseWheel>", self._on_scroll) # For changing selected_slot_idx
-        
+
         self.dragging_slot = None
         self.dragging_handle = None
         self.drag_start = None
-        
+
         # Display
         self._display_image()
-
+    
     def _setup_team_tab(self):
         """Setup tab Team Builder."""
         try:
@@ -160,7 +191,7 @@ class TabbedToolUI:
             label = tk.Label(self.tab_party_scanner, text=f"Error loading Party Scanner: {e}",
                             font=("Arial", 11), fg="red", justify=tk.CENTER)
             label.pack(pady=20)
-    
+
     def _take_screenshot(self):
         """Chụp toàn màn hình."""
         try:
@@ -171,50 +202,50 @@ class TabbedToolUI:
         except Exception as e:
             print(f"Cannot take screenshot: {e}")
             return np.zeros((1080, 1920, 3), dtype=np.uint8)
-    
+
     def _on_calibration_type_change(self):
-        """Khi chọn loại ROI khác."""
-        # Reset selected slot index for the new type
-        self.selected_slot_idx = 0 # Reset to first item in the new list
-        # Show/hide threshold entry based on selected type
-        if self.calibrating_roi_type.get() == "pokemon_button_roi":
-            self.threshold_frame.pack(side=tk.LEFT, padx=5)
+        """Khi chọn loại ROI khác, cập nhật threshold tương ứng từ config."""
+        curr = self.calibrating_roi_type.get()
+        self.selected_slot_idx = 0
+
+        # Mapping threshold từ config
+        thresh_map = {
+            "pokemon_button_roi": "pokemon_button_threshold",
+            "fight_button_roi": "fight_button_threshold",
+            "items_button_threshold": "items_button_threshold",
+            "run_button_roi": "run_button_threshold"
+        }
+
+        if curr in self.template_button_types:
+            key = thresh_map.get(curr, "fight_button_threshold")
+            val = self.config.get("template_matching", {}).get(key, 0.55)
+            self.threshold_var.set(val)
+            self.threshold_frame.pack(side=tk.LEFT, padx=10)
         else:
             self.threshold_frame.pack_forget()
+
         self._display_image()
-    
+
     def _display_image(self):
         """Hiển thị ảnh với ROI overlay."""
         img = self.screenshot_original.copy()
-        
+
         current_roi_list = self.rois[self.calibrating_roi_type.get()]
-        is_single_roi = self.calibrating_roi_type.get() == "pokemon_button_roi"
+        is_single_roi = self.calibrating_roi_type.get() in self.single_roi_types
 
         # Draw all ROIs
         for i, (x, y, w, h) in enumerate(current_roi_list):
-            if is_single_roi: # For single ROI like pokemon_button_roi, only draw the first (and only) item
-                if i == 0:
-                    color = (0, 255, 0)  # Green for selected
-                    thickness = 3
-                    cv2.rectangle(img, (x, y), (x+w, y+h), color, thickness)
-                    cv2.putText(img, "Pokemon Button", (x+5, y+20), cv2.FONT_HERSHEY_SIMPLEX,
-                                0.5, color, 1)
-                    # Draw handles
-                    handle_size = 8
-                    corners = [(x, y), (x+w, y), (x, y+h), (x+w, y+h)]
-                    for cx, cy in corners:
-                        cv2.circle(img, (cx, cy), handle_size, (0, 255, 255), -1)
-                    # Draw template image for Pokemon button
-                    template_img = cv2.imread(str(POKEMON_TEMPLATE), cv2.IMREAD_COLOR)
-                    if template_img is not None:
-                        th, tw = template_img.shape[:2]
-                        # Overlay template at the center of the ROI
-                        center_x, center_y = x + w // 2, y + h // 2
-                        start_x, start_y = center_x - tw // 2, center_y - th // 2
-                        end_x, end_y = start_x + tw, start_y + th
-                        # Ensure it's within bounds and copy
-                        img[max(0, start_y):min(img.shape[0], end_y), max(0, start_x):min(img.shape[1], end_x)] = template_img[max(0, -start_y):min(th, img.shape[0]-start_y), max(0, -start_x):min(tw, img.shape[1]-start_x)]
-                continue # Skip drawing other items if it's a single ROI
+            if is_single_roi:
+                # Vẽ ROI cho nút bấm đơn lẻ
+                color = (0, 255, 0)
+                cv2.rectangle(img, (x, y), (x+w, y+h), color, 3)
+                label = self.calibrating_roi_type.get().replace("_roi", "").upper()
+                cv2.putText(img, label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, color, 2)
+                # Vẽ các điểm neo (handles)
+                for cx, cy in [(x, y), (x+w, y), (x, y+h), (x+w, y+h)]:
+                    cv2.circle(img, (cx, cy), 8, (0, 255, 255), -1)
+
+                break
 
             if i == self.selected_slot_idx:
                 color = (0, 255, 0)  # Green for selected
@@ -232,14 +263,14 @@ class TabbedToolUI:
             cv2.rectangle(img, bg_tl, bg_br, (0, 0, 0), -1)
             cv2.putText(img, label, (x+5, y+2+text_h), cv2.FONT_HERSHEY_SIMPLEX,
                        0.5, (255, 255, 255), 2)
-            
+
             # Draw handles
             if i == self.selected_slot_idx:
                 handle_size = 8
                 corners = [(x, y), (x+w, y), (x, y+h), (x+w, y+h)] # Top-left, Top-right, Bottom-left, Bottom-right
                 for cx, cy in corners:
                     cv2.circle(img, (cx, cy), handle_size, (0, 255, 255), -1)
-        
+
         # Resize to fit canvas
         canvas_width = self.canvas.winfo_width()
         canvas_height = self.canvas.winfo_height()
@@ -252,27 +283,27 @@ class TabbedToolUI:
         else:
             img_resized = img
             self.display_scale = 1.0
-        
+
         # Convert to PIL
         img_rgb = cv2.cvtColor(img_resized, cv2.COLOR_BGR2RGB)
         img_pil = Image.fromarray(img_rgb)
         self.photo_image = ImageTk.PhotoImage(img_pil)
-        
+
         self.canvas.create_image(0, 0, anchor="nw", image=self.photo_image)
-        
+
         # Update info
         if current_roi_list and self.selected_slot_idx < len(current_roi_list):
             x, y, w, h = current_roi_list[self.selected_slot_idx]
             self.info_label.config(text=f"Selected ROI ({self.calibrating_roi_type.get()} Slot {self.selected_slot_idx+1}): X={x}, Y={y}, W={w}, H={h} | Drag handles to adjust")
         else:
             self.info_label.config(text="No ROI selected or list is empty.")
-    
+
     def _on_motion(self, event):
         pass
 
     def _on_scroll(self, event):
         """Scroll to change selected_slot_idx for multi-item ROIs."""
-        if self.calibrating_roi_type.get() != "pokemon_button_roi" and self.rois[self.calibrating_roi_type.get()]:
+        if self.calibrating_roi_type.get() not in self.single_roi_types and self.rois[self.calibrating_roi_type.get()]:
             self.selected_slot_idx = (self.selected_slot_idx - (1 if event.delta > 0 else -1) + len(self.rois[self.calibrating_roi_type.get()])) % len(self.rois[self.calibrating_roi_type.get()])
             self._display_image()
 
@@ -283,12 +314,12 @@ class TabbedToolUI:
             return
 
         # If it's a single ROI, always target the first (and only) item
-        slot_idx_to_check = 0 if self.calibrating_roi_type.get() == "pokemon_button_roi" else self.selected_slot_idx
+        slot_idx_to_check = 0 if self.calibrating_roi_type.get() in self.single_roi_types else self.selected_slot_idx
         x, y, w, h = current_roi_list[slot_idx_to_check]
-        
+
         img_x = int(event.x / self.display_scale)
         img_y = int(event.y / self.display_scale)
-        
+
         tol = 8
         handles = {
             "tl": (x, y),
@@ -297,7 +328,7 @@ class TabbedToolUI:
             "br": (x+w, y+h),
             "center": (x+w//2, y+h//2)
         }
-        
+
         for handle_name, (hx, hy) in handles.items():
             if abs(img_x - hx) < tol and abs(img_y - hy) < tol:
                 self.dragging_slot = slot_idx_to_check
@@ -306,7 +337,7 @@ class TabbedToolUI:
                 return
         # If clicked inside the slot rect (not on a handle), select it for dragging
         # Check all slots for multi-item ROI types
-        if self.calibrating_roi_type.get() != "pokemon_button_roi":
+        if self.calibrating_roi_type.get() not in self.single_roi_types:
             for idx, (sx, sy, sw, sh) in enumerate(current_roi_list):
                 if sx <= img_x <= sx+sw and sy <= img_y <= sy+sh:
                     self.selected_slot_idx = idx
@@ -316,21 +347,21 @@ class TabbedToolUI:
                     self.drag_start = (img_x, img_y)
                     self._display_image()
                     return
-    
+
     def _on_drag(self, event):
         """Kéo chuột để điều chỉnh."""
         if self.dragging_slot is None or self.dragging_handle is None:
             return
-        
+
         img_x = int(event.x / self.display_scale)
         img_y = int(event.y / self.display_scale)
-        
+
         dx = img_x - self.drag_start[0]
         dy = img_y - self.drag_start[1]
-        
+
         current_roi_list = self.rois[self.calibrating_roi_type.get()]
         x, y, w, h = current_roi_list[self.dragging_slot]
-        
+
         if self.dragging_handle == "tl":
             current_roi_list[self.dragging_slot] = [x+dx, y+dy, w-dx, h-dy]
         elif self.dragging_handle == "tr":
@@ -341,10 +372,10 @@ class TabbedToolUI:
             current_roi_list[self.dragging_slot] = [x, y, w+dx, h+dy]
         elif self.dragging_handle == "center":
             current_roi_list[self.dragging_slot] = [x+dx, y+dy, w, h]
-        
+
         self.drag_start = (img_x, img_y)
         self._display_image()
-    
+
     def _on_release(self, event):
         """Kết thúc kéo."""
         # Ensure ROI dimensions are positive
@@ -359,7 +390,7 @@ class TabbedToolUI:
         self.dragging_slot = None
         self.dragging_handle = None
         self.drag_start = None
-    
+
     def _reset_slots(self): # Renamed from _reset_slots to _reset_current_roi
         """Reset về default."""
         current_type = self.calibrating_roi_type.get() # Use .get() to retrieve the string value
@@ -372,28 +403,60 @@ class TabbedToolUI:
             ]
         elif current_type == "pokemon_button_roi":
             self.rois["pokemon_button_roi"] = [[1300, 700, 150, 50]] # Default guess
-            self.pokemon_button_threshold_var.set(0.50)
+            self.threshold_var.set(0.55)
+        elif current_type == "fight_button_roi":
+            self.rois["fight_button_roi"] = [[1300, 600, 150, 50]]
+            self.threshold_var.set(0.55)
+        elif current_type == "items_button_roi":
+            self.rois["items_button_roi"] = [[1450, 600, 150, 50]]
+            self.threshold_var.set(0.55)
+        elif current_type == "run_button_roi":
+            self.rois["run_button_roi"] = [[1450, 700, 150, 50]]
+            self.threshold_var.set(0.55)
         elif current_type == "pokemon_swap_slots":
             self.rois["pokemon_swap_slots"] = [
                 [1233, 638, 310, 48], [1233, 690, 310, 48], [1233, 742, 310, 48],
                 [1233, 794, 310, 48], [1233, 846, 310, 48], [1233, 898, 310, 48]
             ]
+        elif current_type == "battle_header":
+            self.rois["battle_header"] = [[400, 240, 1150, 90]]
+        elif current_type == "enemy_name":
+            self.rois["enemy_name"] = [[520, 305, 360, 85]]
+        elif current_type == "pokemon_name_in_battle":
+            self.rois["pokemon_name_in_battle"] = [[1022, 634, 79, 32]]
+        elif current_type == "right_action_bar":
+            self.rois["right_action_bar"] = [[1230, 630, 330, 230]]
+        elif current_type == "battle_log":
+            self.rois["battle_log"] = [[190, 745, 460, 225]]
         self._display_image()
-    
+
     def _save_calibrate(self):
-        """Lưu ROI."""
+        """Lưu toàn bộ ROI và Threshold vào tool_config.json."""
         try:
-            self.config["roi"]["move_slots"] = self.rois["move_slots"]
-            self.config["roi"]["pokemon_button_roi"] = self.rois["pokemon_button_roi"][0]
-            self.config["roi"]["pokemon_swap_slots"] = self.rois["pokemon_swap_slots"]
-            self.config["template_matching"]["pokemon_button_threshold"] = self.pokemon_button_threshold_var.get()
-            
+            # Lưu ROIs
+            for key in ["move_slots", "pokemon_swap_slots"]:
+                self.config["roi"][key] = self.rois[key]
+
+            for key in self.single_roi_types:
+                self.config["roi"][key] = self.rois[key][0]
+
+            # Lưu Threshold hiện tại cho nút đang chọn
+            curr = self.calibrating_roi_type.get()
+            thresh_map = {
+                "pokemon_button_roi": "pokemon_button_threshold",
+                "fight_button_roi": "fight_button_threshold",
+                "items_button_roi": "items_button_threshold",
+                "run_button_roi": "run_button_threshold"
+            }
+            if curr in thresh_map:
+                self.config["template_matching"][thresh_map[curr]] = self.threshold_var.get()
+
             with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
                 json.dump(self.config, f, indent=2, ensure_ascii=False)
-            
-            messagebox.showinfo("Success", "Đã lưu ROI config")
+
+            messagebox.showinfo("Success", "Đã lưu cấu hình ROI và Threshold!")
         except Exception as e:
-            messagebox.showerror("Error", f"Lỗi: {e}")
+            messagebox.showerror("Error", f"Lỗi khi lưu: {e}")
     
     def run(self):
         """Chạy."""
@@ -406,3 +469,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

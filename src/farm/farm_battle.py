@@ -198,7 +198,7 @@ def score_move(move: dict, my_types: list, enemy_types: list, config: dict) -> f
 
     base = power * (accuracy / 100.0)
     stab = config.get("farm", {}).get("stab_multiplier", 1.5) if move_type in my_types else 1.0
-    eff = get_type_effectiveness(move_type, enemy_types) if enemy_types else 1.0
+    eff = get_type_effectiveness(move_type, defender_types=enemy_types) if enemy_types else 1.0
 
     use_zero_eff = config.get("farm", {}).get("use_zero_effectiveness", False)
     if eff == 0 and not use_zero_eff:
@@ -209,7 +209,7 @@ def score_move(move: dict, my_types: list, enemy_types: list, config: dict) -> f
 
 def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict) -> int:
     """
-    Trả về index (0-3) của move tốt nhất có PP > 0.
+    Trả về index (0-3) của move tốt nhất có PP > 0 và GÂY SÁT THƯƠNG (power > 0).
     Tiebreak: score cao → power cao → pp_current cao → slot nhỏ.
     Trả về -1 nếu không có move nào hợp lệ.
     """
@@ -222,9 +222,9 @@ def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict)
 
         if pp_current is None or pp_current <= 0:
             continue  # Hết PP
-
-        # Bỏ qua power check vì moves từ JSON chưa có OCR
-        # Chỉ yêu cầu pp_current > 0
+            
+        if power <= 0:
+            continue  # Bỏ qua các move buff/heal/status
 
         s = score_move(move, my_types, enemy_types, config)
         pp_cur = move.get("pp_current") or 0
@@ -242,10 +242,11 @@ def pick_best_move(moves: list, my_types: list, enemy_types: list, config: dict)
 
 
 def all_attack_moves_depleted(moves: list) -> bool:
-    """Kiểm tra tất cả move đã hết PP chưa. Bỏ qua power check vì JSON chưa có OCR."""
+    """Kiểm tra xem CÁC MOVE CÓ SÁT THƯƠNG (power > 0) đã hết PP chưa."""
     for move in moves:
+        power = move.get("power", 0) or 0
         pp_current = move.get("pp_current")
-        if pp_current is not None and pp_current > 0:
+        if power > 0 and pp_current is not None and pp_current > 0:
             return False
     return True
 
@@ -267,7 +268,8 @@ def ocr_crop(img_bgr, config, psm=6) -> str:
 
 
 def parse_pp_from_text(text: str):
-    m = re.search(r"(\d+)\s*/\s*(\d+)", text)
+    # Hỗ trợ khoảng trắng do OCR dễ đọc nhầm "15 15" hoặc "15l15"
+    m = re.search(r"(\d+)\s*[/\|\\lI\s]\s*(\d+)", text)
     if m:
         return int(m.group(1)), int(m.group(2))
     return None, None
@@ -289,6 +291,17 @@ def _guess_move_data_from_name(name: str) -> dict:
         if key in k or k in key:
             return dict(v)
     return {"type": "normal", "power": 0, "accuracy": 100}
+
+
+def enrich_move_data(move: dict) -> dict:
+    """Bổ sung type, power, accuracy nếu thiếu từ JSON"""
+    m = dict(move)
+    if "power" not in m or "type" not in m:
+        guess = _guess_move_data_from_name(m.get("name", ""))
+        m["type"] = m.get("type", guess.get("type", "normal"))
+        m["power"] = m.get("power", guess.get("power", 0))
+        m["accuracy"] = m.get("accuracy", guess.get("accuracy", 100))
+    return m
 
 
 def ocr_move_slots(image_bgr, config) -> list:
@@ -374,7 +387,7 @@ def merge_pp_from_ocr_by_slot(team_moves: list, ocr_moves: list) -> tuple:
     return merged, valid_pp_reads
 
 
-def wait_for_move_panel(screenshot_fn, config, save_debug_fn, timeout=2.0, interval=0.25):
+def wait_for_move_panel(screenshot_fn, config, save_debug_fn, timeout=4.0, interval=0.25):
     deadline = time.time() + timeout
     while time.time() < deadline:
         image = screenshot_fn()
@@ -389,11 +402,17 @@ def is_move_panel_open(image_bgr, config) -> bool:
     roi_list = config.get("roi", {}).get("move_slots", [])
     if not roi_list:
         return False
-    x, y, w, h = roi_list[0]
-    cell = image_bgr[y:y+h, x:x+w]
-    raw = ocr_crop(cell, config, psm=7)
-    name = parse_move_name_ocr(raw.splitlines()[0] if raw.splitlines() else raw)
-    return bool(re.search(r"[A-Za-z]{3,}", name))
+    # Kiểm tra cả 4 slot, chỉ cần 1 slot có ít nhất 2 chữ cái là coi như đã mở
+    for i in range(min(4, len(roi_list))):
+        x, y, w, h = roi_list[i]
+        cell = image_bgr[y:y+h, x:x+w]
+        # Dùng PSM 11 (Sparse text) để nhận diện chữ trên nền màu tốt hơn
+        raw = ocr_crop(cell, config, psm=11)
+        # Đếm số lượng chữ cái (A-Z, a-z)
+        letters = re.findall(r"[A-Za-z]", raw)
+        if len(letters) >= 2:
+            return True
+    return False
 
 
 def debug_move_slots(image_bgr, config, save_debug_fn):
@@ -430,12 +449,19 @@ def verify_pokemon_name(image_bgr, config, current_pokemon) -> bool:
         return True
 
     json_pokemon_name = normalize(current_pokemon.get("name", ""))
-    if json_pokemon_name != ocr_pokemon_name:
-        feedback_log(
-            f"⚠ Pokemon mismatch! JSON: '{json_pokemon_name}' vs OCR: '{ocr_pokemon_name}'. "
-            f"Có thể đã swap Pokemon, skip lượt này."
-        )
-        return False
+    
+    import difflib
+    clean_ocr = re.sub(r"[^a-z]", "", ocr_pokemon_name)
+    clean_json = re.sub(r"[^a-z]", "", json_pokemon_name)
+
+    if clean_json != clean_ocr and clean_json not in clean_ocr:
+        # Thử fuzzy match (cho phép sai sót do OCR)
+        if difflib.SequenceMatcher(None, clean_json, clean_ocr).ratio() < 0.6:
+            feedback_log(
+                f"⚠ Pokemon mismatch! JSON: '{json_pokemon_name}' vs OCR: '{ocr_pokemon_name}'. "
+                f"Có thể đã swap Pokemon, skip lượt này."
+            )
+            return False
 
     return True
 
@@ -539,7 +565,7 @@ def click_pokemon_slot(slot_index: int, config, win_api_module):
 def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                   read_enemy_name_fn, move_until_next_scan_fn,
                   wait_until_battle_exits_fn, focus_window_fn, find_window_fn,
-                  move_mouse_away_fn, save_debug_fn):
+                  move_mouse_away_fn, save_debug_fn, stop_event=None):
     """
     Mode 3: Auto farm tiền.
 
@@ -547,6 +573,8 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
       - set_cursor(x, y)
       - click(x, y, config)
       - focus_window_by_title(title)
+    
+    stop_event: threading.Event để dừng farm từ GUI (optional)
     """
     import keyboard
 
@@ -575,6 +603,12 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
     feedback_log("=== Bắt đầu Mode 3: Auto Farm ===")
 
     while True:
+        # Check stop_event từ GUI (priority cao hơn)
+        if stop_event and stop_event.is_set():
+            feedback_log("Dừng tool từ GUI.")
+            return
+        
+        # Fallback: keyboard check (cho backward compatibility)
         if keyboard.is_pressed("q"):
             print("Da dung tool bang phim Q.")
             feedback_log("Dừng tool bằng Q.")
@@ -600,13 +634,13 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
 
         if not battle_detected:
             if in_battle:
-                # Vừa thoát battle → reset state
-                feedback_log("Battle kết thúc. Reset state.")
+                feedback_log("Battle kết thúc. Mặc định trận sau sẽ bắt đầu với Slot 1.")
                 battle_state = reset_battle_state()
-                current_slot = battle_state["current_slot"]
+                current_slot = 1 # Luôn reset về 1 khi hết trận
                 depleted_slots = set()
                 in_battle = False
                 current_moves = []
+
                 # Lưu lại team vào file khi kết thúc battle để đồng bộ PP
                 from src.team_builder.team_builder_ui import save_team
                 save_team(team)
@@ -622,21 +656,33 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
 
         # === Đang trong battle ===
         if not in_battle:
-            # Vừa vào battle mới
+            # ... (giữ nguyên đoạn nhận diện enemy) ...
             in_battle = True
-            # Đợi animation vào trận (header xuất hiện xong mới đến lượt nút Fight hiện ra)
-            wait_time = config["timing"].get("battle_start_wait_seconds", 3.5)
+            wait_time = config.get("timing", {}).get("battle_start_wait_seconds", 5.0)
             feedback_log(f"Mới vào trận, đợi {wait_time}s animation...")
             time.sleep(wait_time)
 
-            image = screenshot_fn()
-            enemy_name = read_enemy_name_fn(image, config)
-            battle_state["enemy_name"] = enemy_name
-            save_battle_state(battle_state)
-            feedback_log(f"Vào battle với: {enemy_name or 'unknown'}")
+        # --- MỚI: TỰ ĐỘNG NHẬN DIỆN POKEMON ĐANG TRÊN SÂN ---
+        image = screenshot_fn()
+        on_field_name = ocr_pokemon_name_in_battle(image, config)
+        
+        if on_field_name:
+            found_slot = None
+            for p in team:
+                if normalize(p.get("name", "")) in on_field_name or on_field_name in normalize(p.get("name", "")):
+                    found_slot = p.get("slot")
+                    break
+            
+            if found_slot and found_slot != current_slot:
+                feedback_log(f"Phát hiện {on_field_name} trên sân. Tự động chuyển sang Slot {found_slot}.")
+                current_slot = found_slot
+                battle_state["current_slot"] = current_slot
+                save_battle_state(battle_state)
+                current_moves = [] # Reset moves để load lại theo con mới
 
-        # Lấy Pokemon hiện tại
+        # Lấy Pokemon hiện tại dựa trên Slot đã được sync
         pokemon = get_pokemon_by_slot(team, current_slot)
+        # ... (đoạn load moves, check PP bên dưới giữ nguyên) ...
         if pokemon is None:
             feedback_log(f"Không tìm thấy Pokemon slot {current_slot} trong team!")
             print("Lỗi team JSON. Dừng.")
@@ -647,22 +693,46 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
 
         # Đọc moves từ team (lần đầu vào battle hoặc sau swap)
         if not current_moves:
-            current_moves = list(pokemon.get("moves", []))
-            if not current_moves:
+            raw_moves = list(pokemon.get("moves", []))
+            if not raw_moves:
                 feedback_log(f"Pokemon slot {current_slot} không có moves trong team JSON!")
                 print("Chưa có moves. Dừng.")
                 return
-            # Reset PP theo team (hoặc pp_max nếu có)
+            current_moves = [enrich_move_data(mv) for mv in raw_moves]
             feedback_log(
                 f"Check JSON slot {current_slot}: "
                 f"{[(m.get('name'), m.get('pp_current'), m.get('power', 0)) for m in current_moves]}"
             )
 
-        # Kiểm tra xem tất cả move tấn công có còn PP không
         if all_attack_moves_depleted(current_moves):
             feedback_log(f"Slot {current_slot} hết PP tấn công. Thử swap Pokemon.")
             depleted_slots.add(current_slot)
             battle_state["depleted_slots"] = list(depleted_slots)
+
+            # --- In ra tình trạng PP của cả 6 slot để dễ debug ---
+            feedback_log("--- TÌNH TRẠNG PP CỦA TEAM TRƯỚC KHI SWAP ---")
+            for i in range(1, 7):
+                pkm = get_pokemon_by_slot(team, i)
+                if not pkm:
+                    feedback_log(f"Slot {i}: Trống")
+                    continue
+                name = pkm.get("name", "Unknown")
+                mvs = [enrich_move_data(m) for m in pkm.get("moves", [])]
+                mv_str = ", ".join([f"{m.get('name')}({m.get('pp_current')}/{m.get('pp_max')} - Pwr:{m.get('power',0)})" for m in mvs])
+                
+                status = ""
+                if i == current_slot:
+                    status = "[Đang ra sân]"
+                elif i in depleted_slots:
+                    status = "[Đã hết PP]"
+                else:
+                    has_atk = any((m.get("power", 0) or 0) > 0 and (m.get("pp_current") or 0) > 0 for m in mvs)
+                    if has_atk:
+                        status = "[SẴN SÀNG]"
+                    else:
+                        status = "[Bỏ qua do ko có chiêu Sát thương còn PP]"
+                feedback_log(f"Slot {i} {name} {status}: {mv_str}")
+            feedback_log("-----------------------------------------------")
 
             # Tìm slot tiếp theo: chỉ chọn slot khác current, chưa bị đánh dấu depleted,
             # và có ít nhất 1 move tấn công còn PP (>0). Nếu không có thì trả None.
@@ -675,12 +745,13 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 candidate = get_pokemon_by_slot(team, slot)
                 if not candidate or not candidate.get("moves"):
                     continue
-                # Kiểm tra xem candidate có ít nhất 1 move còn PP hay không
-                cand_moves = list(candidate.get("moves", []))
+                # Kiểm tra xem candidate có ít nhất 1 move tấn công (power > 0) còn PP hay không
+                cand_moves = [enrich_move_data(mv) for mv in list(candidate.get("moves", []))]
                 has_attack_pp = False
                 for mv in cand_moves:
+                    power = mv.get("power", 0) or 0
                     pp_current = mv.get("pp_current")
-                    if pp_current is not None and pp_current > 0:
+                    if power > 0 and pp_current is not None and pp_current > 0:
                         has_attack_pp = True
                         break
                 if has_attack_pp:
@@ -695,78 +766,113 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             # Click nút Pokemon để mở menu swap
             move_mouse_away_fn(config)
             image = screenshot_fn()
-            pokemon_threshold = config["template_matching"].get("pokemon_button_threshold", 0.55)
-            pokemon_offset = config.get("click_offsets", {}).get("pokemon_button", [0, 0]) # This offset is applied after finding the center of the template
-            clicked = _click_template(
-                image, POKEMON_TEMPLATE, pokemon_threshold,
-                config["roi"].get("pokemon_button_roi"), # Use specific ROI for Pokemon button
-                pokemon_offset, config, win_api_module
-            )
+            clicked = False
+
+            # Ưu tiên click tọa độ ROI (Đã lấy từ Menu 4)
+            p_roi = config["roi"].get("pokemon_button_roi")
+            if p_roi:
+                px, py, pw, ph = p_roi
+                cx, cy = px + pw // 2, py + ph // 2
+                win_api_module["set_cursor"](int(cx), int(cy))
+                time.sleep(0.05)
+                win_api_module["click"](cx, cy, config)
+                feedback_log(f"Click Pokemon button (ROI) tại ({cx},{cy})")
+                clicked = True
+            else:
+                pokemon_threshold = config["template_matching"].get("pokemon_button_threshold", 0.55)
+                pokemon_offset = config.get("click_offsets", {}).get("pokemon_button", [0, 0])
+                clicked = _click_template(image, POKEMON_TEMPLATE, pokemon_threshold, None, pokemon_offset, config, win_api_module)
+
             if not clicked:
                 feedback_log("Không click được nút Pokemon!")
                 time.sleep(1)
                 continue
-
-            time.sleep(config["timing"].get("swap_menu_wait_seconds", 0.8))
+            # Đợi menu swap load. Có thể cấu hình trong config["timing"]:
+            #  - "swap_menu_wait_seconds" (existing, default 0.8)
+            #  - "swap_menu_extra_delay_seconds" (mới, default 2.0) để phòng trường hợp animation chậm
+            base_wait = config["timing"].get("swap_menu_wait_seconds", 0.8)
+            extra_wait = config["timing"].get("swap_menu_extra_delay_seconds", 2.0)
+            total_wait = base_wait + (extra_wait if extra_wait and extra_wait > 0 else 0)
+            feedback_log(f"Chờ menu swap load: {total_wait}s (base={base_wait}s, extra={extra_wait}s)")
+            time.sleep(total_wait)
 
             # Click slot Pokemon mới (0-indexed)
             click_pokemon_slot(new_slot - 1, config, win_api_module)
-            time.sleep(config["timing"].get("swap_menu_wait_seconds", 0.8))
 
-            current_slot = new_slot
+            # Chỉ cần đợi một khoảng cố định đủ cho animation ra sân
+            wait_swap = config["timing"].get("after_swap_wait_seconds", 3.0)
+            feedback_log(f"Đã chọn slot {new_slot}. Chờ {wait_swap}s ra sân...")
+            time.sleep(wait_swap)
+
+            # Sau swap, xác nhận lại Pokemon trên sân bằng OCR để tránh lặp swap
+            image_after_swap = screenshot_fn()
+            on_field_name_after = ocr_pokemon_name_in_battle(image_after_swap, config)
+            if on_field_name_after:
+                detected_slot = None
+                for p in team:
+                    if normalize(p.get("name", "")) in on_field_name_after or on_field_name_after in normalize(p.get("name", "")):
+                        detected_slot = p.get("slot")
+                        break
+
+                if detected_slot is None:
+                    feedback_log(f"Không xác định được Pokemon sau swap; OCR: '{on_field_name_after}'. Giữ slot mặc định {new_slot}.")
+                    current_slot = new_slot
+                elif detected_slot != new_slot:
+                    feedback_log(f"Sau swap, phát hiện trên sân là slot {detected_slot} (OCR '{on_field_name_after}'), không phải slot {new_slot}. Cập nhật slot hiện tại.")
+                    current_slot = detected_slot
+                else:
+                    current_slot = new_slot
+            else:
+                # Nếu OCR không đọc được tên, vẫn lấy new_slot làm slot hiện tại
+                current_slot = new_slot
+
+            # Cập nhật state và RESET moves để vòng lặp sau load lại từ đầu
             battle_state["current_slot"] = current_slot
             battle_state["depleted_slots"] = list(depleted_slots)
             save_battle_state(battle_state)
-            current_moves = []  # Load lại moves của Pokemon mới
-            feedback_log(f"Đã swap sang slot {current_slot}.")
-            time.sleep(config["timing"].get("after_swap_wait_seconds", 2.0))
+            current_moves = [] # Quan trọng: Reset để nhận diện chiêu thức con mới
             continue
 
-        # Click nút Fight
+        # --- CLICK FIGHT: Đơn giản hóa để không làm "hư" code ---
         move_mouse_away_fn(config)
-        fight_threshold = config["template_matching"].get("fight_button_threshold", 0.55)
-        fight_offset = config.get("click_offsets", {}).get("fight_button", [0, 0])
-
         clicked_fight = False
-        # Retry 3 lần tìm nút Fight vì animation game có thể làm nút hiện ra chậm
-        for attempt in range(3):
-            image = screenshot_fn()
-            clicked_fight = _click_template(
-                image, FIGHT_TEMPLATE, fight_threshold,
-                config["roi"].get("right_action_bar"),
-                fight_offset, config, win_api_module
-            )
-            if clicked_fight:
-                break
 
-            # Kiểm tra nhanh: Nếu không thấy nút Fight, liệu có phải đã thoát Battle không?
-            if not is_battle_fn(image, config):
-                break # Thoát vòng lặp retry ngay lập tức
-
-            feedback_log(f"Thử tìm nút Fight lần {attempt+1} (vẫn trong trận, chờ hiện)...")
-            time.sleep(1.5)
-
+        image = screenshot_fn()
+        f_roi = config["roi"].get("fight_button_roi")
+        if f_roi:
+            # Click theo tọa độ bạn đã calibrate
+            fx, fy, fw, fh = f_roi
+            cx, cy = fx + fw // 2, fy + fh // 2
+            win_api_module["set_cursor"](int(cx), int(cy))
+            time.sleep(0.1)
+            win_api_module["click"](cx, cy, config)
+            feedback_log(f"Click Fight tại ({cx},{cy})")
+            clicked_fight = True
+        else:
+        # Fallback nếu chưa calibrate
+                fight_threshold = config["template_matching"].get("fight_button_threshold", 0.55)
+                clicked_fight = _click_template(image, FIGHT_TEMPLATE, fight_threshold, None, [0,0], config, win_api_module)
         if not clicked_fight:
-            # Nếu thực sự vẫn còn trong trận mà không thấy nút mới báo lỗi ROI
-            if is_battle_fn(screenshot_fn(), config):
-                feedback_log("Không tìm thấy nút Fight sau 3 lần thử. Hãy kiểm tra lại ROI trong Menu 4.")
-                save_debug_fn(config, image, "fight_not_found_farm")
-                time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
-            else:
-                feedback_log("Nút Fight biến mất do trận đấu đã kết thúc.")
-                in_battle = False
+            feedback_log("Chưa thấy nút Fight, chờ lượt sau...")
+            time.sleep(1.0)
             continue
 
-        time.sleep(config["timing"].get("after_fight_click_seconds", 0.6))
+        # Sau khi click Fight, đợi bảng Move hiện ra
+        time.sleep(config["timing"].get("after_fight_click_seconds", 1.0))
 
-        # Đợi move panel mở và OCR move
-        if not wait_for_move_panel(screenshot_fn, config, save_debug_fn, timeout=2.0, interval=0.25):
-            feedback_log("Move panel chưa sẵn sàng sau khi click Fight.")
-            image = screenshot_fn()
-            debug_move_slots(image, config, save_debug_fn)
-        image = screenshot_fn()
-        debug_move_slots(image, config, save_debug_fn)
-        ocr_moves = ocr_move_slots(image, config)
+        # Kiểm tra bảng Move có sẵn sàng để OCR không
+        image_check = screenshot_fn()
+        if not is_move_panel_open(image_check, config):
+            # Đợi thêm 1s và check lại lần cuối (đề phòng lag)
+            time.sleep(1.0)
+            image_check = screenshot_fn()
+            if not is_move_panel_open(image_check, config):
+                feedback_log("Bảng chiêu thức vẫn chưa hiện theo OCR. Thử lại...")
+                continue
+
+        # --- TIẾP TỤC OCR VÀ ĐÁNH ---
+        # Dùng luôn ảnh vừa check để tiết kiệm thời gian
+        ocr_moves = ocr_move_slots(image_check, config)
         feedback_log(f"OCR Check PP: {[(m['name'], m.get('pp_current')) for m in ocr_moves]}")
 
         # Đồng bộ moves hiện tại với kết quả OCR: ưu tiên dùng tên/PP từ OCR
@@ -860,3 +966,4 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             feedback_log("Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).")
             in_battle = False
             continue
+

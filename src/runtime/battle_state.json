@@ -1,7 +1,5 @@
 {
-  "current_slot": 5,
-  "depleted_slots": [
-    1
-  ],
-  "enemy_name": "rhyhorn"
+  "current_slot": 1,
+  "depleted_slots": [],
+  "enemy_name": ""
 }

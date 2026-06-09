@@ -3,3 +3,4 @@ mss
 Pillow
 pytesseract
 keyboard
+customtkinter

@@ -11,6 +11,26 @@
   {
     "pokemonname": "Magikarp",
     "ability": "rattled"
+  },
+  {
+    "pokemonname": "Foongus",
+    "ability": "regenerator"
+  },
+  {
+  "pokemonname": "Tangela",
+    "ability": "regenerator"
+  },
+  {
+  "pokemonname": "Tangrowth",
+    "ability": "regenerator"
+  },
+  {
+  "pokemonname": "Solosis",
+  "ability": "regenerator"
+  },
+  {
+  "pokemonname": "Solosis",
+  "ability": "magic guard"
   }
  
 ]
