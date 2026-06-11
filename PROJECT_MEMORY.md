@@ -258,3 +258,111 @@ Thong tin anh mau moi:
   - Debug/feedback:
     - Them file `.txt` feedback log de nguoi dung check loi, vi du `src/runtime/feedback_log.txt`.
     - Khi loi team JSON/OCR/cache, nen co UI doc file JSON len cho nguoi dung sua va bam Save.
+
+---
+
+## GIAI DOAN 3: TAB 4 (Bag Scanner) + TAB 5 (Auto Farm Config)
+
+**Status: Tab 4 DONE, Tab 5 DONE**
+
+### Tab 4: Bag Scanner (COMPLETED 2026-06-09)
+
+**File**: `src/team_builder/bag_scanner_tab.py`
+
+**Features**:
+- **Drag-to-scan name**: User drags ROI on game screenshot → OCR Pokemon name via Tesseract
+  - Button: "🎯 Kéo tên Pokemon"
+  - OCR preset: PSM 7 (single line), 5x upscale, CLAHE contrast enhancement, morphological denoise
+  - User can manually edit name in textbox if OCR wrong
+
+- **Drag-to-scan moves**: User drags ROI → OCR 4 moves + PP (format: "Move PP/Max")
+  - Button: "🎯 Kéo 4 moves"
+  - OCR preset: PSM 6 (assume single column), same preprocessing
+  - Fills 4 move textboxes + 4 PP textboxes
+
+- **Add Pokemon**: Button ➕ Add Pokemon
+  - Auto-increment ID
+  - Creates: `{"id": 1, "name": "Breloom", "moves": [{"name": "False Swipe", "pp": "25/40"}, ...]}`
+  - Appends to inventory + auto-saves JSON
+
+- **Delete Pokemon**: Click delete button next to Pokemon ID in list
+  - Removes from inventory
+
+- **Save JSON**: Button 💾 Save JSON
+  - Output: `src/config/pokemon_bag_inventory.json`
+  - Format: `[{"id": 1, "name": "Breloom", "moves": [...]}, ...]`
+
+**Dependencies**:
+- PIL/Pillow, numpy, cv2, pytesseract
+- Tesseract 5.5.0 (must be installed + PATH set)
+
+**Tesseract Setup** (IMPORTANT):
+- Install: Tesseract Windows installer from GitHub
+- Set ENV vars:
+  ```batch
+  set "TESSDATA_PREFIX=C:\Program Files\Tesseract-OCR\tessdata"
+  set "PATH=%PATH%;C:\Program Files\Tesseract-OCR"
+  ```
+- Added to `run_gui.bat` - auto setup when run batch file
+
+**Data Flow (Tab 4)**:
+```
+Game Screenshot
+  ↓ drag name ROI
+  → OCR + Tesseract
+  → fill textbox (editable)
+  ↓ drag moves ROI
+  → OCR 4 moves
+  → fill 4 move/PP textboxes
+  ↓ click Add Pokemon
+  → pokemon_bag_inventory.json (auto-save)
+```
+
+---
+
+### Tab 5: Auto Farm Config (COMPLETED 2026-06-09)
+
+**File**: `src/team_builder/auto_farm_config_tab.py`
+
+**LEFT BOX - Load Pokemon from Bag**:
+- Read `pokemon_bag_inventory.json` (from Tab 4)
+- Display as list: `[ID] Name - Move1/Move2/Move3/Move4`
+- User clicks Pokemon to select (max 6 for team)
+
+**RIGHT BOX - Display 6 Team Slots**:
+- Show 6 selected Pokemon slots
+- Format: `[ID] Name` with delete button per slot
+- Can reorder or remove Pokemon
+
+**SAVE Team**:
+- Button 💾 Save Team
+- Output: `src/config/team_farm.json`
+- Format: `[{6 Pokemon with moves}]` (exactly 6)
+
+**Data Flow (Tab 5)**:
+```
+pokemon_bag_inventory.json (from Tab 4)
+  ↓ load & display LEFT box
+  → user clicks 6 Pokemon
+  ↓ show selected 6 RIGHT box
+  → click Save Team
+  ↓ team_farm.json → Menu 3 (auto farm)
+```
+
+---
+
+### Integration with Menu 3 (Auto Farm)
+
+- Menu 3 reads `team_farm.json` (6 Pokemon from Tab 5)
+- Auto battle: score moves by effectiveness, STAB, power
+- Swap Pokemon when PP runs out
+- Feedback log: `src/runtime/feedback_log.txt`
+
+---
+
+### Next Steps for Other AI Coder
+
+1. Implement Tab 5 LEFT box loader (read bag JSON + display)
+2. Implement Tab 5 RIGHT box selector (add/remove/reorder 6 slots)
+3. Implement save team JSON button
+4. Test full workflow: Tab 4 (add Pokemon) → Tab 5 (select 6) → Menu 3 (auto farm)

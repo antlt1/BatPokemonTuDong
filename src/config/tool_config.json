@@ -234,7 +234,7 @@
     "directory": "src/debug/screenshots"
   },
   "audio": {
-    "found_sound": "src/template/audio/quick-ting.mp3"
+    "found_sound": "src/data/audio/quick-ting.mp3"
   },
   "farm": {
     "stab_multiplier": 1.5,

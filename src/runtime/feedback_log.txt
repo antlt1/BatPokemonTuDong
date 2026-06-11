@@ -3799,3 +3799,399 @@
 ✅ Scan session ended
 [14:24:57] 🎮 Alt+F8 hotkey registered!
 [14:25:32] 🎮 Alt+F8 hotkey registered!
+[14:36:13] 🎮 Alt+F8 hotkey registered!
+[14:36:56] 🎮 Alt+F8 hotkey registered!
+[14:40:08] 🎮 Alt+F8 hotkey registered!
+[14:52:53] 🎮 Alt+F8 hotkey registered!
+[14:53:46] 🎮 Alt+F8 hotkey registered!
+[14:56:05] 🎮 Alt+F8 hotkey registered!
+[14:59:50] 🎮 Alt+F8 hotkey registered!
+[15:03:22] 🎮 Alt+F8 hotkey registered!
+[15:06:39] 🎮 Alt+F8 hotkey registered!
+[15:08:11] 🎮 Alt+F8 hotkey registered!
+[15:09:44] 🎮 Alt+F8 hotkey registered!
+[15:10:29] 🎮 Alt+F8 hotkey registered!
+[16:43:51] 🎮 Alt+F8 hotkey registered!
+[17:08:41] ✅ Auto Farm started!
+[17:08:41] 🎮 Press Alt+F8 to stop.
+[17:08:41] ✅ Initializing Auto Farm...
+[17:08:41] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:08:41] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[17:08:41] ✅ Team loaded: 6 Pokemon
+
+[17:08:41] 🎮 Starting farm loop...
+
+[17:08:41] === Bắt đầu Mode 3: Auto Farm ===
+[17:08:42] Mới vào trận, đợi 5.0s animation...
+[17:08:47] Check JSON slot 1: [('Surf', 13, 90), ('Ice Beam', 16, 90), ('Toxic', 10, 0), ('Recover', 8, 0)]
+[17:08:48] Click Fight tại (1337,696)
+[17:08:51] Bảng chiêu thức vẫn chưa hiện theo OCR. Thử lại...
+[17:08:51] ⏹️ Tool stopped!
+[17:08:52] Battle kết thúc. Mặc định trận sau sẽ bắt đầu với Slot 1.
+[17:08:56] Dừng tool từ GUI.
+[17:08:56] 
+✅ Farm session ended
+[17:13:00] ✅ Auto Farm started!
+[17:13:00] 🎮 Press Alt+F8 to stop.
+[17:13:00] ✅ Initializing Auto Farm...
+[17:13:00] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:13:00] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[17:13:00] ✅ Team loaded: 6 Pokemon
+
+[17:13:00] 🎮 Starting farm loop...
+
+[17:13:00] === Bắt đầu Mode 3: Auto Farm ===
+[17:13:01] Mới vào trận, đợi 5.0s animation...
+[17:13:06] Check JSON slot 1: [('Surf', 13, 90), ('Ice Beam', 16, 90), ('Toxic', 10, 0), ('Recover', 8, 0)]
+[17:13:07] Click Fight tại (1337,696)
+[17:13:09] OCR Check PP: [('su 15 15', None), ('pial 16 16', None), ('10 10', None), ('on', None)]
+[17:13:09] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:13:09] ⚠ Pokemon mismatch! JSON: 'milotic' vs OCR: 'mene'. Có thể đã swap Pokemon, skip lượt này.
+[17:13:09] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[17:13:18] Click Fight tại (1337,696)
+[17:13:20] OCR Check PP: [('su 15 15', None), ('pial 16 16', None), ('10 10', None), ('on', None)]
+[17:13:20] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:13:21] ⚠ Pokemon mismatch! JSON: 'milotic' vs OCR: 'mene'. Có thể đã swap Pokemon, skip lượt này.
+[17:13:21] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[17:13:30] Click Fight tại (1337,696)
+[17:13:32] OCR Check PP: [('su 15 15', None), ('pial 16 16', None), ('10 10', None), ('on', None)]
+[17:13:32] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:13:32] ⚠ Pokemon mismatch! JSON: 'milotic' vs OCR: 'mene'. Có thể đã swap Pokemon, skip lượt này.
+[17:13:32] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[17:13:41] Click Fight tại (1337,696)
+[17:13:43] OCR Check PP: [('su 15 15', None), ('pial 16 16', None), ('10 10', None), ('on', None)]
+[17:13:43] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:13:44] ⏹️ Tool stopped!
+[17:13:44] ⚠ Pokemon mismatch! JSON: 'milotic' vs OCR: 'mene'. Có thể đã swap Pokemon, skip lượt này.
+[17:13:44] Verify Pokemon thất bại. Skip lượt này để tránh click sai move.
+[17:13:51] Dừng tool từ GUI.
+[17:13:51] 
+✅ Farm session ended
+[17:19:55] 🎮 Alt+F8 hotkey registered!
+[17:19:58] ✅ Auto Farm started!
+[17:19:58] 🎮 Press Alt+F8 to stop.
+[17:19:58] ✅ Initializing Auto Farm...
+[17:19:58] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:19:58] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[17:19:58] ✅ Team loaded: 6 Pokemon
+
+[17:19:58] 🎮 Starting farm loop...
+
+[17:19:58] === Bắt đầu Mode 3: Auto Farm ===
+[17:20:04] Mới vào trận, đợi 5.0s animation...
+[17:20:09] Check JSON slot 1: [('Surf', 13, 90), ('Ice Beam', 16, 90), ('Toxic', 10, 0), ('Recover', 8, 0)]
+[17:20:10] Click Fight tại (1337,696)
+[17:20:12] OCR Check PP: [('su 15 15', None), ('pial 15 16', None), ('10 10', None), ('on', None)]
+[17:20:12] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:20:12] Chọn Move 2: 'Ice Beam' (type=ice, pwr=90, pp=16/16)
+[17:20:12] Click move slot 2 tại (1396,415)
+[17:20:12] Đã trừ PP 'Ice Beam': 16 -> 15
+[17:20:13] Đang đợi animation chiêu thức...
+[17:20:22] Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).
+[17:20:23] Mới vào trận, đợi 5.0s animation...
+[17:20:29] Click Fight tại (1337,696)
+[17:20:31] OCR Check PP: [('7', None), ('pe', None), ('Move3', None), ('Move4', None)]
+[17:20:31] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:20:31] Chọn Move 2: 'Ice Beam' (type=ice, pwr=90, pp=15/16)
+[17:20:31] Click move slot 2 tại (1396,415)
+[17:20:31] Đã trừ PP 'Ice Beam': 15 -> 14
+[17:20:32] Đang đợi animation chiêu thức...
+[17:20:41] Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).
+[17:20:47] Mới vào trận, đợi 5.0s animation...
+[17:20:52] Click Fight tại (1337,696)
+[17:20:54] OCR Check PP: [('su 15 15', None), ('pial 14 16', None), ('10 10', None), ('on', None)]
+[17:20:54] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:20:54] Chọn Move 2: 'Ice Beam' (type=ice, pwr=90, pp=14/16)
+[17:20:55] Click move slot 2 tại (1396,415)
+[17:20:55] Đã trừ PP 'Ice Beam': 14 -> 13
+[17:20:56] Đang đợi animation chiêu thức...
+[17:21:06] Click Fight tại (1337,696)
+[17:21:07] ⏹️ Tool stopped!
+[17:21:08] OCR Check PP: [('a', None), ('cs', None), ('car', None), ('Move4', None)]
+[17:21:08] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[17:21:08] Chọn Move 1: 'Surf' (type=water, pwr=90, pp=13/15)
+[17:21:09] Click move slot 1 tại (1397,339)
+[17:21:09] Đã trừ PP 'Surf': 13 -> 12
+[17:21:10] Đang đợi animation chiêu thức...
+[17:21:18] Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).
+[17:21:18] Dừng tool từ GUI.
+[17:21:18] 
+✅ Farm session ended
+[17:34:04] 🎮 Alt+F8 hotkey registered!
+[17:34:08] ✅ Scan Pokemon started!
+[17:34:08] 🎮 Press Alt+F8 to stop.
+[17:34:08] ✅ Initializing Scan Pokemon Mode...
+[17:34:08] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:34:08] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[17:34:08] ✅ Targets loaded: 8 Pokemon
+
+[17:34:08] 🎮 Starting scan loop...
+
+[17:34:08] Dang chay mode 1 (Scan Pokemon)...
+
+[17:37:29] 
+✅ Scan session ended
+[17:45:58] ✅ Scan Pokemon started!
+[17:45:59] 🎮 Press Alt+F8 to stop.
+[17:45:59] ✅ Initializing Scan Pokemon Mode...
+[17:45:59] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:45:59] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[17:45:59] ✅ Targets loaded: 8 Pokemon
+
+[17:45:59] 🎮 Starting scan loop...
+
+[17:45:59] Dang chay mode 1 (Scan Pokemon)...
+
+[17:52:03] 
+✅ Scan session ended
+[17:55:32] ✅ Scan Pokemon started!
+[17:55:32] 🎮 Press Alt+F8 to stop.
+[17:55:32] ✅ Initializing Scan Pokemon Mode...
+[17:55:32] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[17:55:32] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[17:55:32] ✅ Targets loaded: 8 Pokemon
+
+[17:55:32] 🎮 Starting scan loop...
+
+[17:55:32] Dang chay mode 1 (Scan Pokemon)...
+
+[18:12:55] 
+✅ Scan session ended
+[18:14:37] ✅ Scan Pokemon started!
+[18:14:37] 🎮 Press Alt+F8 to stop.
+[18:14:37] ✅ Initializing Scan Pokemon Mode...
+[18:14:37] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[18:14:37] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[18:14:38] ✅ Targets loaded: 8 Pokemon
+
+[18:14:38] 🎮 Starting scan loop...
+
+[18:14:38] Dang chay mode 1 (Scan Pokemon)...
+
+[18:41:51] 
+✅ Scan session ended
+[18:44:42] ✅ Scan Pokemon started!
+[18:44:42] 🎮 Press Alt+F8 to stop.
+[18:44:42] ✅ Initializing Scan Pokemon Mode...
+[18:44:42] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[18:44:42] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[18:44:42] ✅ Targets loaded: 8 Pokemon
+
+[18:44:42] 🎮 Starting scan loop...
+
+[18:44:42] Dang chay mode 1 (Scan Pokemon)...
+
+[19:10:10] ⏹️ Tool stopped!
+[19:10:13] 
+✅ Scan session ended
+[02:07:47] 🎮 Alt+F8 hotkey registered!
+[02:07:50] ✅ Auto Farm started!
+[02:07:50] 🎮 Press Alt+F8 to stop.
+[02:07:50] ✅ Initializing Auto Farm...
+[02:07:50] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:07:50] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[02:07:52] ✅ Team loaded: 6 Pokemon
+
+[02:07:52] 🎮 Starting farm loop...
+
+[02:07:52] === Bắt đầu Mode 3: Auto Farm ===
+[02:08:03] Mới vào trận, đợi 5.0s animation...
+[02:08:09] Check JSON slot 1: [('Surf', 12, 90), ('Ice Beam', 13, 90), ('Toxic', 10, 0), ('Recover', 8, 0)]
+[02:08:09] Click Fight tại (1337,696)
+[02:08:12] OCR Check PP: [('Move1', None), ('Move2', None), ('se oo', None), ('Move4', None)]
+[02:08:12] OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.
+[02:08:12] Chọn Move 2: 'Ice Beam' (type=ice, pwr=90, pp=13/16)
+[02:08:12] Click move slot 2 tại (1396,415)
+[02:08:12] Đã trừ PP 'Ice Beam': 13 -> 12
+[02:08:13] Đang đợi animation chiêu thức...
+[02:08:23] Battle kết thúc sau lượt đánh (Quái đã chết hoặc chạy).
+[02:08:27] ⏹️ Tool stopped!
+[02:08:28] Dừng tool từ GUI.
+[02:08:28] 
+✅ Farm session ended
+[02:08:30] ✅ Scan Pokemon started!
+[02:08:30] 🎮 Press Alt+F8 to stop.
+[02:08:30] ✅ Initializing Scan Pokemon Mode...
+[02:08:30] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:08:30] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[02:08:30] ✅ Targets loaded: 8 Pokemon
+
+[02:08:30] 🎮 Starting scan loop...
+
+[02:08:30] Dang chay mode 1 (Scan Pokemon)...
+
+[02:10:30] ⏹️ Tool stopped!
+[02:10:34] 
+✅ Scan session ended
+[02:10:52] ✅ Scan Pokemon started!
+[02:10:52] 🎮 Press Alt+F8 to stop.
+[02:10:52] ✅ Initializing Scan Pokemon Mode...
+[02:10:52] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:10:52] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[02:10:52] ✅ Targets loaded: 8 Pokemon
+
+[02:10:52] 🎮 Starting scan loop...
+
+[02:10:52] Dang chay mode 1 (Scan Pokemon)...
+
+[02:13:19] ⏹️ Tool stopped!
+[02:13:19] 
+✅ Scan session ended
+[02:21:25] ✅ Scan Pokemon started!
+[02:21:25] 🎮 Press Alt+F8 to stop.
+[02:21:25] ✅ Initializing Scan Pokemon Mode...
+[02:21:25] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:21:25] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[02:21:25] ✅ Targets loaded: 8 Pokemon
+
+[02:21:25] 🎮 Starting scan loop...
+
+[02:21:25] Dang chay mode 1 (Scan Pokemon)...
+
+[02:34:15] 
+✅ Scan session ended
+[02:35:49] ✅ Scan Pokemon started!
+[02:35:49] 🎮 Press Alt+F8 to stop.
+[02:35:49] ✅ Initializing Scan Pokemon Mode...
+[02:35:49] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:35:49] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[02:35:49] ✅ Targets loaded: 8 Pokemon
+
+[02:35:49] 🎮 Starting scan loop...
+
+[02:35:49] Dang chay mode 1 (Scan Pokemon)...
+
+[02:52:10] 
+✅ Scan session ended
+[02:53:25] ✅ Scan Pokemon started!
+[02:53:25] 🎮 Press Alt+F8 to stop.
+[02:53:25] ✅ Initializing Scan Pokemon Mode...
+[02:53:25] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[02:53:25] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[02:53:25] ✅ Targets loaded: 8 Pokemon
+
+[02:53:25] 🎮 Starting scan loop...
+
+[02:53:25] Dang chay mode 1 (Scan Pokemon)...
+
+[02:54:20] 
+✅ Scan session ended
+[03:05:24] ✅ Scan Pokemon started!
+[03:05:24] 🎮 Press Alt+F8 to stop.
+[03:05:24] ✅ Initializing Scan Pokemon Mode...
+[03:05:24] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[03:05:24] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[03:05:24] ✅ Targets loaded: 8 Pokemon
+
+[03:05:24] 🎮 Starting scan loop...
+
+[03:05:24] Dang chay mode 1 (Scan Pokemon)...
+
+[03:09:45] 
+✅ Scan session ended
+[15:57:56] 🎮 Alt+F8 hotkey registered!
+[16:17:08] 🎮 Alt+F8 hotkey registered!
+[17:20:46] 🎮 Alt+F8 hotkey registered!
+[01:23:40] 🎮 Alt+F8 hotkey registered!
+[01:27:45] 🎮 Alt+F8 hotkey registered!
+[01:29:28] ✅ Auto Farm started!
+[01:29:28] 🎮 Press Alt+F8 to stop.
+[01:29:28] ✅ Initializing Auto Farm...
+[01:29:28] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[01:29:28] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[01:29:29] ⏹ Tool stopped!
+[01:29:29] ✅ Team loaded: 6 Pokemon
+
+[01:29:29] 🎮 Starting farm loop...
+
+[01:29:29] === Bắt đầu Mode 3: Auto Farm ===
+[01:29:29] Dừng tool từ GUI.
+[01:29:29] 
+✅ Farm session ended
+[01:29:32] ✅ Scan Pokemon started!
+[01:29:32] 🎮 Press Alt+F8 to stop.
+[01:29:32] ✅ Initializing Scan Pokemon Mode...
+[01:29:32] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[01:29:32] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[01:29:32] ✅ Targets loaded: 8 Pokemon
+
+[01:29:32] 🎮 Starting scan loop...
+
+[01:29:32] Dang chay mode 1 (Scan Pokemon)...
+
+[01:29:41] ⏹ Tool stopped!
+[01:29:42] 
+✅ Scan session ended
+[01:29:47] ✅ Scan Pokemon started!
+[01:29:47] 🎮 Press Alt+F8 to stop.
+[01:29:47] ✅ Initializing Scan Pokemon Mode...
+[01:29:47] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[01:29:47] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[01:29:47] ✅ Targets loaded: 8 Pokemon
+
+[01:29:47] 🎮 Starting scan loop...
+
+[01:29:47] Dang chay mode 1 (Scan Pokemon)...
+
+[01:30:06] ⏹ Tool stopped!
+[01:30:07] 
+✅ Scan session ended
+[01:31:36] ✅ Scan Pokemon started!
+[01:31:36] 🎮 Press Alt+F8 to stop.
+[01:31:36] ✅ Initializing Scan Pokemon Mode...
+[01:31:36] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[01:31:36] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[01:31:36] ✅ Targets loaded: 8 Pokemon
+
+[01:31:36] 🎮 Starting scan loop...
+
+[01:31:36] Dang chay mode 1 (Scan Pokemon)...
+
+[01:31:46] ⏹ Tool stopped!
+[01:31:49] 
+✅ Scan session ended
+[01:32:40] ⚙ debug.save_failed_ocr: Bật
+[01:32:40] ⚙ farm.use_zero_effectiveness: Tắt
+[01:32:40] 🎮 Alt+F8 hotkey registered!
+[01:33:50] ⚙ debug.save_failed_ocr: Bật
+[01:33:50] ⚙ farm.use_zero_effectiveness: Tắt
+[01:33:50] 🎮 Alt+F8 hotkey registered!
+[01:34:38] ✅ Scan Pokemon started!
+[01:34:38] 🎮 Nhấn Alt+F8 để dừng.
+[01:34:38] ✅ Initializing Scan Pokemon Mode...
+[01:34:38] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[01:34:38] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[01:34:38] ✅ Targets loaded: 8 Pokemon
+
+[01:34:38] 🎮 Starting scan loop...
+
+[01:34:38] Dang chay mode 1 (Scan Pokemon)...
+
+[01:49:17] 
+✅ Scan session ended
+[02:53:05] ⚙ debug.save_failed_ocr: Bật
+[02:53:06] ⚙ farm.use_zero_effectiveness: Tắt
+[02:53:06] 🎮 Alt+F8 hotkey registered!
+[15:36:16] ⚙ debug.save_failed_ocr: Bật
+[15:36:16] ⚙ farm.use_zero_effectiveness: Tắt
+[15:36:16] 🎮 Alt+F8 hotkey registered!

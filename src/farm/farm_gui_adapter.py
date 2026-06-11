@@ -16,8 +16,9 @@ sys.path.insert(0, str(ROOT))
 from src.farm.farm_battle import (
     run_farm_mode,
     load_json,
+    load_team,
     CONFIG_PATH,
-    TEAM_PATH,
+    TEAM_FARM_PATH,
     feedback_log
 )
 
@@ -73,21 +74,23 @@ def _run_auto_farm_with_gui_logging(config, gui_log_callback, stop_event: Event)
     try:
         gui_log_callback("✅ Initializing Auto Farm...")
         gui_log_callback(f"📁 Config: {CONFIG_PATH}")
-        gui_log_callback(f"👥 Team: {TEAM_PATH}\n")
+        gui_log_callback(f"👥 Team: {TEAM_FARM_PATH}\n")
         
         # Kiểm tra dependencies
         if not ensure_runtime(config):
             gui_log_callback("❌ Missing dependencies. Install from requirements.txt")
             return
         
-        # Kiểm tra team có sẵn không
-        if not TEAM_PATH.exists():
-            gui_log_callback("⚠️ Team config not found! Please use Team Builder first.")
+        if not TEAM_FARM_PATH.exists():
+            gui_log_callback("⚠️ team_farm.json chưa có! Chạy Tab 5 Auto Farm Config trước.")
             return
         
-        team = load_json(TEAM_PATH)
+        team = load_team()
         if not team:
-            gui_log_callback("⚠️ Team is empty! Please configure team first.")
+            gui_log_callback("⚠️ Team farm trống! Chọn 6 Pokemon ở Tab 5.")
+            return
+        if len(team) < 6:
+            gui_log_callback(f"⚠️ Team farm chỉ có {len(team)}/6. Chọn đủ 6 Pokemon ở Tab 5.")
             return
         
         gui_log_callback(f"✅ Team loaded: {len(team)} Pokemon\n")

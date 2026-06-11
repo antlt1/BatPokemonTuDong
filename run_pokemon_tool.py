@@ -10,6 +10,10 @@ import winsound
 from ctypes import wintypes
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
+
+import copy
+import difflib
 
 import cv2
 import keyboard
@@ -17,10 +21,18 @@ import mss
 import numpy as np
 import pytesseract
 from PIL import Image
-import copy
-import difflib
 
-# Thêm src vào sys.path để import nội bộ
+from src.ocr_utils import (
+    normalize_text,
+    preprocess_for_ocr,
+    ocr_text,
+    ocr_text_variants,
+    fuzzy_fix_name as _fuzzy_fix_name,
+    get_known_pokemon_names,
+    crop_roi,
+    set_tesseract_path,
+)
+
 ROOT = Path(__file__).resolve().parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -68,8 +80,7 @@ def load_json(path):
         return json.load(file)
 
 
-def normalize_text(value):
-    return re.sub(r"\s+", " ", value.strip().lower())
+
 
 
 def ensure_runtime(config):
@@ -132,9 +143,7 @@ def screenshot_bgr():
     return cv2.cvtColor(shot, cv2.COLOR_BGRA2BGR)
 
 
-def crop_roi(image, roi):
-    x, y, w, h = roi
-    return image[y : y + h, x : x + w]
+
 
 
 def save_debug(config, image, label):
@@ -159,47 +168,7 @@ def clear_debug(config):
     print(f"Da xoa {removed} anh debug.")
 
 
-def preprocess_for_ocr(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    scaled = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
-    return cv2.threshold(scaled, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
 
-
-def ocr_text(image, config, psm=6):
-    processed = preprocess_for_ocr(image)
-    pil_image = Image.fromarray(processed)
-    options = f"--psm {psm}"
-    return pytesseract.image_to_string(
-        pil_image,
-        lang=config["ocr"].get("language", "eng"),
-        config=options,
-    ).strip()
-
-
-def ocr_text_variants(image, config, psm=6):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    big = cv2.resize(gray, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
-    variants = [
-        big,
-        cv2.threshold(big, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1],
-        cv2.threshold(big, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1],
-    ]
-    results = []
-    for variant in variants:
-        try:
-            text = pytesseract.image_to_string(
-                Image.fromarray(variant),
-                lang=config["ocr"].get("language", "eng"),
-                config=f"--psm {psm}",
-            ).strip()
-            if text:
-                results.append(text)
-        except Exception:
-            # Bỏ qua lỗi lock file tạm thời của Tesseract trên Windows
-            continue
-    if not results:
-        return ""
-    return max(results, key=len)
 
 
 def extract_enemy_name(text):
@@ -228,63 +197,7 @@ def extract_enemy_name(text):
     return ""
 
 
-def get_known_pokemon_names():
-    names = set()
-    try:
-        if TEAM_PATH.exists():
-            t = json.loads(TEAM_PATH.read_text(encoding='utf-8'))
-            for p in t:
-                n = p.get('name')
-                if n:
-                    names.add(normalize_text(str(n)))
-    except Exception:
-        pass
-    try:
-        if TARGETS_PATH.exists():
-            tt = json.loads(TARGETS_PATH.read_text(encoding='utf-8'))
-            for item in tt:
-                n = item.get('pokemonname')
-                if n:
-                    names.add(normalize_text(str(n)))
-    except Exception:
-        pass
 
-    # Thêm danh sách Pokemon mẫu từ team_builder_ui để hỗ trợ fuzzy match toàn diện
-    try:
-        from src.team_builder.team_builder_ui import POKEMON_NAMES
-        for n in POKEMON_NAMES:
-            names.add(normalize_text(n))
-    except ImportError:
-        # add some common names fallback nếu không import được
-        if not names:
-            names.update(["rattata", "pidgey", "zubat", "spheal", "pikachu"])
-
-    return sorted(names)
-
-
-def fuzzy_fix_name(name: str, known_names=None):
-    if not name:
-        return ""
-    if known_names is None:
-        known_names = get_known_pokemon_names()
-    
-    # Làm sạch triệt để: chỉ giữ chữ cái và khoảng trắng
-    clean_name = re.sub(r"[^a-z\s]", "", normalize_text(name)).strip()
-    
-    matches = difflib.get_close_matches(clean_name, known_names, n=1, cutoff=0.45)
-    if matches:
-        return matches[0]
-        
-    # Nếu không khớp, thử tách từ ra để khớp (tránh lỗi dính chữ "annie le 4 calm mind")
-    words = clean_name.split()
-    for w in words:
-        if len(w) >= 3:
-            m = difflib.get_close_matches(w, known_names, n=1, cutoff=0.7)
-            if m:
-                return m[0]
-                
-    # Fallback: trả về từ đầu tiên nếu quá dài
-    return words[0][:15] if words else name
 
 
 def is_battle(image, config):
@@ -372,6 +285,15 @@ def read_ability_with_retry(config):
             print(f"Chua doc duoc ability, doi them {retry_seconds:.1f}s...")
             time.sleep(retry_seconds)
     return last_ability, last_log
+
+
+def fuzzy_fix_name(name: str):
+    """Wrapper using extended Pokemon names from targets + team JSON."""
+    known = get_known_pokemon_names(
+        targets_path=TARGETS_PATH if TARGETS_PATH.exists() else None,
+        team_path=TEAM_PATH if TEAM_PATH.exists() else None,
+    )
+    return _fuzzy_fix_name(name, known_names=known)
 
 
 def build_targets(targets):
@@ -521,14 +443,36 @@ def move_until_next_scan(config):
         release_move_keys()
     return True
 
-# phát âm thanh khi tìm thấy Pokemon, nếu có file âm thanh được cấu hình và tồn tại thì phát file đó, nếu không thì phát beep mặc định
+def _resolve_found_sound_path(config) -> Optional[Path]:
+    """Tìm file âm thanh báo tìm thấy Pokemon (ưu tiên config, rồi fallback)."""
+    candidates = []
+    configured = config.get("audio", {}).get("found_sound", "").strip()
+    if configured:
+        candidates.append(ROOT / configured)
+    candidates.extend([
+        ROOT / "src" / "data" / "audio" / "quick-ting.mp3",
+        ROOT / "src" / "template" / "audio" / "quick-ting.mp3",
+    ])
+    seen = set()
+    for path in candidates:
+        key = str(path.resolve()) if path.exists() else str(path)
+        if key in seen:
+            continue
+        seen.add(key)
+        if path.exists():
+            return path.resolve()
+    return None
+
+
 def play_found_sound(config):
-    sound_path = ROOT / config["audio"]["found_sound"]
-    if sound_path.exists():
+    """Phát quick-ting.mp3 khi bắt đúng Pokemon (Mode 1 / Scan Pokemon)."""
+    sound_path = _resolve_found_sound_path(config)
+    if sound_path:
         try:
+            file_url = sound_path.as_uri()
             command = (
                 "$p=New-Object -ComObject WMPlayer.OCX; "
-                f"$p.URL='{str(sound_path)}'; "
+                f'$p.URL="{file_url}"; '
                 "$p.controls.play(); Start-Sleep -Milliseconds 1200"
             )
             subprocess.Popen(
@@ -536,6 +480,7 @@ def play_found_sound(config):
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
             )
+            print(f"🔔 Phat am thanh: {sound_path.name}")
             return
         except Exception:
             pass
@@ -547,6 +492,7 @@ def stop_found(config, pokemon, ability):
     print("")
     print("FOUND:", pokemon, "-", ability if ability != "none" else "any ability")
     print("Tool da dung. Ban tu bat Pokemon trong game.")
+    print("Nghe tieng 'ting' = da tim dung con can bat.")
 
 
 def run_manual_mode(config, targets):

@@ -17,6 +17,7 @@ Workflow trong mỗi vòng lặp:
 
 import json
 import re
+import threading
 import time
 from pathlib import Path
 from typing import Optional
@@ -26,14 +27,25 @@ import numpy as np
 import pytesseract
 from PIL import Image
 
-# Import từ run_pokemon_tool (cùng ROOT)
+from src.ocr_utils import (
+    normalize_text as normalize,
+    preprocess_for_ocr,
+    ocr_text as ocr_crop_old,
+    parse_move_name as parse_move_name_ocr,
+    parse_pp as parse_pp_from_text,
+    guess_move_data as _guess_move_data_from_name,
+    crop_roi,
+)
+
 ROOT = Path(__file__).resolve().parent.parent.parent
 
 CONFIG_PATH = ROOT / "src" / "config" / "tool_config.json"
-TEAM_PATH = ROOT / "src" / "config" / "team_party.json"
+TEAM_FARM_PATH = ROOT / "src" / "config" / "team_farm.json"
+TEAM_PARTY_PATH = ROOT / "src" / "config" / "team_party.json"  # legacy: Menu 4 / Team Builder cũ
 TYPE_CHART_PATH = ROOT / "src" / "data" / "type_chart.json"
 BATTLE_STATE_PATH = ROOT / "src" / "runtime" / "battle_state.json"
 FEEDBACK_LOG_PATH = ROOT / "src" / "runtime" / "feedback_log.txt"
+FEEDBACK_LOCK = threading.Lock()
 TEMPLATE_DIR = ROOT / "src" / "template" / "cap_gamedefault"
 
 FIGHT_TEMPLATE = TEMPLATE_DIR / "rightBarButtomFight.png"
@@ -42,9 +54,6 @@ RUN_TEMPLATE = TEMPLATE_DIR / "rightBarButtomRun.png"
 
 
 # ==================== Helpers ====================
-
-def normalize(s: str) -> str:
-    return re.sub(r"\s+", " ", s.strip().lower())
 
 
 def load_json(path: Path):
@@ -64,8 +73,9 @@ def feedback_log(message: str):
     stamp = datetime.now().strftime("%H:%M:%S")
     line = f"[{stamp}] {message}\n"
     print(line, end="")
-    with FEEDBACK_LOG_PATH.open("a", encoding="utf-8") as f:
-        f.write(line)
+    with FEEDBACK_LOCK:
+        with FEEDBACK_LOG_PATH.open("a", encoding="utf-8") as f:
+            f.write(line)
 
 
 def open_team_json_editor(reason: str):
@@ -76,18 +86,18 @@ def open_team_json_editor(reason: str):
         feedback_log(f"Khong mo duoc UI sua JSON: {exc}")
         return
 
-    TEAM_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if not TEAM_PATH.exists():
-        TEAM_PATH.write_text("[]", encoding="utf-8")
+    TEAM_FARM_PATH.parent.mkdir(parents=True, exist_ok=True)
+    if not TEAM_FARM_PATH.exists():
+        TEAM_FARM_PATH.write_text("[]", encoding="utf-8")
 
     root = tk.Tk()
-    root.title("Sua team_party.json")
+    root.title("Sua team_farm.json")
     root.geometry("900x700")
 
     tk.Label(root, text=reason, anchor="w", justify="left").pack(fill="x", padx=8, pady=6)
     text = scrolledtext.ScrolledText(root, wrap="none", font=("Consolas", 10))
     text.pack(fill="both", expand=True, padx=8, pady=6)
-    text.insert("1.0", TEAM_PATH.read_text(encoding="utf-8"))
+    text.insert("1.0", TEAM_FARM_PATH.read_text(encoding="utf-8"))
 
     def save():
         raw = text.get("1.0", "end").strip()
@@ -96,11 +106,11 @@ def open_team_json_editor(reason: str):
         except Exception as exc:
             messagebox.showerror("JSON loi", str(exc))
             return
-        save_json(TEAM_PATH, parsed)
-        messagebox.showinfo("Saved", f"Da luu {TEAM_PATH}")
+        save_json(TEAM_FARM_PATH, parsed)
+        messagebox.showinfo("Saved", f"Da luu {TEAM_FARM_PATH}")
         root.destroy()
 
-    tk.Button(root, text="Save team_party.json", command=save).pack(pady=8)
+    tk.Button(root, text="Save team_farm.json", command=save).pack(pady=8)
     root.mainloop()
 
 
@@ -135,13 +145,59 @@ def reset_battle_state():
 
 # ==================== Team ====================
 
+def normalize_team_for_farm(raw: list) -> list:
+    """Chuyển team_farm.json (bag format) sang format nội bộ farm (có slot, pp_current)."""
+    team = []
+    for i, p in enumerate(raw[:6]):
+        moves = []
+        for m in p.get("moves", []):
+            mv = dict(m) if isinstance(m, dict) else {"name": str(m)}
+            mv = enrich_move_data(mv)
+            moves.append(mv)
+        team.append({
+            "slot": i + 1,
+            "id": p.get("id", i + 1),
+            "name": p.get("name", ""),
+            "types": p.get("types", []),
+            "moves": moves,
+        })
+    return team
+
+
+def team_to_farm_json(team: list) -> list:
+    """Ghi ngược team nội bộ về bag format (id, name, moves[{name, pp}])."""
+    output = []
+    for p in team:
+        moves_out = []
+        for m in p.get("moves", []):
+            cur = m.get("pp_current")
+            mx = m.get("pp_max")
+            if cur is not None and mx is not None:
+                pp_str = f"{cur}/{mx}"
+            elif m.get("pp"):
+                pp_str = str(m["pp"])
+            else:
+                pp_str = "?/?"
+            moves_out.append({"name": m.get("name", ""), "pp": pp_str})
+        output.append({
+            "id": p.get("id"),
+            "name": p.get("name", ""),
+            "moves": moves_out,
+        })
+    return output
+
+
+def save_farm_team(team: list):
+    save_json(TEAM_FARM_PATH, team_to_farm_json(team))
+
+
 def load_team() -> list:
-    if not TEAM_PATH.exists():
+    if not TEAM_FARM_PATH.exists():
         return []
-    data = load_json(TEAM_PATH)
+    data = load_json(TEAM_FARM_PATH)
     if not isinstance(data, list) or len(data) == 0:
         return []
-    return data
+    return normalize_team_for_farm(data)
 
 
 def get_pokemon_by_slot(team: list, slot: int) -> Optional[dict]:
@@ -253,49 +309,15 @@ def all_attack_moves_depleted(moves: list) -> bool:
 
 # ==================== OCR Move Panel ====================
 
-def preprocess_for_ocr(img_bgr, scale=3):
-    gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
-    big = cv2.resize(gray, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
-    _, thresh = cv2.threshold(big, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    return thresh
-
-
-def ocr_crop(img_bgr, config, psm=6) -> str:
-    processed = preprocess_for_ocr(img_bgr)
-    pil = Image.fromarray(processed)
-    lang = config.get("ocr", {}).get("language", "eng")
-    return pytesseract.image_to_string(pil, lang=lang, config=f"--psm {psm}").strip()
-
-
-def parse_pp_from_text(text: str):
-    # Hỗ trợ khoảng trắng do OCR dễ đọc nhầm "15 15" hoặc "15l15"
-    m = re.search(r"(\d+)\s*[/\|\\lI\s]\s*(\d+)", text)
-    if m:
-        return int(m.group(1)), int(m.group(2))
-    return None, None
-
-
-def parse_move_name_ocr(text: str) -> str:
-    cleaned = re.sub(r"[^A-Za-z0-9 '\-]", " ", text)
-    cleaned = re.sub(r"\s+", " ", cleaned).strip()
-    return cleaned
-
-
-def _guess_move_data_from_name(name: str) -> dict:
-    """Tra cứu move data từ bảng tĩnh trong team_builder_ui"""
-    from src.team_builder.team_builder_ui import KNOWN_MOVES
-    key = name.strip().lower()
-    if key in KNOWN_MOVES:
-        return dict(KNOWN_MOVES[key])
-    for k, v in KNOWN_MOVES.items():
-        if key in k or k in key:
-            return dict(v)
-    return {"type": "normal", "power": 0, "accuracy": 100}
-
 
 def enrich_move_data(move: dict) -> dict:
-    """Bổ sung type, power, accuracy nếu thiếu từ JSON"""
+    """Bổ sung type, power, accuracy, pp_current nếu thiếu từ JSON"""
     m = dict(move)
+    if "pp" in m and m.get("pp_current") is None:
+        cur, mx = parse_pp_from_text(str(m["pp"]))
+        if cur is not None:
+            m["pp_current"] = cur
+            m["pp_max"] = mx
     if "power" not in m or "type" not in m:
         guess = _guess_move_data_from_name(m.get("name", ""))
         m["type"] = m.get("type", guess.get("type", "normal"))
@@ -310,8 +332,6 @@ def ocr_move_slots(image_bgr, config) -> list:
     Dùng ROI move_slots từ config.
     Trả về list 4 dict {name, type, power, accuracy, pp_current, pp_max}.
     """
-    # Import fuzzy fix để sửa tên move nếu OCR sai nhẹ
-    from run_pokemon_tool import fuzzy_fix_name
     roi_list = config.get("roi", {}).get("move_slots", [])
     pp_roi_list = config.get("roi", {}).get("move_pp_slots", [])
     moves = []
@@ -435,35 +455,68 @@ def ocr_pokemon_name_in_battle(image_bgr, config) -> str:
     x, y, w, h = roi
     cell = image_bgr[y:y+h, x:x+w]
     raw = ocr_crop(cell, config, psm=7)
-    return parse_move_name_ocr(raw).lower().strip()
+    return clean_pokemon_ocr_name(raw)
 
 
-def verify_pokemon_name(image_bgr, config, current_pokemon) -> bool:
+def clean_pokemon_ocr_name(raw: str) -> str:
+    """Làm sạch tên Pokemon OCR (bỏ ký tự rác đầu như -, y, v...)."""
+    s = parse_move_name_ocr(raw).lower().strip()
+    s = re.sub(r"^[^a-z]+", "", s)
+    return s
+
+
+def find_slot_by_pokemon_name(team: list, ocr_name: str) -> Optional[int]:
+    """Fuzzy match tên OCR với team, trả về slot hoặc None."""
+    clean = clean_pokemon_ocr_name(ocr_name)
+    if not clean:
+        return None
+    clean_alpha = re.sub(r"[^a-z]", "", clean)
+
+    best_slot = None
+    best_ratio = 0.0
+    for p in team:
+        json_name = re.sub(r"[^a-z]", "", normalize(p.get("name", "")))
+        if not json_name:
+            continue
+        if json_name == clean_alpha or json_name in clean_alpha or clean_alpha in json_name:
+            return p.get("slot")
+        ratio = difflib.SequenceMatcher(None, json_name, clean_alpha).ratio()
+        if ratio > best_ratio:
+            best_ratio = ratio
+            best_slot = p.get("slot")
+    if best_ratio >= 0.65:
+        return best_slot
+    return None
+
+
+def find_slot_by_move_ocr(team: list, ocr_moves: list, min_matches: int = 2) -> Optional[int]:
     """
-    Verify pokemon hiện tại match với tên OCR từ battle.
-    Trả về True nếu tên match, False nếu mismatch (có thể đã swap pokemon).
+    Xác định Pokemon đang ra sân bằng cách so khớp 4 move OCR với team JSON.
+    Đáng tin hơn đọc tên khi menu Fight đã mở (ROI tên dễ bị che).
     """
-    ocr_pokemon_name = ocr_pokemon_name_in_battle(image_bgr, config)
-    if not ocr_pokemon_name:
-        # Nếu OCR không đọc được, cho qua (không fail)
-        return True
+    ocr_names = set()
+    for m in ocr_moves:
+        name = normalize(m.get("name", ""))
+        if name and name not in ("move1", "move2", "move3", "move4"):
+            ocr_names.add(name)
+    if not ocr_names:
+        return None
 
-    json_pokemon_name = normalize(current_pokemon.get("name", ""))
-    
-    import difflib
-    clean_ocr = re.sub(r"[^a-z]", "", ocr_pokemon_name)
-    clean_json = re.sub(r"[^a-z]", "", json_pokemon_name)
-
-    if clean_json != clean_ocr and clean_json not in clean_ocr:
-        # Thử fuzzy match (cho phép sai sót do OCR)
-        if difflib.SequenceMatcher(None, clean_json, clean_ocr).ratio() < 0.6:
-            feedback_log(
-                f"⚠ Pokemon mismatch! JSON: '{json_pokemon_name}' vs OCR: '{ocr_pokemon_name}'. "
-                f"Có thể đã swap Pokemon, skip lượt này."
-            )
-            return False
-
-    return True
+    best_slot = None
+    best_score = 0
+    for p in team:
+        team_moves = {
+            normalize(m.get("name", ""))
+            for m in p.get("moves", [])
+            if m.get("name")
+        }
+        score = len(ocr_names & team_moves)
+        if score > best_score:
+            best_score = score
+            best_slot = p.get("slot")
+    if best_score >= min_matches:
+        return best_slot
+    return None
 
 
 # ==================== Click Helpers ====================
@@ -580,8 +633,11 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
 
     team = load_team()
     if not team:
-        print("Chưa có team_party.json. Hãy chạy Menu 4 để đọc team trước!")
-        feedback_log("ERROR: team_party.json rỗng hoặc không tồn tại.")
+        print("Chưa có team_farm.json. Hãy chạy Tab 5 Auto Farm Config trước!")
+        feedback_log("ERROR: team_farm.json rỗng hoặc không tồn tại. Chạy Tab 5 để chọn 6 Pokemon.")
+        return
+    if len(team) < 6:
+        feedback_log(f"ERROR: team_farm.json chỉ có {len(team)}/6 Pokemon. Chạy Tab 5 để chọn đủ 6.")
         return
 
     # Khởi tạo tesseract
@@ -641,9 +697,7 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 in_battle = False
                 current_moves = []
 
-                # Lưu lại team vào file khi kết thúc battle để đồng bộ PP
-                from src.team_builder.team_builder_ui import save_team
-                save_team(team)
+                save_farm_team(team)
                 time.sleep(config["timing"].get("after_run_wait_seconds", 4.0))
                 continue
 
@@ -662,23 +716,20 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             feedback_log(f"Mới vào trận, đợi {wait_time}s animation...")
             time.sleep(wait_time)
 
-        # --- MỚI: TỰ ĐỘNG NHẬN DIỆN POKEMON ĐANG TRÊN SÂN ---
+        # Nhận diện Pokemon trên sân (chỉ tin ROI tên khi chưa mở menu Fight)
         image = screenshot_fn()
         on_field_name = ocr_pokemon_name_in_battle(image, config)
-        
-        if on_field_name:
-            found_slot = None
-            for p in team:
-                if normalize(p.get("name", "")) in on_field_name or on_field_name in normalize(p.get("name", "")):
-                    found_slot = p.get("slot")
-                    break
-            
-            if found_slot and found_slot != current_slot:
-                feedback_log(f"Phát hiện {on_field_name} trên sân. Tự động chuyển sang Slot {found_slot}.")
-                current_slot = found_slot
-                battle_state["current_slot"] = current_slot
-                save_battle_state(battle_state)
-                current_moves = [] # Reset moves để load lại theo con mới
+        found_slot = find_slot_by_pokemon_name(team, on_field_name) if on_field_name else None
+        if found_slot and found_slot != current_slot:
+            pname = get_pokemon_by_slot(team, found_slot)
+            feedback_log(
+                f"Phát hiện '{on_field_name}' trên sân → Slot {found_slot} "
+                f"({pname.get('name', '?') if pname else '?'})"
+            )
+            current_slot = found_slot
+            battle_state["current_slot"] = current_slot
+            save_battle_state(battle_state)
+            current_moves = []
 
         # Lấy Pokemon hiện tại dựa trên Slot đã được sync
         pokemon = get_pokemon_by_slot(team, current_slot)
@@ -808,11 +859,7 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
             image_after_swap = screenshot_fn()
             on_field_name_after = ocr_pokemon_name_in_battle(image_after_swap, config)
             if on_field_name_after:
-                detected_slot = None
-                for p in team:
-                    if normalize(p.get("name", "")) in on_field_name_after or on_field_name_after in normalize(p.get("name", "")):
-                        detected_slot = p.get("slot")
-                        break
+                detected_slot = find_slot_by_pokemon_name(team, on_field_name_after)
 
                 if detected_slot is None:
                     feedback_log(f"Không xác định được Pokemon sau swap; OCR: '{on_field_name_after}'. Giữ slot mặc định {new_slot}.")
@@ -911,17 +958,27 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
                 merged.append(matched)
             return merged
 
+        # Đồng bộ slot theo moves OCR (đáng tin hơn đọc tên khi menu Fight đã mở)
+        move_slot = find_slot_by_move_ocr(team, ocr_moves, min_matches=2)
+        if move_slot and move_slot != current_slot:
+            pokemon = get_pokemon_by_slot(team, move_slot)
+            if pokemon:
+                feedback_log(
+                    f"Đồng bộ slot {move_slot} theo moves OCR "
+                    f"({pokemon.get('name', '?')}): "
+                    f"{[m.get('name') for m in ocr_moves]}"
+                )
+                current_slot = move_slot
+                battle_state["current_slot"] = current_slot
+                save_battle_state(battle_state)
+                raw_moves = list(pokemon.get("moves", []))
+                current_moves = [enrich_move_data(mv) for mv in raw_moves]
+                my_types = get_pokemon_types(pokemon)
+
         current_moves, valid_pp_reads = merge_pp_from_ocr_by_slot(current_moves, ocr_moves)
         pokemon["moves"] = current_moves
         if valid_pp_reads == 0:
             feedback_log("OCR PP khong doc duoc so hop le; giu PP trong team JSON, khong override move.")
-
-        # === Verify Pokemon name match ===
-        image_for_verify = screenshot_fn()
-        if not verify_pokemon_name(image_for_verify, config, pokemon):
-            feedback_log("Verify Pokemon thất bại. Skip lượt này để tránh click sai move.")
-            time.sleep(config["timing"].get("battle_anim_wait_seconds", 3.0))
-            continue
 
         # Chọn move tốt nhất
         best_idx = pick_best_move(current_moves, my_types, enemy_types, config)
@@ -944,15 +1001,12 @@ def run_farm_mode(config, win_api_module, screenshot_fn, is_battle_fn,
         image = screenshot_fn()
         click_move_slot(best_idx, config, win_api_module, image)
         
-        from src.team_builder.team_builder_ui import save_team
-
         # Giảm PP
         if current_moves[best_idx].get("pp_current") is not None:
             old_pp = current_moves[best_idx]["pp_current"]
             current_moves[best_idx]["pp_current"] -= 1
             feedback_log(f"Đã trừ PP '{current_moves[best_idx]['name']}': {old_pp} -> {current_moves[best_idx]['pp_current']}")
-            # Lưu lại file JSON ngay lập tức để người dùng kiểm tra
-            save_team(team)
+            save_farm_team(team)
 
         # Đợi animation battle
         time.sleep(config["timing"].get("after_move_click_seconds", 1.0))

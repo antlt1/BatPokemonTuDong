@@ -3,7 +3,7 @@ modern_ui.py - GUI chính dùng CustomTkinter
 Giao diện hiện đại với Dark Mode, sidebar navigation, tabs
 
 Cấu trúc:
-  - Sidebar (trái): Dashboard, Team Builder, Calibrate ROI, Settings
+  - Sidebar (trái): Dashboard, Team Builder, Bắt Pokemon, Settings
   - Main Content (phải): Nội dung tab hiện tại
   - Threading: Background worker chạy farm_battle.py
   - Hotkey F8: Start/Stop auto farm
@@ -11,6 +11,7 @@ Cấu trúc:
 
 import customtkinter as ctk
 import tkinter as tk
+from tkinter import messagebox
 import json
 import threading
 import queue
@@ -20,7 +21,6 @@ from pathlib import Path
 from datetime import datetime
 import sys
 
-# Import modules khác
 ROOT = Path(__file__).resolve().parent.parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -30,7 +30,25 @@ TARGETS_PATH = ROOT / "src" / "config" / "target_pokemon.json"
 TEAM_PATH = ROOT / "src" / "config" / "team_party.json"
 FEEDBACK_LOG_PATH = ROOT / "src" / "runtime" / "feedback_log.txt"
 
-# ======================= Theme Settings =======================
+# ======================= Pokemon Theme Colors =======================
+POKE_BLUE = "#3b82f6"
+POKE_RED = "#ef4444"
+POKE_GREEN = "#22c55e"
+POKE_YELLOW = "#eab308"
+POKE_PURPLE = "#a855f7"
+POKE_CYAN = "#06b6d4"
+POKE_ORANGE = "#f97316"
+POKE_PINK = "#ec4899"
+
+BG_DARK = "#0a0a0f"
+BG_CARD = "#13131a"
+BG_CARD_HOVER = "#1a1a24"
+BG_SIDEBAR = "#0d0d14"
+BORDER_SUBTLE = "#1e1e2a"
+TEXT_PRIMARY = "#e8e8f0"
+TEXT_SECONDARY = "#8888a0"
+TEXT_MUTED = "#555570"
+
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
@@ -38,28 +56,26 @@ ctk.set_default_color_theme("blue")
 class ModernPokemonUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("🎮 PokemonPRO Auto Tool - v2.0")
+        self.root.title("PokemonPRO Auto Tool")
         self.root.geometry("1600x900")
         self.root.resizable(True, True)
-        
-        # Load config
+        self.root.configure(fg=BG_DARK)
+
         self.config = self._load_config()
-        
-        # Threading
+
         self.worker_thread = None
         self.worker_running = False
         self.log_queue = queue.Queue()
         self.stop_event = threading.Event()
         self.selected_mode = tk.StringVar(value="Auto Farm")
-        
-        # Hotkey
+
+        self.stats = {"battles": 0, "pokemon": 0, "xp": 0, "runtime": "00:00:00"}
         self.hotkey_registered = False
-        
-        # Setup UI
+
         self._setup_ui()
         self._register_hotkey()
         self._start_log_listener()
-        
+
     def _load_config(self):
         try:
             with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
@@ -67,467 +83,804 @@ class ModernPokemonUI:
         except Exception as e:
             print(f"Error loading config: {e}")
             return {}
-    
+
+    def _save_config(self):
+        with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
+            json.dump(self.config, f, indent=2, ensure_ascii=False)
+
     def _setup_ui(self):
-        """Tạo giao diện chính: Sidebar + Main Content"""
         self.root.grid_rowconfigure(0, weight=1)
         self.root.grid_columnconfigure(1, weight=1)
-        
-        # ===== SIDEBAR (Trái) =====
-        self.sidebar = ctk.CTkFrame(self.root, width=200, corner_radius=0, fg_color="#1a1a1a")
-        self.sidebar.grid(row=0, column=0, sticky="nsew", padx=0, pady=0)
-        self.sidebar.grid_propagate(False)
-        
-        # Header sidebar
-        header = ctk.CTkLabel(
-            self.sidebar,
-            text="🎮 PokemonPRO",
-            text_color="#00bfff",
-            font=("Arial", 16, "bold")
-        )
-        header.pack(pady=15, padx=10)
-        
-        # Separator
-        ctk.CTkLabel(self.sidebar, text="", fg_color="#333333", height=2).pack(fill="x", pady=5)
-        
-        # Menu buttons
-        self.buttons = {}
-        menu_items = [
-            ("Dashboard", "📊"),
-            ("Team Builder", "👥"),
-            ("Bag Scanner", "🎒"),
-            ("Auto Farm Config", "⚙️🎯"),
-            ("Calibrate ROI", "🎯"),
-            ("Settings", "⚙️")
-        ]
-        
-        for name, emoji in menu_items:
-            btn = ctk.CTkButton(
-                self.sidebar,
-                text=f"{emoji} {name}",
-                text_color="#ffffff",
-                fg_color="#2a2a2a",
-                hover_color="#3a3a3a",
-                corner_radius=8,
-                height=50,
-                font=("Arial", 12, "bold"),
-                command=lambda n=name: self._switch_tab(n)
-            )
-            btn.pack(pady=8, padx=10, fill="x")
-            self.buttons[name] = btn
-        
-        # Separator
-        ctk.CTkLabel(self.sidebar, text="", fg_color="#333333", height=2).pack(fill="x", pady=15)
-        
-        # Status label
-        self.status_label = ctk.CTkLabel(
-            self.sidebar,
-            text="🔴 Stopped",
-            text_color="#ff6b6b",
-            font=("Arial", 11, "bold")
-        )
-        self.status_label.pack(pady=10, padx=10)
-        
-        # Mode label
-        self.mode_label = ctk.CTkLabel(
-            self.sidebar,
-            text="Mode: Auto Farm",
-            text_color="#4ecdc4",
-            font=("Arial", 10)
-        )
-        self.mode_label.pack(pady=5, padx=10)
-        
-        # ===== MAIN CONTENT (Phải) =====
-        self.main_frame = ctk.CTkFrame(self.root, fg_color="#0d0d0d")
-        self.main_frame.grid(row=0, column=1, sticky="nsew", padx=10, pady=10)
+
+        self._create_sidebar()
+
+        self.main_frame = ctk.CTkFrame(self.root, fg_color=BG_DARK, corner_radius=0)
+        self.main_frame.grid(row=0, column=1, sticky="nsew")
         self.main_frame.grid_rowconfigure(0, weight=1)
         self.main_frame.grid_columnconfigure(0, weight=1)
-        
-        # Content container (dùng để switch tab)
-        self.content_container = ctk.CTkFrame(self.main_frame, fg_color="#0d0d0d")
+
+        self.content_container = ctk.CTkFrame(self.main_frame, fg_color=BG_DARK, corner_radius=0)
         self.content_container.grid(row=0, column=0, sticky="nsew")
         self.content_container.grid_rowconfigure(0, weight=1)
         self.content_container.grid_columnconfigure(0, weight=1)
-        
-        # Tabs
+
         self.tabs = {}
         self._create_dashboard_tab()
         self._create_team_builder_tab()
         self._create_bag_scanner_tab()
         self._create_auto_farm_config_tab()
-        self._create_calibrate_roi_tab()
+        self._create_catch_pokemon_tab()
         self._create_settings_tab()
-        
-        # Show dashboard by default
+
         self._switch_tab("Dashboard")
-    
-    def _create_dashboard_tab(self):
-        """Tab Dashboard: Start/Stop, hiển thị mode, log panel"""
-        frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-        self.tabs["Dashboard"] = frame
-        
-        # Header
-        header = ctk.CTkLabel(
-            frame,
-            text="📊 Dashboard - Auto Farm Control",
-            text_color="#00bfff",
-            font=("Arial", 18, "bold")
+
+    # ===================== SIDEBAR =====================
+    def _create_sidebar(self):
+        self.sidebar = ctk.CTkFrame(
+            self.root, width=220, corner_radius=0, fg_color=BG_SIDEBAR,
+            border_width=0
         )
-        header.pack(pady=15, padx=10)
-        
-        # Control panel
-        control_frame = ctk.CTkFrame(frame, fg_color="#1a1a1a", corner_radius=10)
-        control_frame.pack(fill="x", padx=10, pady=10)
-        
-        # Mode info
+        self.sidebar.grid(row=0, column=0, sticky="nsew")
+        self.sidebar.grid_propagate(False)
+
+        brand_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent", height=80)
+        brand_frame.pack(fill="x", pady=(15, 5))
+        brand_frame.pack_propagate(False)
+
+        brand = ctk.CTkLabel(
+            brand_frame, text="⚡ POKEPRO",
+            text_color=POKE_CYAN, font=("Segoe UI", 20, "bold")
+        )
+        brand.pack(expand=True)
+
+        subtitle = ctk.CTkLabel(
+            brand_frame, text="Auto Farm Tool",
+            text_color=TEXT_SECONDARY, font=("Segoe UI", 10)
+        )
+        subtitle.pack()
+
+        self._draw_divider(self.sidebar, pady=(5, 15))
+
+        self.buttons = {}
+        menu_items = [
+            ("Dashboard",      "⬡", POKE_CYAN),
+            ("Team Builder",   "◈", POKE_PURPLE),
+            ("Bag Scanner",    "◉", POKE_GREEN),
+            ("Auto Farm Config", "◎", POKE_ORANGE),
+            ("Bắt Pokemon",    "◐", POKE_YELLOW),
+            ("Settings",       "⚙", TEXT_SECONDARY),
+        ]
+
+        for name, icon, color in menu_items:
+            self._create_menu_button(name, icon, color)
+
+        ctk.CTkLabel(self.sidebar, text="", fg_color="transparent").pack(expand=True)
+
+        self._draw_divider(self.sidebar, pady=(0, 10))
+
+        status_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent")
+        status_frame.pack(fill="x", padx=12, pady=(0, 15))
+
+        dot_frame = ctk.CTkFrame(status_frame, fg_color="transparent")
+        dot_frame.pack(fill="x", pady=2)
+
+        self.status_dot = ctk.CTkLabel(
+            dot_frame, text="●", text_color=POKE_RED,
+            font=("Segoe UI", 14), width=20
+        )
+        self.status_dot.pack(side="left")
+
+        self.status_label = ctk.CTkLabel(
+            dot_frame, text="Stopped",
+            text_color=TEXT_SECONDARY, font=("Segoe UI", 12, "bold")
+        )
+        self.status_label.pack(side="left", padx=(5, 0))
+
         self.mode_label = ctk.CTkLabel(
-            control_frame,
-            text="Mode: None\nHotkey: Alt+F8 to Start/Stop",
-            text_color="#4ecdc4",
-            font=("Arial", 11)
+            status_frame, text="Mode: Auto Farm",
+            text_color=TEXT_MUTED, font=("Segoe UI", 10)
         )
-        self.mode_label.pack(pady=10, padx=10, anchor="w")
-        
-        # Mode selector + Buttons frame
-        control_buttons_frame = ctk.CTkFrame(control_frame, fg_color="#1a1a1a")
-        control_buttons_frame.pack(fill="x", padx=10, pady=10)
-        
-        # Mode selector (dropdown)
-        mode_label = ctk.CTkLabel(
-            control_buttons_frame,
-            text="Select Mode:",
-            text_color="#ffffff",
-            font=("Arial", 11)
-        )
-        mode_label.pack(side="left", padx=5)
-        
-        mode_options = ["Auto Farm", "Scan Pokemon"]
-        self.mode_dropdown = ctk.CTkComboBox(
-            control_buttons_frame,
-            values=mode_options,
-            variable=self.selected_mode,
-            state="readonly",
-            width=150,
-            fg_color="#2a2a2a",
-            text_color="#ffffff",
-            button_color="#0099ff",
-            border_color="#0099ff"
-        )
-        self.mode_dropdown.pack(side="left", padx=5)
-        
-        # Start button
-        self.start_btn = ctk.CTkButton(
-            control_buttons_frame,
-            text="▶️ START (Alt+F8)",
-            text_color="#ffffff",
-            fg_color="#2ecc71",
-            hover_color="#27ae60",
-            height=40,
-            font=("Arial", 12, "bold"),
-            command=self.start_farm,
-            width=150
-        )
-        self.start_btn.pack(side="left", padx=10, fill="x", expand=False)
-        
-        # Stop button
-        self.stop_btn = ctk.CTkButton(
-            control_buttons_frame,
-            text="⏹️ STOP (Alt+F8)",
-            text_color="#ffffff",
-            fg_color="#e74c3c",
-            hover_color="#c0392b",
-            height=40,
-            font=("Arial", 12, "bold"),
-            command=self.stop_farm,
-            state="disabled",
-            width=150
-        )
-        self.stop_btn.pack(side="left", padx=10, fill="x", expand=False)
-        
-        # Log panel
-        log_frame = ctk.CTkFrame(frame, fg_color="#1a1a1a", corner_radius=10)
-        log_frame.pack(fill="both", expand=True, padx=10, pady=10)
-        
-        log_title = ctk.CTkLabel(
-            log_frame,
-            text="📝 Live Log",
-            text_color="#ffff00",
-            font=("Arial", 12, "bold")
-        )
-        log_title.pack(pady=5, padx=10, anchor="w")
-        
-        # Text widget cho log
-        self.log_text = ctk.CTkTextbox(
-            log_frame,
-            text_color="#00ff00",
-            fg_color="#0d0d0d",
-            corner_radius=5,
-            font=("Courier", 12)
-        )
-        self.log_text.pack(fill="both", expand=True, padx=10, pady=(0, 10))
-        self.log_text.configure(state="disabled")
-        
+        self.mode_label.pack(fill="x", padx=(24, 0), pady=(2, 0))
+
+    def _create_menu_button(self, name, icon, color):
+        btn_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent", height=44)
+        btn_frame.pack(fill="x", padx=8, pady=2)
+        btn_frame.pack_propagate(False)
+
+        indicator = ctk.CTkLabel(btn_frame, text="", fg_color="transparent", width=3, height=28, corner_radius=2)
+        indicator.pack(side="left", padx=(0, 8))
+        indicator.configure(fg_color="transparent")
+
+        icon_lbl = ctk.CTkLabel(btn_frame, text=icon, text_color=color, font=("Segoe UI", 14), width=24)
+        icon_lbl.pack(side="left")
+
+        text_lbl = ctk.CTkLabel(btn_frame, text=name, text_color=TEXT_SECONDARY, font=("Segoe UI", 12))
+        text_lbl.pack(side="left", padx=(8, 0), fill="x", expand=True)
+
+        btn_frame.bind("<Button-1>", lambda e, n=name: self._switch_tab(n))
+        icon_lbl.bind("<Button-1>", lambda e, n=name: self._switch_tab(n))
+        text_lbl.bind("<Button-1>", lambda e, n=name: self._switch_tab(n))
+        btn_frame.bind("<Enter>", lambda e, b=btn_frame: b.configure(fg_color="#181825") if b.cget("fg_color") != POKE_BLUE else None)
+        btn_frame.bind("<Leave>", lambda e, b=btn_frame: b.configure(fg_color="transparent") if b.cget("fg_color") != POKE_BLUE else None)
+
+        self.buttons[name] = {"frame": btn_frame, "indicator": indicator, "text": text_lbl, "color": color, "icon": icon_lbl}
+
+    def _draw_divider(self, parent, pady=(10, 10)):
+        ctk.CTkLabel(parent, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=20, pady=pady)
+
+    # ===================== DASHBOARD TAB =====================
+    def _create_dashboard_tab(self):
+        frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
         self.tabs["Dashboard"] = frame
-    
+
+        scroll = ctk.CTkScrollableFrame(frame, fg_color=BG_DARK, corner_radius=0)
+        scroll.pack(fill="both", expand=True, padx=16, pady=16)
+
+        # === HEADER ===
+        ctk.CTkLabel(
+            scroll, text="Dashboard", text_color=TEXT_PRIMARY,
+            font=("Segoe UI", 20, "bold")
+        ).pack(anchor="w", pady=(0, 4))
+
+        ctk.CTkLabel(
+            scroll, text="Điều khiển tự động farm Pokemon", text_color=TEXT_SECONDARY,
+            font=("Segoe UI", 11)
+        ).pack(anchor="w", pady=(0, 16))
+
+        # === STAT CARDS ===
+        cards_frame = ctk.CTkFrame(scroll, fg_color="transparent")
+        cards_frame.pack(fill="x", pady=(0, 16))
+
+        stat_items = [
+            ("⚔️ Battles", "0", POKE_RED),
+            ("🎯 Pokemon", "0", POKE_GREEN),
+            ("✨ XP Gained", "0", POKE_PURPLE),
+            ("⏱ Runtime", "00:00:00", POKE_CYAN),
+        ]
+        self.stat_labels = {}
+        for i, (label, val, color) in enumerate(stat_items):
+            card = self._create_stat_card(cards_frame, label, val, color)
+            card.pack(side="left", fill="x", expand=True, padx=(0 if i == 0 else 6, 6 if i < 3 else 0))
+
+        # === CONTROL ===
+        control_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        control_card.pack(fill="x", pady=(0, 16))
+
+        ctk.CTkLabel(
+            control_card, text="Farm Control", text_color=TEXT_PRIMARY,
+            font=("Segoe UI", 14, "bold")
+        ).pack(padx=18, pady=(14, 8))
+
+        ctk.CTkLabel(control_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        ctrl_row = ctk.CTkFrame(control_card, fg_color="transparent")
+        ctrl_row.pack(fill="x", padx=18, pady=14)
+
+        ctk.CTkLabel(ctrl_row, text="Chế độ:", text_color=TEXT_SECONDARY, font=("Segoe UI", 11)).pack(side="left")
+
+        self.mode_dropdown = ctk.CTkComboBox(
+            ctrl_row, values=["Auto Farm", "Scan Pokemon"],
+            variable=self.selected_mode, state="readonly",
+            width=160, fg_color=BG_DARK, text_color=TEXT_PRIMARY,
+            button_color=POKE_BLUE, border_color=BORDER_SUBTLE,
+            dropdown_fg_color=BG_CARD, dropdown_text_color=TEXT_PRIMARY,
+            dropdown_hover_color=BG_CARD_HOVER, font=("Segoe UI", 11)
+        )
+        self.mode_dropdown.pack(side="left", padx=(10, 20))
+
+        self.start_btn = ctk.CTkButton(
+            ctrl_row, text="▶ START", text_color="#ffffff",
+            fg_color=POKE_GREEN, hover_color="#16a34a",
+            height=38, font=("Segoe UI", 12, "bold"),
+            command=self.start_farm, width=130, corner_radius=8
+        )
+        self.start_btn.pack(side="left", padx=5)
+
+        self.stop_btn = ctk.CTkButton(
+            ctrl_row, text="■ STOP", text_color="#ffffff",
+            fg_color=POKE_RED, hover_color="#dc2626",
+            height=38, font=("Segoe UI", 12, "bold"),
+            command=self.stop_farm, state="disabled",
+            width=130, corner_radius=8
+        )
+        self.stop_btn.pack(side="left", padx=5)
+
+        ctk.CTkLabel(ctrl_row, text="", fg_color=BORDER_SUBTLE, width=1, height=30).pack(side="left", padx=15)
+        ctk.CTkLabel(ctrl_row, text="Alt+F8", text_color=TEXT_MUTED, font=("Segoe UI", 11, "italic")).pack(side="left", padx=5)
+
+        # === LOG ===
+        log_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        log_card.pack(fill="both", expand=True)
+
+        log_header = ctk.CTkFrame(log_card, fg_color="transparent")
+        log_header.pack(fill="x", padx=18, pady=(14, 8))
+
+        ctk.CTkLabel(log_header, text="📝 Live Log", text_color=TEXT_PRIMARY, font=("Segoe UI", 14, "bold")).pack(side="left")
+
+        clear_btn = ctk.CTkButton(
+            log_header, text="Xoá", text_color=TEXT_MUTED,
+            fg_color="transparent", hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 10), width=50, height=24,
+            corner_radius=6, command=self._clear_log
+        )
+        clear_btn.pack(side="right")
+
+        ctk.CTkLabel(log_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        self.log_text = ctk.CTkTextbox(
+            log_card, text_color=TEXT_PRIMARY, fg_color=BG_DARK,
+            corner_radius=8, font=("Cascadia Code", 12), border_width=0
+        )
+        self.log_text.pack(fill="both", expand=True, padx=18, pady=14)
+        self.log_text.configure(state="disabled")
+
+        self.tabs["Dashboard"] = frame
+
+    def _create_stat_card(self, parent, label, value, color):
+        card = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1, height=100)
+        card.pack_propagate(False)
+
+        ctk.CTkLabel(card, text="", fg_color=color, height=3, corner_radius=2).pack(fill="x")
+
+        content = ctk.CTkFrame(card, fg_color="transparent")
+        content.pack(expand=True, fill="both", padx=16, pady=16)
+
+        ctk.CTkLabel(content, text=label, text_color=TEXT_SECONDARY, font=("Segoe UI", 11)).pack(anchor="w")
+
+        val_lbl = ctk.CTkLabel(content, text=value, text_color=color, font=("Segoe UI", 22, "bold"))
+        val_lbl.pack(anchor="w", pady=(2, 0))
+        self.stat_labels[label] = val_lbl
+        return card
+
+    # ===================== TEAM BUILDER TAB =====================
     def _create_team_builder_tab(self):
-        """Tab Team Builder: Placeholder (sẽ chuyển UI tkinter cũ)"""
-        frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-        
-        header = ctk.CTkLabel(
-            frame,
-            text="👥 Team Builder",
-            text_color="#00bfff",
-            font=("Arial", 18, "bold")
-        )
-        header.pack(pady=15, padx=10)
-        
-        info = ctk.CTkLabel(
-            frame,
-            text="[Team Builder UI coming soon]\nLoad team from screenshots and edit moves.",
-            text_color="#4ecdc4",
-            font=("Arial", 12)
-        )
-        info.pack(pady=20, padx=10)
-        
-        self.tabs["Team Builder"] = frame
-    
+        try:
+            from src.team_builder.team_builder_ui import TeamBuilderApp, init_tesseract
+
+            frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
+            self.tabs["Team Builder"] = frame
+
+            ctk.CTkLabel(frame, text="Team Builder", text_color=TEXT_PRIMARY,
+                         font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
+            ctk.CTkLabel(frame, text="Đọc team Pokemon từ ảnh chụp", text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
+
+            embedded = tk.Frame(frame, bg=BG_CARD)
+            embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
+
+            init_tesseract(self.config)
+            TeamBuilderApp(embedded, self.config).pack(fill="both", expand=True)
+
+        except Exception as e:
+            self._error_tab("Team Builder", "👥", str(e))
+
+    # ===================== BAG SCANNER TAB =====================
     def _create_bag_scanner_tab(self):
-        """Tab Bag Scanner: Scan all Pokemon in bag"""
         try:
             from src.team_builder.bag_scanner_tab import BagScannerTab
-            
-            frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
+
+            frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
             self.tabs["Bag Scanner"] = frame
-            
-            # Embed Tkinter frame vào CustomTkinter
-            # Cách đơn giản: tạo tk.Frame và embed nó
-            embedded_tk_frame = tk.Frame(frame, bg="#1e2127")
-            embedded_tk_frame.pack(fill="both", expand=True, padx=0, pady=0)
-            
-            # Tạo BagScannerTab
-            scanner = BagScannerTab(embedded_tk_frame, self.config)
-            scanner.frame.pack(fill="both", expand=True)
-            
-        except ImportError as e:
-            frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-            header = ctk.CTkLabel(
-                frame,
-                text="🎒 Bag Scanner",
-                text_color="#ff6b6b",
-                font=("Arial", 18, "bold")
-            )
-            header.pack(pady=15, padx=10)
-            
-            info = ctk.CTkLabel(
-                frame,
-                text=f"Error loading Bag Scanner: {e}",
-                text_color="#ff6b6b",
-                font=("Arial", 12)
-            )
-            info.pack(pady=20, padx=10)
-            
-            self.tabs["Bag Scanner"] = frame
-    
+
+            ctk.CTkLabel(frame, text="Bag Scanner", text_color=TEXT_PRIMARY,
+                         font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
+            ctk.CTkLabel(frame, text="Quét tất cả Pokemon trong túi", text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
+
+            embedded = tk.Frame(frame, bg=BG_CARD)
+            embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
+
+            BagScannerTab(embedded, self.config).frame.pack(fill="both", expand=True)
+
+        except Exception as e:
+            self._error_tab("Bag Scanner", "🎒", str(e))
+
+    # ===================== AUTO FARM CONFIG TAB =====================
     def _create_auto_farm_config_tab(self):
-        """Tab Auto Farm Config: Choose 6 Pokemon to farm"""
         try:
             from src.team_builder.auto_farm_config_tab import AutoFarmConfigTab
-            
-            frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
+
+            frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
             self.tabs["Auto Farm Config"] = frame
-            
-            # Embed Tkinter frame vào CustomTkinter
-            embedded_tk_frame = tk.Frame(frame, bg="#1e2127")
-            embedded_tk_frame.pack(fill="both", expand=True, padx=0, pady=0)
-            
-            # Tạo AutoFarmConfigTab
-            config = AutoFarmConfigTab(embedded_tk_frame, self.config)
-            config.frame.pack(fill="both", expand=True)
-            
-        except ImportError as e:
-            frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-            header = ctk.CTkLabel(
-                frame,
-                text="⚙️🎯 Auto Farm Config",
-                text_color="#ff6b6b",
-                font=("Arial", 18, "bold")
-            )
-            header.pack(pady=15, padx=10)
-            
-            info = ctk.CTkLabel(
-                frame,
-                text=f"Error loading Auto Farm Config: {e}",
-                text_color="#ff6b6b",
-                font=("Arial", 12)
-            )
-            info.pack(pady=20, padx=10)
-            
-            self.tabs["Auto Farm Config"] = frame
-    
-    def _create_calibrate_roi_tab(self):
-        """Tab Calibrate ROI: Placeholder"""
-        frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-        
-        header = ctk.CTkLabel(
-            frame,
-            text="🎯 Calibrate ROI",
-            text_color="#00bfff",
-            font=("Arial", 18, "bold")
+
+            ctk.CTkLabel(frame, text="Auto Farm Config", text_color=TEXT_PRIMARY,
+                         font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
+            ctk.CTkLabel(frame, text="Chọn 6 Pokemon để auto farm", text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
+
+            embedded = tk.Frame(frame, bg=BG_CARD)
+            embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
+
+            AutoFarmConfigTab(embedded, self.config).frame.pack(fill="both", expand=True)
+
+        except Exception as e:
+            self._error_tab("Auto Farm Config", "⚙️🎯", str(e))
+
+    # ===================== CATCH POKEMON TAB (SKELETON) =====================
+    def _create_catch_pokemon_tab(self):
+        frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
+        self.tabs["Bắt Pokemon"] = frame
+
+        scroll = ctk.CTkScrollableFrame(frame, fg_color=BG_DARK, corner_radius=0)
+        scroll.pack(fill="both", expand=True, padx=16, pady=16)
+
+        ctk.CTkLabel(scroll, text="Bắt Pokemon Tự Động", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 20, "bold")).pack(anchor="w", pady=(0, 4))
+        ctk.CTkLabel(scroll, text="Tự động dùng kỹ năng + bắt Pokemon bằng Ball",
+                     text_color=TEXT_SECONDARY, font=("Segoe UI", 11)).pack(anchor="w", pady=(0, 20))
+
+        # === Pokémon mục tiêu ===
+        target_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        target_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(target_card, text="🎯 Pokémon Mục Tiêu", text_color=POKE_YELLOW,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(target_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        target_body = ctk.CTkFrame(target_card, fg_color="transparent")
+        target_body.pack(fill="x", padx=18, pady=14)
+
+        ctk.CTkLabel(target_body, text="Chọn Pokemon để bắt:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+        self.catch_target_var = ctk.StringVar(value="Any (bắt tất cả)")
+        ctk.CTkComboBox(
+            target_body, width=220, variable=self.catch_target_var, state="readonly",
+            values=["Any (bắt tất cả)", "Zeraora", "Mewtwo", "Rayquaza"],
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        ).pack(side="left", padx=(10, 0))
+
+        # === Kỹ năng ===
+        skill_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        skill_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(skill_card, text="⚔️ Tự Động Dùng Kỹ Năng", text_color=POKE_CYAN,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(skill_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        skill_body = ctk.CTkFrame(skill_card, fg_color="transparent")
+        skill_body.pack(fill="x", padx=18, pady=14)
+
+        self.enable_skill_var = ctk.BooleanVar(value=True)
+        chk = ctk.CTkCheckBox(
+            skill_body, text="Tự động dùng kỹ năng khi gặp Pokemon", variable=self.enable_skill_var,
+            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
+            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
         )
-        header.pack(pady=15, padx=10)
-        
-        info = ctk.CTkLabel(
-            frame,
-            text="[Calibrate ROI UI coming soon]\nDrag and adjust ROI regions for template matching.",
-            text_color="#4ecdc4",
-            font=("Arial", 12)
+        chk.pack(anchor="w", pady=(0, 10))
+
+        skill_detail = ctk.CTkFrame(skill_body, fg_color="transparent")
+        skill_detail.pack(fill="x")
+
+        ctk.CTkLabel(skill_detail, text="Kỹ năng dùng:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+        self.skill_choice_var = ctk.StringVar(value="Kỹ năng mạnh nhất")
+        ctk.CTkComboBox(
+            skill_detail, width=200, variable=self.skill_choice_var, state="readonly",
+            values=["Kỹ năng mạnh nhất", "Kỹ năng yếu nhất", "Kỹ năng STAB"],
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        ).pack(side="left", padx=(10, 0))
+
+        # === Ball ===
+        ball_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        ball_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(ball_card, text="🔴 Tự Động Dùng Ball", text_color=POKE_PINK,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(ball_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        ball_body = ctk.CTkFrame(ball_card, fg_color="transparent")
+        ball_body.pack(fill="x", padx=18, pady=14)
+
+        self.enable_ball_var = ctk.BooleanVar(value=True)
+        chk2 = ctk.CTkCheckBox(
+            ball_body, text="Tự động dùng Ball để bắt Pokemon", variable=self.enable_ball_var,
+            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
+            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
         )
-        info.pack(pady=20, padx=10)
-        
-        self.tabs["Calibrate ROI"] = frame
-    
+        chk2.pack(anchor="w", pady=(0, 10))
+
+        ball_detail = ctk.CTkFrame(ball_body, fg_color="transparent")
+        ball_detail.pack(fill="x")
+
+        ctk.CTkLabel(ball_detail, text="Loại Ball:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+        self.ball_choice_var = ctk.StringVar(value="Ultra Ball")
+        ctk.CTkComboBox(
+            ball_detail, width=180, variable=self.ball_choice_var, state="readonly",
+            values=["Poke Ball", "Great Ball", "Ultra Ball", "Master Ball"],
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        ).pack(side="left", padx=(10, 0))
+
+        ctk.CTkLabel(ball_detail, text="Số lượng:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left", padx=(20, 0))
+        self.ball_count_var = ctk.StringVar(value="999")
+        ball_entry = ctk.CTkEntry(
+            ball_detail, width=70, textvariable=self.ball_count_var,
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, border_color=BORDER_SUBTLE,
+            font=("Segoe UI", 11), justify="center"
+        )
+        ball_entry.pack(side="left", padx=(8, 0))
+
+        # === Điều kiện dừng ===
+        stop_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        stop_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(stop_card, text="⏹ Điều Kiện Dừng", text_color=POKE_ORANGE,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(stop_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        stop_body = ctk.CTkFrame(stop_card, fg_color="transparent")
+        stop_body.pack(fill="x", padx=18, pady=14)
+
+        self.stop_on_shiny_var = ctk.BooleanVar(value=True)
+        ctk.CTkCheckBox(
+            stop_body, text="Dừng khi gặp Shiny", variable=self.stop_on_shiny_var,
+            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
+            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
+        ).pack(anchor="w", pady=4)
+
+        self.stop_on_target_var = ctk.BooleanVar(value=False)
+        ctk.CTkCheckBox(
+            stop_body, text="Dừng khi bắt được Pokemon mục tiêu", variable=self.stop_on_target_var,
+            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
+            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
+        ).pack(anchor="w", pady=4)
+
+        # === Nút lưu tạm ===
+        ctk.CTkButton(
+            scroll, text="💾 Lưu Cấu Hình Bắt Pokemon (sẽ code sau)",
+            fg_color="#2a2a3a", hover_color=BG_CARD_HOVER, text_color=TEXT_MUTED,
+            font=("Segoe UI", 11), height=36, corner_radius=8,
+            command=lambda: self._add_log("📦 Catch config UI ready — logic coming soon")
+        ).pack(pady=(0, 16))
+
+    # ===================== SETTINGS TAB (FORM TIẾNG VIỆT) =====================
     def _create_settings_tab(self):
-        """Tab Settings: Config"""
-        frame = ctk.CTkFrame(self.content_container, fg_color="#0d0d0d")
-        
-        header = ctk.CTkLabel(
-            frame,
-            text="⚙️ Settings",
-            text_color="#00bfff",
-            font=("Arial", 18, "bold")
-        )
-        header.pack(pady=15, padx=10)
-        
-        info = ctk.CTkLabel(
-            frame,
-            text="[Settings UI coming soon]\nConfigure timing, ROI, OCR settings.",
-            text_color="#4ecdc4",
-            font=("Arial", 12)
-        )
-        info.pack(pady=20, padx=10)
-        
+        frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
         self.tabs["Settings"] = frame
-    
+
+        scroll = ctk.CTkScrollableFrame(frame, fg_color=BG_DARK, corner_radius=0)
+        scroll.pack(fill="both", expand=True, padx=16, pady=16)
+
+        ctk.CTkLabel(scroll, text="Cài Đặt", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 20, "bold")).pack(anchor="w", pady=(0, 4))
+        ctk.CTkLabel(scroll, text="Chỉnh sửa cấu hình tool — lưu tự động", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(anchor="w", pady=(0, 20))
+
+        self._settings_widgets = {}
+
+        # ===== CÀI ĐẶT CHUNG =====
+        self._settings_section(scroll, "Cài Đặt Chung", [
+            ("debug.save_failed_ocr", "Lưu ảnh lỗi OCR", "toggle", True),
+            ("ocr.tesseract_cmd", "Đường dẫn Tesseract", "text", "C:/Program Files/Tesseract-OCR/tesseract.exe"),
+        ])
+
+        # ===== THỜI GIAN =====
+        self._settings_section(scroll, "Thời Gian (giây)", [
+            ("timing.scan_interval_seconds", "Khoảng cách quét", "number", 3.0),
+            ("timing.ability_wait_seconds", "Chờ dùng kỹ năng", "number", 3.5),
+            ("timing.ability_retry_seconds", "Chờ hồi chiêu", "number", 1.5),
+            ("timing.ability_retry_count", "Số lần thử kỹ năng lại", "number", 2),
+            ("timing.after_run_wait_seconds", "Chờ sau khi chạy", "number", 4.0),
+            ("timing.run_exit_timeout_seconds", "Thời gian chờ thoát", "number", 8.0),
+            ("timing.battle_anim_wait_seconds", "Chờ hiệu ứng đánh nhau", "number", 7.5),
+            ("timing.move_hold_min_seconds", "Giữ phím tối thiểu", "number", 0.18),
+            ("timing.move_hold_max_seconds", "Giữ phím tối đa", "number", 0.42),
+        ])
+
+        # ===== NHẬN DIỆN =====
+        self._settings_section(scroll, "Nhận Diện (Template Matching)", [
+            ("template_matching.run_button_threshold", "Ngưỡng nút Run", "slider", 0.58),
+            ("template_matching.fight_button_threshold", "Ngưỡng nút Fight", "slider", 0.55),
+            ("template_matching.pokemon_button_threshold", "Ngưỡng nút Pokemon", "slider", 0.5),
+        ])
+
+        # ===== CHUỘT =====
+        self._settings_section(scroll, "Chuột", [
+            ("mouse.click_repeat", "Số lần click lại", "number", 2),
+            ("mouse.click_gap_seconds", "Khoảng cách giữa các click", "number", 0.25),
+            ("mouse.mouse_down_seconds", "Thời gian giữ chuột", "number", 0.12),
+        ])
+
+        # ===== FARM =====
+        self._settings_section(scroll, "Farm", [
+            ("farm.stab_multiplier", "STAB Multiplier", "number", 1.5),
+            ("farm.use_zero_effectiveness", "Dùng kỹ năng 0 hiệu quả", "toggle", False),
+        ])
+
+        # Save button
+        ctk.CTkButton(
+            scroll, text="💾 Lưu Tất Cả Cài Đặt",
+            fg_color=POKE_GREEN, hover_color="#16a34a",
+            text_color="#ffffff", font=("Segoe UI", 13, "bold"),
+            height=40, corner_radius=8, command=self._save_all_settings
+        ).pack(pady=(8, 4), fill="x")
+
+        ctk.CTkLabel(
+            scroll, text="Cài đặt sẽ được lưu vào tool_config.json", text_color=TEXT_MUTED,
+            font=("Segoe UI", 10)
+        ).pack(anchor="center", pady=(0, 16))
+
+    def _settings_section(self, parent, title, fields):
+        card = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(card, text=title, text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        body = ctk.CTkFrame(card, fg_color="transparent")
+        body.pack(fill="x", padx=18, pady=6)
+
+        for key, label, ctrl_type, default in fields:
+            row = ctk.CTkFrame(body, fg_color="transparent")
+            row.pack(fill="x", pady=4)
+
+            ctk.CTkLabel(row, text=label, text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11), width=220, anchor="w").pack(side="left")
+
+            self._settings_widgets[key] = self._create_setting_control(row, key, ctrl_type, default)
+
+    def _create_setting_control(self, parent, key, ctrl_type, default):
+        # Navigate nested key like "timing.scan_interval_seconds"
+        parts = key.split(".")
+        val = self.config
+        try:
+            for p in parts:
+                val = val[p]
+        except (KeyError, TypeError):
+            val = default
+
+        if ctrl_type == "toggle":
+            var = tk.BooleanVar(value=bool(val))
+            chk = ctk.CTkCheckBox(
+                parent, text="Bật" if var.get() else "Tắt",
+                variable=var, text_color=TEXT_PRIMARY, font=("Segoe UI", 10),
+                fg_color=POKE_BLUE, hover_color=POKE_BLUE,
+                checkbox_width=22, checkbox_height=22,
+                command=lambda k=key, v=var: self._on_toggle(k, v)
+            )
+            chk.pack(side="left")
+            self._on_toggle(key, var)
+            return var
+
+        elif ctrl_type == "number":
+            var = tk.StringVar(value=str(val))
+            entry = ctk.CTkEntry(
+                parent, width=100, textvariable=var,
+                fg_color=BG_DARK, text_color=TEXT_PRIMARY,
+                border_color=BORDER_SUBTLE, font=("Segoe UI", 11), justify="center"
+            )
+            entry.pack(side="left")
+            entry.bind("<KeyRelease>", lambda e, k=key, v=var: self._on_number_change(k, v))
+            return var
+
+        elif ctrl_type == "slider":
+            var = tk.DoubleVar(value=float(val))
+            slider = ctk.CTkSlider(
+                parent, from_=0.0, to=1.0, number_of_steps=100,
+                variable=var, fg_color=BG_DARK, progress_color=POKE_BLUE,
+                button_color=POKE_BLUE, button_hover_color="#2563eb",
+                width=180, command=lambda v, k=key: self._on_slider_change(k, v)
+            )
+            slider.pack(side="left")
+            val_lbl = ctk.CTkLabel(parent, text=f"{float(val):.2f}", text_color=POKE_CYAN,
+                                   font=("Segoe UI", 11, "bold"), width=50)
+            val_lbl.pack(side="left", padx=(8, 0))
+            # Update label on move
+            slider.configure(command=lambda v, k=key, l=val_lbl: (l.configure(text=f"{float(v):.2f}"), self._on_slider_change(k, v)))
+            return var
+
+        else:  # text
+            var = tk.StringVar(value=str(val))
+            entry = ctk.CTkEntry(
+                parent, width=300, textvariable=var,
+                fg_color=BG_DARK, text_color=TEXT_PRIMARY,
+                border_color=BORDER_SUBTLE, font=("Segoe UI", 11)
+            )
+            entry.pack(side="left", fill="x", expand=True)
+            entry.bind("<KeyRelease>", lambda e, k=key, v=var: self._on_text_change(k, v))
+            return var
+
+    def _on_toggle(self, key, var):
+        parts = key.split(".")
+        d = self.config
+        for p in parts[:-1]:
+            d = d[p]
+        d[parts[-1]] = var.get()
+        # Update label text
+        self._add_log(f"⚙ {key}: {'Bật' if var.get() else 'Tắt'}")
+
+    def _on_number_change(self, key, var):
+        try:
+            parts = key.split(".")
+            d = self.config
+            for p in parts[:-1]:
+                d = d[p]
+            raw = var.get().strip()
+            if "." in raw:
+                d[parts[-1]] = float(raw)
+            else:
+                d[parts[-1]] = int(raw)
+        except ValueError:
+            pass
+
+    def _on_slider_change(self, key, val):
+        parts = key.split(".")
+        d = self.config
+        for p in parts[:-1]:
+            d = d[p]
+        d[parts[-1]] = float(val)
+
+    def _on_text_change(self, key, var):
+        parts = key.split(".")
+        d = self.config
+        for p in parts[:-1]:
+            d = d[p]
+        d[parts[-1]] = var.get()
+
+    def _save_all_settings(self):
+        try:
+            self._save_config()
+            self._add_log("✅ Đã lưu tất cả cài đặt!")
+            messagebox.showinfo("Thành công", "Đã lưu cài đặt vào tool_config.json")
+        except Exception as e:
+            self._add_log(f"❌ Lỗi lưu: {e}")
+            messagebox.showerror("Lỗi", str(e))
+
+    # ===================== ERROR HELPER =====================
+    def _error_tab(self, name, icon, err_msg):
+        frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
+        self.tabs[name] = frame
+
+        scroll = ctk.CTkScrollableFrame(frame, fg_color=BG_DARK, corner_radius=0)
+        scroll.pack(fill="both", expand=True, padx=16, pady=16)
+
+        ctk.CTkLabel(scroll, text=f"{icon} {name}", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 20, "bold")).pack(anchor="w", pady=(0, 4))
+        ctk.CTkLabel(scroll, text=f"⚠ {err_msg}", text_color=POKE_ORANGE,
+                     font=("Segoe UI", 12)).pack(anchor="w", pady=(0, 16))
+
+        ctk.CTkLabel(
+            scroll,
+            text="Module này chưa được cài đặt hoặc bị lỗi.\n"
+                 "Hãy kiểm tra dependencies hoặc chạy từ CMD menu.",
+            text_color=TEXT_MUTED, font=("Segoe UI", 11), justify="left"
+        ).pack(anchor="w")
+
+    def _clear_log(self):
+        self.log_text.configure(state="normal")
+        self.log_text.delete("1.0", "end")
+        self.log_text.configure(state="disabled")
+        self._add_log("🧹 Đã xoá log")
+
+    # ===================== TAB SWITCHING =====================
     def _switch_tab(self, tab_name):
-        """Chuyển tab"""
-        # Ẩn tất cả tab
         for frame in self.tabs.values():
             frame.grid_remove()
-        
-        # Hiện tab được chọn
         self.tabs[tab_name].grid(row=0, column=0, sticky="nsew")
-        
-        # Cập nhật nút menu
-        for btn_name, btn in self.buttons.items():
-            if btn_name == tab_name:
-                btn.configure(fg_color="#0099ff")
-            else:
-                btn.configure(fg_color="#2a2a2a")
-    
+
+        for btn_name, btn_data in self.buttons.items():
+            f = btn_data["frame"]
+            f.configure(fg_color=BG_CARD_HOVER if btn_name == tab_name else "transparent")
+            btn_data["indicator"].configure(fg_color=btn_data["color"] if btn_name == tab_name else "transparent")
+            btn_data["text"].configure(text_color=TEXT_PRIMARY if btn_name == tab_name else TEXT_SECONDARY)
+
+    # ===================== FARM CONTROL =====================
     def start_farm(self):
-        """Bắt đầu farm mode được chọn (Auto Farm hoặc Scan Pokemon)"""
         if self.worker_running:
             return
-        
         mode = self.selected_mode.get()
         self.worker_running = True
-        self.stop_event.clear()  # Reset stop signal
+        self.stop_event.clear()
         self.start_btn.configure(state="disabled")
         self.mode_dropdown.configure(state="disabled")
         self.stop_btn.configure(state="normal")
-        self.status_label.configure(text="🟢 Running", text_color="#2ecc71")
-        self.mode_label.configure(text=f"Mode: {mode}")
-        
+        self.status_label.configure(text="Running", text_color=POKE_GREEN)
+        self.status_dot.configure(text_color=POKE_GREEN)
         self._add_log(f"✅ {mode} started!")
-        self._add_log("🎮 Press Alt+F8 to stop.")
-        
-        # Chạy worker thread
+        self._add_log("🎮 Nhấn Alt+F8 để dừng.")
         self.worker_thread = threading.Thread(target=self._farm_worker, daemon=True)
         self.worker_thread.start()
-    
+
     def stop_farm(self):
-        """Dừng auto farm"""
         self.worker_running = False
-        self.stop_event.set()  # Signal to worker thread
+        self.stop_event.set()
         self.start_btn.configure(state="normal")
         self.mode_dropdown.configure(state="normal")
         self.stop_btn.configure(state="disabled")
-        self.status_label.configure(text="🔴 Stopped", text_color="#ff6b6b")
-        
-        self._add_log("⏹️ Tool stopped!")
-    
+        self.status_label.configure(text="Stopped", text_color=TEXT_SECONDARY)
+        self.status_dot.configure(text_color=POKE_RED)
+        self._add_log("⏹ Đã dừng tool!")
+
     def _farm_worker(self):
-        """Background worker - chạy farm logic based on selected mode"""
         try:
             from src.farm.farm_gui_adapter import run_farm_mode_with_gui_logging
-            
-            mode = self.selected_mode.get()
-            # Chạy mode được chọn với log callback
-            run_farm_mode_with_gui_logging(self.config, mode, self._add_log, self.stop_event)
+            run_farm_mode_with_gui_logging(self.config, self.selected_mode.get(), self._add_log, self.stop_event)
         except Exception as e:
-            self._add_log(f"❌ Error: {str(e)}")
+            self._add_log(f"❌ Lỗi: {str(e)}")
             import traceback
-            self._add_log(f"Traceback:\n{traceback.format_exc()}")
+            self._add_log(traceback.format_exc())
         finally:
             self.worker_running = False
             self.start_btn.configure(state="normal")
             self.mode_dropdown.configure(state="normal")
             self.stop_btn.configure(state="disabled")
-            self.status_label.configure(text="🔴 Stopped", text_color="#ff6b6b")
-    
-    def log_callback(self, message):
-        """Callback từ farm_battle.py để add log"""
-        self.log_queue.put(message)
-    
+            self.status_label.configure(text="Stopped", text_color=TEXT_SECONDARY)
+            self.status_dot.configure(text_color=POKE_RED)
+
+    # ===================== LOGGING =====================
     def _add_log(self, message):
-        """Thêm dòng log vào log text widget"""
         self.log_queue.put(message)
-    
+
     def _start_log_listener(self):
-        """Listener để đọc log từ queue"""
         def update_log():
             try:
                 while True:
-                    message = self.log_queue.get_nowait()
-                    
-                    # Update log text widget
+                    msg = self.log_queue.get_nowait()
+                    ts = datetime.now().strftime("%H:%M:%S")
+
                     self.log_text.configure(state="normal")
-                    self.log_text.insert("end", f"[{datetime.now().strftime('%H:%M:%S')}] {message}\n")
-                    self.log_text.see("end")  # Auto scroll to bottom
+
+                    tag = None
+                    if msg.startswith("✅") or msg.startswith("✔"):
+                        tag = "success"
+                    elif msg.startswith("❌") or msg.startswith("⚠") or msg.startswith("✖"):
+                        tag = "error"
+                    elif msg.startswith("⏹") or msg.startswith("🔴") or msg.startswith("✋"):
+                        tag = "stop"
+                    elif msg.startswith("🎮") or msg.startswith("▶") or msg.startswith("⚡"):
+                        tag = "action"
+                    elif msg.startswith("🧹"):
+                        tag = "clear"
+
+                    self.log_text.insert("end", f"[{ts}] ", "timestamp")
+                    self.log_text.insert("end", f"{msg}\n", tag)
+                    self.log_text.see("end")
                     self.log_text.configure(state="disabled")
-                    
-                    # Cũng ghi vào feedback_log.txt
+
                     try:
                         FEEDBACK_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
                         with FEEDBACK_LOG_PATH.open("a", encoding="utf-8") as f:
-                            f.write(f"[{datetime.now().strftime('%H:%M:%S')}] {message}\n")
+                            f.write(f"[{ts}] {msg}\n")
                     except:
                         pass
             except queue.Empty:
                 pass
-            
-            # Gọi lại sau 100ms
             self.root.after(100, update_log)
-        
+
+        self.log_text.tag_config("timestamp", foreground=TEXT_MUTED)
+        self.log_text.tag_config("success", foreground=POKE_GREEN)
+        self.log_text.tag_config("error", foreground=POKE_RED)
+        self.log_text.tag_config("stop", foreground=POKE_ORANGE)
+        self.log_text.tag_config("action", foreground=POKE_CYAN)
+        self.log_text.tag_config("clear", foreground=POKE_YELLOW)
         self.root.after(100, update_log)
-    
+
+    # ===================== HOTKEY =====================
     def _register_hotkey(self):
-        """Đăng ký Alt+F8 hotkey"""
-        def on_alt_f8():
+        def toggle():
             if self.worker_running:
                 self.stop_farm()
             else:
                 self.start_farm()
-        
         try:
-            keyboard.add_hotkey('alt+f8', on_alt_f8)
+            keyboard.add_hotkey('alt+f8', toggle)
             self._add_log("🎮 Alt+F8 hotkey registered!")
             self.hotkey_registered = True
         except Exception as e:
-            self._add_log(f"⚠️ Failed to register Alt+F8 hotkey: {e}")
-    
+            self._add_log(f"⚠ Không đăng ký được Alt+F8: {e}")
+
     def run(self):
-        """Chạy ứng dụng"""
         self.root.mainloop()
 
 
