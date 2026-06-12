@@ -17,29 +17,34 @@ CONFIG_PATH = ROOT / "src" / "config" / "tool_config.json"
 POKEMON_TEMPLATE = ROOT / "src" / "template" / "cap_gamedefault" / "rightBarButtomPokemon.png"
 
 class TabbedToolUI:
-    def __init__(self):
-        self.root = tk.Tk()
-        self.root.title("PokemonPRO Tools")
-        self.root.geometry("1400x900")
-        
-        # Tạo notebook (tab container)
-        self.notebook = ttk.Notebook(self.root)
-        self.notebook.pack(fill=tk.BOTH, expand=True)
-        
-        # Tab 1: Calibrate ROI
-        self.tab_calibrate = tk.Frame(self.notebook)
-        self.notebook.add(self.tab_calibrate, text="Calibrate ROI")
-        self._setup_calibrate_tab()
-        
-        # Tab 2: Team Builder
-        self.tab_team = tk.Frame(self.notebook)
-        self.notebook.add(self.tab_team, text="Team Builder")
-        self._setup_team_tab()
+    def __init__(self, parent=None):
+        if parent is not None:
+            # Embedded mode: use parent frame directly
+            self.root = parent.winfo_toplevel()
+            self.tab_calibrate = parent
+            self._setup_calibrate_tab()
+        else:
+            self.root = tk.Tk()
+            self.root.title("PokemonPRO Tools")
+            self.root.geometry("1400x900")
+            
+            self.notebook = ttk.Notebook(self.root)
+            self.notebook.pack(fill=tk.BOTH, expand=True)
+            
+            # Tab 1: Calibrate ROI
+            self.tab_calibrate = tk.Frame(self.notebook)
+            self.notebook.add(self.tab_calibrate, text="Calibrate ROI")
+            self._setup_calibrate_tab()
+            
+            # Tab 2: Team Builder
+            self.tab_team = tk.Frame(self.notebook)
+            self.notebook.add(self.tab_team, text="Team Builder")
+            self._setup_team_tab()
 
-        # Tab 3: Party Scanner (new)
-        self.tab_party_scanner = tk.Frame(self.notebook)
-        self.notebook.add(self.tab_party_scanner, text="  📸 Party Scanner  ")
-        self._setup_party_scanner_tab()
+            # Tab 3: Party Scanner (new)
+            self.tab_party_scanner = tk.Frame(self.notebook)
+            self.notebook.add(self.tab_party_scanner, text="  📸 Party Scanner  ")
+            self._setup_party_scanner_tab()
     
     def _setup_calibrate_tab(self):
         """Setup tab Calibrate ROI."""
@@ -55,12 +60,14 @@ class TabbedToolUI:
         self.template_button_types = ["pokemon_button_roi", "fight_button_roi", "items_button_roi", "run_button_roi"]
         self.single_roi_types = self.template_button_types + [
             "battle_header", "enemy_name", "pokemon_name_in_battle", 
-            "right_action_bar", "battle_log"
+            "right_action_bar", "battle_log", "enemy_hp_bar",
+            "items_bag_area", "shiny_popup_area"
         ]
         
         self.rois = {
             "move_slots": self.config.get("roi", {}).get("move_slots", [[900, 638, 130, 48]] * 4),
             "pokemon_swap_slots": self.config.get("roi", {}).get("pokemon_swap_slots", [[1233, 638, 310, 48]] * 6),
+            "my_pokemon_slots": self.config.get("roi", {}).get("my_pokemon_slots", [[10, 350, 160, 40], [10, 400, 160, 40], [10, 450, 160, 40], [10, 500, 160, 40], [10, 550, 160, 40], [10, 600, 160, 40]]),
             "pokemon_button_roi": [self.config.get("roi", {}).get("pokemon_button_roi", [1300, 700, 150, 50])],
             "fight_button_roi": [self.config.get("roi", {}).get("fight_button_roi", [1300, 600, 150, 50])],
             "items_button_roi": [self.config.get("roi", {}).get("items_button_roi", [1450, 600, 150, 50])],
@@ -69,7 +76,10 @@ class TabbedToolUI:
             "enemy_name": [self.config.get("roi", {}).get("enemy_name", [520, 305, 360, 85])],
             "pokemon_name_in_battle": [self.config.get("roi", {}).get("pokemon_name_in_battle", [1022, 634, 79, 32])],
             "right_action_bar": [self.config.get("roi", {}).get("right_action_bar", [1230, 630, 330, 230])],
-            "battle_log": [self.config.get("roi", {}).get("battle_log", [190, 745, 460, 225])]
+            "battle_log": [self.config.get("roi", {}).get("battle_log", [190, 745, 460, 225])],
+            "enemy_hp_bar": [self.config.get("roi", {}).get("enemy_hp_bar", [520, 370, 200, 14])],
+            "items_bag_area": [self.config.get("roi", {}).get("items_bag_area", [1278, 290, 250, 360])],
+            "shiny_popup_area": [self.config.get("roi", {}).get("shiny_popup_area", [400, 250, 1120, 400])]
         }
         
         # Take screenshot
@@ -109,9 +119,13 @@ class TabbedToolUI:
         modes_row2 = [
             ("Battle Header", "battle_header"),
             ("Enemy Name", "enemy_name"),
+            ("Enemy HP Bar", "enemy_hp_bar"),
             ("My PKM Name", "pokemon_name_in_battle"),
             ("Action Bar", "right_action_bar"),
-            ("Battle Log", "battle_log")
+            ("Battle Log", "battle_log"),
+            ("My Party", "my_pokemon_slots"),
+            ("Items Bag", "items_bag_area"),
+            ("Shiny Popup", "shiny_popup_area")
         ]
 
         for text, mode in modes_row1:
@@ -142,8 +156,12 @@ class TabbedToolUI:
 
         tk.Button(button_frame, text="Save", command=self._save_calibrate,
                  bg="green", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=10)
+        tk.Button(button_frame, text="Reload", command=self._reload_config,
+                 bg="#6366f1", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
         tk.Button(button_frame, text="Reset", command=self._reset_slots,
                  bg="orange", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
+        tk.Button(button_frame, text="📷 Chụp lại", command=self._recapture,
+                 bg="#3b82f6", fg="white", font=("Arial", 10)).pack(side=tk.LEFT, padx=5)
 
         # Mouse tracking
         self.canvas.bind("<Motion>", self._on_motion)
@@ -391,9 +409,16 @@ class TabbedToolUI:
         self.dragging_handle = None
         self.drag_start = None
 
-    def _reset_slots(self): # Renamed from _reset_slots to _reset_current_roi
-        """Reset về default."""
-        current_type = self.calibrating_roi_type.get() # Use .get() to retrieve the string value
+    def _reset_slots(self):
+        """Reset về default - yêu cầu xác nhận trước."""
+        current_type = self.calibrating_roi_type.get()
+        confirm = messagebox.askyesno(
+            "Xác nhận Reset",
+            f"Bạn có chắc muốn reset ROI '{current_type}' về giá trị mặc định không?\nHành động này không thể hoàn tác (chưa lưu vào file).",
+            icon="warning"
+        )
+        if not confirm:
+            return
         if current_type == "move_slots":
             self.rois["move_slots"] = [
             [900, 638, 130, 48],
@@ -428,17 +453,72 @@ class TabbedToolUI:
             self.rois["right_action_bar"] = [[1230, 630, 330, 230]]
         elif current_type == "battle_log":
             self.rois["battle_log"] = [[190, 745, 460, 225]]
+        elif current_type == "enemy_hp_bar":
+            self.rois["enemy_hp_bar"] = [[520, 370, 200, 14]]
+        elif current_type == "items_bag_area":
+            self.rois["items_bag_area"] = [[1278, 290, 250, 360]]
+        elif current_type == "shiny_popup_area":
+            self.rois["shiny_popup_area"] = [[400, 250, 1120, 400]]
+        elif current_type == "my_pokemon_slots":
+            self.rois["my_pokemon_slots"] = [
+                [10, 350, 160, 40], [10, 400, 160, 40], [10, 450, 160, 40],
+                [10, 500, 160, 40], [10, 550, 160, 40], [10, 600, 160, 40]
+            ]
         self._display_image()
+
+    def _recapture(self):
+        """Chụp lại screenshot và refresh canvas."""
+        self.screenshot_original = self._take_screenshot()
+        self._display_image()
+        self.info_label.configure(text="📷 Đã chụp lại screenshot!")
+
+    def _reload_config(self):
+        """Reload config từ file và cập nhật lại tất cả ROI đang hiển thị."""
+        try:
+            with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+                self.config = json.load(f)
+            # Cập nhật lại các ROI từ config mới
+            self.rois["move_slots"] = self.config.get("roi", {}).get("move_slots", [[900, 638, 130, 48]] * 4)
+            self.rois["pokemon_swap_slots"] = self.config.get("roi", {}).get("pokemon_swap_slots", [[1233, 638, 310, 48]] * 6)
+            self.rois["my_pokemon_slots"] = self.config.get("roi", {}).get("my_pokemon_slots", [[10, 350, 160, 40]] * 6)
+            for key in self.single_roi_types:
+                val = self.config.get("roi", {}).get(key)
+                if val is not None:
+                    self.rois[key] = [val]
+            # Cập nhật threshold nếu đang chọn nút template
+            curr = self.calibrating_roi_type.get()
+            thresh_map = {
+                "pokemon_button_roi": "pokemon_button_threshold",
+                "fight_button_roi": "fight_button_threshold",
+                "items_button_roi": "items_button_threshold",
+                "run_button_roi": "run_button_threshold"
+            }
+            if curr in thresh_map:
+                val = self.config.get("template_matching", {}).get(thresh_map[curr], 0.55)
+                self.threshold_var.set(val)
+            self._display_image()
+            self.info_label.configure(text="✅ Đã reload config từ file thành công!")
+        except Exception as e:
+            messagebox.showerror("Error", f"Lỗi khi reload config: {e}")
 
     def _save_calibrate(self):
         """Lưu toàn bộ ROI và Threshold vào tool_config.json."""
         try:
+            # Đọc lại config mới nhất từ file trước để không ghi đè các thứ khác
+            with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+                fresh_config = json.load(f)
+
+            if "roi" not in fresh_config:
+                fresh_config["roi"] = {}
+            if "template_matching" not in fresh_config:
+                fresh_config["template_matching"] = {}
+
             # Lưu ROIs
-            for key in ["move_slots", "pokemon_swap_slots"]:
-                self.config["roi"][key] = self.rois[key]
+            for key in ["move_slots", "pokemon_swap_slots", "my_pokemon_slots"]:
+                fresh_config["roi"][key] = self.rois[key]
 
             for key in self.single_roi_types:
-                self.config["roi"][key] = self.rois[key][0]
+                fresh_config["roi"][key] = self.rois[key][0]
 
             # Lưu Threshold hiện tại cho nút đang chọn
             curr = self.calibrating_roi_type.get()
@@ -449,12 +529,16 @@ class TabbedToolUI:
                 "run_button_roi": "run_button_threshold"
             }
             if curr in thresh_map:
-                self.config["template_matching"][thresh_map[curr]] = self.threshold_var.get()
+                fresh_config["template_matching"][thresh_map[curr]] = self.threshold_var.get()
 
             with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
-                json.dump(self.config, f, indent=2, ensure_ascii=False)
+                json.dump(fresh_config, f, indent=2, ensure_ascii=False)
 
-            messagebox.showinfo("Success", "Đã lưu cấu hình ROI và Threshold!")
+            # Cập nhật self.config theo dữ liệu vừa lưu
+            self.config = fresh_config
+
+            self.info_label.configure(text="✅ Đã lưu cấu hình ROI vào file!")
+            messagebox.showinfo("Thành công", "Đã lưu cấu hình ROI và Threshold!")
         except Exception as e:
             messagebox.showerror("Error", f"Lỗi khi lưu: {e}")
     

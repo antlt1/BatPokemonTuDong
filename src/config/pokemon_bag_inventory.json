@@ -152,5 +152,49 @@
         "pp": "15/15"
       }
     ]
+  },
+  {
+    "id": 8,
+    "name": "Kadabra",
+    "moves": [
+      {
+        "name": "Teleport",
+        "pp": "20/20"
+      },
+      {
+        "name": "Confusion",
+        "pp": "20/2020/20"
+      },
+      {
+        "name": "Flash",
+        "pp": "20/20"
+      },
+      {
+        "name": "none",
+        "pp": "?/?"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Gardevoir",
+    "moves": [
+      {
+        "name": "Calm Mind",
+        "pp": "20/20"
+      },
+      {
+        "name": "Draining Kiss",
+        "pp": "10/10"
+      },
+      {
+        "name": "Moonblast",
+        "pp": "15/15"
+      },
+      {
+        "name": "Stored Power",
+        "pp": "10/10"
+      }
+    ]
   }
 ]

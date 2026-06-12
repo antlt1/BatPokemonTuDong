@@ -60,6 +60,12 @@ class ModernPokemonUI:
         self.root.geometry("1600x900")
         self.root.resizable(True, True)
         self.root.configure(fg=BG_DARK)
+        try:
+            icon_path = ROOT / "src" / "template" / "app_icon.ico"
+            if icon_path.exists():
+                self.root.iconbitmap(str(icon_path))
+        except:
+            pass
 
         self.config = self._load_config()
 
@@ -79,10 +85,18 @@ class ModernPokemonUI:
     def _load_config(self):
         try:
             with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                cfg = json.load(f)
         except Exception as e:
             print(f"Error loading config: {e}")
-            return {}
+            cfg = {}
+        # Ensure defaults for catch feature
+        cfg.setdefault("template_matching", {}).setdefault("items_button_threshold", 0.55)
+        cfg.setdefault("roi", {}).setdefault("enemy_hp_bar", [520, 370, 200, 14])
+        cfg.setdefault("hotkey", {}).setdefault("stop_hotkey", "alt+f8")
+        cfg.setdefault("roi", {}).setdefault("my_pokemon_slots", [[10, 350, 160, 40], [10, 400, 160, 40], [10, 450, 160, 40], [10, 500, 160, 40], [10, 550, 160, 40], [10, 600, 160, 40]])
+        cfg.setdefault("roi", {}).setdefault("shiny_popup_area", [400, 250, 1120, 400])
+        cfg.setdefault("timing", {}).setdefault("after_swap_wait_seconds", 8.0)
+        return cfg
 
     def _save_config(self):
         with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
@@ -106,10 +120,11 @@ class ModernPokemonUI:
 
         self.tabs = {}
         self._create_dashboard_tab()
-        self._create_team_builder_tab()
         self._create_bag_scanner_tab()
         self._create_auto_farm_config_tab()
         self._create_catch_pokemon_tab()
+        self._create_target_pokemon_tab()
+        self._create_calibrate_roi_tab()
         self._create_settings_tab()
 
         self._switch_tab("Dashboard")
@@ -144,10 +159,11 @@ class ModernPokemonUI:
         self.buttons = {}
         menu_items = [
             ("Dashboard",      "⬡", POKE_CYAN),
-            ("Team Builder",   "◈", POKE_PURPLE),
             ("Bag Scanner",    "◉", POKE_GREEN),
             ("Auto Farm Config", "◎", POKE_ORANGE),
             ("Bắt Pokemon",    "◐", POKE_YELLOW),
+            ("Target Pokemon",  "🎯", POKE_RED),
+            ("Calibrate ROI",  "◇", POKE_PINK),
             ("Settings",       "⚙", TEXT_SECONDARY),
         ]
 
@@ -183,19 +199,19 @@ class ModernPokemonUI:
         self.mode_label.pack(fill="x", padx=(24, 0), pady=(2, 0))
 
     def _create_menu_button(self, name, icon, color):
-        btn_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent", height=44)
-        btn_frame.pack(fill="x", padx=8, pady=2)
+        btn_frame = ctk.CTkFrame(self.sidebar, fg_color="transparent", height=52)
+        btn_frame.pack(fill="x", padx=8, pady=3)
         btn_frame.pack_propagate(False)
 
-        indicator = ctk.CTkLabel(btn_frame, text="", fg_color="transparent", width=3, height=28, corner_radius=2)
-        indicator.pack(side="left", padx=(0, 8))
+        indicator = ctk.CTkLabel(btn_frame, text="", fg_color="transparent", width=4, height=32, corner_radius=2)
+        indicator.pack(side="left", padx=(0, 10))
         indicator.configure(fg_color="transparent")
 
-        icon_lbl = ctk.CTkLabel(btn_frame, text=icon, text_color=color, font=("Segoe UI", 14), width=24)
+        icon_lbl = ctk.CTkLabel(btn_frame, text=icon, text_color=color, font=("Segoe UI", 18), width=28)
         icon_lbl.pack(side="left")
 
-        text_lbl = ctk.CTkLabel(btn_frame, text=name, text_color=TEXT_SECONDARY, font=("Segoe UI", 12))
-        text_lbl.pack(side="left", padx=(8, 0), fill="x", expand=True)
+        text_lbl = ctk.CTkLabel(btn_frame, text=name, text_color=TEXT_SECONDARY, font=("Segoe UI", 14, "bold"))
+        text_lbl.pack(side="left", padx=(10, 0), fill="x", expand=True)
 
         btn_frame.bind("<Button-1>", lambda e, n=name: self._switch_tab(n))
         icon_lbl.bind("<Button-1>", lambda e, n=name: self._switch_tab(n))
@@ -259,7 +275,7 @@ class ModernPokemonUI:
         ctk.CTkLabel(ctrl_row, text="Chế độ:", text_color=TEXT_SECONDARY, font=("Segoe UI", 11)).pack(side="left")
 
         self.mode_dropdown = ctk.CTkComboBox(
-            ctrl_row, values=["Auto Farm", "Scan Pokemon"],
+            ctrl_row, values=["Auto Farm", "Scan Pokemon", "Bắt Pokemon"],
             variable=self.selected_mode, state="readonly",
             width=160, fg_color=BG_DARK, text_color=TEXT_PRIMARY,
             button_color=POKE_BLUE, border_color=BORDER_SUBTLE,
@@ -286,7 +302,8 @@ class ModernPokemonUI:
         self.stop_btn.pack(side="left", padx=5)
 
         ctk.CTkLabel(ctrl_row, text="", fg_color=BORDER_SUBTLE, width=1, height=30).pack(side="left", padx=15)
-        ctk.CTkLabel(ctrl_row, text="Alt+F8", text_color=TEXT_MUTED, font=("Segoe UI", 11, "italic")).pack(side="left", padx=5)
+        self.hotkey_display_lbl = ctk.CTkLabel(ctrl_row, text=self.config.get("hotkey", {}).get("stop_hotkey", "alt+f8"), text_color=TEXT_MUTED, font=("Segoe UI", 11, "italic"))
+        self.hotkey_display_lbl.pack(side="left", padx=5)
 
         # === LOG ===
         log_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
@@ -332,28 +349,6 @@ class ModernPokemonUI:
         self.stat_labels[label] = val_lbl
         return card
 
-    # ===================== TEAM BUILDER TAB =====================
-    def _create_team_builder_tab(self):
-        try:
-            from src.team_builder.team_builder_ui import TeamBuilderApp, init_tesseract
-
-            frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
-            self.tabs["Team Builder"] = frame
-
-            ctk.CTkLabel(frame, text="Team Builder", text_color=TEXT_PRIMARY,
-                         font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
-            ctk.CTkLabel(frame, text="Đọc team Pokemon từ ảnh chụp", text_color=TEXT_SECONDARY,
-                         font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
-
-            embedded = tk.Frame(frame, bg=BG_CARD)
-            embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
-
-            init_tesseract(self.config)
-            TeamBuilderApp(embedded, self.config).pack(fill="both", expand=True)
-
-        except Exception as e:
-            self._error_tab("Team Builder", "👥", str(e))
-
     # ===================== BAG SCANNER TAB =====================
     def _create_bag_scanner_tab(self):
         try:
@@ -396,20 +391,24 @@ class ModernPokemonUI:
         except Exception as e:
             self._error_tab("Auto Farm Config", "⚙️🎯", str(e))
 
-    # ===================== CATCH POKEMON TAB (SKELETON) =====================
+    # ===================== CATCH POKEMON TAB =====================
     def _create_catch_pokemon_tab(self):
         frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
         self.tabs["Bắt Pokemon"] = frame
+
+        saved = self.config.get("catch", {})
 
         scroll = ctk.CTkScrollableFrame(frame, fg_color=BG_DARK, corner_radius=0)
         scroll.pack(fill="both", expand=True, padx=16, pady=16)
 
         ctk.CTkLabel(scroll, text="Bắt Pokemon Tự Động", text_color=TEXT_PRIMARY,
                      font=("Segoe UI", 20, "bold")).pack(anchor="w", pady=(0, 4))
-        ctk.CTkLabel(scroll, text="Tự động dùng kỹ năng + bắt Pokemon bằng Ball",
+        ctk.CTkLabel(scroll, text="Tự động dùng False Swipe → Spore → Ball",
                      text_color=TEXT_SECONDARY, font=("Segoe UI", 11)).pack(anchor="w", pady=(0, 20))
 
-        # === Pokémon mục tiêu ===
+        # === Pokémon mục tiêu (load từ target_pokemon.json + team_party.json) ===
+        targets = self._load_target_names()
+
         target_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
         target_card.pack(fill="x", pady=(0, 12))
 
@@ -420,12 +419,57 @@ class ModernPokemonUI:
         target_body = ctk.CTkFrame(target_card, fg_color="transparent")
         target_body.pack(fill="x", padx=18, pady=14)
 
-        ctk.CTkLabel(target_body, text="Chọn Pokemon để bắt:", text_color=TEXT_SECONDARY,
+        ctk.CTkLabel(target_body, text="Bắt:", text_color=TEXT_SECONDARY,
                      font=("Segoe UI", 11)).pack(side="left")
         self.catch_target_var = ctk.StringVar(value="Any (bắt tất cả)")
+        self.catch_target_combo = ctk.CTkComboBox(
+            target_body, width=240, variable=self.catch_target_var, state="readonly",
+            values=["Any (bắt tất cả)"] + targets,
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        )
+        self.catch_target_combo.pack(side="left", padx=(10, 0))
+
+        ctk.CTkCheckBox(
+            target_body, text="Chỉ bắt target trong target_pokemon.json",
+            variable=tk.BooleanVar(value=True), text_color=TEXT_SECONDARY,
+            font=("Segoe UI", 10), fg_color=POKE_BLUE, hover_color=POKE_BLUE,
+            checkbox_width=16, checkbox_height=16
+        ).pack(side="left", padx=(20, 0))
+
+        # === Breloom Slot ===
+        breloom_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        breloom_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(breloom_card, text="🍄 Pokemon False Swipe + Sleep", text_color=POKE_GREEN,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(breloom_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        breloom_body = ctk.CTkFrame(breloom_card, fg_color="transparent")
+        breloom_body.pack(fill="x", padx=18, pady=14)
+
+        ctk.CTkLabel(breloom_body, text="Pokemon:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+
+        party_names = self._load_party_names()
+        self.breloom_name_var = ctk.StringVar(value="Breloom")
         ctk.CTkComboBox(
-            target_body, width=220, variable=self.catch_target_var, state="readonly",
-            values=["Any (bắt tất cả)", "Zeraora", "Mewtwo", "Rayquaza"],
+            breloom_body, width=180, variable=self.breloom_name_var, state="readonly",
+            values=party_names if party_names else ["Breloom"],
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        ).pack(side="left", padx=(10, 0))
+
+        ctk.CTkLabel(breloom_body, text="Slot trong team:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left", padx=(20, 0))
+        self.breloom_slot_var = tk.StringVar(value="Auto (tự tìm)")
+        ctk.CTkComboBox(
+            breloom_body, width=150, variable=self.breloom_slot_var, state="readonly",
+            values=["Auto (tự tìm)", "Slot 1", "Slot 2", "Slot 3", "Slot 4", "Slot 5", "Slot 6"],
             fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
             border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
             dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
@@ -436,79 +480,81 @@ class ModernPokemonUI:
         skill_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
         skill_card.pack(fill="x", pady=(0, 12))
 
-        ctk.CTkLabel(skill_card, text="⚔️ Tự Động Dùng Kỹ Năng", text_color=POKE_CYAN,
+        ctk.CTkLabel(skill_card, text="⚔️ Chiến Thuật Ra Chiêu", text_color=POKE_CYAN,
                      font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
         ctk.CTkLabel(skill_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
 
         skill_body = ctk.CTkFrame(skill_card, fg_color="transparent")
         skill_body.pack(fill="x", padx=18, pady=14)
 
-        self.enable_skill_var = ctk.BooleanVar(value=True)
-        chk = ctk.CTkCheckBox(
-            skill_body, text="Tự động dùng kỹ năng khi gặp Pokemon", variable=self.enable_skill_var,
-            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
-            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
-        )
-        chk.pack(anchor="w", pady=(0, 10))
+        ctk.CTkLabel(skill_body, text="Thứ tự:", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 12, "bold")).pack(anchor="w", pady=(0, 8))
 
-        skill_detail = ctk.CTkFrame(skill_body, fg_color="transparent")
-        skill_detail.pack(fill="x")
-
-        ctk.CTkLabel(skill_detail, text="Kỹ năng dùng:", text_color=TEXT_SECONDARY,
-                     font=("Segoe UI", 11)).pack(side="left")
-        self.skill_choice_var = ctk.StringVar(value="Kỹ năng mạnh nhất")
-        ctk.CTkComboBox(
-            skill_detail, width=200, variable=self.skill_choice_var, state="readonly",
-            values=["Kỹ năng mạnh nhất", "Kỹ năng yếu nhất", "Kỹ năng STAB"],
-            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
-            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
-            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
-            font=("Segoe UI", 11)
-        ).pack(side="left", padx=(10, 0))
+        steps = [
+            "1. Swap → Pokemon False Swipe (nếu chưa ra)",
+            "2. Spore (gây ngủ) nếu địch còn thức",
+            "3. False Swipe nếu HP địch cao (để lại 1 HP)",
+            "4. Spore lại nếu địch tỉnh",
+            "5. Items → Ball nếu HP = 1 + ngủ",
+        ]
+        for s in steps:
+            ctk.CTkLabel(skill_body, text=s, text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11), anchor="w").pack(anchor="w", pady=1)
 
         # === Ball ===
         ball_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
         ball_card.pack(fill="x", pady=(0, 12))
 
-        ctk.CTkLabel(ball_card, text="🔴 Tự Động Dùng Ball", text_color=POKE_PINK,
+        ctk.CTkLabel(ball_card, text="🔴 Chiến Thuật Ball", text_color=POKE_PINK,
                      font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
         ctk.CTkLabel(ball_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
 
         ball_body = ctk.CTkFrame(ball_card, fg_color="transparent")
         ball_body.pack(fill="x", padx=18, pady=14)
 
-        self.enable_ball_var = ctk.BooleanVar(value=True)
-        chk2 = ctk.CTkCheckBox(
-            ball_body, text="Tự động dùng Ball để bắt Pokemon", variable=self.enable_ball_var,
-            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
-            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
-        )
-        chk2.pack(anchor="w", pady=(0, 10))
-
-        ball_detail = ctk.CTkFrame(ball_body, fg_color="transparent")
-        ball_detail.pack(fill="x")
-
-        ctk.CTkLabel(ball_detail, text="Loại Ball:", text_color=TEXT_SECONDARY,
+        self.ball_priority_var = tk.StringVar(value="Poke → Great → Ultra")
+        ctk.CTkLabel(ball_body, text="Ưu tiên Ball:", text_color=TEXT_SECONDARY,
                      font=("Segoe UI", 11)).pack(side="left")
-        self.ball_choice_var = ctk.StringVar(value="Ultra Ball")
         ctk.CTkComboBox(
-            ball_detail, width=180, variable=self.ball_choice_var, state="readonly",
-            values=["Poke Ball", "Great Ball", "Ultra Ball", "Master Ball"],
+            ball_body, width=200, variable=self.ball_priority_var, state="readonly",
+            values=["Poke → Great → Ultra", "Great → Ultra → Poke", "Ultra → Great → Poke", "Master Ball"],
             fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
             border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
             dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
             font=("Segoe UI", 11)
         ).pack(side="left", padx=(10, 0))
 
-        ctk.CTkLabel(ball_detail, text="Số lượng:", text_color=TEXT_SECONDARY,
+        ctk.CTkLabel(ball_body, text="Số Ball tối đa:", text_color=TEXT_SECONDARY,
                      font=("Segoe UI", 11)).pack(side="left", padx=(20, 0))
-        self.ball_count_var = ctk.StringVar(value="999")
-        ball_entry = ctk.CTkEntry(
-            ball_detail, width=70, textvariable=self.ball_count_var,
+        self.max_balls_var = ctk.StringVar(value="999")
+        ctk.CTkEntry(
+            ball_body, width=80, textvariable=self.max_balls_var,
             fg_color=BG_DARK, text_color=TEXT_PRIMARY, border_color=BORDER_SUBTLE,
             font=("Segoe UI", 11), justify="center"
-        )
-        ball_entry.pack(side="left", padx=(8, 0))
+        ).pack(side="left", padx=(8, 0))
+
+        # === HP Detection ===
+        hp_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        hp_card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(hp_card, text="❤️ Phát Hiện HP Địch", text_color=POKE_RED,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(hp_card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        hp_body = ctk.CTkFrame(hp_card, fg_color="transparent")
+        hp_body.pack(fill="x", padx=18, pady=14)
+
+        ctk.CTkLabel(hp_body, text="Phương pháp:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+        self.hp_detect_var = ctk.StringVar(value="Màu thanh HP (xanh → đỏ)")
+        ctk.CTkComboBox(
+            hp_body, width=220, variable=self.hp_detect_var, state="readonly",
+            values=["Màu thanh HP (xanh → đỏ)", "OCR chữ HP"],
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY, button_color=POKE_BLUE,
+            border_color=BORDER_SUBTLE, dropdown_fg_color=BG_CARD,
+            dropdown_text_color=TEXT_PRIMARY, dropdown_hover_color=BG_CARD_HOVER,
+            font=("Segoe UI", 11)
+        ).pack(side="left", padx=(10, 0))
 
         # === Điều kiện dừng ===
         stop_card = ctk.CTkFrame(scroll, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
@@ -528,20 +574,135 @@ class ModernPokemonUI:
             hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
         ).pack(anchor="w", pady=4)
 
-        self.stop_on_target_var = ctk.BooleanVar(value=False)
+        self.stop_on_catch_var = ctk.BooleanVar(value=False)
         ctk.CTkCheckBox(
-            stop_body, text="Dừng khi bắt được Pokemon mục tiêu", variable=self.stop_on_target_var,
+            stop_body, text="Dừng sau khi bắt được 1 Pokemon",
+            variable=self.stop_on_catch_var,
             text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
             hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
         ).pack(anchor="w", pady=4)
 
-        # === Nút lưu tạm ===
+        self.stop_on_full_party_var = ctk.BooleanVar(value=True)
+        ctk.CTkCheckBox(
+            stop_body, text="Dừng khi team đầy (6 Pokemon)",
+            variable=self.stop_on_full_party_var,
+            text_color=TEXT_PRIMARY, font=("Segoe UI", 12), fg_color=POKE_BLUE,
+            hover_color=POKE_BLUE, checkbox_width=20, checkbox_height=20
+        ).pack(anchor="w", pady=4)
+
+        # === Nút Lưu ===
         ctk.CTkButton(
-            scroll, text="💾 Lưu Cấu Hình Bắt Pokemon (sẽ code sau)",
-            fg_color="#2a2a3a", hover_color=BG_CARD_HOVER, text_color=TEXT_MUTED,
-            font=("Segoe UI", 11), height=36, corner_radius=8,
-            command=lambda: self._add_log("📦 Catch config UI ready — logic coming soon")
-        ).pack(pady=(0, 16))
+            scroll, text="💾 Lưu Cấu Hình Bắt Pokemon",
+            fg_color=POKE_GREEN, hover_color="#16a34a",
+            text_color="#ffffff", font=("Segoe UI", 13, "bold"),
+            height=42, corner_radius=8, command=self._save_catch_config
+        ).pack(pady=(16, 4), fill="x")
+
+        ctk.CTkLabel(
+            scroll, text="Lưu vào tool_config.json — sẵn sàng dùng từ Dashboard mode Bắt Pokemon",
+            text_color=TEXT_MUTED, font=("Segoe UI", 10)
+        ).pack(anchor="center", pady=(0, 16))
+
+        # Load saved values
+        if saved:
+            self.catch_target_var.set(saved.get("target", "Any (bắt tất cả)"))
+            self.breloom_name_var.set(saved.get("breloom_name", "Breloom"))
+            self.breloom_slot_var.set(saved.get("breloom_slot", "Auto (tự tìm)"))
+            self.ball_priority_var.set(saved.get("ball_priority", "Poke → Great → Ultra"))
+            self.max_balls_var.set(str(saved.get("max_balls", 999)))
+            self.hp_detect_var.set(saved.get("hp_detect_method", "Màu thanh HP (xanh → đỏ)"))
+            self.stop_on_shiny_var.set(saved.get("stop_on_shiny", True))
+            self.stop_on_catch_var.set(saved.get("stop_on_catch", False))
+            self.stop_on_full_party_var.set(saved.get("stop_on_full_party", True))
+
+    def _save_catch_config(self):
+        catch_cfg = {
+            "target": self.catch_target_var.get(),
+            "breloom_name": self.breloom_name_var.get(),
+            "breloom_slot": self.breloom_slot_var.get(),
+            "ball_priority": self.ball_priority_var.get(),
+            "max_balls": int(self.max_balls_var.get() or "999"),
+            "hp_detect_method": self.hp_detect_var.get(),
+            "stop_on_shiny": self.stop_on_shiny_var.get(),
+            "stop_on_catch": self.stop_on_catch_var.get(),
+            "stop_on_full_party": self.stop_on_full_party_var.get(),
+        }
+        self.config["catch"] = catch_cfg
+        self._save_config()
+        self._add_log("✅ Đã lưu cấu hình Bắt Pokemon!")
+        messagebox.showinfo("Thành công", "Đã lưu cấu hình Bắt Pokemon!")
+
+    def _load_target_names(self):
+        try:
+            with open(TARGETS_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            names = set()
+            for entry in data if isinstance(data, list) else data.values():
+                if isinstance(entry, dict):
+                    n = entry.get("pokemonname", "") or entry.get("name", "")
+                    if n:
+                        names.add(n)
+                elif isinstance(entry, str):
+                    names.add(entry)
+            return sorted(names)
+        except:
+            return []
+
+    def _load_party_names(self):
+        try:
+            with open(TEAM_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            names = []
+            for slot in data if isinstance(data, list) else data.values():
+                if isinstance(slot, dict):
+                    n = slot.get("name", "")
+                    if n:
+                        names.append(f"{n}")
+            return names
+        except:
+            return []
+
+    # ===================== TARGET POKEMON TAB =====================
+    def _create_target_pokemon_tab(self):
+        try:
+            from src.team_builder.target_pokemon_tab import TargetPokemonTab
+
+            frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
+            self.tabs["Target Pokemon"] = frame
+
+            ctk.CTkLabel(frame, text="Target Pokemon", text_color=TEXT_PRIMARY,
+                         font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
+            ctk.CTkLabel(frame, text="Danh sách Pokemon và Ability cần bắt", text_color=TEXT_SECONDARY,
+                         font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
+
+            embedded = tk.Frame(frame, bg=BG_CARD)
+            embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
+
+            self.target_pokemon_tab_obj = TargetPokemonTab(embedded, self.config)
+            self.target_pokemon_tab_obj.frame.pack(fill="both", expand=True)
+
+        except Exception as e:
+            self._error_tab("Target Pokemon", "🎯", str(e))
+
+    # ===================== CALIBRATE ROI TAB =====================
+    def _create_calibrate_roi_tab(self):
+        frame = ctk.CTkFrame(self.content_container, fg_color=BG_DARK, corner_radius=0)
+        self.tabs["Calibrate ROI"] = frame
+
+        ctk.CTkLabel(frame, text="Calibrate ROI", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 20, "bold")).pack(anchor="w", padx=16, pady=(16, 4))
+        ctk.CTkLabel(frame, text="Kéo thả để điều chỉnh vùng nhận diện", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(anchor="w", padx=16, pady=(0, 12))
+
+        embedded = tk.Frame(frame, bg=BG_CARD)
+        embedded.pack(fill="both", expand=True, padx=16, pady=(0, 16))
+
+        try:
+            from src.tools.ui_main import TabbedToolUI
+            TabbedToolUI(parent=embedded)
+        except Exception as e:
+            ctk.CTkLabel(embedded, text=f"⚠ Không tải được Calibrate UI:\n{e}\n\nChạy Menu 4 từ CMD để dùng.",
+                         text_color=POKE_RED, font=("Segoe UI", 12)).pack(expand=True)
 
     # ===================== SETTINGS TAB (FORM TIẾNG VIỆT) =====================
     def _create_settings_tab(self):
@@ -564,6 +725,9 @@ class ModernPokemonUI:
             ("ocr.tesseract_cmd", "Đường dẫn Tesseract", "text", "C:/Program Files/Tesseract-OCR/tesseract.exe"),
         ])
 
+        # ===== HOTKEY =====
+        self._settings_hotkey_section(scroll)
+
         # ===== THỜI GIAN =====
         self._settings_section(scroll, "Thời Gian (giây)", [
             ("timing.scan_interval_seconds", "Khoảng cách quét", "number", 3.0),
@@ -573,6 +737,7 @@ class ModernPokemonUI:
             ("timing.after_run_wait_seconds", "Chờ sau khi chạy", "number", 4.0),
             ("timing.run_exit_timeout_seconds", "Thời gian chờ thoát", "number", 8.0),
             ("timing.battle_anim_wait_seconds", "Chờ hiệu ứng đánh nhau", "number", 7.5),
+            ("timing.after_swap_wait_seconds", "Chờ sau khi swap", "number", 8.0),
             ("timing.move_hold_min_seconds", "Giữ phím tối thiểu", "number", 0.18),
             ("timing.move_hold_max_seconds", "Giữ phím tối đa", "number", 0.42),
         ])
@@ -609,6 +774,56 @@ class ModernPokemonUI:
             scroll, text="Cài đặt sẽ được lưu vào tool_config.json", text_color=TEXT_MUTED,
             font=("Segoe UI", 10)
         ).pack(anchor="center", pady=(0, 16))
+
+    def _settings_hotkey_section(self, parent):
+        card = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
+        card.pack(fill="x", pady=(0, 12))
+
+        ctk.CTkLabel(card, text="⌨ Phím Tắt", text_color=TEXT_PRIMARY,
+                     font=("Segoe UI", 14, "bold")).pack(padx=18, pady=(14, 4))
+        ctk.CTkLabel(card, text="", fg_color=BORDER_SUBTLE, height=1).pack(fill="x", padx=18)
+
+        body = ctk.CTkFrame(card, fg_color="transparent")
+        body.pack(fill="x", padx=18, pady=14)
+
+        ctk.CTkLabel(body, text="Phím dừng tool:", text_color=TEXT_SECONDARY,
+                     font=("Segoe UI", 11)).pack(side="left")
+
+        self.hotkey_var = tk.StringVar(value=self.config.get("hotkey", {}).get("stop_hotkey", "alt+f8"))
+        self.hotkey_entry = ctk.CTkEntry(
+            body, width=180, textvariable=self.hotkey_var,
+            fg_color=BG_DARK, text_color=TEXT_PRIMARY,
+            border_color=BORDER_SUBTLE, font=("Segoe UI", 12, "bold"), justify="center"
+        )
+        self.hotkey_entry.pack(side="left", padx=(10, 10))
+
+        def apply_hotkey():
+            new_key = self.hotkey_var.get().strip()
+            if not new_key:
+                return
+            self.config.setdefault("hotkey", {})["stop_hotkey"] = new_key
+            self._save_config()
+            try:
+                keyboard.remove_hotkey(new_key)
+            except:
+                pass
+            self._register_hotkey()
+            if hasattr(self, 'hotkey_display_lbl'):
+                self.hotkey_display_lbl.configure(text=new_key)
+            self._add_log(f"🎮 Hotkey changed to {new_key}")
+            messagebox.showinfo("Thành công", f"Đã đổi hotkey thành: {new_key}")
+
+        ctk.CTkButton(
+            body, text="Áp dụng", command=apply_hotkey,
+            fg_color=POKE_BLUE, hover_color="#2563eb",
+            text_color="#ffffff", font=("Segoe UI", 11, "bold"),
+            height=30, width=80, corner_radius=6
+        ).pack(side="left")
+
+        ctk.CTkLabel(
+            body, text="VD: alt+f8, ctrl+shift+s, f12",
+            text_color=TEXT_MUTED, font=("Segoe UI", 10)
+        ).pack(anchor="w", padx=(0, 0), pady=(8, 0))
 
     def _settings_section(self, parent, title, fields):
         card = ctk.CTkFrame(parent, fg_color=BG_CARD, corner_radius=12, border_color=BORDER_SUBTLE, border_width=1)
@@ -765,6 +980,16 @@ class ModernPokemonUI:
 
     # ===================== TAB SWITCHING =====================
     def _switch_tab(self, tab_name):
+        if tab_name == "Bắt Pokemon" and hasattr(self, "catch_target_combo"):
+            updated_targets = self._load_target_names()
+            self.catch_target_combo.configure(values=["Any (bắt tất cả)"] + updated_targets)
+        elif tab_name == "Target Pokemon" and hasattr(self, "target_pokemon_tab_obj"):
+            try:
+                self.target_pokemon_tab_obj._load_targets()
+                self.target_pokemon_tab_obj._update_list_display()
+            except Exception as e:
+                print(f"Error refreshing Target Pokemon tab: {e}")
+
         for frame in self.tabs.values():
             frame.grid_remove()
         self.tabs[tab_name].grid(row=0, column=0, sticky="nsew")
@@ -788,7 +1013,8 @@ class ModernPokemonUI:
         self.status_label.configure(text="Running", text_color=POKE_GREEN)
         self.status_dot.configure(text_color=POKE_GREEN)
         self._add_log(f"✅ {mode} started!")
-        self._add_log("🎮 Nhấn Alt+F8 để dừng.")
+        hk = self.config.get("hotkey", {}).get("stop_hotkey", "alt+f8")
+        self._add_log(f"🎮 Nhấn {hk} để dừng.")
         self.worker_thread = threading.Thread(target=self._farm_worker, daemon=True)
         self.worker_thread.start()
 
@@ -868,19 +1094,35 @@ class ModernPokemonUI:
 
     # ===================== HOTKEY =====================
     def _register_hotkey(self):
+        hotkey_str = self.config.get("hotkey", {}).get("stop_hotkey", "alt+f8")
+
         def toggle():
             if self.worker_running:
                 self.stop_farm()
             else:
                 self.start_farm()
         try:
-            keyboard.add_hotkey('alt+f8', toggle)
-            self._add_log("🎮 Alt+F8 hotkey registered!")
+            keyboard.add_hotkey(hotkey_str, toggle)
+            self._add_log(f"🎮 {hotkey_str} hotkey registered!")
             self.hotkey_registered = True
         except Exception as e:
-            self._add_log(f"⚠ Không đăng ký được Alt+F8: {e}")
+            self._add_log(f"⚠ Không đăng ký được {hotkey_str}: {e}")
 
     def run(self):
+        def on_close():
+            if self.worker_running:
+                self.stop_farm()
+            try:
+                keyboard.unhook_all()
+            except:
+                pass
+            try:
+                self.root.destroy()
+            except:
+                pass
+            import os
+            os._exit(0)
+        self.root.protocol("WM_DELETE_WINDOW", on_close)
         self.root.mainloop()
 
 

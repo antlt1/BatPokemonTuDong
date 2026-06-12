@@ -54,6 +54,8 @@ def run_farm_mode_with_gui_logging(config, mode, gui_log_callback, stop_event: E
     try:
         if mode == "Scan Pokemon":
             _run_scan_pokemon_with_gui_logging(config, gui_log_callback, stop_event)
+        elif mode == "Bắt Pokemon":
+            _run_catch_pokemon_with_gui_logging(config, gui_log_callback, stop_event)
         else:  # Auto Farm (default)
             _run_auto_farm_with_gui_logging(config, gui_log_callback, stop_event)
     except Exception as e:
@@ -87,11 +89,10 @@ def _run_auto_farm_with_gui_logging(config, gui_log_callback, stop_event: Event)
         
         team = load_team()
         if not team:
-            gui_log_callback("⚠️ Team farm trống! Chọn 6 Pokemon ở Tab 5.")
+            gui_log_callback("⚠️ Team farm trống! Chọn ít nhất 1 Pokemon ở Auto Farm Config.")
             return
         if len(team) < 6:
-            gui_log_callback(f"⚠️ Team farm chỉ có {len(team)}/6. Chọn đủ 6 Pokemon ở Tab 5.")
-            return
+            gui_log_callback(f"⚠️ Team farm chỉ có {len(team)}/6. Vẫn chạy nhưng thiếu slot.")
         
         gui_log_callback(f"✅ Team loaded: {len(team)} Pokemon\n")
         
@@ -198,6 +199,38 @@ def _run_scan_pokemon_with_gui_logging(config, gui_log_callback, stop_event: Eve
         gui_log_callback(f"❌ Error: {str(e)}")
         import traceback
         gui_log_callback(f"📍 Traceback:\n{traceback.format_exc()}")
+
+
+def _run_catch_pokemon_with_gui_logging(config, gui_log_callback, stop_event: Event):
+    try:
+        gui_log_callback("✅ Initializing Catch Pokemon Mode...")
+
+        if not ensure_runtime(config):
+            gui_log_callback("❌ Missing dependencies.")
+            return
+
+        import keyboard as kb_module
+        original_is_pressed = kb_module.is_pressed
+
+        def patched_is_pressed(key):
+            if key == "q" and stop_event.is_set():
+                return True
+            return original_is_pressed(key)
+
+        kb_module.is_pressed = patched_is_pressed
+
+        try:
+            from src.farm.catch_pokemon import catch_pokemon_mode
+            gui_log_callback("🎯 Starting catch mode...")
+            catch_pokemon_mode(config, gui_log_callback, stop_event)
+            gui_log_callback("\n✅ Catch session ended")
+        finally:
+            kb_module.is_pressed = original_is_pressed
+
+    except Exception as e:
+        gui_log_callback(f"❌ Catch error: {str(e)}")
+        import traceback
+        gui_log_callback(traceback.format_exc())
 
 
 if __name__ == "__main__":

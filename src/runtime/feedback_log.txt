@@ -4195,3 +4195,3144 @@
 [15:36:16] ⚙ debug.save_failed_ocr: Bật
 [15:36:16] ⚙ farm.use_zero_effectiveness: Tắt
 [15:36:16] 🎮 Alt+F8 hotkey registered!
+[15:57:14] ⚙ debug.save_failed_ocr: Bật
+[15:57:14] ⚙ farm.use_zero_effectiveness: Tắt
+[15:57:14] 🎮 Alt+F8 hotkey registered!
+[15:58:34] ⚙ debug.save_failed_ocr: Bật
+[15:58:34] ⚙ farm.use_zero_effectiveness: Tắt
+[15:58:34] 🎮 Alt+F8 hotkey registered!
+[15:59:00] ⚙ debug.save_failed_ocr: Bật
+[15:59:00] ⚙ farm.use_zero_effectiveness: Tắt
+[15:59:00] 🎮 Alt+F8 hotkey registered!
+[16:03:53] ⚙ debug.save_failed_ocr: Bật
+[16:03:53] ⚙ farm.use_zero_effectiveness: Tắt
+[16:03:53] 🎮 Alt+F8 hotkey registered!
+[16:04:21] ⚙ debug.save_failed_ocr: Bật
+[16:04:21] ⚙ farm.use_zero_effectiveness: Tắt
+[16:04:21] 🎮 Alt+F8 hotkey registered!
+[19:38:32] ✅ Bắt Pokemon started!
+[19:38:32] 🎮 Nhấn Alt+F8 để dừng.
+[19:38:32] ✅ Initializing Catch Pokemon Mode...
+[19:38:33] 🎯 Starting catch mode...
+[19:38:33] ✅ Initializing Catch Pokemon mode...
+[19:38:33] 🎯 Bắt Pokemon với Breloom
+[19:38:33] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[19:38:33] ⚠️ Breloom không có trong team!
+[19:38:33] ⚠️ Cần có Breloom với False Swipe + Spore
+[19:38:34] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:38:36] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:38:38] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:38:40] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:38:41] ⏹ Đã dừng tool!
+[19:38:42] 
+✅ Catch session ended
+[19:45:24] ⚙ debug.save_failed_ocr: Bật
+[19:45:24] ⚙ farm.use_zero_effectiveness: Tắt
+[19:45:24] 🎮 Alt+F8 hotkey registered!
+[19:46:26] ✅ Auto Farm started!
+[19:46:26] 🎮 Nhấn Alt+F8 để dừng.
+[19:46:26] ✅ Initializing Auto Farm...
+[19:46:26] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[19:46:26] 👥 Team: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\team_farm.json
+
+[19:46:26] ✅ Team loaded: 6 Pokemon
+
+[19:46:26] 🎮 Starting farm loop...
+
+[19:46:26] === Bắt đầu Mode 3: Auto Farm ===
+[19:46:39] ⏹ Đã dừng tool!
+[19:46:41] Dừng tool từ GUI.
+[19:46:41] 
+✅ Farm session ended
+[19:46:43] ✅ Bắt Pokemon started!
+[19:46:43] 🎮 Nhấn Alt+F8 để dừng.
+[19:46:43] ✅ Initializing Catch Pokemon Mode...
+[19:46:44] 🎯 Starting catch mode...
+[19:46:44] ✅ Initializing Catch Pokemon mode...
+[19:46:44] 🎯 Bắt Pokemon với Breloom
+[19:46:44] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[19:46:44] ⚠️ Breloom không có trong team!
+[19:46:44] ⚠️ Cần có Breloom với False Swipe + Spore
+[19:46:44] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:46:46] ❌ Catch error: is_battle() missing 1 required positional argument: 'config'
+[19:46:47] ⏹ Đã dừng tool!
+[19:46:48] 
+✅ Catch session ended
+[19:52:14] ⚙ debug.save_failed_ocr: Bật
+[19:52:14] ⚙ farm.use_zero_effectiveness: Tắt
+[19:52:14] 🎮 Alt+F8 hotkey registered!
+[19:52:27] ✅ Bắt Pokemon started!
+[19:52:27] 🎮 Nhấn Alt+F8 để dừng.
+[19:52:27] ✅ Initializing Catch Pokemon Mode...
+[19:52:27] 🎯 Starting catch mode...
+[19:52:27] ✅ Initializing Catch Pokemon mode...
+[19:52:27] 🎯 Bắt Pokemon với Breloom
+[19:52:27] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[19:52:27] 🍄 Found Breloom at slot 3
+[19:52:32] ⏹ Đã dừng tool!
+[19:52:32] 
+✅ Catch session ended
+[19:52:37] ✅ Bắt Pokemon started!
+[19:52:37] 🎮 Nhấn Alt+F8 để dừng.
+[19:52:37] ✅ Initializing Catch Pokemon Mode...
+[19:52:37] 🎯 Starting catch mode...
+[19:52:37] ✅ Initializing Catch Pokemon mode...
+[19:52:37] 🎯 Bắt Pokemon với Breloom
+[19:52:37] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[19:52:37] 🍄 Found Breloom at slot 3
+[19:53:05] ⏹ Đã dừng tool!
+[19:53:07] 
+✅ Catch session ended
+[19:53:29] ⚙ debug.save_failed_ocr: Bật
+[19:53:29] ⚙ farm.use_zero_effectiveness: Tắt
+[19:53:29] 🎮 Alt+F8 hotkey registered!
+[19:54:03] ⚙ debug.save_failed_ocr: Bật
+[19:54:03] ⚙ farm.use_zero_effectiveness: Tắt
+[19:54:03] 🎮 Alt+F8 hotkey registered!
+[19:55:15] ⚙ debug.save_failed_ocr: Bật
+[19:55:15] ⚙ farm.use_zero_effectiveness: Tắt
+[19:55:15] 🎮 Alt+F8 hotkey registered!
+[20:33:28] ⚙ debug.save_failed_ocr: Bật
+[20:33:28] ⚙ farm.use_zero_effectiveness: Tắt
+[20:33:28] 🎮 alt+f8 hotkey registered!
+[20:33:35] ✅ Bắt Pokemon started!
+[20:33:35] 🎮 Nhấn alt+f8 để dừng.
+[20:33:35] ✅ Initializing Catch Pokemon Mode...
+[20:33:35] 🎯 Starting catch mode...
+[20:33:35] ✅ Initializing Catch Pokemon mode...
+[20:33:36] 🎯 Bắt Pokemon với Breloom
+[20:33:36] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:33:36] 🍄 Found Breloom at slot 3
+[20:33:37] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[20:33:37] ❌ Catch error: ocr_text_variants() missing 1 required positional argument: 'config'
+[20:33:40] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[20:33:40] ❌ Catch error: ocr_text_variants() missing 1 required positional argument: 'config'
+[20:33:40] ⏹ Đã dừng tool!
+[20:33:42] 
+✅ Catch session ended
+[20:36:04] ⚙ debug.save_failed_ocr: Bật
+[20:36:04] ⚙ farm.use_zero_effectiveness: Tắt
+[20:36:04] 🎮 alt+f8 hotkey registered!
+[20:36:08] ✅ Bắt Pokemon started!
+[20:36:08] 🎮 Nhấn alt+f8 để dừng.
+[20:36:08] ✅ Initializing Catch Pokemon Mode...
+[20:36:08] 🎯 Starting catch mode...
+[20:36:08] ✅ Initializing Catch Pokemon mode...
+[20:36:09] 🎯 Bắt Pokemon với Breloom
+[20:36:09] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:36:09] 🍄 Found Breloom at slot 3
+[20:36:09] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[20:36:10] ❌ Catch error: OpenCV(4.13.0) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.simd_helpers.hpp:92: error: (-15:Bad number of channels) in function '__cdecl cv::impl::`anonymous-namespace'::CvtHelper<struct cv::impl::`anonymous namespace'::Set<3,4,-1>,struct cv::impl::A0xb1d3297b::Set<1,-1,-1>,struct cv::impl::A0xb1d3297b::Set<0,2,5>,4>::CvtHelper(const class cv::_InputArray &,const class cv::_OutputArray &,int)'
+> Invalid number of channels in input image:
+>     'VScn::contains(scn)'
+> where
+>     'scn' is 1
+
+[20:36:12] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[20:36:12] ❌ Catch error: OpenCV(4.13.0) D:\a\opencv-python\opencv-python\opencv\modules\imgproc\src\color.simd_helpers.hpp:92: error: (-15:Bad number of channels) in function '__cdecl cv::impl::`anonymous-namespace'::CvtHelper<struct cv::impl::`anonymous namespace'::Set<3,4,-1>,struct cv::impl::A0xb1d3297b::Set<1,-1,-1>,struct cv::impl::A0xb1d3297b::Set<0,2,5>,4>::CvtHelper(const class cv::_InputArray &,const class cv::_OutputArray &,int)'
+> Invalid number of channels in input image:
+>     'VScn::contains(scn)'
+> where
+>     'scn' is 1
+
+[20:36:13] ⏹ Đã dừng tool!
+[20:36:14] 
+✅ Catch session ended
+[20:39:08] ⚙ debug.save_failed_ocr: Bật
+[20:39:08] ⚙ farm.use_zero_effectiveness: Tắt
+[20:39:08] 🎮 alt+f8 hotkey registered!
+[20:39:59] ✅ Bắt Pokemon started!
+[20:39:59] 🎮 Nhấn alt+f8 để dừng.
+[20:39:59] ✅ Initializing Catch Pokemon Mode...
+[20:39:59] 🎯 Starting catch mode...
+[20:39:59] ✅ Initializing Catch Pokemon mode...
+[20:39:59] 🎯 Bắt Pokemon với Breloom
+[20:40:00] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:40:00] 🍄 Found Breloom at slot 3
+[20:40:01] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[20:40:02] ⏹ Đã dừng tool!
+[20:40:03] 🎯 Enemy: EE EE
+Tangela oO Ly. 45
+7)
+[20:40:03] ⏭ Bỏ qua EE EE
+Tangela oO Ly. 45
+7), không phải target
+[20:40:03] 🏃 Chạy...
+[20:40:03] ❌ Catch error: cannot import name 'click_at' from 'src.farm.farm_battle' (F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\farm\farm_battle.py)
+[20:40:05] 
+✅ Catch session ended
+[21:23:37] ⚙ debug.save_failed_ocr: Bật
+[21:23:37] ⚙ farm.use_zero_effectiveness: Tắt
+[21:23:37] 🎮 alt+f8 hotkey registered!
+[21:25:35] ✅ Bắt Pokemon started!
+[21:25:35] 🎮 Nhấn alt+f8 để dừng.
+[21:25:35] ✅ Initializing Catch Pokemon Mode...
+[21:25:36] 🎯 Starting catch mode...
+[21:25:36] ✅ Initializing Catch Pokemon mode...
+[21:25:36] 🎯 Bắt Pokemon với Breloom
+[21:25:36] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[21:25:36] 🍄 Found Breloom at slot 3
+[21:25:38] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[21:25:39] 🎯 Enemy: ee ee
+[21:25:39] ⏭ Bỏ qua ee ee, không phải target
+[21:25:39] 🏃 Chạy...
+[21:25:39] ❌ Catch error: cannot unpack non-iterable int object
+[21:25:42] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[21:25:43] ⏹ Đã dừng tool!
+[21:25:44] 🎯 Enemy: ee ee
+[21:25:44] ⏭ Bỏ qua ee ee, không phải target
+[21:25:44] 🏃 Chạy...
+[21:25:44] ❌ Catch error: cannot unpack non-iterable int object
+[21:25:46] 
+✅ Catch session ended
+[21:30:23] ⚙ debug.save_failed_ocr: Bật
+[21:30:23] ⚙ farm.use_zero_effectiveness: Tắt
+[21:30:23] 🎮 alt+f8 hotkey registered!
+[21:30:28] ✅ Bắt Pokemon started!
+[21:30:28] 🎮 Nhấn alt+f8 để dừng.
+[21:30:28] ✅ Initializing Catch Pokemon Mode...
+[21:30:28] 🎯 Starting catch mode...
+[21:30:28] ✅ Initializing Catch Pokemon mode...
+[21:30:28] 🎯 Bắt Pokemon với Breloom
+[21:30:28] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[21:30:28] 🍄 Found Breloom at slot 3
+[21:30:29] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[21:30:31] 🎯 Enemy: minun oo ly. 44
+[21:30:31] ⏭ Bỏ qua minun oo ly. 44, không phải target
+[21:30:31] 🏃 Chạy...
+[21:30:34] ⏹ Đã dừng tool!
+[21:30:38] 
+✅ Catch session ended
+[21:41:16] ⚙ debug.save_failed_ocr: Bật
+[21:41:16] ⚙ farm.use_zero_effectiveness: Tắt
+[21:41:16] 🎮 alt+f8 hotkey registered!
+[21:41:22] ✅ Bắt Pokemon started!
+[21:41:22] 🎮 Nhấn alt+f8 để dừng.
+[21:41:22] ✅ Initializing Catch Pokemon Mode...
+[21:41:22] 🎯 Starting catch mode...
+[21:41:22] ✅ Initializing Catch Pokemon mode...
+[21:41:22] 🎯 Bắt Pokemon với Breloom
+[21:41:22] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[21:41:22] 🍄 Found Breloom at slot 3
+[21:41:23] ⚔️ Battle detected! Bắt đầu bắt Pokemon...
+[21:41:24] 🎯 Enemy: tangela
+[21:41:24] ⏭ Bỏ qua tangela, không phải target
+[21:41:24] 🏃 Chạy...
+[21:41:29] ⏹ Đã dừng tool!
+[21:41:32] 
+✅ Catch session ended
+[21:51:25] ⚙ debug.save_failed_ocr: Bật
+[21:51:25] ⚙ farm.use_zero_effectiveness: Tắt
+[21:51:25] 🎮 alt+f8 hotkey registered!
+[21:51:45] ✅ Bắt Pokemon started!
+[21:51:45] 🎮 Nhấn alt+f8 để dừng.
+[21:51:45] ✅ Initializing Catch Pokemon Mode...
+[21:51:45] 🎯 Starting catch mode...
+[21:51:45] ✅ Initializing Catch Pokemon mode...
+[21:51:45] 🎯 Bắt Pokemon với Breloom
+[21:51:45] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[21:51:45] 🍄 Found Breloom at slot 3
+[21:52:02] ⏹ Đã dừng tool!
+[21:52:04] 
+✅ Catch session ended
+[21:52:05] ✅ Scan Pokemon started!
+[21:52:05] 🎮 Nhấn alt+f8 để dừng.
+[21:52:05] ✅ Initializing Scan Pokemon Mode...
+[21:52:05] 📁 Config: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\tool_config.json
+[21:52:05] 🎯 Targets: F:\Code\Tool Game\PokemonPRO\BatPokemonTuDong\src\config\target_pokemon.json
+
+[21:52:05] ✅ Targets loaded: 9 Pokemon
+
+[21:52:05] 🎮 Starting scan loop...
+
+[21:52:05] Dang chay mode 1 (Scan Pokemon)...
+
+[21:52:09] ⏹ Đã dừng tool!
+[21:52:09] 
+✅ Scan session ended
+[22:03:18] ⚙ debug.save_failed_ocr: Bật
+[22:03:18] ⚙ farm.use_zero_effectiveness: Tắt
+[22:03:18] 🎮 alt+f8 hotkey registered!
+[22:06:27] ✅ Bắt Pokemon started!
+[22:06:27] 🎮 Nhấn alt+f8 để dừng.
+[22:06:28] ✅ Initializing Catch Pokemon Mode...
+[22:06:28] 🎯 Starting catch mode...
+[22:06:28] ✅ Initializing Catch Pokemon mode...
+[22:06:28] 🎯 Bắt Pokemon với Breloom
+[22:06:28] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:06:28] 🍄 Found Breloom at slot 3
+[22:06:39] ⚔️ Battle detected!
+[22:06:46] 🎯 Enemy: '
+[22:06:46] ⏭ Bỏ qua ', không phải target
+[22:06:54] ⏹ Đã dừng tool!
+[22:06:55] 
+✅ Catch session ended
+[22:14:10] ✅ Bắt Pokemon started!
+[22:14:10] 🎮 Nhấn alt+f8 để dừng.
+[22:14:10] ✅ Initializing Catch Pokemon Mode...
+[22:14:10] 🎯 Starting catch mode...
+[22:14:10] ✅ Initializing Catch Pokemon mode...
+[22:14:10] 🎯 Bắt Pokemon với Breloom
+[22:14:10] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:14:10] 🍄 Found Breloom at slot 3
+[22:14:11] ⚔️ Battle detected!
+[22:14:16] 🎯 Enemy: natu
+[22:14:16] 🔄 Bắt đầu chuỗi bắt...
+[22:14:16] 🔄 Swapping to slot 3...
+[22:14:19] ⏹ Đã dừng tool!
+[22:14:21] 💤 Dùng Spore...
+[22:14:27] ⚔️ Dùng False Swipe...
+[22:14:33] ⚠️ HP chưa thấp, cần thêm False Swipe
+[22:14:39] 
+✅ Catch session ended
+[22:14:56] ✅ Bắt Pokemon started!
+[22:14:56] 🎮 Nhấn alt+f8 để dừng.
+[22:14:56] ✅ Initializing Catch Pokemon Mode...
+[22:14:56] 🎯 Starting catch mode...
+[22:14:56] ✅ Initializing Catch Pokemon mode...
+[22:14:56] 🎯 Bắt Pokemon với Breloom
+[22:14:56] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:14:56] 🍄 Found Breloom at slot 3
+[22:14:58] ⚔️ Battle detected!
+[22:15:02] 🎯 Enemy: natu
+[22:15:02] 🔄 Bắt đầu chuỗi bắt...
+[22:15:02] 🔄 Swapping to slot 3...
+[22:15:07] 💤 Dùng Spore...
+[22:15:13] ⚔️ Dùng False Swipe...
+[22:15:19] ⚠️ HP chưa thấp, cần thêm False Swipe
+[22:15:31] ⚔️ Battle detected!
+[22:15:32] ⏹ Đã dừng tool!
+[22:15:39] 🎯 Enemy: natu
+[22:15:39] 🔄 Bắt đầu chuỗi bắt...
+[22:15:39] 🔄 Swapping to slot 3...
+[22:15:44] 💤 Dùng Spore...
+[22:15:50] ⚔️ Dùng False Swipe...
+[22:15:55] ⚠️ HP chưa thấp, cần thêm False Swipe
+[22:24:51] ⚙ debug.save_failed_ocr: Bật
+[22:24:51] ⚙ farm.use_zero_effectiveness: Tắt
+[22:24:51] 🎮 alt+f8 hotkey registered!
+[22:25:07] ✅ Bắt Pokemon started!
+[22:25:07] 🎮 Nhấn alt+f8 để dừng.
+[22:25:07] ✅ Initializing Catch Pokemon Mode...
+[22:25:08] 🎯 Starting catch mode...
+[22:25:08] ✅ Initializing Catch Pokemon mode...
+[22:25:08] 🎯 Bắt Pokemon với Breloom
+[22:25:08] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:25:08] 🍄 Found Breloom at slot 3
+[22:25:09] ⚔️ Battle detected!
+[22:25:13] 🎯 Enemy: natu
+[22:25:13] 🔄 Bắt đầu chuỗi bắt...
+[22:25:13] 🔄 Swapping to slot 3...
+[22:25:24] 💤 Dùng Spore...
+[22:25:36] ⚔️ Dùng False Swipe...
+[22:25:48] ⚔️ Dùng False Swipe...
+[22:26:00] ⚔️ Dùng False Swipe...
+[22:26:04] ⏹ Đã dừng tool!
+[22:26:22] 
+✅ Catch session ended
+[22:30:23] ⚙ debug.save_failed_ocr: Bật
+[22:30:23] ⚙ farm.use_zero_effectiveness: Tắt
+[22:30:23] 🎮 alt+f8 hotkey registered!
+[22:48:33] ✅ Bắt Pokemon started!
+[22:48:33] 🎮 Nhấn alt+f8 để dừng.
+[22:48:33] ✅ Initializing Catch Pokemon Mode...
+[22:48:33] 🎯 Starting catch mode...
+[22:48:33] ✅ Initializing Catch Pokemon mode...
+[22:48:34] 🎯 Bắt Pokemon với Breloom
+[22:48:34] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:48:34] 🍄 Found Breloom at slot 3
+[22:48:35] ⚔️ Battle detected!
+[22:48:36] ⏹ Đã dừng tool!
+[22:48:42] ⚠️ Không đọc được tên Pokemon
+[22:48:42] ✅ Bắt Pokemon started!
+[22:48:42] 🎮 Nhấn alt+f8 để dừng.
+[22:48:42] ✅ Initializing Catch Pokemon Mode...
+[22:48:42] 🎯 Starting catch mode...
+[22:48:42] ✅ Initializing Catch Pokemon mode...
+[22:48:43] 🎯 Bắt Pokemon với Breloom
+[22:48:43] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[22:48:43] 🍄 Found Breloom at slot 3
+[22:48:44] ⚔️ Battle detected!
+[22:48:51] ⚠️ Không đọc được tên Pokemon
+[22:49:00] ⚔️ Battle detected!
+[22:49:01] ⚔️ Battle detected!
+[22:49:06] 🎯 Enemy: natu
+[22:49:06] 🔄 Bắt đầu chuỗi bắt...
+[22:49:06] 🎯 Enemy: natu
+[22:49:06] 🔄 Bắt đầu chuỗi bắt...
+[22:49:08] 🔄 Swapping to slot 3...
+[22:49:08] 🔄 Swapping to slot 3...
+[22:49:18] 💤 Dùng Spore...
+[22:49:19] 💤 Dùng Spore...
+[22:49:31] ⚔️ Dùng False Swipe...
+[22:49:31] ⚔️ Dùng False Swipe...
+[22:49:43] ⚔️ Dùng False Swipe...
+[22:49:43] ⚔️ Dùng False Swipe...
+[22:49:51] ⏹ Đã dừng tool!
+[22:50:05] 
+✅ Catch session ended
+[22:50:06] 
+✅ Catch session ended
+[00:11:06] ⚙ debug.save_failed_ocr: Bật
+[00:11:06] ⚙ farm.use_zero_effectiveness: Tắt
+[00:11:06] 🎮 alt+f8 hotkey registered!
+[00:31:14] ⚙ debug.save_failed_ocr: Bật
+[00:31:14] ⚙ farm.use_zero_effectiveness: Tắt
+[00:31:14] 🎮 alt+f8 hotkey registered!
+[00:31:26] ✅ Bắt Pokemon started!
+[00:31:26] 🎮 Nhấn alt+f8 để dừng.
+[00:31:26] ✅ Initializing Catch Pokemon Mode...
+[00:31:26] 🎯 Starting catch mode...
+[00:31:26] ✅ Initializing Catch Pokemon mode...
+[00:31:26] 🎯 Bắt Pokemon với Breloom
+[00:31:26] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:31:26] 🍄 Found Breloom at slot 3
+[00:31:32] ⚔️ Battle detected!
+[00:31:36] 🎯 Enemy: natu
+[00:31:36] ⏭ Bỏ qua natu, không phải target
+[00:31:47] ⚔️ Battle detected!
+[00:31:51] 🎯 Enemy: natu
+[00:31:51] ⏭ Bỏ qua natu, không phải target
+[00:32:06] ⚔️ Battle detected!
+[00:32:11] 🎯 Enemy: natu
+[00:32:11] ⏭ Bỏ qua natu, không phải target
+[00:32:14] ⏹ Đã dừng tool!
+[00:32:19] ✅ Bắt Pokemon started!
+[00:32:19] 🎮 Nhấn alt+f8 để dừng.
+[00:32:19] ✅ Initializing Catch Pokemon Mode...
+[00:32:19] 🎯 Starting catch mode...
+[00:32:19] ✅ Initializing Catch Pokemon mode...
+[00:32:20] 🎯 Bắt Pokemon với Breloom
+[00:32:20] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:32:20] 🍄 Found Breloom at slot 3
+[00:32:21] ⚔️ Battle detected!
+[00:32:21] ⚔️ Battle detected!
+[00:32:26] 🎯 Enemy: natu
+[00:32:26] ⏭ Bỏ qua natu, không phải target
+[00:32:27] 🎯 Enemy: natu
+[00:32:27] ⏭ Bỏ qua natu, không phải target
+[00:32:41] ⚔️ Battle detected!
+[00:32:42] ⚔️ Battle detected!
+[00:32:46] 🎯 Enemy: bellsprout
+[00:32:46] ⏭ Bỏ qua bellsprout, không phải target
+[00:32:47] 🎯 Enemy: bellsprout
+[00:32:47] ⏭ Bỏ qua bellsprout, không phải target
+[00:33:00] ⚔️ Battle detected!
+[00:33:01] ⚔️ Battle detected!
+[00:33:06] 🎯 Enemy: natu
+[00:33:06] ⏭ Bỏ qua natu, không phải target
+[00:33:06] 🎯 Enemy: natu
+[00:33:06] ⏭ Bỏ qua natu, không phải target
+[00:33:15] ⏹ Đã dừng tool!
+[00:33:16] 
+✅ Catch session ended
+[00:33:16] 
+✅ Catch session ended
+[00:36:01] ⚙ debug.save_failed_ocr: Bật
+[00:36:01] ⚙ farm.use_zero_effectiveness: Tắt
+[00:36:01] 🎮 alt+f8 hotkey registered!
+[00:36:15] ✅ Bắt Pokemon started!
+[00:36:15] 🎮 Nhấn alt+f8 để dừng.
+[00:36:15] ✅ Initializing Catch Pokemon Mode...
+[00:36:15] 🎯 Starting catch mode...
+[00:36:15] ✅ Initializing Catch Pokemon mode...
+[00:36:16] 🎯 Bắt Pokemon với Breloom
+[00:36:16] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:36:16] 🍄 Found Breloom at slot 3
+[00:36:22] ⚔️ Battle detected!
+[00:36:29] 🎯 Enemy: zapdos
+[00:36:29] ⏭ Bỏ qua zapdos, không phải target
+[00:36:44] ⚔️ Battle detected!
+[00:36:52] 🎯 Enemy: zapdos
+[00:36:52] ⏭ Bỏ qua zapdos, không phải target
+[00:37:04] ⏹ Đã dừng tool!
+[00:37:05] ✅ Bắt Pokemon started!
+[00:37:05] 🎮 Nhấn alt+f8 để dừng.
+[00:37:05] ✅ Initializing Catch Pokemon Mode...
+[00:37:05] 🎯 Starting catch mode...
+[00:37:05] ✅ Initializing Catch Pokemon mode...
+[00:37:05] 🎯 Bắt Pokemon với Breloom
+[00:37:05] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:37:05] 🍄 Found Breloom at slot 3
+[00:37:06] ⚔️ Battle detected!
+[00:37:07] ⚔️ Battle detected!
+[00:37:13] 🎯 Enemy: zapdos
+[00:37:13] ⏭ Bỏ qua zapdos, không phải target
+[00:37:14] 🎯 Enemy: zapdos
+[00:37:14] ⏭ Bỏ qua zapdos, không phải target
+[00:37:19] ⏹ Đã dừng tool!
+[00:37:23] 
+✅ Catch session ended
+[00:37:24] 
+✅ Catch session ended
+[00:37:44] ✅ Bắt Pokemon started!
+[00:37:44] 🎮 Nhấn alt+f8 để dừng.
+[00:37:44] ✅ Initializing Catch Pokemon Mode...
+[00:37:44] 🎯 Starting catch mode...
+[00:37:44] ✅ Initializing Catch Pokemon mode...
+[00:37:45] 🎯 Bắt Pokemon với Breloom
+[00:37:45] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:37:45] 🍄 Found Breloom at slot 3
+[00:37:52] ⚔️ Battle detected!
+[00:37:59] 🎯 Enemy: zapdos
+[00:37:59] ⏭ Bỏ qua zapdos, không phải target
+[00:38:03] ⏹ Đã dừng tool!
+[00:38:08] 
+✅ Catch session ended
+[00:38:45] ✅ Bắt Pokemon started!
+[00:38:45] 🎮 Nhấn alt+f8 để dừng.
+[00:38:45] ✅ Initializing Catch Pokemon Mode...
+[00:38:45] 🎯 Starting catch mode...
+[00:38:45] ✅ Initializing Catch Pokemon mode...
+[00:38:45] 🎯 Bắt Pokemon với Breloom
+[00:38:45] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:38:45] 🍄 Found Breloom at slot 3
+[00:38:47] ⚔️ Battle detected!
+[00:38:51] ⏹ Đã dừng tool!
+[00:38:53] 🎯 Enemy: zapdos
+[00:38:53] ⏭ Bỏ qua zapdos, không phải target
+[00:39:03] 
+✅ Catch session ended
+[00:39:19] ✅ Bắt Pokemon started!
+[00:39:19] 🎮 Nhấn alt+f8 để dừng.
+[00:39:19] ✅ Initializing Catch Pokemon Mode...
+[00:39:19] 🎯 Starting catch mode...
+[00:39:19] ✅ Initializing Catch Pokemon mode...
+[00:39:20] 🎯 Bắt Pokemon với Breloom
+[00:39:20] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:39:20] 🍄 Found Breloom at slot 3
+[00:39:22] ⚔️ Battle detected!
+[00:39:28] 🎯 Enemy: zapdos
+[00:39:28] ⏭ Bỏ qua zapdos, không phải target
+[00:39:32] ⏹ Đã dừng tool!
+[00:39:38] 
+✅ Catch session ended
+[00:39:58] ✅ Bắt Pokemon started!
+[00:39:58] 🎮 Nhấn alt+f8 để dừng.
+[00:39:58] ✅ Initializing Catch Pokemon Mode...
+[00:39:58] 🎯 Starting catch mode...
+[00:39:58] ✅ Initializing Catch Pokemon mode...
+[00:39:58] 🎯 Bắt Pokemon với Breloom
+[00:39:58] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:39:58] 🍄 Found Breloom at slot 3
+[00:39:59] ⚔️ Battle detected!
+[00:40:05] 🎯 Enemy: zapdos
+[00:40:05] ⏭ Bỏ qua zapdos, không phải target
+[00:40:15] ⚔️ Battle detected!
+[00:40:20] 🎯 Enemy: zapdos
+[00:40:21] ⏭ Bỏ qua zapdos, không phải target
+[00:40:24] ⏹ Đã dừng tool!
+[00:40:29] 
+✅ Catch session ended
+[00:46:39] ⚙ debug.save_failed_ocr: Bật
+[00:46:39] ⚙ farm.use_zero_effectiveness: Tắt
+[00:46:39] 🎮 alt+f8 hotkey registered!
+[00:46:54] ✅ Bắt Pokemon started!
+[00:46:54] 🎮 Nhấn alt+f8 để dừng.
+[00:46:54] ✅ Initializing Catch Pokemon Mode...
+[00:46:54] 🎯 Starting catch mode...
+[00:46:54] ✅ Initializing Catch Pokemon mode...
+[00:46:54] 🎯 Bắt Pokemon với Breloom
+[00:46:54] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:46:54] 🍄 Found Breloom at slot 3
+[00:47:17] ⚔️ Battle detected!
+[00:47:21] 🎯 Enemy: natu
+[00:47:21] ⏭ Bỏ qua natu, không phải target
+[00:47:31] ⚔️ Battle detected!
+[00:47:35] 🎯 Enemy: natu
+[00:47:35] ⏭ Bỏ qua natu, không phải target
+[00:47:50] ⚔️ Battle detected!
+[00:47:54] 🎯 Enemy: bellsprout
+[00:47:54] ⏭ Bỏ qua bellsprout, không phải target
+[00:48:04] ⚔️ Battle detected!
+[00:48:08] 🎯 Enemy: natu
+[00:48:08] ⏭ Bỏ qua natu, không phải target
+[00:48:23] ⚔️ Battle detected!
+[00:48:27] 🎯 Enemy: natu
+[00:48:27] ⏭ Bỏ qua natu, không phải target
+[00:48:41] ⚔️ Battle detected!
+[00:48:45] 🎯 Enemy: natu
+[00:48:45] ⏭ Bỏ qua natu, không phải target
+[00:49:00] ⚔️ Battle detected!
+[00:49:04] 🎯 Enemy: natu
+[00:49:04] ⏭ Bỏ qua natu, không phải target
+[00:49:18] ⚔️ Battle detected!
+[00:49:22] 🎯 Enemy: natu
+[00:49:22] ⏭ Bỏ qua natu, không phải target
+[00:49:41] ⚔️ Battle detected!
+[00:49:45] 🎯 Enemy: natu
+[00:49:45] ⏭ Bỏ qua natu, không phải target
+[00:49:55] ⚔️ Battle detected!
+[00:50:00] 🎯 Enemy: plusle
+[00:50:00] ⏭ Bỏ qua plusle, không phải target
+[00:50:14] ⚔️ Battle detected!
+[00:50:18] 🎯 Enemy: natu
+[00:50:18] ⏭ Bỏ qua natu, không phải target
+[00:50:32] ⚔️ Battle detected!
+[00:50:37] 🎯 Enemy: natu
+[00:50:37] ⏭ Bỏ qua natu, không phải target
+[00:50:51] ⚔️ Battle detected!
+[00:50:55] 🎯 Enemy: plusle
+[00:50:55] ⏭ Bỏ qua plusle, không phải target
+[00:51:09] ⚔️ Battle detected!
+[00:51:13] 🎯 Enemy: bellsprout
+[00:51:13] ⏭ Bỏ qua bellsprout, không phải target
+[00:51:28] ⚔️ Battle detected!
+[00:51:32] 🎯 Enemy: tangrowth
+[00:51:32] 🔄 Bắt đầu chuỗi bắt...
+[00:51:33] 🔄 Swapping to slot 3...
+[00:51:43] 💤 Dùng Spore...
+[00:51:56] ⚔️ Dùng False Swipe...
+[00:52:08] ⚔️ Dùng False Swipe...
+[00:52:20] ⚔️ Dùng False Swipe...
+[00:52:32] ✅ HP thấp sau 4 lần False Swipe
+[00:52:32] 💤 Dùng Spore...
+[00:52:39] 🔴 Ném Poke...
+[00:53:04] ⚔️ Battle detected!
+[00:53:08] 🎯 Enemy: tangrowth
+[00:53:08] 🔄 Bắt đầu chuỗi bắt...
+[00:53:09] 🔄 Swapping to slot 3...
+[00:53:20] 💤 Dùng Spore...
+[00:53:32] ✅ HP thấp sau 1 lần False Swipe
+[00:53:32] 💤 Dùng Spore...
+[00:53:39] 🔴 Ném Poke...
+[00:54:04] ⚔️ Battle detected!
+[00:54:08] 🎯 Enemy: tangrowth
+[00:54:08] 🔄 Bắt đầu chuỗi bắt...
+[00:54:09] 🔄 Swapping to slot 3...
+[00:54:19] 💤 Dùng Spore...
+[00:54:31] ✅ HP thấp sau 1 lần False Swipe
+[00:54:31] 💤 Dùng Spore...
+[00:54:36] ⏹ Đã dừng tool!
+[00:54:38] 🔴 Ném Poke...
+[00:54:50] 
+✅ Catch session ended
+[00:58:04] ⚙ debug.save_failed_ocr: Bật
+[00:58:04] ⚙ farm.use_zero_effectiveness: Tắt
+[00:58:04] 🎮 alt+f8 hotkey registered!
+[00:58:43] ✅ Bắt Pokemon started!
+[00:58:43] 🎮 Nhấn alt+f8 để dừng.
+[00:58:44] ✅ Initializing Catch Pokemon Mode...
+[00:58:44] 🎯 Starting catch mode...
+[00:58:44] ✅ Initializing Catch Pokemon mode...
+[00:58:44] 🎯 Bắt Pokemon với Breloom
+[00:58:44] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:58:44] 🍄 Found Breloom at slot 3
+[00:58:45] ⚔️ Battle detected!
+[00:58:49] 🎯 Enemy: tangrowth
+[00:58:49] 🔄 Bắt đầu chuỗi bắt...
+[00:58:50] 🔄 Swapping to slot 3...
+[00:58:54] ⏹ Đã dừng tool!
+[00:59:00] 💤 Dùng Spore...
+[00:59:14] 
+✅ Catch session ended
+[01:01:23] ⚙ debug.save_failed_ocr: Bật
+[01:01:23] ⚙ farm.use_zero_effectiveness: Tắt
+[01:01:23] 🎮 alt+f8 hotkey registered!
+[01:01:43] ✅ Bắt Pokemon started!
+[01:01:43] 🎮 Nhấn alt+f8 để dừng.
+[01:01:43] ✅ Initializing Catch Pokemon Mode...
+[01:01:43] 🎯 Starting catch mode...
+[01:01:43] ✅ Initializing Catch Pokemon mode...
+[01:01:44] 🎯 Bắt Pokemon với Breloom
+[01:01:44] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:01:44] 🍄 Found Breloom at slot 3
+[01:01:44] ⚔️ Battle detected!
+[01:01:48] 🎯 Enemy: tangrowth
+[01:01:48] ⏭ Bỏ qua tangrowth, không phải target
+[01:02:07] ⚔️ Battle detected!
+[01:02:12] 🎯 Enemy: tangela
+[01:02:12] ⏭ Bỏ qua tangela, không phải target
+[01:02:26] ⚔️ Battle detected!
+[01:02:30] 🎯 Enemy: natu
+[01:02:30] ⏭ Bỏ qua natu, không phải target
+[01:02:45] ⚔️ Battle detected!
+[01:02:49] 🎯 Enemy: tangrowth
+[01:02:49] ⏭ Bỏ qua tangrowth, không phải target
+[01:03:04] ⚔️ Battle detected!
+[01:03:08] 🎯 Enemy: tangrowth
+[01:03:08] ⏭ Bỏ qua tangrowth, không phải target
+[01:03:23] ⚔️ Battle detected!
+[01:03:27] 🎯 Enemy: natu
+[01:03:27] ⏭ Bỏ qua natu, không phải target
+[01:03:50] ⚔️ Battle detected!
+[01:03:54] 🎯 Enemy: minun
+[01:03:54] ⏭ Bỏ qua minun, không phải target
+[01:04:08] ⚔️ Battle detected!
+[01:04:13] 🎯 Enemy: bellsprout
+[01:04:13] ⏭ Bỏ qua bellsprout, không phải target
+[01:04:27] ⚔️ Battle detected!
+[01:04:32] 🎯 Enemy: natu
+[01:04:32] ⏭ Bỏ qua natu, không phải target
+[01:04:42] ⚔️ Battle detected!
+[01:04:46] 🎯 Enemy: tangela
+[01:04:46] ⏭ Bỏ qua tangela, không phải target
+[01:04:56] ⚔️ Battle detected!
+[01:05:01] 🎯 Enemy: natu
+[01:05:01] ⏭ Bỏ qua natu, không phải target
+[01:05:11] ⚔️ Battle detected!
+[01:05:15] 🎯 Enemy: natu
+[01:05:15] ⏭ Bỏ qua natu, không phải target
+[01:05:29] ⚔️ Battle detected!
+[01:05:34] 🎯 Enemy: foongus
+[01:05:34] ⏭ Bỏ qua foongus, không phải target
+[01:05:48] ⚔️ Battle detected!
+[01:05:52] 🎯 Enemy: natu
+[01:05:52] ⏭ Bỏ qua natu, không phải target
+[01:06:06] ⚔️ Battle detected!
+[01:06:11] 🎯 Enemy: natu
+[01:06:11] ⏭ Bỏ qua natu, không phải target
+[01:06:25] ⚔️ Battle detected!
+[01:06:29] 🎯 Enemy: bellsprout
+[01:06:29] ⏭ Bỏ qua bellsprout, không phải target
+[01:06:44] ⚔️ Battle detected!
+[01:06:48] 🎯 Enemy: natu
+[01:06:48] ⏭ Bỏ qua natu, không phải target
+[01:07:02] ⚔️ Battle detected!
+[01:07:06] 🎯 Enemy: tangela
+[01:07:06] ⏭ Bỏ qua tangela, không phải target
+[01:07:21] ⚔️ Battle detected!
+[01:07:25] 🎯 Enemy: natu
+[01:07:25] ⏭ Bỏ qua natu, không phải target
+[01:07:39] ⚔️ Battle detected!
+[01:07:43] 🎯 Enemy: natu
+[01:07:43] ⏭ Bỏ qua natu, không phải target
+[01:07:57] ⚔️ Battle detected!
+[01:08:01] 🎯 Enemy: minun
+[01:08:01] ⏭ Bỏ qua minun, không phải target
+[01:08:16] ⚔️ Battle detected!
+[01:08:20] 🎯 Enemy: tangrowth
+[01:08:20] ⏭ Bỏ qua tangrowth, không phải target
+[01:08:34] ⚔️ Battle detected!
+[01:08:38] 🎯 Enemy: minun
+[01:08:38] ⏭ Bỏ qua minun, không phải target
+[01:08:48] ⚔️ Battle detected!
+[01:08:53] 🎯 Enemy: tangela
+[01:08:53] ⏭ Bỏ qua tangela, không phải target
+[01:09:11] ⚔️ Battle detected!
+[01:09:15] 🎯 Enemy: natu
+[01:09:15] ⏭ Bỏ qua natu, không phải target
+[01:09:30] ⚔️ Battle detected!
+[01:09:34] 🎯 Enemy: tangela
+[01:09:34] ⏭ Bỏ qua tangela, không phải target
+[01:09:48] ⚔️ Battle detected!
+[01:09:53] 🎯 Enemy: bellsprout
+[01:09:53] ⏭ Bỏ qua bellsprout, không phải target
+[01:10:03] ⚔️ Battle detected!
+[01:10:07] 🎯 Enemy: natu
+[01:10:07] ⏭ Bỏ qua natu, không phải target
+[01:10:17] ⚔️ Battle detected!
+[01:10:22] 🎯 Enemy: tangela
+[01:10:22] ⏭ Bỏ qua tangela, không phải target
+[01:10:36] ⚔️ Battle detected!
+[01:10:41] 🎯 Enemy: minun
+[01:10:41] ⏭ Bỏ qua minun, không phải target
+[01:10:55] ⚔️ Battle detected!
+[01:10:59] 🎯 Enemy: tangrowth
+[01:10:59] ⏭ Bỏ qua tangrowth, không phải target
+[01:11:14] ⚔️ Battle detected!
+[01:11:18] 🎯 Enemy: bellsprout
+[01:11:18] ⏭ Bỏ qua bellsprout, không phải target
+[01:11:28] ⚔️ Battle detected!
+[01:11:32] 🎯 Enemy: natu
+[01:11:32] ⏭ Bỏ qua natu, không phải target
+[01:11:42] ⚔️ Battle detected!
+[01:11:46] 🎯 Enemy: tangela
+[01:11:46] ⏭ Bỏ qua tangela, không phải target
+[01:12:00] ⚔️ Battle detected!
+[01:12:05] 🎯 Enemy: plusle
+[01:12:05] ⏭ Bỏ qua plusle, không phải target
+[01:12:19] ⚔️ Battle detected!
+[01:12:23] 🎯 Enemy: natu
+[01:12:23] ⏭ Bỏ qua natu, không phải target
+[01:12:38] ⚔️ Battle detected!
+[01:12:42] 🎯 Enemy: bellsprout
+[01:12:42] ⏭ Bỏ qua bellsprout, không phải target
+[01:12:52] ⚔️ Battle detected!
+[01:12:56] 🎯 Enemy: natu
+[01:12:56] ⏭ Bỏ qua natu, không phải target
+[01:13:11] ⚔️ Battle detected!
+[01:13:15] 🎯 Enemy: bellsprout
+[01:13:15] ⏭ Bỏ qua bellsprout, không phải target
+[01:13:33] ⚔️ Battle detected!
+[01:13:37] 🎯 Enemy: natu
+[01:13:37] ⏭ Bỏ qua natu, không phải target
+[01:13:52] ⚔️ Battle detected!
+[01:13:56] 🎯 Enemy: natu
+[01:13:56] ⏭ Bỏ qua natu, không phải target
+[01:14:15] ⚔️ Battle detected!
+[01:14:19] 🎯 Enemy: minun
+[01:14:19] ⏭ Bỏ qua minun, không phải target
+[01:14:29] ⚔️ Battle detected!
+[01:14:33] 🎯 Enemy: natu
+[01:14:34] ⏭ Bỏ qua natu, không phải target
+[01:14:48] ⚔️ Battle detected!
+[01:14:52] 🎯 Enemy: natu
+[01:14:52] ⏭ Bỏ qua natu, không phải target
+[01:15:19] ⚔️ Battle detected!
+[01:15:23] 🎯 Enemy: tangrowth
+[01:15:23] ⏭ Bỏ qua tangrowth, không phải target
+[01:15:33] ⚔️ Battle detected!
+[01:15:37] 🎯 Enemy: natu
+[01:15:37] ⏭ Bỏ qua natu, không phải target
+[01:15:51] ⚔️ Battle detected!
+[01:15:56] 🎯 Enemy: natu
+[01:15:56] ⏭ Bỏ qua natu, không phải target
+[01:16:14] ⚔️ Battle detected!
+[01:16:18] 🎯 Enemy: natu
+[01:16:18] ⏭ Bỏ qua natu, không phải target
+[01:16:33] ⚔️ Battle detected!
+[01:16:37] 🎯 Enemy: minun
+[01:16:37] ⏭ Bỏ qua minun, không phải target
+[01:16:51] ⚔️ Battle detected!
+[01:16:55] 🎯 Enemy: bellsprout
+[01:16:56] ⏭ Bỏ qua bellsprout, không phải target
+[01:17:06] ⚔️ Battle detected!
+[01:17:10] 🎯 Enemy: natu
+[01:17:10] ⏭ Bỏ qua natu, không phải target
+[01:17:20] ⚔️ Battle detected!
+[01:17:25] 🎯 Enemy: bellsprout
+[01:17:25] ⏭ Bỏ qua bellsprout, không phải target
+[01:17:39] ⚔️ Battle detected!
+[01:17:44] 🎯 Enemy: natu
+[01:17:44] ⏭ Bỏ qua natu, không phải target
+[01:18:06] ⚔️ Battle detected!
+[01:18:11] 🎯 Enemy: tangrowth
+[01:18:11] ⏭ Bỏ qua tangrowth, không phải target
+[01:18:25] ⚔️ Battle detected!
+[01:18:29] 🎯 Enemy: natu
+[01:18:29] ⏭ Bỏ qua natu, không phải target
+[01:18:44] ⚔️ Battle detected!
+[01:18:48] 🎯 Enemy: tangrowth
+[01:18:48] ⏭ Bỏ qua tangrowth, không phải target
+[01:18:58] ⚔️ Battle detected!
+[01:19:02] 🎯 Enemy: tangrowth
+[01:19:02] ⏭ Bỏ qua tangrowth, không phải target
+[01:19:22] ⚔️ Battle detected!
+[01:19:26] 🎯 Enemy: natu
+[01:19:26] ⏭ Bỏ qua natu, không phải target
+[01:19:45] ⚔️ Battle detected!
+[01:19:49] 🎯 Enemy: bellsprout
+[01:19:49] ⏭ Bỏ qua bellsprout, không phải target
+[01:19:59] ⚔️ Battle detected!
+[01:20:04] 🎯 Enemy: natu
+[01:20:04] ⏭ Bỏ qua natu, không phải target
+[01:20:18] ⚔️ Battle detected!
+[01:20:22] 🎯 Enemy: tangela
+[01:20:22] ⏭ Bỏ qua tangela, không phải target
+[01:20:32] ⚔️ Battle detected!
+[01:20:37] 🎯 Enemy: bellsprout
+[01:20:37] ⏭ Bỏ qua bellsprout, không phải target
+[01:20:51] ⚔️ Battle detected!
+[01:20:55] 🎯 Enemy: natu
+[01:20:55] ⏭ Bỏ qua natu, không phải target
+[01:21:05] ⚔️ Battle detected!
+[01:21:09] 🎯 Enemy: natu
+[01:21:10] ⏭ Bỏ qua natu, không phải target
+[01:21:20] ⚔️ Battle detected!
+[01:21:24] 🎯 Enemy: natu
+[01:21:24] ⏭ Bỏ qua natu, không phải target
+[01:21:39] ⚔️ Battle detected!
+[01:21:43] 🎯 Enemy: natu
+[01:21:43] ⏭ Bỏ qua natu, không phải target
+[01:22:02] ⚔️ Battle detected!
+[01:22:06] 🎯 Enemy: plusle
+[01:22:06] ⏭ Bỏ qua plusle, không phải target
+[01:22:20] ⚔️ Battle detected!
+[01:22:24] 🎯 Enemy: natu
+[01:22:24] ⏭ Bỏ qua natu, không phải target
+[01:22:35] ⚔️ Battle detected!
+[01:22:39] 🎯 Enemy: plusle
+[01:22:39] ⏭ Bỏ qua plusle, không phải target
+[01:22:49] ⚔️ Battle detected!
+[01:22:53] 🎯 Enemy: natu
+[01:22:53] ⏭ Bỏ qua natu, không phải target
+[01:23:08] ⚔️ Battle detected!
+[01:23:12] 🎯 Enemy: tangrowth
+[01:23:12] ⏭ Bỏ qua tangrowth, không phải target
+[01:23:26] ⚔️ Battle detected!
+[01:23:30] 🎯 Enemy: natu
+[01:23:30] ⏭ Bỏ qua natu, không phải target
+[01:23:45] ⚔️ Battle detected!
+[01:23:49] 🎯 Enemy: bellsprout
+[01:23:49] ⏭ Bỏ qua bellsprout, không phải target
+[01:24:03] ⚔️ Battle detected!
+[01:24:07] 🎯 Enemy: tangela
+[01:24:07] ⏭ Bỏ qua tangela, không phải target
+[01:24:18] ⚔️ Battle detected!
+[01:24:22] 🎯 Enemy: tangela
+[01:24:22] ⏭ Bỏ qua tangela, không phải target
+[01:24:36] ⚔️ Battle detected!
+[01:24:40] 🎯 Enemy: bellsprout
+[01:24:40] ⏭ Bỏ qua bellsprout, không phải target
+[01:24:55] ⚔️ Battle detected!
+[01:24:59] 🎯 Enemy: tangela
+[01:24:59] ⏭ Bỏ qua tangela, không phải target
+[01:25:10] ⏹ Đã dừng tool!
+[01:25:10] ⚔️ Battle detected!
+[01:25:14] 🎯 Enemy: bellsprout
+[01:25:14] ⏭ Bỏ qua bellsprout, không phải target
+[01:25:17] 
+✅ Catch session ended
+[01:28:14] ⚙ debug.save_failed_ocr: Bật
+[01:28:14] ⚙ farm.use_zero_effectiveness: Tắt
+[01:28:14] 🎮 alt+f8 hotkey registered!
+[01:28:26] ✅ Bắt Pokemon started!
+[01:28:26] 🎮 Nhấn alt+f8 để dừng.
+[01:28:26] ✅ Initializing Catch Pokemon Mode...
+[01:28:26] 🎯 Starting catch mode...
+[01:28:26] ✅ Initializing Catch Pokemon mode...
+[01:28:26] 🎯 Bắt Pokemon với Breloom
+[01:28:26] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:28:26] 🍄 Found Breloom at slot 3
+[01:28:27] ⚔️ Battle detected!
+[01:28:32] 🎯 Enemy: bellsprout
+[01:28:32] 🔄 Bắt đầu chuỗi bắt...
+[01:28:33] 🔄 Swapping to slot 3...
+[01:28:43] 💤 Dùng Spore...
+[01:28:54] ⏹ Đã dừng tool!
+[01:28:57] 
+✅ Catch session ended
+[01:30:58] ✅ Bắt Pokemon started!
+[01:30:58] 🎮 Nhấn alt+f8 để dừng.
+[01:30:58] ✅ Initializing Catch Pokemon Mode...
+[01:30:58] 🎯 Starting catch mode...
+[01:30:58] ✅ Initializing Catch Pokemon mode...
+[01:30:58] 🎯 Bắt Pokemon với Breloom
+[01:30:58] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:30:58] 🍄 Found Breloom at slot 3
+[01:30:59] ⚔️ Battle detected!
+[01:31:03] 🎯 Enemy: natu
+[01:31:03] 🔄 Bắt đầu chuỗi bắt...
+[01:31:04] 🔄 Swapping to slot 3...
+[01:31:14] 💤 Dùng Spore...
+[01:31:27] ✅ HP thấp sau 1 lần False Swipe
+[01:31:27] 💤 Dùng Spore...
+[01:31:33] 🔴 Ném Poke...
+[01:31:59] ⚔️ Battle detected!
+[01:32:03] 🎯 Enemy: natu
+[01:32:03] 🔄 Bắt đầu chuỗi bắt...
+[01:32:04] 🍄 Breloom đã trên sân, bỏ qua swap
+[01:32:04] 💤 Dùng Spore...
+[01:32:09] ⏹ Đã dừng tool!
+[01:32:25] 
+✅ Catch session ended
+[01:36:43] ⚙ debug.save_failed_ocr: Bật
+[01:36:43] ⚙ farm.use_zero_effectiveness: Tắt
+[01:36:43] 🎮 alt+f8 hotkey registered!
+[01:38:28] ⚙ debug.save_failed_ocr: Bật
+[01:38:28] ⚙ farm.use_zero_effectiveness: Tắt
+[01:38:28] 🎮 alt+f8 hotkey registered!
+[01:40:42] ⚙ debug.save_failed_ocr: Bật
+[01:40:42] ⚙ farm.use_zero_effectiveness: Tắt
+[01:40:42] 🎮 alt+f8 hotkey registered!
+[01:42:52] ⚙ debug.save_failed_ocr: Bật
+[01:42:52] ⚙ farm.use_zero_effectiveness: Tắt
+[01:42:52] 🎮 alt+f8 hotkey registered!
+[01:46:27] ✅ Bắt Pokemon started!
+[01:46:27] 🎮 Nhấn alt+f8 để dừng.
+[01:46:28] ✅ Initializing Catch Pokemon Mode...
+[01:46:28] 🎯 Starting catch mode...
+[01:46:28] ✅ Initializing Catch Pokemon mode...
+[01:46:28] 🎯 Bắt Pokemon với Breloom
+[01:46:28] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:46:28] 🍄 Found Breloom at slot 3
+[01:46:28] ⚔️ Battle detected!
+[01:46:33] 🎯 Enemy: natu
+[01:46:33] 🔄 Bắt đầu chuỗi bắt...
+[01:46:34] 🍄 Breloom đã trên sân, bỏ qua swap
+[01:46:34] 💤 Dùng Spore...
+[01:46:46] ✅ HP thấp sau 1 lần False Swipe
+[01:46:46] 💤 Dùng Spore...
+[01:46:53] 🔴 Ném Poke...
+[01:46:54] ⚠️ Không thấy Poke trong bag (OCR)
+[01:47:06] ⏹ Đã dừng tool!
+[01:47:18] 
+✅ Catch session ended
+[01:49:22] ⚙ debug.save_failed_ocr: Bật
+[01:49:22] ⚙ farm.use_zero_effectiveness: Tắt
+[01:49:22] 🎮 alt+f8 hotkey registered!
+[01:49:35] ✅ Bắt Pokemon started!
+[01:49:35] 🎮 Nhấn alt+f8 để dừng.
+[01:49:35] ✅ Initializing Catch Pokemon Mode...
+[01:49:35] 🎯 Starting catch mode...
+[01:49:35] ✅ Initializing Catch Pokemon mode...
+[01:49:36] 🎯 Bắt Pokemon với Breloom
+[01:49:36] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:49:36] 🍄 Found Breloom at slot 3
+[01:49:36] ⚔️ Battle detected!
+[01:49:41] 🎯 Enemy: natu
+[01:49:41] 🔄 Bắt đầu chuỗi bắt...
+[01:49:42] 🍄 Breloom đã trên sân, bỏ qua swap
+[01:49:42] 💤 Dùng Spore...
+[01:49:54] ✅ HP đã thấp, không cần False Swipe
+[01:49:54] 💤 Dùng Spore...
+[01:50:01] 🔴 Ném Poke...
+[01:50:11] ⏹ Đã dừng tool!
+[01:50:26] 
+✅ Catch session ended
+[01:53:54] ✅ Bắt Pokemon started!
+[01:53:54] 🎮 Nhấn alt+f8 để dừng.
+[01:53:54] ✅ Initializing Catch Pokemon Mode...
+[01:53:54] 🎯 Starting catch mode...
+[01:53:54] ✅ Initializing Catch Pokemon mode...
+[01:53:54] 🎯 Bắt Pokemon với Breloom
+[01:53:54] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[01:53:54] 🍄 Found Breloom at slot 3
+[01:53:55] ⚔️ Battle detected!
+[01:53:59] 🎯 Enemy: natu
+[01:53:59] 🔄 Bắt đầu chuỗi bắt...
+[01:54:00] 🔄 Swapping to slot 3...
+[01:54:05] 💤 Dùng Spore...
+[01:54:17] ✅ HP đã thấp, không cần False Swipe
+[01:54:17] 💤 Dùng Spore...
+[01:54:24] 🔴 Ném Poke...
+[01:54:25] ⚠️ Không thấy Poke trong bag (OCR)
+[01:54:34] ⏹ Đã dừng tool!
+[01:54:50] 
+✅ Catch session ended
+[01:55:30] ✅ Đã lưu tất cả cài đặt!
+[01:59:11] ⚙ debug.save_failed_ocr: Bật
+[01:59:11] ⚙ farm.use_zero_effectiveness: Tắt
+[01:59:11] 🎮 alt+f8 hotkey registered!
+[02:00:26] ✅ Bắt Pokemon started!
+[02:00:26] 🎮 Nhấn alt+f8 để dừng.
+[02:00:26] ✅ Initializing Catch Pokemon Mode...
+[02:00:26] 🎯 Starting catch mode...
+[02:00:26] ✅ Initializing Catch Pokemon mode...
+[02:00:26] 🎯 Bắt Pokemon với Breloom
+[02:00:26] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:00:26] 🍄 Found Breloom at slot 3
+[02:00:27] ⚔️ Battle detected!
+[02:00:31] 🎯 Enemy: natu
+[02:00:31] 🔄 Bắt đầu chuỗi bắt...
+[02:00:32] 🍄 Breloom đã trên sân, bỏ qua swap
+[02:00:32] 💤 Dùng Spore...
+[02:00:44] ✅ HP đã thấp, không cần False Swipe
+[02:00:44] 💤 Dùng Spore...
+[02:00:51] 🔴 Ném Poke...
+[02:00:52] ⚠️ Không thấy Poke trong bag (OCR)
+[02:01:18] ⚔️ Battle detected!
+[02:01:22] 🎯 Enemy: natu
+[02:01:22] 🔄 Bắt đầu chuỗi bắt...
+[02:01:23] 🍄 Breloom đã trên sân, bỏ qua swap
+[02:01:23] 💤 Dùng Spore...
+[02:01:35] ✅ HP đã thấp, không cần False Swipe
+[02:01:35] 💤 Dùng Spore...
+[02:01:42] 🔴 Ném Poke...
+[02:01:43] ⚠️ Không thấy Poke trong bag (OCR)
+[02:02:00] ⏹ Đã dừng tool!
+[02:02:08] 
+✅ Catch session ended
+[02:02:50] ✅ Bắt Pokemon started!
+[02:02:50] 🎮 Nhấn alt+f8 để dừng.
+[02:02:50] ✅ Initializing Catch Pokemon Mode...
+[02:02:50] 🎯 Starting catch mode...
+[02:02:50] ✅ Initializing Catch Pokemon mode...
+[02:02:50] 🎯 Bắt Pokemon với Breloom
+[02:02:50] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:02:50] 🍄 Found Breloom at slot 3
+[02:02:51] ⚔️ Battle detected!
+[02:02:55] 🎯 Enemy: natu
+[02:02:55] 🔄 Bắt đầu chuỗi bắt...
+[02:02:56] 🍄 Breloom đã trên sân, bỏ qua swap
+[02:02:56] 💤 Dùng Spore...
+[02:03:08] ✅ HP đã thấp, không cần False Swipe
+[02:03:08] 💤 Dùng Spore...
+[02:03:15] 🔴 Ném Poke...
+[02:03:16] ⚠️ Không thấy Poke trong bag (OCR)
+[02:04:24] ⏹ Đã dừng tool!
+[02:04:24] 
+✅ Catch session ended
+[02:12:00] ⚙ debug.save_failed_ocr: Bật
+[02:12:00] ⚙ farm.use_zero_effectiveness: Tắt
+[02:12:00] 🎮 alt+f8 hotkey registered!
+[02:12:19] ✅ Bắt Pokemon started!
+[02:12:19] 🎮 Nhấn alt+f8 để dừng.
+[02:12:19] ✅ Initializing Catch Pokemon Mode...
+[02:12:19] 🎯 Starting catch mode...
+[02:12:19] ✅ Initializing Catch Pokemon mode...
+[02:12:19] 🎯 Bắt Pokemon với Breloom
+[02:12:19] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:12:19] 🍄 Found Breloom at slot 3
+[02:12:20] ⚔️ Battle detected!
+[02:12:24] 🎯 Enemy: natu
+[02:12:24] 🔄 Bắt đầu chuỗi bắt...
+[02:12:25] 🍄 Breloom đã trên sân, bỏ qua swap
+[02:12:25] 💤 Dùng Spore...
+[02:12:37] ✅ HP đã thấp, không cần False Swipe
+[02:12:37] 💤 Dùng Spore...
+[02:12:44] 🔴 Ném Poke...
+[02:12:46] 📋 OCR Bag lines: ['7']
+[02:12:46] ⚠️ Không thấy Poke trong bag (OCR)
+[02:12:46] ⚠️ Fallback click poke at (1410, 330)
+[02:12:52] ⏹ Đã dừng tool!
+[02:13:00] 
+✅ Catch session ended
+[02:21:36] ⚙ debug.save_failed_ocr: Bật
+[02:21:36] ⚙ farm.use_zero_effectiveness: Tắt
+[02:21:36] 🎮 alt+f8 hotkey registered!
+[02:21:44] ✅ Bắt Pokemon started!
+[02:21:44] 🎮 Nhấn alt+f8 để dừng.
+[02:21:44] ✅ Initializing Catch Pokemon Mode...
+[02:21:44] 🎯 Starting catch mode...
+[02:21:44] ✅ Initializing Catch Pokemon mode...
+[02:21:44] 🎯 Bắt Pokemon với Breloom
+[02:21:44] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:21:44] 🍄 Found Breloom at slot 3
+[02:21:45] ⚔️ Battle detected!
+[02:21:49] 🎯 Enemy: natu
+[02:21:49] 🔄 Bắt đầu chuỗi bắt...
+[02:21:50] 🍄 Breloom đã trên sân, bỏ qua swap
+[02:21:50] ⚔️ Dùng False Swipe...
+[02:22:01] ⚔️ Dùng False Swipe...
+[02:22:08] ⚔️ Dùng False Swipe...
+[02:22:16] ⏹ Đã dừng tool!
+[02:22:20] ⚔️ Dùng False Swipe...
+[02:22:34] 
+✅ Catch session ended
+[02:25:25] ⚙ debug.save_failed_ocr: Bật
+[02:25:25] ⚙ farm.use_zero_effectiveness: Tắt
+[02:25:25] 🎮 alt+f8 hotkey registered!
+[02:29:45] ⚙ debug.save_failed_ocr: Bật
+[02:29:45] ⚙ farm.use_zero_effectiveness: Tắt
+[02:29:45] 🎮 alt+f8 hotkey registered!
+[02:29:51] ✅ Bắt Pokemon started!
+[02:29:51] 🎮 Nhấn alt+f8 để dừng.
+[02:29:51] ✅ Initializing Catch Pokemon Mode...
+[02:29:51] 🎯 Starting catch mode...
+[02:29:51] ✅ Initializing Catch Pokemon mode...
+[02:29:51] 🎯 Bắt Pokemon với Breloom
+[02:29:51] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:29:51] 🍄 Found Breloom at slot 3
+[02:29:52] ⚔️ Battle detected!
+[02:29:56] 🎯 Enemy: bellsprout
+[02:29:56] 🔄 Bắt đầu chuỗi bắt...
+[02:29:57] 🔄 Swapping to slot 3...
+[02:30:09] ⚔️ Dùng False Swipe...
+[02:30:22] ✅ HP thấp sau 1 lần False Swipe
+[02:30:22] 💤 Dùng Spore...
+[02:30:28] ⏳ Đang đợi lượt mới để ném Ball...
+[02:30:28] 🔴 Ném Poke...
+[02:30:30] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[02:30:30] ⚠️ Không thấy Poke trong bag (OCR)
+[02:30:30] ⚠️ Fallback click poke at (1410, 330)
+[02:30:54] ⏹ Đã dừng tool!
+[02:30:54] 
+✅ Catch session ended
+[02:34:16] ✅ Bắt Pokemon started!
+[02:34:16] 🎮 Nhấn alt+f8 để dừng.
+[02:34:16] ✅ Initializing Catch Pokemon Mode...
+[02:34:16] 🎯 Starting catch mode...
+[02:34:16] ✅ Initializing Catch Pokemon mode...
+[02:34:16] 🎯 Bắt Pokemon với Breloom
+[02:34:16] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:34:16] 🍄 Found Breloom at slot 3
+[02:34:21] ⚔️ Battle detected!
+[02:34:26] 🎯 Enemy: magikarp
+[02:34:26] 🔄 Bắt đầu chuỗi bắt...
+[02:34:27] 🔄 Swapping to slot 3...
+[02:34:28] ⏹ Đã dừng tool!
+[02:34:42] 
+✅ Catch session ended
+[02:36:54] ⚙ debug.save_failed_ocr: Bật
+[02:36:54] ⚙ farm.use_zero_effectiveness: Tắt
+[02:36:54] 🎮 alt+f8 hotkey registered!
+[02:37:00] ✅ Bắt Pokemon started!
+[02:37:00] 🎮 Nhấn alt+f8 để dừng.
+[02:37:00] ✅ Initializing Catch Pokemon Mode...
+[02:37:00] 🎯 Starting catch mode...
+[02:37:00] ✅ Initializing Catch Pokemon mode...
+[02:37:00] 🎯 Bắt Pokemon với Breloom
+[02:37:00] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:37:00] 🍄 Found Breloom at slot 3
+[02:37:02] ⚔️ Battle detected!
+[02:37:07] 🎯 Enemy: magikarp
+[02:37:07] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:37:07] 📋 Log đọc được: 'swift swim'
+[02:37:07] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:37:35] ⚔️ Battle detected!
+[02:37:39] 🎯 Enemy: magikarp
+[02:37:39] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:37:42] 📋 Log đọc được: 'swift swim'
+[02:37:42] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:37:54] ⏹ Đã dừng tool!
+[02:37:55] 
+✅ Catch session ended
+[02:39:11] ✅ Bắt Pokemon started!
+[02:39:11] 🎮 Nhấn alt+f8 để dừng.
+[02:39:11] ✅ Initializing Catch Pokemon Mode...
+[02:39:11] 🎯 Starting catch mode...
+[02:39:11] ✅ Initializing Catch Pokemon mode...
+[02:39:12] 🎯 Bắt Pokemon với Breloom
+[02:39:12] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[02:39:12] 🍄 Found Breloom at slot 3
+[02:39:27] ⚔️ Battle detected!
+[02:39:32] 🎯 Enemy: magikarp
+[02:39:32] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:39:32] 📋 Log đọc được: 'swift swim'
+[02:39:32] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:39:48] ⚔️ Battle detected!
+[02:39:53] 🎯 Enemy: psyduck
+[02:39:53] ⏭ Bỏ qua psyduck, không phải target
+[02:40:08] ⚔️ Battle detected!
+[02:40:12] 🎯 Enemy: kingler
+[02:40:12] ⏭ Bỏ qua kingler, không phải target
+[02:40:29] ⚔️ Battle detected!
+[02:40:33] 🎯 Enemy: magikarp
+[02:40:33] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:40:33] 📋 Log đọc được: 'swift swim'
+[02:40:33] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:41:01] ⚔️ Battle detected!
+[02:41:06] 🎯 Enemy: finneon
+[02:41:06] ⏭ Bỏ qua finneon, không phải target
+[02:41:21] ⚔️ Battle detected!
+[02:41:25] 🎯 Enemy: lumineon
+[02:41:25] ⏭ Bỏ qua lumineon, không phải target
+[02:41:42] ⚔️ Battle detected!
+[02:41:46] 🎯 Enemy: lumineon
+[02:41:46] ⏭ Bỏ qua lumineon, không phải target
+[02:42:11] ⚔️ Battle detected!
+[02:42:15] 🎯 Enemy: magikarp
+[02:42:15] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:42:16] 📋 Log đọc được: 'rattled'
+[02:42:16] 🎉 Khớp ability 'rattled'! Bắt đầu bắt...
+[02:42:16] 🔄 Bắt đầu chuỗi bắt...
+[02:42:17] 🔄 Swapping to slot 3...
+[02:42:27] ⚔️ Dùng False Swipe...
+[02:42:39] ✅ HP thấp sau 1 lần False Swipe
+[02:42:39] 💤 Dùng Spore...
+[02:42:45] ⏳ Đang đợi lượt mới để ném Ball...
+[02:42:48] 🔴 Ném Poke...
+[02:42:50] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[02:42:50] ⚠️ Không thấy Poke trong bag (OCR)
+[02:42:50] ⚠️ Fallback click poke at (1410, 330)
+[02:43:19] ⚔️ Battle detected!
+[02:43:23] 🎯 Enemy: psyduck
+[02:43:23] ⏭ Bỏ qua psyduck, không phải target
+[02:43:59] ⚔️ Battle detected!
+[02:44:03] 🎯 Enemy: magikarp
+[02:44:03] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:44:04] 📋 Log đọc được: 'swift swim'
+[02:44:04] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:44:28] ⚔️ Battle detected!
+[02:44:32] 🎯 Enemy: psyduck
+[02:44:32] ⏭ Bỏ qua psyduck, không phải target
+[02:44:52] ⚔️ Battle detected!
+[02:44:56] 🎯 Enemy: finneon
+[02:44:56] ⏭ Bỏ qua finneon, không phải target
+[02:45:20] ⚔️ Battle detected!
+[02:45:25] 🎯 Enemy: barboach
+[02:45:25] ⏭ Bỏ qua barboach, không phải target
+[02:45:45] ⚔️ Battle detected!
+[02:45:49] 🎯 Enemy: kingler
+[02:45:49] ⏭ Bỏ qua kingler, không phải target
+[02:46:05] ⚔️ Battle detected!
+[02:46:09] 🎯 Enemy: psyduck
+[02:46:09] ⏭ Bỏ qua psyduck, không phải target
+[02:46:30] ⚔️ Battle detected!
+[02:46:34] 🎯 Enemy: barboach
+[02:46:34] ⏭ Bỏ qua barboach, không phải target
+[02:46:50] ⚔️ Battle detected!
+[02:46:54] 🎯 Enemy: kingler
+[02:46:54] ⏭ Bỏ qua kingler, không phải target
+[02:47:10] ⚔️ Battle detected!
+[02:47:14] 🎯 Enemy: kingler
+[02:47:14] ⏭ Bỏ qua kingler, không phải target
+[02:47:29] ⚔️ Battle detected!
+[02:47:34] 🎯 Enemy: magikarp
+[02:47:34] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:47:34] 📋 Log đọc được: 'rattled'
+[02:47:34] 🎉 Khớp ability 'rattled'! Bắt đầu bắt...
+[02:47:34] 🔄 Bắt đầu chuỗi bắt...
+[02:47:35] 🔄 Swapping to slot 3...
+[02:47:45] ⚔️ Dùng False Swipe...
+[02:47:54] ✅ HP thấp sau 1 lần False Swipe
+[02:47:54] 💤 Dùng Spore...
+[02:48:01] ⏳ Đang đợi lượt mới để ném Ball...
+[02:48:02] 🔴 Ném Poke...
+[02:48:05] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[02:48:05] ⚠️ Không thấy Poke trong bag (OCR)
+[02:48:05] ⚠️ Fallback click poke at (1410, 330)
+[02:48:37] ⚔️ Battle detected!
+[02:48:41] 🎯 Enemy: magikarp
+[02:48:41] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:48:41] 📋 Log đọc được: 'swift swim'
+[02:48:41] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:48:57] ⚔️ Battle detected!
+[02:49:02] 🎯 Enemy: magikarp
+[02:49:02] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:49:02] 📋 Log đọc được: 'swift swim'
+[02:49:02] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:49:23] ⚔️ Battle detected!
+[02:49:27] 🎯 Enemy: magikarp
+[02:49:27] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:49:28] 📋 Log đọc được: 'swift swim'
+[02:49:28] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:49:43] ⚔️ Battle detected!
+[02:49:47] 🎯 Enemy: magikarp
+[02:49:47] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:49:47] 📋 Log đọc được: 'swift swim'
+[02:49:47] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:50:04] ⚔️ Battle detected!
+[02:50:09] 🎯 Enemy: magikarp
+[02:50:09] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:50:09] 📋 Log đọc được: 'swift swim'
+[02:50:09] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:50:25] ⚔️ Battle detected!
+[02:50:29] 🎯 Enemy: lumineon
+[02:50:29] ⏭ Bỏ qua lumineon, không phải target
+[02:51:04] ⚔️ Battle detected!
+[02:51:09] 🎯 Enemy: kingler
+[02:51:09] ⏭ Bỏ qua kingler, không phải target
+[02:51:29] ⚔️ Battle detected!
+[02:51:33] 🎯 Enemy: lumineon
+[02:51:33] ⏭ Bỏ qua lumineon, không phải target
+[02:52:21] ⚔️ Battle detected!
+[02:52:25] 🎯 Enemy: psyduck
+[02:52:25] ⏭ Bỏ qua psyduck, không phải target
+[02:52:35] ⚔️ Battle detected!
+[02:52:39] 🎯 Enemy: psyduck
+[02:52:39] ⏭ Bỏ qua psyduck, không phải target
+[02:52:56] ⚔️ Battle detected!
+[02:53:01] 🎯 Enemy: magikarp
+[02:53:01] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:53:01] 📋 Log đọc được: 'swift swim'
+[02:53:01] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:53:18] ⚔️ Battle detected!
+[02:53:22] 🎯 Enemy: lumineon
+[02:53:22] ⏭ Bỏ qua lumineon, không phải target
+[02:53:37] ⚔️ Battle detected!
+[02:53:41] 🎯 Enemy: magikarp
+[02:53:41] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:53:41] 📋 Log đọc được: 'swift swim'
+[02:53:41] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:54:06] ⚔️ Battle detected!
+[02:54:10] 🎯 Enemy: psyduck
+[02:54:10] ⏭ Bỏ qua psyduck, không phải target
+[02:54:31] ⚔️ Battle detected!
+[02:54:35] 🎯 Enemy: finneon
+[02:54:35] ⏭ Bỏ qua finneon, không phải target
+[02:54:50] ⚔️ Battle detected!
+[02:54:54] 🎯 Enemy: lumineon
+[02:54:54] ⏭ Bỏ qua lumineon, không phải target
+[02:55:38] ⚔️ Battle detected!
+[02:55:42] 🎯 Enemy: magikarp
+[02:55:42] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:55:43] 📋 Log đọc được: 'swift swim'
+[02:55:43] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:56:03] ⚔️ Battle detected!
+[02:56:07] 🎯 Enemy: magikarp
+[02:56:07] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:56:08] 📋 Log đọc được: 'swift swim'
+[02:56:08] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:56:23] ⚔️ Battle detected!
+[02:56:27] 🎯 Enemy: magikarp
+[02:56:27] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:56:27] 📋 Log đọc được: 'swift swim'
+[02:56:27] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:56:42] ⚔️ Battle detected!
+[02:56:46] 🎯 Enemy: psyduck
+[02:56:46] ⏭ Bỏ qua psyduck, không phải target
+[02:57:06] ⚔️ Battle detected!
+[02:57:10] 🎯 Enemy: magikarp
+[02:57:10] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:57:11] 📋 Log đọc được: 'swift swim'
+[02:57:11] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:57:31] ⚔️ Battle detected!
+[02:57:36] 🎯 Enemy: kingler
+[02:57:36] ⏭ Bỏ qua kingler, không phải target
+[02:57:57] ⚔️ Battle detected!
+[02:58:01] 🎯 Enemy: magikarp
+[02:58:01] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:58:01] 📋 Log đọc được: 'swift swim'
+[02:58:01] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:58:17] ⚔️ Battle detected!
+[02:58:21] 🎯 Enemy: magikarp
+[02:58:21] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:58:22] 📋 Log đọc được: 'swift swim'
+[02:58:22] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:58:38] ⚔️ Battle detected!
+[02:58:42] 🎯 Enemy: magikarp
+[02:58:42] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:58:43] 📋 Log đọc được: 'swift swim'
+[02:58:43] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:59:03] ⚔️ Battle detected!
+[02:59:07] 🎯 Enemy: lumineon
+[02:59:07] ⏭ Bỏ qua lumineon, không phải target
+[02:59:32] ⚔️ Battle detected!
+[02:59:36] 🎯 Enemy: magikarp
+[02:59:36] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:59:36] 📋 Log đọc được: 'swift swim'
+[02:59:36] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[02:59:51] ⚔️ Battle detected!
+[02:59:55] 🎯 Enemy: magikarp
+[02:59:55] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[02:59:56] 📋 Log đọc được: 'rattled'
+[02:59:56] 🎉 Khớp ability 'rattled'! Bắt đầu bắt...
+[02:59:56] 🔄 Bắt đầu chuỗi bắt...
+[02:59:57] 🔄 Swapping to slot 3...
+[03:00:07] ⚔️ Dùng False Swipe...
+[03:00:19] ✅ HP thấp sau 1 lần False Swipe
+[03:00:19] 💤 Dùng Spore...
+[03:00:25] ⏳ Đang đợi lượt mới để ném Ball...
+[03:00:27] 🔴 Ném Poke...
+[03:00:29] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[03:00:29] ⚠️ Không thấy Poke trong bag (OCR)
+[03:00:29] ⚠️ Fallback click poke at (1410, 330)
+[03:00:53] ⚔️ Battle detected!
+[03:00:58] 🎯 Enemy: magikarp
+[03:00:58] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:00:58] 📋 Log đọc được: 'swift swim'
+[03:00:58] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:01:18] ⚔️ Battle detected!
+[03:01:23] 🎯 Enemy: magikarp
+[03:01:23] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:01:23] 📋 Log đọc được: 'swift swim'
+[03:01:23] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:01:52] ⚔️ Battle detected!
+[03:01:56] 🎯 Enemy: magikarp
+[03:01:56] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:01:56] 📋 Log đọc được: 'swift swim'
+[03:01:56] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:02:12] ⚔️ Battle detected!
+[03:02:16] 🎯 Enemy: magikarp
+[03:02:16] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:02:17] 📋 Log đọc được: 'swift swim'
+[03:02:17] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:03:06] ⚔️ Battle detected!
+[03:03:10] 🎯 Enemy: magikarp
+[03:03:10] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:03:10] 📋 Log đọc được: 'swift swim'
+[03:03:10] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:03:52] ⚔️ Battle detected!
+[03:04:00] 🎯 Enemy: psyduck
+[03:04:00] ⏭ Bỏ qua psyduck, không phải target
+[03:04:30] ⚔️ Battle detected!
+[03:04:35] 🎯 Enemy: finneon
+[03:04:35] ⏭ Bỏ qua finneon, không phải target
+[03:05:25] ⚔️ Battle detected!
+[03:05:31] 🎯 Enemy: kingler
+[03:05:31] ⏭ Bỏ qua kingler, không phải target
+[03:06:06] ⚔️ Battle detected!
+[03:06:12] 🎯 Enemy: totodile
+[03:06:12] ✨ Gặp target: totodile (không yêu cầu ability)
+[03:06:12] 🔄 Bắt đầu chuỗi bắt...
+[03:06:15] 🔄 Swapping to slot 3...
+[03:06:26] ⚔️ Dùng False Swipe...
+[03:06:39] ✅ HP thấp sau 1 lần False Swipe
+[03:06:39] 💤 Dùng Spore...
+[03:06:46] ⏳ Đang đợi lượt mới để ném Ball...
+[03:06:47] 🔴 Ném Poke...
+[03:06:50] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[03:06:50] ⚠️ Không thấy Poke trong bag (OCR)
+[03:06:50] ⚠️ Fallback click poke at (1410, 330)
+[03:07:18] ⚔️ Battle detected!
+[03:07:26] 🎯 Enemy: totodile
+[03:07:26] ✨ Gặp target: totodile (không yêu cầu ability)
+[03:07:26] 🔄 Bắt đầu chuỗi bắt...
+[03:07:29] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:07:29] ✅ HP đã thấp, không cần False Swipe
+[03:07:29] 💤 Dùng Spore...
+[03:07:35] ⏳ Đang đợi lượt mới để ném Ball...
+[03:07:39] 🔴 Ném Poke...
+[03:07:43] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[03:07:43] ⚠️ Không thấy Poke trong bag (OCR)
+[03:07:43] ⚠️ Fallback click poke at (1410, 330)
+[03:08:44] ⚔️ Battle detected!
+[03:08:51] 🎯 Enemy: magikarp
+[03:08:51] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:08:52] 📋 Log đọc được: 'swift swim'
+[03:08:52] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:09:26] ⚔️ Battle detected!
+[03:09:32] 🎯 Enemy: psyduck
+[03:09:32] ⏭ Bỏ qua psyduck, không phải target
+[03:09:56] ⚔️ Battle detected!
+[03:10:00] 🎯 Enemy: lumineon
+[03:10:00] ⏭ Bỏ qua lumineon, không phải target
+[03:10:41] ⚔️ Battle detected!
+[03:10:49] 🎯 Enemy: barboach
+[03:10:49] ⏭ Bỏ qua barboach, không phải target
+[03:11:17] ⚔️ Battle detected!
+[03:11:21] 🎯 Enemy: magikarp
+[03:11:22] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:11:22] 📋 Log đọc được: 'swift swim'
+[03:11:22] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:11:59] ⚔️ Battle detected!
+[03:12:03] 🎯 Enemy: kingler
+[03:12:03] ⏭ Bỏ qua kingler, không phải target
+[03:12:33] ⚔️ Battle detected!
+[03:12:39] 🎯 Enemy: kingler
+[03:12:39] ⏭ Bỏ qua kingler, không phải target
+[03:13:34] ⚔️ Battle detected!
+[03:13:41] 🎯 Enemy: magikarp
+[03:13:41] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:13:42] 📋 Log đọc được: 'swift swim'
+[03:13:42] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:14:18] ⚔️ Battle detected!
+[03:14:24] 🎯 Enemy: magikarp
+[03:14:24] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:14:24] 📋 Log đọc được: 'swift swim'
+[03:14:24] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:14:56] ⚔️ Battle detected!
+[03:15:03] 🎯 Enemy: barboach
+[03:15:03] ⏭ Bỏ qua barboach, không phải target
+[03:15:42] ⚔️ Battle detected!
+[03:15:49] 🎯 Enemy: magikarp
+[03:15:49] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:15:50] 📋 Log đọc được: 'swift swim'
+[03:15:50] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:16:38] ⚔️ Battle detected!
+[03:16:43] 🎯 Enemy: magikarp
+[03:16:43] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:16:44] 📋 Log đọc được: 'swift swim'
+[03:16:44] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:17:20] ⚔️ Battle detected!
+[03:17:26] 🎯 Enemy: barboach
+[03:17:26] ⏭ Bỏ qua barboach, không phải target
+[03:17:58] ⚔️ Battle detected!
+[03:18:06] 🎯 Enemy: finneon
+[03:18:06] ⏭ Bỏ qua finneon, không phải target
+[03:18:43] ⚔️ Battle detected!
+[03:18:51] 🎯 Enemy: kingler
+[03:18:51] ⏭ Bỏ qua kingler, không phải target
+[03:19:21] ⚔️ Battle detected!
+[03:19:27] 🎯 Enemy: lumineon
+[03:19:27] ⏭ Bỏ qua lumineon, không phải target
+[03:20:15] ⚔️ Battle detected!
+[03:20:22] 🎯 Enemy: kingler
+[03:20:22] ⏭ Bỏ qua kingler, không phải target
+[03:20:54] ⚔️ Battle detected!
+[03:20:58] 🎯 Enemy: magikarp
+[03:20:58] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:20:59] 📋 Log đọc được: 'swift swim'
+[03:20:59] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:21:30] ⚔️ Battle detected!
+[03:21:36] 🎯 Enemy: magikarp
+[03:21:36] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:21:38] 📋 Log đọc được: 'swift swim'
+[03:21:38] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:22:30] ⚔️ Battle detected!
+[03:22:39] 🎯 Enemy: magikarp
+[03:22:39] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:22:40] 📋 Log đọc được: 'swift swim'
+[03:22:40] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:23:33] ⚔️ Battle detected!
+[03:23:39] 🎯 Enemy: magikarp
+[03:23:39] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:23:39] 📋 Log đọc được: 'swift swim'
+[03:23:39] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:24:13] ⚔️ Battle detected!
+[03:24:18] 🎯 Enemy: kingler
+[03:24:18] ⏭ Bỏ qua kingler, không phải target
+[03:24:52] ⚔️ Battle detected!
+[03:25:01] 🎯 Enemy: magikarp
+[03:25:01] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:25:02] 📋 Log đọc được: 'swift swim'
+[03:25:02] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:25:31] ⚔️ Battle detected!
+[03:25:36] 🎯 Enemy: kingler
+[03:25:36] ⏭ Bỏ qua kingler, không phải target
+[03:26:07] ⚔️ Battle detected!
+[03:26:14] 🎯 Enemy: magikarp
+[03:26:14] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:26:16] 📋 Log đọc được: 'swift swim'
+[03:26:16] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:26:46] ⚔️ Battle detected!
+[03:26:51] 🎯 Enemy: magikarp
+[03:26:51] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:26:52] 📋 Log đọc được: 'swift swim'
+[03:26:52] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:27:22] ⚔️ Battle detected!
+[03:27:29] 🎯 Enemy: finneon
+[03:27:29] ⏭ Bỏ qua finneon, không phải target
+[03:28:07] ⚔️ Battle detected!
+[03:28:11] 🎯 Enemy: psyduck
+[03:28:11] ⏭ Bỏ qua psyduck, không phải target
+[03:28:46] ⚔️ Battle detected!
+[03:28:52] 🎯 Enemy: kingler
+[03:28:52] ⏭ Bỏ qua kingler, không phải target
+[03:29:55] ⚔️ Battle detected!
+[03:30:03] 🎯 Enemy: magikarp
+[03:30:03] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:30:05] 📋 Log đọc được: 'rattled'
+[03:30:05] 🎉 Khớp ability 'rattled'! Bắt đầu bắt...
+[03:30:05] 🔄 Bắt đầu chuỗi bắt...
+[03:30:08] 🔄 Swapping to slot 3...
+[03:30:19] ⚔️ Dùng False Swipe...
+[03:30:28] ✅ HP thấp sau 1 lần False Swipe
+[03:30:28] 💤 Dùng Spore...
+[03:30:35] ⏳ Đang đợi lượt mới để ném Ball...
+[03:30:37] 🔴 Ném Poke...
+[03:30:40] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[03:30:40] ⚠️ Không thấy Poke trong bag (OCR)
+[03:30:40] ⚠️ Fallback click poke at (1410, 330)
+[03:31:23] ⚔️ Battle detected!
+[03:31:29] 🎯 Enemy: magikarp
+[03:31:29] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:31:30] 📋 Log đọc được: 'swift swim'
+[03:31:30] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:31:56] ⚔️ Battle detected!
+[03:32:02] 🎯 Enemy: psyduck
+[03:32:02] ⏭ Bỏ qua psyduck, không phải target
+[03:32:54] ⚔️ Battle detected!
+[03:33:03] 🎯 Enemy: magikarp
+[03:33:03] 🔍 Đang check ability cho magikarp (Yêu cầu: rattled)...
+[03:33:05] 📋 Log đọc được: 'swift swim'
+[03:33:05] ⏭ Ability 'swift swim' không khớp. Bỏ qua magikarp.
+[03:33:45] ⚔️ Battle detected!
+[03:33:53] 🎯 Enemy: kingler
+[03:33:53] ⏭ Bỏ qua kingler, không phải target
+[03:34:28] ⚔️ Battle detected!
+[03:34:34] 🎯 Enemy: oshawott
+[03:34:34] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:34:34] 🔄 Bắt đầu chuỗi bắt...
+[03:34:36] 🔄 Swapping to slot 3...
+[03:34:47] ⚔️ Dùng False Swipe...
+[03:34:58] ✅ HP thấp sau 1 lần False Swipe
+[03:34:58] 💤 Dùng Spore...
+[03:35:04] ⏳ Đang đợi lượt mới để ném Ball...
+[03:35:05] 🔴 Ném Poke...
+[03:35:09] 📋 OCR Bag lines: ['a aa Ball', 'ta veel Ball', 'a ween Ball', 'Choose Item']
+[03:35:09] ⚠️ Không thấy Poke trong bag (OCR)
+[03:35:09] ⚠️ Fallback click poke at (1410, 330)
+[03:35:40] ⚔️ Battle detected!
+[03:35:46] 🎯 Enemy: oshawott
+[03:35:46] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:35:46] 🔄 Bắt đầu chuỗi bắt...
+[03:35:48] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:35:48] ✅ HP đã thấp, không cần False Swipe
+[03:35:48] 💤 Dùng Spore...
+[03:35:54] ⏳ Đang đợi lượt mới để ném Ball...
+[03:35:54] 🔴 Ném Poke...
+[03:35:57] 📋 OCR Bag lines: ['7']
+[03:35:57] ⚠️ Không thấy Poke trong bag (OCR)
+[03:35:57] ⚠️ Fallback click poke at (1410, 330)
+[03:36:20] ⚔️ Battle detected!
+[03:36:29] 🎯 Enemy: oshawott
+[03:36:29] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:36:29] 🔄 Bắt đầu chuỗi bắt...
+[03:36:32] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:36:32] ✅ HP đã thấp, không cần False Swipe
+[03:36:32] 💤 Dùng Spore...
+[03:36:39] ⏳ Đang đợi lượt mới để ném Ball...
+[03:36:39] 🔴 Ném Poke...
+[03:36:41] 📋 OCR Bag lines: ['7']
+[03:36:41] ⚠️ Không thấy Poke trong bag (OCR)
+[03:36:41] ⚠️ Fallback click poke at (1410, 330)
+[03:37:06] ⚔️ Battle detected!
+[03:37:10] 🎯 Enemy: oshawott
+[03:37:10] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:37:10] 🔄 Bắt đầu chuỗi bắt...
+[03:37:16] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:37:16] ✅ HP đã thấp, không cần False Swipe
+[03:37:16] 💤 Dùng Spore...
+[03:37:23] ⏳ Đang đợi lượt mới để ném Ball...
+[03:37:23] 🔴 Ném Poke...
+[03:37:26] 📋 OCR Bag lines: ['7']
+[03:37:26] ⚠️ Không thấy Poke trong bag (OCR)
+[03:37:26] ⚠️ Fallback click poke at (1410, 330)
+[03:37:51] ⚔️ Battle detected!
+[03:37:56] 🎯 Enemy: oshawott
+[03:37:56] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:37:56] 🔄 Bắt đầu chuỗi bắt...
+[03:37:57] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:37:58] ✅ HP đã thấp, không cần False Swipe
+[03:37:58] 💤 Dùng Spore...
+[03:38:04] ⏳ Đang đợi lượt mới để ném Ball...
+[03:38:04] 🔴 Ném Poke...
+[03:38:07] 📋 OCR Bag lines: ['7']
+[03:38:07] ⚠️ Không thấy Poke trong bag (OCR)
+[03:38:07] ⚠️ Fallback click poke at (1410, 330)
+[03:38:35] ⚔️ Battle detected!
+[03:38:40] 🎯 Enemy: oshawott
+[03:38:40] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:38:40] 🔄 Bắt đầu chuỗi bắt...
+[03:38:42] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:38:42] ✅ HP đã thấp, không cần False Swipe
+[03:38:42] 💤 Dùng Spore...
+[03:38:49] ⏳ Đang đợi lượt mới để ném Ball...
+[03:38:49] 🔴 Ném Poke...
+[03:38:51] 📋 OCR Bag lines: ['7']
+[03:38:51] ⚠️ Không thấy Poke trong bag (OCR)
+[03:38:51] ⚠️ Fallback click poke at (1410, 330)
+[03:39:15] ⚔️ Battle detected!
+[03:39:23] 🎯 Enemy: oshawott
+[03:39:23] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:39:23] 🔄 Bắt đầu chuỗi bắt...
+[03:39:27] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:39:27] ✅ HP đã thấp, không cần False Swipe
+[03:39:27] 💤 Dùng Spore...
+[03:39:33] ⏳ Đang đợi lượt mới để ném Ball...
+[03:39:33] 🔴 Ném Poke...
+[03:39:36] 📋 OCR Bag lines: ['7']
+[03:39:36] ⚠️ Không thấy Poke trong bag (OCR)
+[03:39:36] ⚠️ Fallback click poke at (1410, 330)
+[03:40:00] ⚔️ Battle detected!
+[03:40:05] 🎯 Enemy: oshawott
+[03:40:05] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:40:05] 🔄 Bắt đầu chuỗi bắt...
+[03:40:06] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:40:07] ✅ HP đã thấp, không cần False Swipe
+[03:40:07] 💤 Dùng Spore...
+[03:40:13] ⏳ Đang đợi lượt mới để ném Ball...
+[03:40:13] 🔴 Ném Poke...
+[03:40:16] 📋 OCR Bag lines: ['7']
+[03:40:16] ⚠️ Không thấy Poke trong bag (OCR)
+[03:40:16] ⚠️ Fallback click poke at (1410, 330)
+[03:40:44] ⚔️ Battle detected!
+[03:40:49] 🎯 Enemy: oshawott
+[03:40:49] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:40:49] 🔄 Bắt đầu chuỗi bắt...
+[03:40:51] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:40:51] ✅ HP đã thấp, không cần False Swipe
+[03:40:51] 💤 Dùng Spore...
+[03:40:57] ⏳ Đang đợi lượt mới để ném Ball...
+[03:40:57] 🔴 Ném Poke...
+[03:41:00] 📋 OCR Bag lines: ['7']
+[03:41:00] ⚠️ Không thấy Poke trong bag (OCR)
+[03:41:00] ⚠️ Fallback click poke at (1410, 330)
+[03:41:24] ⚔️ Battle detected!
+[03:41:33] 🎯 Enemy: oshawott
+[03:41:33] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:41:33] 🔄 Bắt đầu chuỗi bắt...
+[03:41:36] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:41:36] ✅ HP đã thấp, không cần False Swipe
+[03:41:36] 💤 Dùng Spore...
+[03:41:42] ⏳ Đang đợi lượt mới để ném Ball...
+[03:41:43] 🔴 Ném Poke...
+[03:41:45] 📋 OCR Bag lines: ['7']
+[03:41:45] ⚠️ Không thấy Poke trong bag (OCR)
+[03:41:45] ⚠️ Fallback click poke at (1410, 330)
+[03:42:10] ⚔️ Battle detected!
+[03:42:15] 🎯 Enemy: oshawott
+[03:42:15] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:42:15] 🔄 Bắt đầu chuỗi bắt...
+[03:42:16] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:42:16] ✅ HP đã thấp, không cần False Swipe
+[03:42:17] 💤 Dùng Spore...
+[03:42:23] ⏳ Đang đợi lượt mới để ném Ball...
+[03:42:23] 🔴 Ném Poke...
+[03:42:27] 📋 OCR Bag lines: ['7']
+[03:42:27] ⚠️ Không thấy Poke trong bag (OCR)
+[03:42:27] ⚠️ Fallback click poke at (1410, 330)
+[03:42:51] ⚔️ Battle detected!
+[03:42:57] 🎯 Enemy: oshawott
+[03:42:57] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:42:57] 🔄 Bắt đầu chuỗi bắt...
+[03:42:58] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:42:59] ✅ HP đã thấp, không cần False Swipe
+[03:42:59] 💤 Dùng Spore...
+[03:43:05] ⏳ Đang đợi lượt mới để ném Ball...
+[03:43:05] 🔴 Ném Poke...
+[03:43:09] 📋 OCR Bag lines: ['7']
+[03:43:09] ⚠️ Không thấy Poke trong bag (OCR)
+[03:43:09] ⚠️ Fallback click poke at (1410, 330)
+[03:43:39] ⚔️ Battle detected!
+[03:43:45] 🎯 Enemy: oshawott
+[03:43:45] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:43:45] 🔄 Bắt đầu chuỗi bắt...
+[03:43:47] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:43:47] ✅ HP đã thấp, không cần False Swipe
+[03:43:47] 💤 Dùng Spore...
+[03:43:53] ⏳ Đang đợi lượt mới để ném Ball...
+[03:43:53] 🔴 Ném Poke...
+[03:43:56] 📋 OCR Bag lines: ['7']
+[03:43:56] ⚠️ Không thấy Poke trong bag (OCR)
+[03:43:56] ⚠️ Fallback click poke at (1410, 330)
+[03:44:19] ⚔️ Battle detected!
+[03:44:27] 🎯 Enemy: oshawott
+[03:44:27] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:44:27] 🔄 Bắt đầu chuỗi bắt...
+[03:44:29] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:44:29] ✅ HP đã thấp, không cần False Swipe
+[03:44:30] 💤 Dùng Spore...
+[03:44:36] ⏳ Đang đợi lượt mới để ném Ball...
+[03:44:36] 🔴 Ném Poke...
+[03:44:38] 📋 OCR Bag lines: ['7']
+[03:44:38] ⚠️ Không thấy Poke trong bag (OCR)
+[03:44:38] ⚠️ Fallback click poke at (1410, 330)
+[03:45:04] ⚔️ Battle detected!
+[03:45:08] 🎯 Enemy: oshawott
+[03:45:08] ✨ Gặp target: oshawott (không yêu cầu ability)
+[03:45:08] 🔄 Bắt đầu chuỗi bắt...
+[03:45:09] 🍄 Breloom đã trên sân, bỏ qua swap
+[03:45:09] ✅ HP đã thấp, không cần False Swipe
+[03:45:09] 💤 Dùng Spore...
+[03:45:16] ⏳ Đang đợi lượt mới để ném Ball...
+[03:45:16] 🔴 Ném Poke...
+[03:45:19] 📋 OCR Bag lines: ['7']
+[03:45:19] ⚠️ Không thấy Poke trong bag (OCR)
+[03:45:19] ⚠️ Fallback click poke at (1410, 330)
+[03:45:44] ⚔️ Battle detected!
+[03:45:47] ❌ Catch error: Windows graphics function failed (no error provided): BitBlt
+[18:08:54] ⚙ debug.save_failed_ocr: Bật
+[18:08:54] ⚙ farm.use_zero_effectiveness: Tắt
+[18:08:54] 🎮 alt+f8 hotkey registered!
+[18:14:44] ⚙ debug.save_failed_ocr: Bật
+[18:14:44] ⚙ farm.use_zero_effectiveness: Tắt
+[18:14:44] 🎮 alt+f8 hotkey registered!
+[18:17:59] ⚙ debug.save_failed_ocr: Bật
+[18:17:59] ⚙ farm.use_zero_effectiveness: Tắt
+[18:17:59] 🎮 alt+f8 hotkey registered!
+[18:18:53] ⚙ debug.save_failed_ocr: Bật
+[18:18:53] ⚙ farm.use_zero_effectiveness: Tắt
+[18:18:53] 🎮 alt+f8 hotkey registered!
+[18:29:38] ⚙ debug.save_failed_ocr: Bật
+[18:29:38] ⚙ farm.use_zero_effectiveness: Tắt
+[18:29:38] 🎮 alt+f8 hotkey registered!
+[18:30:37] ✅ Bắt Pokemon started!
+[18:30:37] 🎮 Nhấn alt+f8 để dừng.
+[18:30:37] ✅ Initializing Catch Pokemon Mode...
+[18:30:37] 🎯 Starting catch mode...
+[18:30:37] ✅ Initializing Catch Pokemon mode...
+[18:30:37] 🎯 Bắt Pokemon với Breloom
+[18:30:37] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[18:30:37] 🍄 Found Breloom at slot 3
+[18:30:42] ⚔️ Battle detected!
+[18:30:46] 🎯 Enemy: natu
+[18:30:46] ⏭ Bỏ qua natu, không phải target
+[18:30:59] ⚔️ Battle detected!
+[18:31:03] 🎯 Enemy: natu
+[18:31:03] ⏭ Bỏ qua natu, không phải target
+[18:31:18] ⚔️ Battle detected!
+[18:31:22] 🎯 Enemy: natu
+[18:31:22] ⏭ Bỏ qua natu, không phải target
+[18:31:35] ⚔️ Battle detected!
+[18:31:39] 🎯 Enemy: minun
+[18:31:39] ⏭ Bỏ qua minun, không phải target
+[18:31:50] ⚔️ Battle detected!
+[18:31:54] 🎯 Enemy: plusle
+[18:31:54] ⏭ Bỏ qua plusle, không phải target
+[18:32:07] ⚔️ Battle detected!
+[18:32:11] 🎯 Enemy: tangela
+[18:32:11] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:32:15] 📋 Log đọc được: 'unknown'
+[18:32:15] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:32:29] ⚔️ Battle detected!
+[18:32:33] 🎯 Enemy: tangrowth
+[18:32:33] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:32:37] 📋 Log đọc được: 'unknown'
+[18:32:37] ⏭ Ability 'unknown' không khớp. Bỏ qua tangrowth.
+[18:32:51] ⚔️ Battle detected!
+[18:32:55] 🎯 Enemy: minun
+[18:32:55] ⏭ Bỏ qua minun, không phải target
+[18:33:09] ⚔️ Battle detected!
+[18:33:13] 🎯 Enemy: solosis
+[18:33:13] 🔍 Đang check ability cho solosis (Yêu cầu: regenerator, magic guard)...
+[18:33:17] 📋 Log đọc được: 'unknown'
+[18:33:17] ⏭ Ability 'unknown' không khớp. Bỏ qua solosis.
+[18:33:31] ⚔️ Battle detected!
+[18:33:35] 🎯 Enemy: tangela
+[18:33:35] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:33:39] 📋 Log đọc được: 'unknown'
+[18:33:39] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:33:53] ⚔️ Battle detected!
+[18:33:57] 🎯 Enemy: natu
+[18:33:57] ⏭ Bỏ qua natu, không phải target
+[18:34:11] ⚔️ Battle detected!
+[18:34:15] 🎯 Enemy: tangela
+[18:34:15] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:34:19] 📋 Log đọc được: 'unknown'
+[18:34:19] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:34:28] ⚔️ Battle detected!
+[18:34:32] 🎯 Enemy: natu
+[18:34:32] ⏭ Bỏ qua natu, không phải target
+[18:34:45] ⚔️ Battle detected!
+[18:34:49] 🎯 Enemy: natu
+[18:34:49] ⏭ Bỏ qua natu, không phải target
+[18:35:06] ⚔️ Battle detected!
+[18:35:10] 🎯 Enemy: solosis
+[18:35:10] 🔍 Đang check ability cho solosis (Yêu cầu: regenerator, magic guard)...
+[18:35:14] 📋 Log đọc được: 'unknown'
+[18:35:14] ⏭ Ability 'unknown' không khớp. Bỏ qua solosis.
+[18:35:24] ⚔️ Battle detected!
+[18:35:29] 🎯 Enemy: natu
+[18:35:29] ⏭ Bỏ qua natu, không phải target
+[18:35:46] ⚔️ Battle detected!
+[18:35:50] 🎯 Enemy: natu
+[18:35:50] ⏭ Bỏ qua natu, không phải target
+[18:36:01] ⚔️ Battle detected!
+[18:36:05] 🎯 Enemy: bellsprout
+[18:36:05] ⏭ Bỏ qua bellsprout, không phải target
+[18:36:18] ⚔️ Battle detected!
+[18:36:22] 🎯 Enemy: natu
+[18:36:22] ⏭ Bỏ qua natu, không phải target
+[18:36:31] ⚔️ Battle detected!
+[18:36:35] 🎯 Enemy: tangrowth
+[18:36:35] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:36:39] 📋 Log đọc được: 'unknown'
+[18:36:39] ⏭ Ability 'unknown' không khớp. Bỏ qua tangrowth.
+[18:36:49] ⚔️ Battle detected!
+[18:36:53] 🎯 Enemy: bellsprout
+[18:36:53] ⏭ Bỏ qua bellsprout, không phải target
+[18:37:11] ⚔️ Battle detected!
+[18:37:15] 🎯 Enemy: natu
+[18:37:15] ⏭ Bỏ qua natu, không phải target
+[18:37:25] ⚔️ Battle detected!
+[18:37:29] 🎯 Enemy: natu
+[18:37:29] ⏭ Bỏ qua natu, không phải target
+[18:37:38] ⚔️ Battle detected!
+[18:37:42] 🎯 Enemy: natu
+[18:37:42] ⏭ Bỏ qua natu, không phải target
+[18:37:51] ⚔️ Battle detected!
+[18:37:55] 🎯 Enemy: bellsprout
+[18:37:55] ⏭ Bỏ qua bellsprout, không phải target
+[18:38:05] ⚔️ Battle detected!
+[18:38:09] 🎯 Enemy: natu
+[18:38:09] ⏭ Bỏ qua natu, không phải target
+[18:38:22] ⚔️ Battle detected!
+[18:38:26] 🎯 Enemy: plusle
+[18:38:26] ⏭ Bỏ qua plusle, không phải target
+[18:38:36] ⚔️ Battle detected!
+[18:38:40] 🎯 Enemy: natu
+[18:38:40] ⏭ Bỏ qua natu, không phải target
+[18:38:53] ⚔️ Battle detected!
+[18:38:57] 🎯 Enemy: natu
+[18:38:57] ⏭ Bỏ qua natu, không phải target
+[18:39:12] ⚔️ Battle detected!
+[18:39:16] 🎯 Enemy: minun
+[18:39:16] ⏭ Bỏ qua minun, không phải target
+[18:39:25] ⚔️ Battle detected!
+[18:39:29] 🎯 Enemy: natu
+[18:39:29] ⏭ Bỏ qua natu, không phải target
+[18:39:42] ⚔️ Battle detected!
+[18:39:46] 🎯 Enemy: minun
+[18:39:46] ⏭ Bỏ qua minun, không phải target
+[18:40:00] ⚔️ Battle detected!
+[18:40:04] 🎯 Enemy: natu
+[18:40:04] ⏭ Bỏ qua natu, không phải target
+[18:40:27] ⚔️ Battle detected!
+[18:40:31] 🎯 Enemy: tangela
+[18:40:31] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:40:35] 📋 Log đọc được: 'unknown'
+[18:40:35] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:40:46] ⚔️ Battle detected!
+[18:40:50] 🎯 Enemy: tangela
+[18:40:50] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:40:54] 📋 Log đọc được: 'unknown'
+[18:40:54] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:41:09] ⚔️ Battle detected!
+[18:41:13] 🎯 Enemy: natu
+[18:41:13] ⏭ Bỏ qua natu, không phải target
+[18:41:26] ⚔️ Battle detected!
+[18:41:30] 🎯 Enemy: tangrowth
+[18:41:30] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:41:34] 📋 Log đọc được: 'unknown'
+[18:41:34] ⏭ Ability 'unknown' không khớp. Bỏ qua tangrowth.
+[18:41:49] ⚔️ Battle detected!
+[18:41:53] 🎯 Enemy: natu
+[18:41:53] ⏭ Bỏ qua natu, không phải target
+[18:42:07] ⚔️ Battle detected!
+[18:42:11] 🎯 Enemy: natu
+[18:42:11] ⏭ Bỏ qua natu, không phải target
+[18:42:25] ⚔️ Battle detected!
+[18:42:29] 🎯 Enemy: tangrowth
+[18:42:29] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:42:33] 📋 Log đọc được: 'unknown'
+[18:42:33] ⏭ Ability 'unknown' không khớp. Bỏ qua tangrowth.
+[18:42:47] ⚔️ Battle detected!
+[18:42:51] 🎯 Enemy: bellsprout
+[18:42:51] ⏭ Bỏ qua bellsprout, không phải target
+[18:43:08] ⚔️ Battle detected!
+[18:43:12] 🎯 Enemy: natu
+[18:43:12] ⏭ Bỏ qua natu, không phải target
+[18:43:25] ⚔️ Battle detected!
+[18:43:29] 🎯 Enemy: bellsprout
+[18:43:29] ⏭ Bỏ qua bellsprout, không phải target
+[18:43:40] ⚔️ Battle detected!
+[18:43:44] 🎯 Enemy: tangela
+[18:43:44] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:43:48] 📋 Log đọc được: 'unknown'
+[18:43:48] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:43:58] ⚔️ Battle detected!
+[18:44:02] 🎯 Enemy: foongus
+[18:44:02] 🔍 Đang check ability cho foongus (Yêu cầu: regenerator)...
+[18:44:06] 📋 Log đọc được: 'unknown'
+[18:44:06] ⏭ Ability 'unknown' không khớp. Bỏ qua foongus.
+[18:44:16] ⚔️ Battle detected!
+[18:44:20] 🎯 Enemy: natu
+[18:44:20] ⏭ Bỏ qua natu, không phải target
+[18:44:29] ⚔️ Battle detected!
+[18:44:33] 🎯 Enemy: natu
+[18:44:33] ⏭ Bỏ qua natu, không phải target
+[18:44:43] ⚔️ Battle detected!
+[18:44:47] 🎯 Enemy: natu
+[18:44:47] ⏭ Bỏ qua natu, không phải target
+[18:45:00] ⚔️ Battle detected!
+[18:45:04] 🎯 Enemy: natu
+[18:45:04] ⏭ Bỏ qua natu, không phải target
+[18:45:17] ⚔️ Battle detected!
+[18:45:21] 🎯 Enemy: natu
+[18:45:21] ⏭ Bỏ qua natu, không phải target
+[18:45:34] ⚔️ Battle detected!
+[18:45:38] 🎯 Enemy: natu
+[18:45:38] ⏭ Bỏ qua natu, không phải target
+[18:45:51] ⚔️ Battle detected!
+[18:45:55] 🎯 Enemy: natu
+[18:45:55] ⏭ Bỏ qua natu, không phải target
+[18:46:05] ⚔️ Battle detected!
+[18:46:09] 🎯 Enemy: plusle
+[18:46:09] ⏭ Bỏ qua plusle, không phải target
+[18:46:22] ⚔️ Battle detected!
+[18:46:26] 🎯 Enemy: tangela
+[18:46:26] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:46:30] 📋 Log đọc được: 'unknown'
+[18:46:30] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:46:48] ⚔️ Battle detected!
+[18:46:52] 🎯 Enemy: bellsprout
+[18:46:52] ⏭ Bỏ qua bellsprout, không phải target
+[18:47:02] ⚔️ Battle detected!
+[18:47:07] 🎯 Enemy: foongus
+[18:47:07] 🔍 Đang check ability cho foongus (Yêu cầu: regenerator)...
+[18:47:10] 📋 Log đọc được: 'unknown'
+[18:47:10] ⏭ Ability 'unknown' không khớp. Bỏ qua foongus.
+[18:47:25] ⚔️ Battle detected!
+[18:47:29] 🎯 Enemy: natu
+[18:47:29] ⏭ Bỏ qua natu, không phải target
+[18:47:43] ⚔️ Battle detected!
+[18:47:47] 🎯 Enemy: natu
+[18:47:47] ⏭ Bỏ qua natu, không phải target
+[18:48:05] ⚔️ Battle detected!
+[18:48:10] 🎯 Enemy: natu
+[18:48:10] ⏭ Bỏ qua natu, không phải target
+[18:48:24] ⚔️ Battle detected!
+[18:48:28] 🎯 Enemy: natu
+[18:48:28] ⏭ Bỏ qua natu, không phải target
+[18:48:42] ⚔️ Battle detected!
+[18:48:46] 🎯 Enemy: plusle
+[18:48:46] ⏭ Bỏ qua plusle, không phải target
+[18:49:00] ⚔️ Battle detected!
+[18:49:04] 🎯 Enemy: tangela
+[18:49:04] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:49:08] 📋 Log đọc được: 'unknown'
+[18:49:08] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:49:18] ⚔️ Battle detected!
+[18:49:22] 🎯 Enemy: tangela
+[18:49:22] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:49:26] 📋 Log đọc được: 'unknown'
+[18:49:26] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:49:40] ⚔️ Battle detected!
+[18:49:44] 🎯 Enemy: natu
+[18:49:44] ⏭ Bỏ qua natu, không phải target
+[18:49:57] ⚔️ Battle detected!
+[18:50:01] 🎯 Enemy: natu
+[18:50:01] ⏭ Bỏ qua natu, không phải target
+[18:50:15] ⚔️ Battle detected!
+[18:50:19] 🎯 Enemy: natu
+[18:50:19] ⏭ Bỏ qua natu, không phải target
+[18:50:37] ⚔️ Battle detected!
+[18:50:41] 🎯 Enemy: plusle
+[18:50:41] ⏭ Bỏ qua plusle, không phải target
+[18:50:51] ⚔️ Battle detected!
+[18:50:55] 🎯 Enemy: tangela
+[18:50:55] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:50:58] 📋 Log đọc được: 'unknown'
+[18:50:58] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:51:13] ⚔️ Battle detected!
+[18:51:17] 🎯 Enemy: natu
+[18:51:17] ⏭ Bỏ qua natu, không phải target
+[18:51:30] ⚔️ Battle detected!
+[18:51:34] 🎯 Enemy: plusle
+[18:51:34] ⏭ Bỏ qua plusle, không phải target
+[18:51:52] ⚔️ Battle detected!
+[18:51:56] 🎯 Enemy: natu
+[18:51:56] ⏭ Bỏ qua natu, không phải target
+[18:52:10] ⚔️ Battle detected!
+[18:52:14] 🎯 Enemy: natu
+[18:52:14] ⏭ Bỏ qua natu, không phải target
+[18:52:27] ⚔️ Battle detected!
+[18:52:31] 🎯 Enemy: tangela
+[18:52:31] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:52:35] 📋 Log đọc được: 'unknown'
+[18:52:35] ⏭ Ability 'unknown' không khớp. Bỏ qua tangela.
+[18:52:45] ⚔️ Battle detected!
+[18:52:49] 🎯 Enemy: natu
+[18:52:49] ⏭ Bỏ qua natu, không phải target
+[18:53:02] ⚔️ Battle detected!
+[18:53:06] 🎯 Enemy: tangrowth
+[18:53:06] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:53:10] 📋 Log đọc được: 'unknown'
+[18:53:10] ⏭ Ability 'unknown' không khớp. Bỏ qua tangrowth.
+[18:53:24] ⚔️ Battle detected!
+[18:53:28] 🎯 Enemy: natu
+[18:53:28] ⏭ Bỏ qua natu, không phải target
+[18:53:41] ⚔️ Battle detected!
+[18:53:45] 🎯 Enemy: tangela
+[18:53:45] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:53:45] 📋 Log đọc được: 'chlorophyll'
+[18:53:45] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[18:53:59] ⚔️ Battle detected!
+[18:54:03] 🎯 Enemy: natu
+[18:54:03] ⏭ Bỏ qua natu, không phải target
+[18:54:12] ⚔️ Battle detected!
+[18:54:16] 🎯 Enemy: natu
+[18:54:16] ⏭ Bỏ qua natu, không phải target
+[18:54:29] ⚔️ Battle detected!
+[18:54:34] 🎯 Enemy: natu
+[18:54:34] ⏭ Bỏ qua natu, không phải target
+[18:54:47] ⚔️ Battle detected!
+[18:54:51] 🎯 Enemy: tangrowth
+[18:54:51] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[18:54:51] 📋 Log đọc được: 'chlorophyll'
+[18:54:51] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[18:55:00] ⚔️ Battle detected!
+[18:55:04] 🎯 Enemy: natu
+[18:55:04] ⏭ Bỏ qua natu, không phải target
+[18:55:18] ⚔️ Battle detected!
+[18:55:22] 🎯 Enemy: minun
+[18:55:22] ⏭ Bỏ qua minun, không phải target
+[18:55:40] ⚔️ Battle detected!
+[18:55:44] 🎯 Enemy: bellsprout
+[18:55:44] ⏭ Bỏ qua bellsprout, không phải target
+[18:55:58] ⚔️ Battle detected!
+[18:56:02] 🎯 Enemy: natu
+[18:56:02] ⏭ Bỏ qua natu, không phải target
+[18:56:12] ⚔️ Battle detected!
+[18:56:16] 🎯 Enemy: tangela
+[18:56:16] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:56:16] 📋 Log đọc được: 'regenerator'
+[18:56:16] ⏭ Ability 'regenerator' không khớp. Bỏ qua tangela.
+[18:56:29] ⚔️ Battle detected!
+[18:56:33] 🎯 Enemy: bellsprout
+[18:56:33] ⏭ Bỏ qua bellsprout, không phải target
+[18:56:47] ⚔️ Battle detected!
+[18:56:51] 🎯 Enemy: plusle
+[18:56:51] ⏭ Bỏ qua plusle, không phải target
+[18:57:00] ⚔️ Battle detected!
+[18:57:04] 🎯 Enemy: natu
+[18:57:04] ⏭ Bỏ qua natu, không phải target
+[18:57:18] ⚔️ Battle detected!
+[18:57:22] 🎯 Enemy: natu
+[18:57:22] ⏭ Bỏ qua natu, không phải target
+[18:57:36] ⚔️ Battle detected!
+[18:57:40] 🎯 Enemy: natu
+[18:57:40] ⏭ Bỏ qua natu, không phải target
+[18:57:49] ⚔️ Battle detected!
+[18:57:53] 🎯 Enemy: natu
+[18:57:53] ⏭ Bỏ qua natu, không phải target
+[18:58:06] ⚔️ Battle detected!
+[18:58:10] 🎯 Enemy: natu
+[18:58:10] ⏭ Bỏ qua natu, không phải target
+[18:58:20] ⚔️ Battle detected!
+[18:58:24] 🎯 Enemy: tangela
+[18:58:24] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:58:24] 📋 Log đọc được: 'leaf guard'
+[18:58:24] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[18:58:37] ⚔️ Battle detected!
+[18:58:41] 🎯 Enemy: natu
+[18:58:41] ⏭ Bỏ qua natu, không phải target
+[18:58:55] ⚔️ Battle detected!
+[18:58:59] 🎯 Enemy: natu
+[18:58:59] ⏭ Bỏ qua natu, không phải target
+[18:59:12] ⚔️ Battle detected!
+[18:59:16] 🎯 Enemy: natu
+[18:59:16] ⏭ Bỏ qua natu, không phải target
+[18:59:30] ⚔️ Battle detected!
+[18:59:34] 🎯 Enemy: natu
+[18:59:34] ⏭ Bỏ qua natu, không phải target
+[18:59:52] ⚔️ Battle detected!
+[18:59:56] 🎯 Enemy: tangela
+[18:59:56] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[18:59:56] 📋 Log đọc được: 'chlorophyll'
+[18:59:56] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[19:00:15] ⚔️ Battle detected!
+[19:00:19] 🎯 Enemy: tangrowth
+[19:00:19] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[19:00:19] 📋 Log đọc được: 'chlorophyll'
+[19:00:19] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[19:00:30] ⚔️ Battle detected!
+[19:00:34] 🎯 Enemy: natu
+[19:00:34] ⏭ Bỏ qua natu, không phải target
+[19:00:43] ⚔️ Battle detected!
+[19:00:48] 🎯 Enemy: natu
+[19:00:48] ⏭ Bỏ qua natu, không phải target
+[19:00:57] ⚔️ Battle detected!
+[19:01:02] 🎯 Enemy: natu
+[19:01:02] ⏭ Bỏ qua natu, không phải target
+[19:01:15] ⚔️ Battle detected!
+[19:01:20] 🎯 Enemy: tangrowth
+[19:01:20] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[19:01:20] 📋 Log đọc được: 'chlorophyll'
+[19:01:20] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[19:01:34] ⚔️ Battle detected!
+[19:01:38] 🎯 Enemy: natu
+[19:01:38] ⏭ Bỏ qua natu, không phải target
+[19:01:51] ⚔️ Battle detected!
+[19:01:55] 🎯 Enemy: natu
+[19:01:55] ⏭ Bỏ qua natu, không phải target
+[19:02:13] ⚔️ Battle detected!
+[19:02:17] 🎯 Enemy: natu
+[19:02:17] ⏭ Bỏ qua natu, không phải target
+[19:02:30] ⚔️ Battle detected!
+[19:02:34] 🎯 Enemy: bellsprout
+[19:02:34] ⏭ Bỏ qua bellsprout, không phải target
+[19:02:45] ⚔️ Battle detected!
+[19:02:49] 🎯 Enemy: natu
+[19:02:49] ⏭ Bỏ qua natu, không phải target
+[19:03:02] ⚔️ Battle detected!
+[19:03:06] 🎯 Enemy: natu
+[19:03:06] ⏭ Bỏ qua natu, không phải target
+[19:03:20] ⚔️ Battle detected!
+[19:03:24] 🎯 Enemy: bellsprout
+[19:03:24] ⏭ Bỏ qua bellsprout, không phải target
+[19:03:39] ⚔️ Battle detected!
+[19:03:44] 🎯 Enemy: natu
+[19:03:44] ⏭ Bỏ qua natu, không phải target
+[19:03:54] ⚔️ Battle detected!
+[19:03:58] 🎯 Enemy: bellsprout
+[19:03:58] ⏭ Bỏ qua bellsprout, không phải target
+[19:04:12] ⚔️ Battle detected!
+[19:04:16] 🎯 Enemy: natu
+[19:04:16] ⏭ Bỏ qua natu, không phải target
+[19:04:25] ⚔️ Battle detected!
+[19:04:29] 🎯 Enemy: tangela
+[19:04:29] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:04:29] 📋 Log đọc được: 'leaf guard'
+[19:04:29] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[19:04:42] ⚔️ Battle detected!
+[19:04:46] 🎯 Enemy: tangrowth
+[19:04:46] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[19:04:47] 📋 Log đọc được: 'chlorophyll'
+[19:04:47] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[19:04:56] ⚔️ Battle detected!
+[19:05:00] 🎯 Enemy: plusle
+[19:05:00] ⏭ Bỏ qua plusle, không phải target
+[19:05:09] ⚔️ Battle detected!
+[19:05:13] 🎯 Enemy: natu
+[19:05:13] ⏭ Bỏ qua natu, không phải target
+[19:05:26] ⚔️ Battle detected!
+[19:05:30] 🎯 Enemy: natu
+[19:05:30] ⏭ Bỏ qua natu, không phải target
+[19:05:43] ⚔️ Battle detected!
+[19:05:47] 🎯 Enemy: natu
+[19:05:47] ⏭ Bỏ qua natu, không phải target
+[19:06:00] ⚔️ Battle detected!
+[19:06:04] 🎯 Enemy: foongus
+[19:06:04] 🔍 Đang check ability cho foongus (Yêu cầu: regenerator)...
+[19:06:05] 📋 Log đọc được: 'effect spore'
+[19:06:05] ⏭ Ability 'effect spore' không khớp. Bỏ qua foongus.
+[19:06:19] ⚔️ Battle detected!
+[19:06:23] 🎯 Enemy: tangela
+[19:06:23] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:06:24] 📋 Log đọc được: 'chlorophyll'
+[19:06:24] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[19:06:38] ⚔️ Battle detected!
+[19:06:42] 🎯 Enemy: natu
+[19:06:42] ⏭ Bỏ qua natu, không phải target
+[19:07:01] ⚔️ Battle detected!
+[19:07:05] 🎯 Enemy: natu
+[19:07:05] ⏭ Bỏ qua natu, không phải target
+[19:07:18] ⚔️ Battle detected!
+[19:07:22] 🎯 Enemy: tangela
+[19:07:22] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:07:22] 📋 Log đọc được: 'leaf guard'
+[19:07:22] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[19:07:33] ⚔️ Battle detected!
+[19:07:37] 🎯 Enemy: tangela
+[19:07:37] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:07:37] 📋 Log đọc được: 'leaf guard'
+[19:07:37] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[19:07:50] ⚔️ Battle detected!
+[19:07:54] 🎯 Enemy: bellsprout
+[19:07:54] ⏭ Bỏ qua bellsprout, không phải target
+[19:08:07] ⚔️ Battle detected!
+[19:08:11] 🎯 Enemy: plusle
+[19:08:11] ⏭ Bỏ qua plusle, không phải target
+[19:08:29] ⚔️ Battle detected!
+[19:08:33] 🎯 Enemy: natu
+[19:08:33] ⏭ Bỏ qua natu, không phải target
+[19:08:53] ⚔️ Battle detected!
+[19:08:57] 🎯 Enemy: solosis
+[19:08:57] 🔍 Đang check ability cho solosis (Yêu cầu: regenerator, magic guard)...
+[19:08:57] 📋 Log đọc được: 'overcoat'
+[19:08:57] ⏭ Ability 'overcoat' không khớp. Bỏ qua solosis.
+[19:09:15] ⚔️ Battle detected!
+[19:09:19] 🎯 Enemy: natu
+[19:09:19] ⏭ Bỏ qua natu, không phải target
+[19:09:40] ⚔️ Battle detected!
+[19:09:44] 🎯 Enemy: solosis
+[19:09:44] 🔍 Đang check ability cho solosis (Yêu cầu: regenerator, magic guard)...
+[19:09:44] 📋 Log đọc được: 'magic guard'
+[19:09:44] 🎉 Khớp ability 'magic guard'! Bắt đầu bắt...
+[19:09:44] 🔄 Bắt đầu chuỗi bắt...
+[19:09:45] 🔄 Swapping to slot 3...
+[19:09:56] ✅ HP đã thấp, không cần False Swipe
+[19:09:56] 💤 Dùng Spore...
+[19:10:02] ⏳ Đang đợi lượt mới để ném Ball...
+[19:10:05] 🔴 Ném Poke...
+[19:10:07] 📋 OCR Bag lines: ["- Bidlt 'atiny", ': xBd', 'ge Rawst Berry', 'x Rindo Berry', 'ar |', 'wd Rosell Berry', 'Sa Salac Berry', 'wx', 'Chonse Item']
+[19:10:07] ⚠️ Không thấy Poke trong bag (OCR)
+[19:10:07] ⚠️ Fallback click poke at (1410, 330)
+[19:10:32] ⏹ Đã dừng tool!
+[19:10:33] 
+✅ Catch session ended
+[19:14:41] ✅ Bắt Pokemon started!
+[19:14:41] 🎮 Nhấn alt+f8 để dừng.
+[19:14:41] ✅ Initializing Catch Pokemon Mode...
+[19:14:41] 🎯 Starting catch mode...
+[19:14:41] ✅ Initializing Catch Pokemon mode...
+[19:14:41] 🎯 Bắt Pokemon với Breloom
+[19:14:41] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[19:14:41] 🍄 Found Breloom at slot 3
+[19:14:46] ⚔️ Battle detected!
+[19:14:50] 🎯 Enemy: tangela
+[19:14:50] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:14:50] 📋 Log đọc được: 'leaf guard'
+[19:14:50] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[19:15:00] ⚔️ Battle detected!
+[19:15:04] 🎯 Enemy: natu
+[19:15:04] ⏭ Bỏ qua natu, không phải target
+[19:15:18] ⚔️ Battle detected!
+[19:15:22] 🎯 Enemy: plusle
+[19:15:22] ⏭ Bỏ qua plusle, không phải target
+[19:15:36] ⚔️ Battle detected!
+[19:15:40] 🎯 Enemy: minun
+[19:15:40] ⏭ Bỏ qua minun, không phải target
+[19:15:50] ⚔️ Battle detected!
+[19:15:54] 🎯 Enemy: natu
+[19:15:54] ⏭ Bỏ qua natu, không phải target
+[19:16:08] ⚔️ Battle detected!
+[19:16:12] 🎯 Enemy: natu
+[19:16:12] ⏭ Bỏ qua natu, không phải target
+[19:16:26] ⚔️ Battle detected!
+[19:16:30] 🎯 Enemy: tangrowth
+[19:16:30] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[19:16:30] 📋 Log đọc được: 'chlorophyll'
+[19:16:30] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[19:16:44] ⚔️ Battle detected!
+[19:16:48] 🎯 Enemy: minun
+[19:16:48] ⏭ Bỏ qua minun, không phải target
+[19:17:02] ⚔️ Battle detected!
+[19:17:06] 🎯 Enemy: natu
+[19:17:06] ⏭ Bỏ qua natu, không phải target
+[19:17:20] ⚔️ Battle detected!
+[19:17:25] 🎯 Enemy: natu
+[19:17:25] ⏭ Bỏ qua natu, không phải target
+[19:17:34] ⚔️ Battle detected!
+[19:17:38] 🎯 Enemy: plusle
+[19:17:38] ⏭ Bỏ qua plusle, không phải target
+[19:17:48] ⚔️ Battle detected!
+[19:17:52] 🎯 Enemy: tangela
+[19:17:52] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[19:17:52] 📋 Log đọc được: 'chlorophyll'
+[19:17:52] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[19:18:14] ⚔️ Battle detected!
+[19:18:18] 🎯 Enemy: natu
+[19:18:19] ⏭ Bỏ qua natu, không phải target
+[19:18:29] ⚔️ Battle detected!
+[19:18:33] 🎯 Enemy: tangrowth
+[19:18:33] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[19:18:33] 📋 Log đọc được: 'leaf guard'
+[19:18:33] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[19:18:39] ⏹ Đã dừng tool!
+[19:18:40] 
+✅ Catch session ended
+[19:39:03] ⚙ debug.save_failed_ocr: Bật
+[19:39:03] ⚙ farm.use_zero_effectiveness: Tắt
+[19:39:03] 🎮 alt+f8 hotkey registered!
+[20:13:56] ⚙ debug.save_failed_ocr: Bật
+[20:13:56] ⚙ farm.use_zero_effectiveness: Tắt
+[20:13:56] 🎮 alt+f8 hotkey registered!
+[20:14:04] ✅ Bắt Pokemon started!
+[20:14:04] 🎮 Nhấn alt+f8 để dừng.
+[20:14:04] ✅ Initializing Catch Pokemon Mode...
+[20:14:04] 🎯 Starting catch mode...
+[20:14:04] ✅ Initializing Catch Pokemon mode...
+[20:14:04] 🎯 Bắt Pokemon với Breloom
+[20:14:04] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:14:04] 🍄 Found Breloom at slot 3
+[20:14:15] ⚔️ Battle detected!
+[20:14:20] 🎯 Enemy: krabby
+[20:14:20] ⏭ Bỏ qua krabby, không phải target
+[20:14:29] ⚔️ Battle detected!
+[20:14:33] ⏹ Đã dừng tool!
+[20:14:36] 🎯 Enemy: scizor
+[20:14:36] ⏭ Bỏ qua scizor, không phải target
+[20:14:40] 
+✅ Catch session ended
+[20:18:49] ⚙ debug.save_failed_ocr: Bật
+[20:18:49] ⚙ farm.use_zero_effectiveness: Tắt
+[20:18:49] 🎮 alt+f8 hotkey registered!
+[20:18:53] ✅ Bắt Pokemon started!
+[20:18:53] 🎮 Nhấn alt+f8 để dừng.
+[20:18:53] ✅ Initializing Catch Pokemon Mode...
+[20:18:53] 🎯 Starting catch mode...
+[20:18:53] ✅ Initializing Catch Pokemon mode...
+[20:18:54] 🎯 Bắt Pokemon với Breloom
+[20:18:54] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:18:54] 🍄 Found Breloom at slot 3
+[20:18:55] ⚔️ Battle detected!
+[20:19:00] 🎯 Enemy: krabby
+[20:19:00] ⏭ Bỏ qua krabby, không phải target
+[20:19:00] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:19:12] ⚔️ Battle detected!
+[20:19:16] 🎯 Enemy: krabby
+[20:19:16] ⏭ Bỏ qua krabby, không phải target
+[20:19:17] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:19:29] ⚔️ Battle detected!
+[20:19:34] ⏹ Đã dừng tool!
+[20:19:34] 🎯 Enemy: krabby
+[20:19:34] ⏭ Bỏ qua krabby, không phải target
+[20:19:35] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:19:41] 
+✅ Catch session ended
+[20:21:02] ✅ Bắt Pokemon started!
+[20:21:02] 🎮 Nhấn alt+f8 để dừng.
+[20:21:02] ✅ Initializing Catch Pokemon Mode...
+[20:21:02] 🎯 Starting catch mode...
+[20:21:02] ✅ Initializing Catch Pokemon mode...
+[20:21:03] 🎯 Bắt Pokemon với Breloom
+[20:21:03] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:21:03] 🍄 Found Breloom at slot 3
+[20:21:04] ⚔️ Battle detected!
+[20:21:08] 🎯 Enemy: krabby
+[20:21:08] ⏭ Bỏ qua krabby, không phải target
+[20:21:09] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:21:18] ⏹ Đã dừng tool!
+[20:21:20] 
+✅ Catch session ended
+[20:21:32] ⚙ debug.save_failed_ocr: Bật
+[20:21:32] ⚙ farm.use_zero_effectiveness: Tắt
+[20:21:32] 🎮 alt+f8 hotkey registered!
+[20:22:14] ⚙ debug.save_failed_ocr: Bật
+[20:22:14] ⚙ farm.use_zero_effectiveness: Tắt
+[20:22:14] 🎮 alt+f8 hotkey registered!
+[20:22:56] ✅ Bắt Pokemon started!
+[20:22:56] 🎮 Nhấn alt+f8 để dừng.
+[20:22:56] ✅ Initializing Catch Pokemon Mode...
+[20:22:56] 🎯 Starting catch mode...
+[20:22:56] ✅ Initializing Catch Pokemon mode...
+[20:22:56] 🎯 Bắt Pokemon với Breloom
+[20:22:56] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:22:56] 🍄 Found Breloom at slot 3
+[20:22:57] ⚔️ Battle detected!
+[20:23:02] 🎯 Enemy: krabby
+[20:23:02] ⏭ Bỏ qua krabby, không phải target
+[20:23:11] ⏹ Đã dừng tool!
+[20:23:13] 
+✅ Catch session ended
+[20:23:50] ⚙ debug.save_failed_ocr: Bật
+[20:23:50] ⚙ farm.use_zero_effectiveness: Tắt
+[20:23:50] 🎮 alt+f8 hotkey registered!
+[20:28:13] ⚙ debug.save_failed_ocr: Bật
+[20:28:13] ⚙ farm.use_zero_effectiveness: Tắt
+[20:28:13] 🎮 alt+f8 hotkey registered!
+[20:29:17] ✅ Bắt Pokemon started!
+[20:29:17] 🎮 Nhấn alt+f8 để dừng.
+[20:29:17] ✅ Initializing Catch Pokemon Mode...
+[20:29:17] 🎯 Starting catch mode...
+[20:29:17] ✅ Initializing Catch Pokemon mode...
+[20:29:18] 🎯 Bắt Pokemon với Breloom
+[20:29:18] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:29:18] 🍄 Found Breloom at slot 3
+[20:29:19] ⚔️ Battle detected!
+[20:29:24] 🎯 Enemy: krabby
+[20:29:24] ⏭ Bỏ qua krabby, không phải target
+[20:29:25] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:29:31] ⏹ Đã dừng tool!
+[20:29:35] 
+✅ Catch session ended
+[20:30:49] ✅ Bắt Pokemon started!
+[20:30:49] 🎮 Nhấn alt+f8 để dừng.
+[20:30:49] ✅ Initializing Catch Pokemon Mode...
+[20:30:49] 🎯 Starting catch mode...
+[20:30:49] ✅ Initializing Catch Pokemon mode...
+[20:30:49] 🎯 Bắt Pokemon với Breloom
+[20:30:49] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:30:49] 🍄 Found Breloom at slot 3
+[20:30:50] ⚔️ Battle detected!
+[20:30:56] 🎯 Enemy: krabby
+[20:30:56] ⏭ Bỏ qua krabby, không phải target
+[20:30:56] ⚠️ Không tìm thấy nút Run, thử lại sau 0.8s...
+[20:31:01] ⏹ Đã dừng tool!
+[20:31:06] 
+✅ Catch session ended
+[20:32:55] ⚙ debug.save_failed_ocr: Bật
+[20:32:55] ⚙ farm.use_zero_effectiveness: Tắt
+[20:32:55] 🎮 alt+f8 hotkey registered!
+[20:33:21] ✅ Bắt Pokemon started!
+[20:33:21] 🎮 Nhấn alt+f8 để dừng.
+[20:33:21] ✅ Initializing Catch Pokemon Mode...
+[20:33:21] 🎯 Starting catch mode...
+[20:33:21] ✅ Initializing Catch Pokemon mode...
+[20:33:21] 🎯 Bắt Pokemon với Breloom
+[20:33:21] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:33:21] 🍄 Found Breloom at slot 3
+[20:33:22] ⚔️ Battle detected!
+[20:33:27] 🎯 Enemy: krabby
+[20:33:27] ⏭ Bỏ qua krabby, không phải target
+[20:33:37] ⏹ Đã dừng tool!
+[20:33:37] 
+✅ Catch session ended
+[20:36:17] ⚙ debug.save_failed_ocr: Bật
+[20:36:17] ⚙ farm.use_zero_effectiveness: Tắt
+[20:36:17] 🎮 alt+f8 hotkey registered!
+[20:37:25] ✅ Bắt Pokemon started!
+[20:37:25] 🎮 Nhấn alt+f8 để dừng.
+[20:37:25] ✅ Initializing Catch Pokemon Mode...
+[20:37:25] 🎯 Starting catch mode...
+[20:37:25] ✅ Initializing Catch Pokemon mode...
+[20:37:25] 🎯 Bắt Pokemon với Breloom
+[20:37:25] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:37:25] 🍄 Found Breloom at slot 3
+[20:37:27] ⚔️ Battle detected!
+[20:37:32] 🎯 Enemy: krabby
+[20:37:32] ⏭ Bỏ qua krabby, không phải target
+[20:37:37] ⏹ Đã dừng tool!
+[20:37:43] 
+✅ Catch session ended
+[20:38:46] ✅ Bắt Pokemon started!
+[20:38:46] 🎮 Nhấn alt+f8 để dừng.
+[20:38:46] ✅ Initializing Catch Pokemon Mode...
+[20:38:46] 🎯 Starting catch mode...
+[20:38:46] ✅ Initializing Catch Pokemon mode...
+[20:38:46] 🎯 Bắt Pokemon với Breloom
+[20:38:46] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:38:46] 🍄 Found Breloom at slot 3
+[20:38:47] ⚔️ Battle detected!
+[20:38:51] 🎯 Enemy: krabby
+[20:38:51] ⏭ Bỏ qua krabby, không phải target
+[20:38:57] ⏹ Đã dừng tool!
+[20:39:02] 
+✅ Catch session ended
+[20:39:24] ✅ Bắt Pokemon started!
+[20:39:24] 🎮 Nhấn alt+f8 để dừng.
+[20:39:24] ✅ Initializing Catch Pokemon Mode...
+[20:39:24] 🎯 Starting catch mode...
+[20:39:24] ✅ Initializing Catch Pokemon mode...
+[20:39:25] 🎯 Bắt Pokemon với Breloom
+[20:39:25] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:39:25] 🍄 Found Breloom at slot 3
+[20:39:25] ⚔️ Battle detected!
+[20:39:29] 🎯 Enemy: krabby
+[20:39:29] ⏭ Bỏ qua krabby, không phải target
+[20:39:36] ⏹ Đã dừng tool!
+[20:39:39] 
+✅ Catch session ended
+[20:41:55] ⚙ debug.save_failed_ocr: Bật
+[20:41:55] ⚙ farm.use_zero_effectiveness: Tắt
+[20:41:55] 🎮 alt+f8 hotkey registered!
+[20:42:32] ✅ Bắt Pokemon started!
+[20:42:32] 🎮 Nhấn alt+f8 để dừng.
+[20:42:32] ✅ Initializing Catch Pokemon Mode...
+[20:42:32] 🎯 Starting catch mode...
+[20:42:32] ✅ Initializing Catch Pokemon mode...
+[20:42:32] 🎯 Bắt Pokemon với Breloom
+[20:42:32] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:42:32] 🍄 Found Breloom at slot 3
+[20:42:33] ⚔️ Battle detected!
+[20:42:37] 🎯 Enemy: krabby
+[20:42:37] ⏭ Bỏ qua krabby, không phải target
+[20:42:49] ⚔️ Battle detected!
+[20:42:52] ⏹ Đã dừng tool!
+[20:42:53] 🎯 Enemy: krabby
+[20:42:53] ⏭ Bỏ qua krabby, không phải target
+[20:42:57] 
+✅ Catch session ended
+[20:54:14] ⚙ debug.save_failed_ocr: Bật
+[20:54:14] ⚙ farm.use_zero_effectiveness: Tắt
+[20:54:14] 🎮 alt+f8 hotkey registered!
+[20:55:38] ✅ Bắt Pokemon started!
+[20:55:38] 🎮 Nhấn alt+f8 để dừng.
+[20:55:38] ✅ Initializing Catch Pokemon Mode...
+[20:55:38] 🎯 Starting catch mode...
+[20:55:38] ✅ Initializing Catch Pokemon mode...
+[20:55:38] 🎯 Bắt Pokemon với Breloom
+[20:55:38] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[20:55:38] 🍄 Found Breloom at slot 3
+[20:55:39] ⚔️ Battle detected!
+[20:55:44] 🎯 Enemy: krabby
+[20:55:44] ⏭ Bỏ qua krabby, không phải target
+[20:55:50] ⏹ Đã dừng tool!
+[20:55:51] 
+✅ Catch session ended
+[00:45:24] ⚙ debug.save_failed_ocr: Bật
+[00:45:24] ⚙ farm.use_zero_effectiveness: Tắt
+[00:45:24] 🎮 alt+f8 hotkey registered!
+[00:50:04] ✅ Bắt Pokemon started!
+[00:50:04] 🎮 Nhấn alt+f8 để dừng.
+[00:50:04] ✅ Initializing Catch Pokemon Mode...
+[00:50:05] 🎯 Starting catch mode...
+[00:50:05] ✅ Initializing Catch Pokemon mode...
+[00:50:06] 🎯 Bắt Pokemon với Breloom
+[00:50:06] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:50:06] 🍄 Found Breloom at slot 3
+[00:50:06] ⚔️ Battle detected!
+[00:50:12] 🎯 Enemy: spinda
+[00:50:12] ⏭ Bỏ qua spinda, không phải target
+[00:50:24] ⚔️ Battle detected!
+[00:50:30] 🎯 Enemy: spinda
+[00:50:30] ⏭ Bỏ qua spinda, không phải target
+[00:50:34] ⏹ Đã dừng tool!
+[00:50:40] 
+✅ Catch session ended
+[00:55:42] ⚙ debug.save_failed_ocr: Bật
+[00:55:42] ⚙ farm.use_zero_effectiveness: Tắt
+[00:55:42] 🎮 alt+f8 hotkey registered!
+[00:55:56] ✅ Bắt Pokemon started!
+[00:55:56] 🎮 Nhấn alt+f8 để dừng.
+[00:55:56] ✅ Initializing Catch Pokemon Mode...
+[00:55:56] 🎯 Starting catch mode...
+[00:55:56] ✅ Initializing Catch Pokemon mode...
+[00:55:56] 🎯 Bắt Pokemon với Breloom
+[00:55:56] 🔴 Ball order: ['Poke', 'Great', 'Ultra']
+[00:55:56] 🍄 Found Breloom at slot 3
+[00:55:57] ⚔️ Battle detected!
+[00:56:01] 🎯 Enemy: natu
+[00:56:01] ⏭ Bỏ qua natu, không phải target
+[00:56:21] ⚔️ Battle detected!
+[00:56:26] 🎯 Enemy: bellsprout
+[00:56:26] ⏭ Bỏ qua bellsprout, không phải target
+[00:56:40] ⚔️ Battle detected!
+[00:56:44] 🎯 Enemy: bellsprout
+[00:56:44] ⏭ Bỏ qua bellsprout, không phải target
+[00:56:54] ⚔️ Battle detected!
+[00:56:59] 🎯 Enemy: bellsprout
+[00:56:59] ⏭ Bỏ qua bellsprout, không phải target
+[00:57:09] ⚔️ Battle detected!
+[00:57:13] 🎯 Enemy: bellsprout
+[00:57:13] ⏭ Bỏ qua bellsprout, không phải target
+[00:57:24] ⚔️ Battle detected!
+[00:57:28] 🎯 Enemy: tangela
+[00:57:28] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[00:57:28] 📋 Log đọc được: 'chlorophyll'
+[00:57:28] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[00:57:39] ⚔️ Battle detected!
+[00:57:43] 🎯 Enemy: bellsprout
+[00:57:43] ⏭ Bỏ qua bellsprout, không phải target
+[00:57:57] ⚔️ Battle detected!
+[00:58:02] 🎯 Enemy: natu
+[00:58:02] ⏭ Bỏ qua natu, không phải target
+[00:58:25] ⚔️ Battle detected!
+[00:58:29] 🎯 Enemy: natu
+[00:58:29] ⏭ Bỏ qua natu, không phải target
+[00:58:52] ⚔️ Battle detected!
+[00:58:56] 🎯 Enemy: tangela
+[00:58:56] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[00:58:57] 📋 Log đọc được: 'leaf guard'
+[00:58:57] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[00:59:07] ⚔️ Battle detected!
+[00:59:11] 🎯 Enemy: natu
+[00:59:11] ⏭ Bỏ qua natu, không phải target
+[00:59:30] ⚔️ Battle detected!
+[00:59:34] 🎯 Enemy: natu
+[00:59:34] ⏭ Bỏ qua natu, không phải target
+[00:59:48] ⚔️ Battle detected!
+[00:59:53] 🎯 Enemy: tangela
+[00:59:53] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[00:59:53] 📋 Log đọc được: 'chlorophyll'
+[00:59:53] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:00:08] ⚔️ Battle detected!
+[01:00:12] 🎯 Enemy: bellsprout
+[01:00:12] ⏭ Bỏ qua bellsprout, không phải target
+[01:00:26] ⚔️ Battle detected!
+[01:00:31] 🎯 Enemy: natu
+[01:00:31] ⏭ Bỏ qua natu, không phải target
+[01:00:45] ⚔️ Battle detected!
+[01:00:49] 🎯 Enemy: natu
+[01:00:49] ⏭ Bỏ qua natu, không phải target
+[01:01:11] ⚔️ Battle detected!
+[01:01:16] 🎯 Enemy: tangela
+[01:01:16] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:01:16] 📋 Log đọc được: 'leaf guard'
+[01:01:16] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:01:26] ⚔️ Battle detected!
+[01:01:31] 🎯 Enemy: minun
+[01:01:31] ⏭ Bỏ qua minun, không phải target
+[01:01:45] ⚔️ Battle detected!
+[01:01:50] 🎯 Enemy: natu
+[01:01:50] ⏭ Bỏ qua natu, không phải target
+[01:02:04] ⚔️ Battle detected!
+[01:02:08] 🎯 Enemy: natu
+[01:02:08] ⏭ Bỏ qua natu, không phải target
+[01:02:19] ⚔️ Battle detected!
+[01:02:24] 🎯 Enemy: natu
+[01:02:24] ⏭ Bỏ qua natu, không phải target
+[01:02:42] ⚔️ Battle detected!
+[01:02:46] 🎯 Enemy: bellsprout
+[01:02:46] ⏭ Bỏ qua bellsprout, không phải target
+[01:03:00] ⚔️ Battle detected!
+[01:03:05] 🎯 Enemy: natu
+[01:03:05] ⏭ Bỏ qua natu, không phải target
+[01:03:19] ⚔️ Battle detected!
+[01:03:23] 🎯 Enemy: natu
+[01:03:23] ⏭ Bỏ qua natu, không phải target
+[01:03:38] ⚔️ Battle detected!
+[01:03:42] 🎯 Enemy: tangrowth
+[01:03:42] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:03:42] 📋 Log đọc được: 'chlorophyll'
+[01:03:42] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:03:52] ⚔️ Battle detected!
+[01:03:57] 🎯 Enemy: tangrowth
+[01:03:57] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:03:57] 📋 Log đọc được: 'chlorophyll'
+[01:03:57] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:04:11] ⚔️ Battle detected!
+[01:04:16] 🎯 Enemy: natu
+[01:04:16] ⏭ Bỏ qua natu, không phải target
+[01:04:29] ⚔️ Battle detected!
+[01:04:34] 🎯 Enemy: plusle
+[01:04:34] ⏭ Bỏ qua plusle, không phải target
+[01:04:44] ⚔️ Battle detected!
+[01:04:49] 🎯 Enemy: natu
+[01:04:49] ⏭ Bỏ qua natu, không phải target
+[01:05:03] ⚔️ Battle detected!
+[01:05:07] 🎯 Enemy: natu
+[01:05:07] ⏭ Bỏ qua natu, không phải target
+[01:05:18] ⚔️ Battle detected!
+[01:05:22] 🎯 Enemy: natu
+[01:05:22] ⏭ Bỏ qua natu, không phải target
+[01:05:32] ⚔️ Battle detected!
+[01:05:37] 🎯 Enemy: natu
+[01:05:37] ⏭ Bỏ qua natu, không phải target
+[01:05:59] ⚔️ Battle detected!
+[01:06:04] 🎯 Enemy: natu
+[01:06:04] ⏭ Bỏ qua natu, không phải target
+[01:06:18] ⚔️ Battle detected!
+[01:06:22] 🎯 Enemy: natu
+[01:06:22] ⏭ Bỏ qua natu, không phải target
+[01:06:32] ⚔️ Battle detected!
+[01:06:37] 🎯 Enemy: natu
+[01:06:37] ⏭ Bỏ qua natu, không phải target
+[01:06:51] ⚔️ Battle detected!
+[01:06:55] 🎯 Enemy: natu
+[01:06:55] ⏭ Bỏ qua natu, không phải target
+[01:07:07] ⚔️ Battle detected!
+[01:07:11] 🎯 Enemy: natu
+[01:07:11] ⏭ Bỏ qua natu, không phải target
+[01:07:25] ⚔️ Battle detected!
+[01:07:30] 🎯 Enemy: natu
+[01:07:30] ⏭ Bỏ qua natu, không phải target
+[01:07:44] ⚔️ Battle detected!
+[01:07:48] 🎯 Enemy: natu
+[01:07:48] ⏭ Bỏ qua natu, không phải target
+[01:08:15] ⚔️ Battle detected!
+[01:08:19] 🎯 Enemy: foongus
+[01:08:19] 🔍 Đang check ability cho foongus (Yêu cầu: regenerator)...
+[01:08:19] 📋 Log đọc được: 'effect spore'
+[01:08:19] ⏭ Ability 'effect spore' không khớp. Bỏ qua foongus.
+[01:08:42] ⚔️ Battle detected!
+[01:08:46] 🎯 Enemy: bellsprout
+[01:08:46] ⏭ Bỏ qua bellsprout, không phải target
+[01:09:00] ⚔️ Battle detected!
+[01:09:05] 🎯 Enemy: tangela
+[01:09:05] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:09:05] 📋 Log đọc được: 'chlorophyll'
+[01:09:05] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:09:15] ⚔️ Battle detected!
+[01:09:19] 🎯 Enemy: plusle
+[01:09:19] ⏭ Bỏ qua plusle, không phải target
+[01:09:29] ⚔️ Battle detected!
+[01:09:34] 🎯 Enemy: plusle
+[01:09:34] ⏭ Bỏ qua plusle, không phải target
+[01:09:48] ⚔️ Battle detected!
+[01:09:52] 🎯 Enemy: tangrowth
+[01:09:52] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:09:53] 📋 Log đọc được: 'regenerator'
+[01:09:53] ⏭ Ability 'regenerator' không khớp. Bỏ qua tangrowth.
+[01:10:02] ⚔️ Battle detected!
+[01:10:07] 🎯 Enemy: natu
+[01:10:07] ⏭ Bỏ qua natu, không phải target
+[01:10:17] ⚔️ Battle detected!
+[01:10:22] 🎯 Enemy: plusle
+[01:10:22] ⏭ Bỏ qua plusle, không phải target
+[01:10:32] ⚔️ Battle detected!
+[01:10:36] 🎯 Enemy: natu
+[01:10:36] ⏭ Bỏ qua natu, không phải target
+[01:10:46] ⚔️ Battle detected!
+[01:10:50] 🎯 Enemy: tangela
+[01:10:50] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:10:51] 📋 Log đọc được: 'leaf guard'
+[01:10:51] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:11:01] ⚔️ Battle detected!
+[01:11:05] 🎯 Enemy: tangela
+[01:11:05] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:11:06] 📋 Log đọc được: 'leaf guard'
+[01:11:06] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:11:20] ⚔️ Battle detected!
+[01:11:24] 🎯 Enemy: natu
+[01:11:24] ⏭ Bỏ qua natu, không phải target
+[01:11:34] ⚔️ Battle detected!
+[01:11:39] 🎯 Enemy: tangrowth
+[01:11:39] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:11:39] 📋 Log đọc được: 'leaf guard'
+[01:11:39] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:11:49] ⚔️ Battle detected!
+[01:11:53] 🎯 Enemy: tangela
+[01:11:53] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:11:54] 📋 Log đọc được: 'regenerator'
+[01:11:54] ⏭ Ability 'regenerator' không khớp. Bỏ qua tangela.
+[01:12:08] ⚔️ Battle detected!
+[01:12:12] 🎯 Enemy: natu
+[01:12:12] ⏭ Bỏ qua natu, không phải target
+[01:12:34] ⚔️ Battle detected!
+[01:12:39] 🎯 Enemy: natu
+[01:12:39] ⏭ Bỏ qua natu, không phải target
+[01:12:53] ⚔️ Battle detected!
+[01:12:58] 🎯 Enemy: minun
+[01:12:58] ⏭ Bỏ qua minun, không phải target
+[01:13:16] ⚔️ Battle detected!
+[01:13:21] 🎯 Enemy: natu
+[01:13:21] ⏭ Bỏ qua natu, không phải target
+[01:13:35] ⚔️ Battle detected!
+[01:13:39] 🎯 Enemy: tangela
+[01:13:39] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:13:40] 📋 Log đọc được: 'leaf guard'
+[01:13:40] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:13:54] ⚔️ Battle detected!
+[01:13:58] 🎯 Enemy: natu
+[01:13:58] ⏭ Bỏ qua natu, không phải target
+[01:14:12] ⚔️ Battle detected!
+[01:14:17] 🎯 Enemy: bellsprout
+[01:14:17] ⏭ Bỏ qua bellsprout, không phải target
+[01:14:31] ⚔️ Battle detected!
+[01:14:36] 🎯 Enemy: natu
+[01:14:36] ⏭ Bỏ qua natu, không phải target
+[01:14:46] ⚔️ Battle detected!
+[01:14:50] 🎯 Enemy: natu
+[01:14:50] ⏭ Bỏ qua natu, không phải target
+[01:15:09] ⚔️ Battle detected!
+[01:15:13] 🎯 Enemy: tangela
+[01:15:13] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:15:13] 📋 Log đọc được: 'leaf guard'
+[01:15:13] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:15:32] ⚔️ Battle detected!
+[01:15:37] 🎯 Enemy: natu
+[01:15:37] ⏭ Bỏ qua natu, không phải target
+[01:15:51] ⚔️ Battle detected!
+[01:15:55] 🎯 Enemy: tangela
+[01:15:55] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:15:56] 📋 Log đọc được: 'leaf guard'
+[01:15:56] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:16:06] ⚔️ Battle detected!
+[01:16:10] 🎯 Enemy: bellsprout
+[01:16:10] ⏭ Bỏ qua bellsprout, không phải target
+[01:16:28] ⚔️ Battle detected!
+[01:16:33] 🎯 Enemy: tangela
+[01:16:33] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:16:33] 📋 Log đọc được: 'chlorophyll'
+[01:16:33] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:16:47] ⚔️ Battle detected!
+[01:16:52] 🎯 Enemy: tangrowth
+[01:16:52] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:16:52] 📋 Log đọc được: 'chlorophyll'
+[01:16:52] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:17:02] ⚔️ Battle detected!
+[01:17:07] 🎯 Enemy: natu
+[01:17:07] ⏭ Bỏ qua natu, không phải target
+[01:17:17] ⚔️ Battle detected!
+[01:17:21] 🎯 Enemy: natu
+[01:17:21] ⏭ Bỏ qua natu, không phải target
+[01:17:40] ⚔️ Battle detected!
+[01:17:44] 🎯 Enemy: natu
+[01:17:44] ⏭ Bỏ qua natu, không phải target
+[01:17:54] ⚔️ Battle detected!
+[01:17:58] 🎯 Enemy: tangela
+[01:17:58] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:17:59] 📋 Log đọc được: 'leaf guard'
+[01:17:59] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:18:13] ⚔️ Battle detected!
+[01:18:18] 🎯 Enemy: bellsprout
+[01:18:18] ⏭ Bỏ qua bellsprout, không phải target
+[01:18:32] ⚔️ Battle detected!
+[01:18:36] 🎯 Enemy: bellsprout
+[01:18:36] ⏭ Bỏ qua bellsprout, không phải target
+[01:18:46] ⚔️ Battle detected!
+[01:18:51] 🎯 Enemy: bellsprout
+[01:18:51] ⏭ Bỏ qua bellsprout, không phải target
+[01:19:05] ⚔️ Battle detected!
+[01:19:09] 🎯 Enemy: tangela
+[01:19:09] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:19:09] 📋 Log đọc được: 'leaf guard'
+[01:19:09] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangela.
+[01:19:20] ⚔️ Battle detected!
+[01:19:24] 🎯 Enemy: tangrowth
+[01:19:24] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:19:24] 📋 Log đọc được: 'regenerator'
+[01:19:24] ⏭ Ability 'regenerator' không khớp. Bỏ qua tangrowth.
+[01:19:38] ⚔️ Battle detected!
+[01:19:43] 🎯 Enemy: minun
+[01:19:43] ⏭ Bỏ qua minun, không phải target
+[01:19:57] ⚔️ Battle detected!
+[01:20:01] 🎯 Enemy: natu
+[01:20:01] ⏭ Bỏ qua natu, không phải target
+[01:20:15] ⚔️ Battle detected!
+[01:20:20] 🎯 Enemy: tangrowth
+[01:20:20] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:20:20] 📋 Log đọc được: 'leaf guard'
+[01:20:20] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:20:34] ⚔️ Battle detected!
+[01:20:38] 🎯 Enemy: tangrowth
+[01:20:38] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:20:39] 📋 Log đọc được: 'leaf guard'
+[01:20:39] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:20:49] ⚔️ Battle detected!
+[01:20:53] 🎯 Enemy: solosis
+[01:20:53] 🔍 Đang check ability cho solosis (Yêu cầu: regenerator, magic guard)...
+[01:20:53] 📋 Log đọc được: 'magic guard'
+[01:20:53] 🎉 Khớp ability 'magic guard'! Bắt đầu bắt...
+[01:20:54] 🔄 Bắt đầu chuỗi bắt...
+[01:20:54] 🔄 Swapping to slot 3...
+[01:21:07] ⚔️ Dùng False Swipe...
+[01:21:19] ✅ HP thấp sau 1 lần False Swipe
+[01:21:19] 💤 Dùng Spore...
+[01:21:25] ⏳ Đang đợi lượt mới để ném Ball...
+[01:21:28] 🔴 Ném Poke...
+[01:21:30] 📋 OCR Bag lines: ['* rovenall "', 'te vel Ball', '* we Ball', '* wen Ball', 'Choose Item']
+[01:21:30] ⚠️ Không thấy Poke trong bag (OCR)
+[01:21:30] ⚠️ Fallback click poke at (1567, 338)
+[01:22:04] ⚔️ Battle detected!
+[01:22:08] 🎯 Enemy: bellsprout
+[01:22:08] ⏭ Bỏ qua bellsprout, không phải target
+[01:22:22] ⚔️ Battle detected!
+[01:22:26] 🎯 Enemy: natu
+[01:22:26] ⏭ Bỏ qua natu, không phải target
+[01:22:40] ⚔️ Battle detected!
+[01:22:45] 🎯 Enemy: natu
+[01:22:45] ⏭ Bỏ qua natu, không phải target
+[01:22:59] ⚔️ Battle detected!
+[01:23:03] 🎯 Enemy: natu
+[01:23:03] ⏭ Bỏ qua natu, không phải target
+[01:23:14] ⚔️ Battle detected!
+[01:23:18] 🎯 Enemy: bellsprout
+[01:23:18] ⏭ Bỏ qua bellsprout, không phải target
+[01:23:29] ⚔️ Battle detected!
+[01:23:34] 🎯 Enemy: bellsprout
+[01:23:34] ⏭ Bỏ qua bellsprout, không phải target
+[01:23:48] ⚔️ Battle detected!
+[01:23:52] 🎯 Enemy: bellsprout
+[01:23:52] ⏭ Bỏ qua bellsprout, không phải target
+[01:24:06] ⚔️ Battle detected!
+[01:24:11] 🎯 Enemy: natu
+[01:24:11] ⏭ Bỏ qua natu, không phải target
+[01:24:26] ⚔️ Battle detected!
+[01:24:30] 🎯 Enemy: natu
+[01:24:30] ⏭ Bỏ qua natu, không phải target
+[01:24:49] ⚔️ Battle detected!
+[01:24:53] 🎯 Enemy: natu
+[01:24:53] ⏭ Bỏ qua natu, không phải target
+[01:25:04] ⚔️ Battle detected!
+[01:25:09] 🎯 Enemy: natu
+[01:25:09] ⏭ Bỏ qua natu, không phải target
+[01:25:19] ⚔️ Battle detected!
+[01:25:23] 🎯 Enemy: natu
+[01:25:23] ⏭ Bỏ qua natu, không phải target
+[01:25:33] ⚔️ Battle detected!
+[01:25:38] 🎯 Enemy: tangela
+[01:25:38] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:25:38] 📋 Log đọc được: 'chlorophyll'
+[01:25:38] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:25:48] ⚔️ Battle detected!
+[01:25:53] 🎯 Enemy: tangrowth
+[01:25:53] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:25:53] 📋 Log đọc được: 'chlorophyll'
+[01:25:53] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:26:03] ⚔️ Battle detected!
+[01:26:07] 🎯 Enemy: natu
+[01:26:07] ⏭ Bỏ qua natu, không phải target
+[01:26:21] ⚔️ Battle detected!
+[01:26:26] 🎯 Enemy: minun
+[01:26:26] ⏭ Bỏ qua minun, không phải target
+[01:26:40] ⚔️ Battle detected!
+[01:26:45] 🎯 Enemy: natu
+[01:26:45] ⏭ Bỏ qua natu, không phải target
+[01:26:59] ⚔️ Battle detected!
+[01:27:03] 🎯 Enemy: natu
+[01:27:03] ⏭ Bỏ qua natu, không phải target
+[01:27:17] ⚔️ Battle detected!
+[01:27:22] 🎯 Enemy: natu
+[01:27:22] ⏭ Bỏ qua natu, không phải target
+[01:27:36] ⚔️ Battle detected!
+[01:27:40] 🎯 Enemy: tangrowth
+[01:27:40] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:27:41] 📋 Log đọc được: 'chlorophyll'
+[01:27:41] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:27:51] ⚔️ Battle detected!
+[01:27:55] 🎯 Enemy: natu
+[01:27:55] ⏭ Bỏ qua natu, không phải target
+[01:28:05] ⚔️ Battle detected!
+[01:28:10] 🎯 Enemy: tangrowth
+[01:28:10] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:28:10] 📋 Log đọc được: 'chlorophyll'
+[01:28:10] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:28:28] ⚔️ Battle detected!
+[01:28:32] 🎯 Enemy: bellsprout
+[01:28:33] ⏭ Bỏ qua bellsprout, không phải target
+[01:28:42] ⚔️ Battle detected!
+[01:28:47] 🎯 Enemy: natu
+[01:28:47] ⏭ Bỏ qua natu, không phải target
+[01:29:01] ⚔️ Battle detected!
+[01:29:05] 🎯 Enemy: tangela
+[01:29:05] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:29:06] 📋 Log đọc được: 'chlorophyll'
+[01:29:06] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:29:20] ⚔️ Battle detected!
+[01:29:24] 🎯 Enemy: plusle
+[01:29:24] ⏭ Bỏ qua plusle, không phải target
+[01:29:43] ⚔️ Battle detected!
+[01:29:48] 🎯 Enemy: tangela
+[01:29:48] 🔍 Đang check ability cho tangela (Yêu cầu: regeneratorz)...
+[01:29:48] 📋 Log đọc được: 'chlorophyll'
+[01:29:48] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangela.
+[01:30:06] ⚔️ Battle detected!
+[01:30:11] 🎯 Enemy: tangrowth
+[01:30:11] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:30:11] 📋 Log đọc được: 'leaf guard'
+[01:30:11] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:30:22] ⚔️ Battle detected!
+[01:30:26] 🎯 Enemy: natu
+[01:30:27] ⏭ Bỏ qua natu, không phải target
+[01:30:36] ⚔️ Battle detected!
+[01:30:41] 🎯 Enemy: natu
+[01:30:41] ⏭ Bỏ qua natu, không phải target
+[01:30:51] ⚔️ Battle detected!
+[01:30:55] 🎯 Enemy: natu
+[01:30:55] ⏭ Bỏ qua natu, không phải target
+[01:31:09] ⚔️ Battle detected!
+[01:31:13] 🎯 Enemy: natu
+[01:31:13] ⏭ Bỏ qua natu, không phải target
+[01:31:28] ⚔️ Battle detected!
+[01:31:32] 🎯 Enemy: plusle
+[01:31:32] ⏭ Bỏ qua plusle, không phải target
+[01:31:46] ⚔️ Battle detected!
+[01:31:50] 🎯 Enemy: natu
+[01:31:50] ⏭ Bỏ qua natu, không phải target
+[01:32:05] ⚔️ Battle detected!
+[01:32:09] 🎯 Enemy: natu
+[01:32:09] ⏭ Bỏ qua natu, không phải target
+[01:32:23] ⚔️ Battle detected!
+[01:32:28] 🎯 Enemy: natu
+[01:32:28] ⏭ Bỏ qua natu, không phải target
+[01:32:42] ⚔️ Battle detected!
+[01:32:46] 🎯 Enemy: minun
+[01:32:46] ⏭ Bỏ qua minun, không phải target
+[01:33:04] ⚔️ Battle detected!
+[01:33:09] 🎯 Enemy: natu
+[01:33:09] ⏭ Bỏ qua natu, không phải target
+[01:33:23] ⚔️ Battle detected!
+[01:33:27] 🎯 Enemy: bellsprout
+[01:33:27] ⏭ Bỏ qua bellsprout, không phải target
+[01:33:41] ⚔️ Battle detected!
+[01:33:46] 🎯 Enemy: plusle
+[01:33:46] ⏭ Bỏ qua plusle, không phải target
+[01:34:04] ⚔️ Battle detected!
+[01:34:09] 🎯 Enemy: tangrowth
+[01:34:09] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:34:09] 📋 Log đọc được: 'leaf guard'
+[01:34:09] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:34:19] ⚔️ Battle detected!
+[01:34:23] 🎯 Enemy: tangrowth
+[01:34:23] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:34:24] 📋 Log đọc được: 'chlorophyll'
+[01:34:24] ⏭ Ability 'chlorophyll' không khớp. Bỏ qua tangrowth.
+[01:34:38] ⚔️ Battle detected!
+[01:34:43] 🎯 Enemy: minun
+[01:34:43] ⏭ Bỏ qua minun, không phải target
+[01:34:57] ⚔️ Battle detected!
+[01:35:02] 🎯 Enemy: natu
+[01:35:02] ⏭ Bỏ qua natu, không phải target
+[01:35:16] ⚔️ Battle detected!
+[01:35:21] 🎯 Enemy: bellsprout
+[01:35:21] ⏭ Bỏ qua bellsprout, không phải target
+[01:35:34] ⚔️ Battle detected!
+[01:35:39] 🎯 Enemy: minun
+[01:35:39] ⏭ Bỏ qua minun, không phải target
+[01:35:49] ⚔️ Battle detected!
+[01:35:54] 🎯 Enemy: plusle
+[01:35:54] ⏭ Bỏ qua plusle, không phải target
+[01:36:08] ⚔️ Battle detected!
+[01:36:12] 🎯 Enemy: natu
+[01:36:12] ⏭ Bỏ qua natu, không phải target
+[01:36:27] ⚔️ Battle detected!
+[01:36:31] 🎯 Enemy: natu
+[01:36:31] ⏭ Bỏ qua natu, không phải target
+[01:36:45] ⚔️ Battle detected!
+[01:36:49] 🎯 Enemy: natu
+[01:36:49] ⏭ Bỏ qua natu, không phải target
+[01:37:00] ⚔️ Battle detected!
+[01:37:05] 🎯 Enemy: foongus
+[01:37:05] 🔍 Đang check ability cho foongus (Yêu cầu: regenerator)...
+[01:37:05] 📋 Log đọc được: 'regenerator'
+[01:37:05] 🎉 Khớp ability 'regenerator'! Bắt đầu bắt...
+[01:37:05] 🔄 Bắt đầu chuỗi bắt...
+[01:37:06] 🔄 Swapping to slot 3...
+[01:37:16] ⚔️ Dùng False Swipe...
+[01:37:28] ✅ HP thấp sau 1 lần False Swipe
+[01:37:28] 💤 Dùng Spore...
+[01:37:34] ⏳ Đang đợi lượt mới để ném Ball...
+[01:37:40] 🔴 Ném Poke...
+[01:37:43] 📋 OCR Bag lines: ['Foakéhall "', '2 xF2', '(tra Ball', '@ x10', '. Level Ball', 'bd ud *', 'Lure Ball', '2 43', 'Magn Ball', '2 ¥3', 'Choose Item']
+[01:37:43] ⚠️ Không thấy Poke trong bag (OCR)
+[01:37:43] ⚠️ Fallback click poke at (1567, 338)
+[01:38:07] ⚔️ Battle detected!
+[01:38:11] 🎯 Enemy: natu
+[01:38:11] ⏭ Bỏ qua natu, không phải target
+[01:38:26] ⚔️ Battle detected!
+[01:38:30] 🎯 Enemy: natu
+[01:38:30] ⏭ Bỏ qua natu, không phải target
+[01:38:42] ⚔️ Battle detected!
+[01:38:46] 🎯 Enemy: natu
+[01:38:46] ⏭ Bỏ qua natu, không phải target
+[01:39:00] ⚔️ Battle detected!
+[01:39:04] 🎯 Enemy: tangrowth
+[01:39:04] 🔍 Đang check ability cho tangrowth (Yêu cầu: regeneratorz)...
+[01:39:04] 📋 Log đọc được: 'leaf guard'
+[01:39:04] ⏭ Ability 'leaf guard' không khớp. Bỏ qua tangrowth.
+[01:39:23] ⚔️ Battle detected!
+[01:39:28] 🎯 Enemy: bellsprout
+[01:39:28] ⏭ Bỏ qua bellsprout, không phải target
+[01:39:42] ⚔️ Battle detected!
+[01:39:47] 🎯 Enemy: natu
+[01:39:47] ⏭ Bỏ qua natu, không phải target
+[01:40:02] ⚔️ Battle detected!
+[01:40:06] 🎯 Enemy: natu
+[01:40:06] ⏭ Bỏ qua natu, không phải target
+[01:40:20] ⚔️ Battle detected!
+[01:40:24] 🎯 Enemy: natu
+[01:40:24] ⏭ Bỏ qua natu, không phải target
+[01:40:38] ⚔️ Battle detected!
+[01:40:42] 🎯 Enemy: natu
+[01:40:42] ⏭ Bỏ qua natu, không phải target
+[01:40:56] ⚔️ Battle detected!
+[01:41:01] 🎯 Enemy: natu
+[01:41:01] ⏭ Bỏ qua natu, không phải target
+[01:41:20] ⚔️ Battle detected!
+[01:41:24] 🎯 Enemy: natu
+[01:41:24] ⏭ Bỏ qua natu, không phải target
+[01:41:39] ⚔️ Battle detected!
+[01:41:43] 🎯 Enemy: natu
+[01:41:43] ⏭ Bỏ qua natu, không phải target
+[01:41:54] ⚔️ Battle detected!
+[01:41:59] 🎯 Enemy: natu
+[01:41:59] ⏭ Bỏ qua natu, không phải target
+[01:42:13] ⚔️ Battle detected!
+[01:42:17] 🎯 Enemy: natu
+[01:42:17] ⏭ Bỏ qua natu, không phải target
+[01:42:36] ⚔️ Battle detected!
+[01:42:40] 🎯 Enemy: natu
+[01:42:40] ⏭ Bỏ qua natu, không phải target
+[01:42:55] ⚔️ Battle detected!
+[01:43:00] 🎯 Enemy: plusle
+[01:43:00] ⏭ Bỏ qua plusle, không phải target
+[01:43:13] ⚔️ Battle detected!
+[01:43:18] 🎯 Enemy: natu
+[01:43:18] ⏭ Bỏ qua natu, không phải target
+[01:43:28] ⚔️ Battle detected!
+[01:43:33] 🎯 Enemy: bellsprout
+[01:43:33] ⏭ Bỏ qua bellsprout, không phải target
+[01:43:46] ⚔️ Battle detected!
+[01:43:51] 🎯 Enemy: natu
+[01:43:51] ⏭ Bỏ qua natu, không phải target
+[01:44:09] ⚔️ Battle detected!
+[01:44:14] 🎯 Enemy: natu
+[01:44:14] ⏭ Bỏ qua natu, không phải target
+[01:44:24] ⚔️ Battle detected!
+[01:44:29] 🎯 Enemy: natu
+[01:44:29] ⏭ Bỏ qua natu, không phải target
+[01:44:33] ⏹ Đã dừng tool!
+[01:44:34] 
+✅ Catch session ended
+[02:13:02] ⚙ debug.save_failed_ocr: Bật
+[02:13:02] ⚙ farm.use_zero_effectiveness: Tắt
+[02:13:02] 🎮 alt+f8 hotkey registered!

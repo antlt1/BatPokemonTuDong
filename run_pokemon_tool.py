@@ -219,7 +219,7 @@ def is_battle(image, config):
         enemy_text = ocr_text_variants(enemy_roi, config, psm=7)
         enemy_norm = normalize_text(enemy_text)
         # Chỉ chấp nhận là battle nếu có chữ cái (tên) VÀ dấu hiệu Level (lv, số, hoặc dấu chấm của Lv.)
-        if re.search(r"[a-z]{3,}", enemy_norm) and re.search(r"lv|\d+|\.", enemy_norm):
+        if re.search(r"[a-z]{3,}", enemy_norm) and re.search(r"lv\.?\s*\d+", enemy_norm):
             return True
     except Exception:
         pass
@@ -370,29 +370,29 @@ def click_run(config):
     if hwnd:
         focus_window(hwnd)
     move_mouse_away(config)
-    image = screenshot_bgr()
-    threshold = config["template_matching"]["run_button_threshold"]
-    point, score = locate_template(
-        image,
-        RUN_TEMPLATE_PATH,
-        threshold,
-        roi=config["roi"].get("right_action_bar"),
-    )
-    if point is None:
-        save_debug(config, image, f"run_not_found_{score:.2f}")
-        print(f"Khong tim thay nut Run. Score cao nhat: {score:.2f}")
+
+    # Click thẳng vào tâm run_button_roi — không dùng template matching để tránh click nhầm
+    run_roi = config["roi"].get("run_button_roi")
+    if run_roi:
+        x, y, w, h = run_roi
+        offset = config.get("click_offsets", {}).get("run_button", [0, 0])
+        cx = int(x + w // 2 + offset[0])
+        cy = int(y + h // 2 + offset[1])
+    else:
+        print("Khong co run_button_roi trong config!")
         return False
-    offset = config.get("click_offsets", {}).get("run_button", [0, 0])
-    point = (point[0] + offset[0], point[1] + offset[1])
+
     repeat = config.get("mouse", {}).get("click_repeat", 2)
     gap = config.get("mouse", {}).get("click_gap_seconds", 0.25)
     for index in range(repeat):
-        click_at(*point, config=config)
+        click_at(cx, cy, config=config)
         if index < repeat - 1:
             time.sleep(gap)
     move_mouse_away(config)
-    print(f"Da click Run tai {point}, score {score:.2f}, repeat {repeat}")
+    print(f"Da click Run tai ({cx}, {cy}), repeat {repeat}")
     return True
+
+
 
 
 def wait_until_battle_exits(config):

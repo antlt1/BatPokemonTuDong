@@ -9,20 +9,21 @@
     "ability_wait_seconds": 3.5,
     "ability_retry_seconds": 1.5,
     "ability_retry_count": 2,
-    "after_run_wait_seconds": 4.0,
+    "after_run_wait_seconds": 2.0,
     "run_exit_timeout_seconds": 8.0,
     "move_hold_min_seconds": 0.18,
     "move_hold_max_seconds": 0.42,
     "after_fight_click_seconds": 0.6,
     "after_move_click_seconds": 1.0,
     "battle_anim_wait_seconds": 7.5,
-    "after_swap_wait_seconds": 2.0,
+    "after_swap_wait_seconds": 8.0,
     "swap_menu_wait_seconds": 0.8
   },
   "template_matching": {
-    "run_button_threshold": 0.58,
+    "run_button_threshold": 0.55,
     "fight_button_threshold": 0.55,
-    "pokemon_button_threshold": 0.5
+    "pokemon_button_threshold": 0.55,
+    "items_button_threshold": 0.55
   },
   "mouse": {
     "away_point": [
@@ -35,28 +36,28 @@
   },
   "roi": {
     "battle_header": [
-      605,
-      240,
-      686,
-      65
+      874,
+      260,
+      474,
+      55
     ],
     "enemy_name": [
-      520,
-      305,
-      291,
-      119
+      692,
+      323,
+      144,
+      44
     ],
     "battle_log": [
-      190,
-      745,
-      460,
-      225
+      325,
+      811,
+      462,
+      214
     ],
     "right_action_bar": [
-      1261,
-      257,
-      299,
-      603
+      1440,
+      265,
+      254,
+      583
     ],
     "move_panel": [
       1230,
@@ -66,26 +67,26 @@
     ],
     "move_slots": [
       [
-        1275,
-        308,
+        1442,
+        317,
         244,
         62
       ],
       [
-        1275,
+        1439,
         388,
         243,
         55
       ],
       [
-        1274,
-        455,
+        1442,
+        450,
         242,
         61
       ],
       [
-        1274,
-        528,
+        1438,
+        525,
         243,
         65
       ]
@@ -144,77 +145,133 @@
     ],
     "pokemon_swap_slots": [
       [
-        1269,
-        301,
-        95,
-        85
-      ],
-      [
-        1386,
-        303,
-        102,
+        1440,
+        319,
+        108,
         83
       ],
       [
-        1270,
-        403,
-        94,
-        79
+        1577,
+        314,
+        111,
+        82
       ],
       [
-        1383,
-        401,
-        114,
-        72
+        1438,
+        412,
+        102,
+        73
       ],
       [
-        1258,
-        496,
+        1576,
+        408,
+        110,
+        71
+      ],
+      [
+        1440,
+        504,
         107,
         85
       ],
       [
-        1385,
-        497,
-        103,
-        81
+        1577,
+        502,
+        102,
+        84
       ]
     ],
     "pokemon_button_roi": [
-      1406,
-      651,
-      92,
-      86
+      1565,
+      663,
+      109,
+      88
     ],
     "pokemon_name_in_battle": [
-      1022,
-      634,
-      142,
-      46
+      1207,
+      649,
+      126,
+      38
     ],
     "fight_button_roi": [
-      1285,
-      658,
-      104,
-      77
+      1457,
+      663,
+      98,
+      90
     ],
     "items_button_roi": [
-      1295,
-      744,
-      84,
-      78
+      1449,
+      753,
+      113,
+      94
     ],
     "run_button_roi": [
-      1406,
-      755,
-      121,
-      70
+      1575,
+      757,
+      115,
+      87
+    ],
+    "enemy_hp_bar": [
+      703,
+      355,
+      208,
+      20
+    ],
+    "my_pokemon_slots": [
+      [
+        374,
+        133,
+        85,
+        40
+      ],
+      [
+        379,
+        193,
+        82,
+        30
+      ],
+      [
+        375,
+        245,
+        85,
+        37
+      ],
+      [
+        363,
+        298,
+        97,
+        31
+      ],
+      [
+        371,
+        337,
+        90,
+        41
+      ],
+      [
+        363,
+        387,
+        98,
+        37
+      ]
+    ],
+    "items_bag_area": [
+      1439,
+      304,
+      244,
+      353
+    ],
+    "shiny_popup_area": [
+      696,
+      305,
+      747,
+      534
     ]
   },
   "click_offsets": {
     "run_button": [
       0,
-      25
+      0
     ],
     "fight_button": [
       0,
@@ -241,5 +298,8 @@
     "use_zero_effectiveness": false,
     "feedback_log": "src/runtime/feedback_log.txt",
     "battle_state_cache": "src/runtime/battle_state.json"
+  },
+  "hotkey": {
+    "stop_hotkey": "alt+f8"
   }
 }

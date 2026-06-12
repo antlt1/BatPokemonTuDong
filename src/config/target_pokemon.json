@@ -3,11 +3,10 @@
     "pokemonname": "Totodile",
     "ability": "none"
   },
-   {
+  {
     "pokemonname": "Oshawott",
     "ability": "none"
-  }
-  ,
+  },
   {
     "pokemonname": "Magikarp",
     "ability": "rattled"
@@ -17,20 +16,19 @@
     "ability": "regenerator"
   },
   {
-  "pokemonname": "Tangela",
+    "pokemonname": "Tangela",
+    "ability": "regeneratorz"
+  },
+  {
+    "pokemonname": "Tangrowth",
+    "ability": "regeneratorz"
+  },
+  {
+    "pokemonname": "Solosis",
     "ability": "regenerator"
   },
   {
-  "pokemonname": "Tangrowth",
-    "ability": "regenerator"
-  },
-  {
-  "pokemonname": "Solosis",
-  "ability": "regenerator"
-  },
-  {
-  "pokemonname": "Solosis",
-  "ability": "magic guard"
+    "pokemonname": "Solosis",
+    "ability": "magic guard"
   }
- 
 ]
